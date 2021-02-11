@@ -1,4 +1,4 @@
-# slider
+# Suncase
 
 ## Project setup
 ```
