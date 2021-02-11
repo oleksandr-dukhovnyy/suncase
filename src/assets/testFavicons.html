@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Suncase</title>
+
+</head>
+<body>
+	<button id="back"> BACK </button>
+	<button id="next"> NEXT </button>
+</body>
+<script>
+	const changeFavicon = id => {
+		let head = documnet.querySelector( 'head' );
+		head.querySelector( 'link' ).remove();
+		documnet.createElement( 'link' );
+		
+	}
+
+	const back = document.getElementById( 'back' );
+	const next = document.getElementById( 'next' );
+
+	const iconsCount = 6;
+	const iconsId = [];
+	
+	for( let i = 0; i <= iconsCount; i++ ){
+		iconsCount.push( i+1 );
+	}
+
+	iconsId.forEach( id => {
+		let button = documnet.createElement( 'button' );
+		button.innerHTML = id;
+		button.addEventListener( 'click', ()=>{
+
+		});
+	});
+
+</script>
+</html>
