@@ -246,6 +246,17 @@ export default {
     LocalStTool._add( 'Cart', Copy._arr( this.cart ) );
   }
   this.refreshTotalPrice();
+
+  // remove host logo
+  setTimeout( () => {
+    let imgs = document.querySelectorAll( 'img' );
+    imgs.forEach( img => {
+      if( img.alt === 'www.000webhost.com' ){
+        img.remove();
+      }
+    });
+  }, 200 );
+  
  }
 }
 </script>

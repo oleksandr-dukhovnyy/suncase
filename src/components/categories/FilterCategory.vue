@@ -5,7 +5,7 @@
         :key="index"
         :class="{
             filtersBttn: true,
-            active: value,
+            selected: value,
             'menu-button': true,
             screen: !touchScreen
         }"
@@ -75,7 +75,7 @@ export default {
 
         margin-bottom: 12%;
     }
-    .active::after {
+    .selected::after {
         content: '';
         background-image: url( https://img.icons8.com/ios/13/000000/checkmark.png );
         width: 13px;
@@ -93,7 +93,7 @@ export default {
         color: #565454;
         /* font-size: 13px; */
     }
-    .filtersBttn.active {
+    .filtersBttn.selected {
         color: black;
     }
 </style>

@@ -6,7 +6,7 @@
             
             :class="{
                 genderBttn: true,
-                active: genderActive.indexOf( item ) !== -1,
+                selected: genderActive.indexOf( item ) !== -1,
                 screen: !touchScreen
             }"
             @click="selectedIt( item )"
@@ -55,12 +55,11 @@ export default {
 
         margin-bottom: 12%;
     }
-    .active::after {
+    .selected::after {
         content: '';
         background-image: url( https://img.icons8.com/ios/13/000000/checkmark.png );
         width: 13px;
         height: 13px;
-        /* z-index: 10; */
         position: absolute;
     }
     .G_checkmark {
@@ -72,7 +71,7 @@ export default {
         transition: 0.15s;
         color: #565454;
     }
-    .genderBttn.active {
+    .genderBttn.selected {
         color: black;
     }
     

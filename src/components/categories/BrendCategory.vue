@@ -5,7 +5,7 @@
         :key="i"
         :class="{
             brendBttn: true,
-            active: brandsActive.indexOf( item ) !== -1,
+            selected: brandsActive.indexOf( item ) !== -1,
             'menu-button': true,
             screen: touchScreen
         }"
@@ -57,7 +57,7 @@
 
         margin-bottom: 12%;
     }
-    .active::after {
+    .selected::after {
         content: '';
         background-image: url( https://img.icons8.com/ios/13/000000/checkmark.png );
         width: 13px;
@@ -69,7 +69,7 @@
         transition: 0.15s;
         color: #565454;
     }
-    .brendBttn.active {
+    .brendBttn.selected {
         color: black;
     }
     .B_checkmark {

@@ -24,7 +24,7 @@
 			<button
 				class="hamburger-close"
 				@click="closeMenu"
-				>
+			>
 				<img :src="'./img/sliderControl/closeBttn.svg'" alt="x">
 			</button>
 
@@ -40,7 +40,7 @@
 
 								:class="{
 									'hamburger-nav-item': true,
-									'active': genderActive.indexOf( item ) !== -1
+									'selected': genderActive.indexOf( item ) !== -1
 								}"
 
 								@click="toggledCategory( item )"
@@ -55,7 +55,7 @@
 
 								:class="{
 									'hamburger-nav-item': true,
-									'active': filterCategies[name]
+									'selected': filterCategies[name]
 								}"
 
 								@click="toggledCategory( name )"
@@ -71,7 +71,7 @@
 
 							:class="{
 								'hamburger-nav-item': true,
-								'active': brandsActive.indexOf( item ) !== -1
+								'selected': brandsActive.indexOf( item ) !== -1
 							}"
 
 							@click="toggledCategory( item )"
@@ -247,9 +247,17 @@ export default {
 		display: none !important;
 	}
 
-	.active {
+	.selected {
 		color: black;
 	}
+
+	.selected::after {
+        content: '';
+        background-image: url( https://img.icons8.com/ios/13/000000/checkmark.png );
+        width: 13px;
+        height: 13px;
+        position: absolute;
+    }
 
 	.gender > * {
 		font-size: 17px;
