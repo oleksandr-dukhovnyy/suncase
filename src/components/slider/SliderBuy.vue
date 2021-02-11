@@ -215,7 +215,7 @@ export default {
 
 @media ( orientation: portrait ) {
     .button-contain {
-        margin: 0 15px 0 auto;
+        margin: 0 auto;
     }
 }
 </style>

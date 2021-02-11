@@ -48,8 +48,6 @@
                 </button>
               </div>
             </div> <!-- info contain -->
-            
-            
 
           </div>
         </div>
@@ -382,7 +380,6 @@ export default {
   width: 100%;
   height: 100%;
   position: absolute;
-  /* top: 50%; */
   z-index: 101;
   background-color: rgba( 255, 255, 255, 0.8 );
 
