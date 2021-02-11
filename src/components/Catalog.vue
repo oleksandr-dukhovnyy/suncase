@@ -56,7 +56,6 @@
             'space-evenly': false
         }"        
       >
-      <!-- filtredItems.length > 200 -->
 
         <button :class="{
             'contain-bttn': true
@@ -159,7 +158,7 @@ export default {
         },
         toggledCategory( category ){
             this.showMoreClicked = false;
-            this.showLength = 12;
+            this.showLength = Infinity;
             
             if( this.allGenderCategory.indexOf( category ) !== -1 ){
                 if( this.genderActive[0] === '' ){

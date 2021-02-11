@@ -95,9 +95,11 @@ export const generatedFiltredItems = ( config, arr, genderActive ) => {
     }
 
 
-    if( filtredItems.length > showLength ){
-        filtredItems = filtredItems.slice( 0 , showLength );
-    }
+    // if( filtredItems.length > showLength ){
+    //     filtredItems = filtredItems.slice( 0 , showLength );
+    // }
+    // Disconnected until better times...
+
     return filtredItems;
 
 } // end middle sort function
@@ -107,7 +109,7 @@ const selectPropFromArr = ( item, PropArr, neededProp ) => {
     if( PropArr.indexOf( item[neededProp] ) !== -1 ){
         return true;
     } else if( item[neededProp] === 'all' ){
-            return true;
+        return true;
     } else {
         return false;
     }
