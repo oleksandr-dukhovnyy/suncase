@@ -1,6 +1,7 @@
  # Suncase ![logo](https://github.com/Aleksandr-JS-Developer/suncase/blob/main/public/favicons/new/6.png)
-
-
+---
+### [live demo](https://text-redactor.000webhostapp.com)
+---
 ## Project setup
 ```
 npm install
