@@ -3,7 +3,7 @@
  (vue.js, vue-cli, webpack, photoshop)
  
 ---
-### [live demo](https://text-redactor.000webhostapp.com)
+### [live-demo](https://text-redactor.000webhostapp.com)
 ---
 ## Project setup
 ```
