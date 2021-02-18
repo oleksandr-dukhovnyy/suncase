@@ -27,10 +27,10 @@
                 <button
                     @click="toggledCategory( 'kids' )"
                 > kids </button>
-                
+<!--                 
                 <button
                     @click="toggledCategory( 'pets' )"
-                > pets </button>
+                > pets </button> -->
             </div>
             
         </div>
@@ -102,7 +102,7 @@
         width: max-content;
         position: relative;
         display: block;
-        font-family: 'Jaapokki subtract Regular', Arial, Helvetica, sans-serif;
+        font-weight: 600;
         letter-spacing: 0.5em;
         font-size: 25px;
         z-index: 4;
@@ -129,8 +129,7 @@
 
     .menu {
         padding: 0 30px;
-        margin-top: 45px;
-        margin-bottom: 50px;
+        margin: 45px auto 50px auto;
     }
     .menu button {
         border: none;
@@ -139,6 +138,8 @@
         text-transform: uppercase;
         font-size: 13px;
         letter-spacing: 0.5em;
+        margin-top: 12px;
+        /* border: 1px solid orangered; */
     }
 
     .menu button:hover {
@@ -147,7 +148,7 @@
 
     .menu-buttons-contain {
         display: flex;
-        width: 425px;
+        width: 316px;
         justify-content: space-between;
         margin: auto;
     }

@@ -128,7 +128,7 @@ export default {
             mostPopularActive: false,
             from$to$$$: false,
             from$$$to$: false,
-            allGenderCategory: ['man', 'woman', 'kids', 'pets'],
+            allGenderCategory: ['man', 'woman', 'kids'],
             allBrends: ['Levis','Ray-Ban','Oakley','Prada','Persol','Versace','Polaroid', 'Saint Laurent', 'Christian Dior', 'Maui Jim'],
             showLength: 12,
             showMoreClicked: false,

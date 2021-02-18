@@ -279,6 +279,7 @@ export default {
     margin: 0px;
     padding: 0px;
     outline: none;
+    /* border: 1px solid black; */
   }
   *:hover {
     outline: none;

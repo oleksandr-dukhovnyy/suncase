@@ -148,9 +148,13 @@ export default {
 
 <style scoped>
 
+	.hamburger-nav-flex-contain {
+		margin-top: 45px;
+	}
+
 	.line {
 		width: 45%;
-		/* margin-left: 32.5%; */
+		margin-left: calc( 55% - 15px );
 		height: 1px;
 		background-color: #cacaca;
 		margin-bottom: 10%;
@@ -219,7 +223,8 @@ export default {
         text-transform: uppercase;
         letter-spacing: 0.45em;
         color: #929292;
-		text-align: left;
+		text-align: right;
+		padding-right: 24px;
 	}
 
 	.checked-contain {

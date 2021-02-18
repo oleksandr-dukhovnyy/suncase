@@ -5,10 +5,10 @@
 
         <div class="second">
             <div class="offer">
-                <span>sunglass</span>
-                <span>that you'll</span>
-                <span>never</span>
-                <span>take off</span>
+                <span>sunglasses</span>
+                <span>for all</span>
+                <span>life</span>
+                <span>seasons</span>
                 <button
                     class="browse"
                     @click="browse"
@@ -60,7 +60,7 @@ export default {
 
         background-repeat: no-repeat;
         background-position: center;
-        
+        background-size: auto 100%;
 	}
 
     .line > div:last-child {        
@@ -70,12 +70,11 @@ export default {
     .first {
         width: 407px;
 
-        background-image: url( '../../../public/img/LineSlider/1/1.jpg' );
-        background-size: auto 550px;
+        background-image: url( '../../../public/img/LineSlider/1/1 - modified.jpg' );
     }
 
     .second {
-        width: 347px;
+        width: 488px;
 
         display: flex;
         flex-direction: column;
@@ -115,16 +114,13 @@ export default {
     }
 
     .third {
-        background-image: url( '../../../public/img/LineSlider/1/3.jpg' );
-        background-size: auto 600px;
-
-        width: 470px;
+        background-image: url( '../../../public/img/LineSlider/1/2 - modified 2.jpg' );
+        width: 407px;
     }
 
     .fourth {
         width: 481px;
-        background-image: url( '../../../public/img/LineSlider/1/4.jpg' );
-        background-size: auto 600px;
+        background-image: url( '../../../public/img/LineSlider/1/3 - modified 2.jpg' );
     }
 
     @media ( max-device-width: 1350px ) {
@@ -132,32 +128,42 @@ export default {
             display: none;
         }
 
-        .line > div {
-            width: 30%;
-        }
-
         .line {
-            width: 100%;
+            width: 95%;
             margin: 30px auto 0;
-            margin-left: 17px;
+            /* margin-left: 17px; */
         }
     }
     @media ( max-device-width: 768px ){
-        .first {
-            display: none;
+        .fourth {
+            display: block;
         }
         .line > div {
-            width: 50%;
+            margin: 30px 0 0;
+            width: 45%;
         }
         .line {
             width: 100%;
             margin: 30px auto 0;
-            margin-left: 17px;
+            flex-direction: row;
+            flex-wrap: wrap;
+        }
+        .third {
         }
     }
     @media ( max-device-width: 620px ){
         .third {
             display: none;
+        }
+        .first {
+            display: block;
+        }
+        .line {
+            flex-direction: column-reverse;
+        }
+        
+        .line > div {
+            width: 100%;
         }
     }
 

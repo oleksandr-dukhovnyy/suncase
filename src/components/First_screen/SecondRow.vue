@@ -1,5 +1,5 @@
 <template>
-    <div class="line">
+    <div class="line" v-if="false">
     
 		<div class="first"></div>
 
@@ -68,12 +68,13 @@ export default {
     .first {
         width: 437px;
         background-image: url( '../../../public/img/LineSlider/2/1.jpg' );
-        background-size: 460px auto;
+        background-size: auto 100%;
         background-position: 0 0;
     }
     .second {
-        background-image: url( '../../../public/img/LineSlider/2/2.jpg' );
-        background-size: 400px auto;
+        /* background-image: url( '../../../public/img/LineSlider/2/2.jpg' ); */
+        background-image: url( '../../../public/img/LineSlider/2/2_.jpg' );
+        background-size: auto 100%;
 
         width: 430px;
     }
@@ -82,7 +83,7 @@ export default {
         display: flex;
         flex-direction: column;
         text-align: center;
-        background-size: 600px auto;
+        background-size: auto 100%;
     }
     .offer {
         display: flex;
@@ -115,8 +116,8 @@ export default {
     }
     .fourth {
         width: 431px;
-        background-image: url( '../../../public/img/LineSlider/2/4.jpg' );
-        background-size: 550px auto;
+        background-image: url( '../../../public/img/LineSlider/2/4 new.jpg' );
+        background-size: auto 100%;
 
     }
 
