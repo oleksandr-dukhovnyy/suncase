@@ -134,7 +134,7 @@ export default {
             /* margin-left: 17px; */
         }
     }
-    @media ( max-device-width: 768px ){
+    @media ( max-device-width: 768px ) and ( min-device-width: 621px ){
         .fourth {
             display: block;
         }
@@ -147,8 +147,6 @@ export default {
             margin: 30px auto 0;
             flex-direction: row;
             flex-wrap: wrap;
-        }
-        .third {
         }
     }
     @media ( max-device-width: 620px ){
