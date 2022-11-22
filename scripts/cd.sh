@@ -6,12 +6,13 @@ build_name="build_$tag.$date";
 
 cd ../;
 
-# npm run build;
+npm run build;
 
 mkdir CD;
 cd CD;
 
 git clone https://github.com/Aleksandr-JS-Developer/suncase.git gh-pages;
+cd gh-pages;
 git checkout gh-pages;
 
 cd gh-pages;
@@ -24,14 +25,12 @@ cp -r dist/. CD/gh-pages/;
 
 cd CD/gh-pages;
 
-git status;
-ls;
 
-$SHELL;
+git add .;
+git commit -m "$build_name";
+git push;
 
-# git add .;
-# git commit -m "$build_name";
-# git push;
+cd ../..;
 
-# cd ../..;
-# ls;
+rm -rf CD;
+rm -rf dist;
