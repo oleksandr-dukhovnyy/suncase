@@ -1,8 +1,7 @@
-const openWin = ( item, count = 1, callback ) => {
+const openWin = (item, count = 1, callback) => {
+  let newWindow = open('/', '', 'width=353,height=411,top=center,right=center');
 
-	let newWindow = open( '/', '', 'width=353,height=411,top=center,right=center' );
-
-	newWindow.document.write(`
+  newWindow.document.write(`
 	<div class="modal-contain">
 		<div class="modal-content">
 
@@ -152,15 +151,15 @@ const openWin = ( item, count = 1, callback ) => {
 
 	`);
 
-	newWindow.document.querySelector( '.buy-bttn' ).addEventListener( 'click', e => {
-		if( item !== null )
-			callback( item.id );
-		e.target.classList.add( 'load' );
-		setTimeout( () => {
-			newWindow.close();
-		}, 1000 );
-	});
-	
-}
+  newWindow.document
+    .querySelector('.buy-bttn')
+    .addEventListener('click', (e) => {
+      if (item !== null) callback(item.id);
+      e.target.classList.add('load');
+      setTimeout(() => {
+        newWindow.close();
+      }, 1000);
+    });
+};
 
 export default openWin;
