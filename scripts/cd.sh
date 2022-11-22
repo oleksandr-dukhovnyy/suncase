@@ -22,6 +22,11 @@ cd ../..;
 
 cp -r dist/. CD/gh-pages/;
 
+cd CD/gh-pages;
+
+git status;
+ls;
+
 $SHELL;
 
 # git add .;
