@@ -25,11 +25,10 @@
       />
     </div>
     <div class="menu">
-      <GenderCategory
-        :categories="allGenderCategory"
-        :genderActive="genderActive"
-        @toggledCategory="toggledCategory"
-      />
+      <!-- :categories="allGenderCategory"
+      :genderActive="genderActive" -->
+      <!-- @toggledCategory="toggledCategory" -->
+      <GenderCategory />
       <span class="line"></span>
       <FilterCategory
         :filterCategies="{
@@ -54,8 +53,8 @@
         :class="{
           'contain-bttn': true,
         }"
-        v-for="(item, i) in filtredItems"
-        :key="i"
+        v-for="item in SUNGLASESS_LIST"
+        :key="item.id"
         @click="openItInModal(item.id)"
       >
         <img
@@ -93,14 +92,24 @@ import FilterCategory from './categories/FilterCategory.vue';
 import BrendCategory from './categories/BrendCategory.vue';
 import MobileMenu from './hamburger for mobile/Menu.vue';
 
+// vuex
+import { mapGetters } from 'vuex';
+
+const vuexGetters = {
+  ACTIVE_GENDERS: 'glasses/ACTIVE_GENDERS',
+  ACTIVE_CATEGORIES: 'glasses/ACTIVE_CATEGORIES',
+  ACTIVE_BRANDS: 'glasses/ACTIVE_BRANDS',
+  SUNGLASESS_LIST: 'glasses/SUNGLASESS_LIST',
+};
+
 export default {
   name: 'Catalog',
   props: [
-    'allItemsInTheCatolog',
-    'itemsInCart',
-    'totalPrice',
+    // 'allItemsInTheCatolog',
+    // 'itemsInCart',
+    // 'totalPrice',
     'showCartIcon',
-    'genderActive',
+    // 'genderActive',
   ],
   components: {
     GenderCategory,
@@ -108,6 +117,7 @@ export default {
     BrendCategory,
     MobileMenu,
   },
+  computed: { ...mapGetters(vuexGetters) },
   data() {
     return {
       filtredItems: [],

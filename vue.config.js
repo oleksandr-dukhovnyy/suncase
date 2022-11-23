@@ -1,4 +1,4 @@
 module.exports = {
-  publicPath: '/suncase/',
+  publicPath: process.env.NODE_ENV === 'production' ? '/suncase/' : '/',
   productionSourceMap: false,
 };

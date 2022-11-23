@@ -1,20 +1,17 @@
 <template>
   <div id="app">
     <TopHeader
-      :itemsInCart="cart.length"
-      :totalPrice="totalPrice"
       :phoneNumber="currentPhoneNumber"
       :langActive="langActive"
       @setLanguage="setLanguage"
-      @openCart="openCart"
     />
 
-    <FirstScreen @toggledCategory="toggledCategory" />
+    <FirstScreen />
 
+    <!-- :genderActive="genderActive" -->
+    <!-- :itemsInCart="cart.length" -->
+    <!-- :totalPrice="totalPrice" -->
     <Catalog
-      :genderActive="genderActive"
-      :itemsInCart="cart.length"
-      :totalPrice="totalPrice"
       :allItemsInTheCatolog="allItemsInTheCatolog"
       @openSlider="openSelected"
       @openCart="openCart"
@@ -72,6 +69,16 @@ import FirstScreen from './components/First_screen/FirstScreen.vue';
 import TopHeader from './components/header/TopHeader.vue';
 import Footer from './components/footer/Footer.vue';
 import PayModal from './components/payModal/payModal.vue';
+
+// store
+import { mapActions, mapGetters } from 'vuex';
+
+const vuexActions = {
+  FETCH_SUNGLASESS: 'glasses/FETCH_SUNGLASESS',
+};
+const vuexGetters = {
+  SUNGLASESS_LIST: 'glasses/SUNGLASESS_LIST',
+};
 
 export default {
   name: 'App',
@@ -386,7 +393,14 @@ export default {
       buyId: 0,
     };
   },
+  created() {
+    this.FETCH_SUNGLASESS();
+  },
+  computed: {
+    ...mapGetters(vuexGetters),
+  },
   methods: {
+    ...mapActions(vuexActions),
     removeBodyScroll() {
       Scroll.rem();
     },

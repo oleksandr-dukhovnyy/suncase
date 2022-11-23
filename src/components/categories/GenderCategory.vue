@@ -16,9 +16,19 @@
 </template>
 
 <script>
+// vuex
+import { mapGetters } from 'vuex';
+
+const vuexGetters = {
+  ACTIVE_GENDERS: 'glasses/ACTIVE_GENDERS',
+  ACTIVE_CATEGORIES: 'glasses/ACTIVE_CATEGORIES',
+  ACTIVE_BRANDS: 'glasses/ACTIVE_BRANDS',
+  SUNGLASESS_LIST: 'glasses/SUNGLASESS_LIST',
+};
+
 export default {
   name: 'GenderCategory',
-  props: ['categories', 'genderActive'],
+  // props: ['categories', 'genderActive'],
   data() {
     return {
       touchScreen: null,
@@ -29,10 +39,14 @@ export default {
       this.$emit('toggledCategory', category);
     },
   },
+  computed: {
+    ...mapGetters(vuexGetters),
+  },
   mounted() {
-    this.touchScreen = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-      navigator.userAgent
-    );
+    this.touchScreen =
+      /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+        navigator.userAgent
+      );
   },
 };
 </script>

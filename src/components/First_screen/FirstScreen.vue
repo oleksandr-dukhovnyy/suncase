@@ -2,32 +2,21 @@
   <section class="first-screen">
     <!-- LOGO -->
     <div class="logo">
-      <span class="logo-text">
-        suncase
-      </span>
-      <span class="support-text">
-        original shop
-      </span>
+      <span class="logo-text"> suncase </span>
+      <span class="support-text"> original shop </span>
     </div>
 
     <!-- MENU -->
     <div class="menu">
       <div class="menu-buttons-contain">
         <button @click="toggledCategory('man')">man</button>
-
         <button @click="toggledCategory('woman')">woman</button>
-
         <button @click="toggledCategory('kids')">kids</button>
-        <!--                 
-                <button
-                    @click="toggledCategory( 'pets' )"
-                > pets </button> -->
       </div>
     </div>
 
     <!-- LINE SLIDER -->
     <FirstRow @browse="toggledCategory()" />
-    <SecondRow @browse="toggledCategory()" />
   </section>
 </template>
 
@@ -37,18 +26,24 @@ import scrollToGoods from '../../js/scrollToGoods.js';
 
 // components
 import FirstRow from './FirstRow.vue';
-import SecondRow from './SecondRow.vue';
+
+// vuex
+import { mapActions } from 'vuex';
+
+const vuexActions = {
+  TOGGLE_FILTER_GENDERS: 'glasses/TOGGLE_FILTER_GENDERS',
+};
 
 export default {
   name: 'FirstScreen',
   components: {
     FirstRow,
-    SecondRow,
   },
   methods: {
+    ...mapActions(vuexActions),
     toggledCategory(category = null) {
       if (category !== null) {
-        this.$emit('toggledCategory', category);
+        this.TOGGLE_FILTER_GENDERS(category);
       }
 
       scrollToGoods();

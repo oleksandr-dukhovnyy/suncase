@@ -4,16 +4,18 @@
     <div class="action-contain">
       <Languages :langActive="langActive" @setLanguage="setLanguage" />
 
-      <div class="cart-icon" @click="openCart">
-        <span class="total-price" @click="openCart"> ${{ totalPrice }} </span>
+      <div class="cart-icon" @click="openCart_">
+        <span class="total-price" @click="openCart_">
+          ${{ CART_TOTAL_PRICE }}
+        </span>
         <img
           class="cart-icon-img"
           :src="'./img/cart/cartIcon.jpg'"
           alt="cart"
-          @click="openCart"
+          @click="openCart_"
         />
-        <span class="items-in-cart" @click="openCart">
-          {{ itemsInCart }}
+        <span class="items-in-cart" @click="openCart_">
+          {{ CART_LENGTH }}
         </span>
       </div>
     </div>
@@ -24,18 +26,24 @@
 // components
 import Languages from './Languages.vue';
 
+// vuex
+import { mapGetters } from 'vuex';
+
+const vuexGetters = {
+  CART_LENGTH: 'cart/CART_LENGTH',
+  CART_TOTAL_PRICE: 'cart/CART_TOTAL_PRICE',
+};
+
 export default {
   name: 'TopHeader',
-  props: ['itemsInCart', 'totalPrice', 'phoneNumber', 'langActive'],
+  props: ['phoneNumber', 'langActive'],
   components: {
     Languages,
   },
+  computed: { ...mapGetters(vuexGetters) },
   methods: {
     scrollUp() {
       window.scrollTo(0, 0);
-    },
-    openCart() {
-      this.$emit('openCart');
     },
     setLanguage(newLanguage) {
       this.$emit('setLanguage', newLanguage);
