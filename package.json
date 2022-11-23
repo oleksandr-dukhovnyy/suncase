@@ -3,13 +3,15 @@
   "version": "0.1.1",
   "scripts": {
     "serve": "vue-cli-service serve --port 3000 --copy",
-    "build": "vue-cli-service build"
+    "build": "vue-cli-service build",
+    "cd": "cd ./scripts && cd.sh"
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.13.0",
     "core-js": "^3.6.4",
     "scroll-lock": "^2.1.4",
-    "vue": "^2.6.11"
+    "vue": "^2.6.11",
+    "vuex": "^3.6.2"
   },
   "devDependencies": {
     "@deraw/vue-cli-plugin-proxy": "^2.2.6",

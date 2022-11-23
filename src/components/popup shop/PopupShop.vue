@@ -1,87 +1,79 @@
 <template>
-  <div class="bloor-contain"
-      @click="closeCart"
-  >
-<!-- desktop cart -->
+  <div class="bloor-contain" @click="closeCart">
+    <!-- desktop cart -->
     <div
       class="contain contain-content_rules"
       @click.stop="closeMobileButtons"
       :ref="'contain'"
       :class="{
-        op03: mobileShooseActionModalOpened
+        op03: mobileShooseActionModalOpened,
       }"
     >
-
       <div class="shop-controls">
+        <div class="shop-header-contain">
+          <!-- header contain -->
 
-        <div class="shop-header-contain"> <!-- header contain -->
-
-          <div class="close-bttn-container"> <!-- close -->
-            <img id="close"
+          <div class="close-bttn-container">
+            <!-- close -->
+            <img
+              id="close"
               :src="'./img/sliderControl/closeBttn.svg'"
               alt="close"
               @click="closeCart"
-            >
-          </div> <!-- / close -->
+            />
+          </div>
+          <!-- / close -->
 
           <div class="shop-controls-info">
             <div class="info-container">
-
               <div class="cart-icon">
-                <span class="total-price">
-                  ${{ totalPrice }}
-                </span>
-                <img class="cart-icon-img"
-                    :src="'./img/cart/cartIcon.jpg'"
+                <span class="total-price"> ${{ totalPrice }} </span>
+                <img
+                  class="cart-icon-img"
+                  :src="'./img/cart/cartIcon.jpg'"
                   alt="cart"
-                >
+                />
                 <span class="items-in-cart">
                   {{ cart.length }}
                 </span>
               </div>
 
-              <div class="buy-all-contain"> <!-- buy all -->
-                <button class="buy-all action-bttn"
-                  @click="buyAll"
-                >
+              <div class="buy-all-contain">
+                <!-- buy all -->
+                <button class="buy-all action-bttn" @click="buyAll">
                   Buy
                 </button>
               </div>
-            </div> <!-- info contain -->
-
+            </div>
+            <!-- info contain -->
           </div>
         </div>
-        
       </div>
-      <div class="goods-list-contain"
-      >
-        <div :class="{'goods-list': true}"
+      <div class="goods-list-contain">
+        <div
+          :class="{ 'goods-list': true }"
           v-if="cartItems.length > 0"
           :ref="'goodsList'"
           data-scroll-lock-scrollable
         >
-
-          <div class="contain-bttn"
-            v-for="( item, i ) in cartItems"
+          <div
+            class="contain-bttn"
+            v-for="(item, i) in cartItems"
             :key="item.id"
-
             :class="{
               animate__animated: true,
-              animate__zoomOutDown: deleteAnimation === item.id
+              animate__zoomOutDown: deleteAnimation === item.id,
             }"
-
             @mouseenter="showButtons = i"
             @mouseleave="showButtons = -1"
-            @click="openMobileMenu( item.id )"
+            @click="openMobileMenu(item.id)"
           >
             <ButtonsDesktop
               v-if="desktop"
-
               @openIt="openIt"
               @buyIt="buyIt"
               @deleteIt="deleteIt"
               @deleteAnimationOn="deleteAnimationOn"
-
               :active="showButtons === i"
               :id="item.id"
               :activeButton="showButtons === i"
@@ -100,85 +92,71 @@
 
               ref="buttonsMobile"
             /> -->
-            <img class="small-icon"
+            <img
+              class="small-icon"
               :src="`./img/${item.id}/1.jpg`"
               alt="pict"
-            >
+            />
             <div class="p-info-contain">
               <span class="p-brend">
                 {{ item.brend }}
               </span>
               <span class="p-model">
-                {{ item.model | fixLength }}   
+                {{ item.model | fixLength }}
               </span>
-              <span class="P_coast"
-                v-if="!item.sale"
-              >
-                ${{ item.coast }}
-              </span>
-              <span class="P_sale"
-                v-else
-              >
+              <span class="P_coast" v-if="!item.sale"> ${{ item.coast }} </span>
+              <span class="P_sale" v-else>
                 <span class="old-price">${{ item.oldCoast }}</span>
                 <span class="new-price">${{ item.coast }}</span>
               </span>
-              </div>
-              <div class="new"
-                  v-if="item.isNew"
-              >new</div> 
-              <div v-else class="new ghost">new</div>
+            </div>
+            <div class="new" v-if="item.isNew">new</div>
+            <div v-else class="new ghost">new</div>
           </div>
         </div>
       </div>
-      
     </div>
-<!-- / desktop cart -->
+    <!-- / desktop cart -->
 
-<!-- mobile cart -->
+    <!-- mobile cart -->
 
     <div class="mobile-cart">
       <header class="mc-header">
         <div class="mc-action-buttons">
           <div class="mc-cart-icon">
-            <div class="mc-total-price">
-              ${{ totalPrice }}
-            </div>
+            <div class="mc-total-price">${{ totalPrice }}</div>
             <img
               class="mc-cart-icon-img"
               :src="'./img/cart/cartIcon.jpg'"
               alt="cart"
-            >
+            />
             <div class="mc-items-in-cart">
               {{ cart.length }}
             </div>
           </div>
-          <button class="mc-buy"
-            @click="buyAll"
-          >Buy</button>
+          <button class="mc-buy" @click="buyAll">Buy</button>
         </div>
         <div class="mc-close-bttn-contain">
-          <img class="mc-close-icon _close_"
+          <img
+            class="mc-close-icon _close_"
             :src="'./img/sliderControl/closeBttn.svg'"
             alt="close"
             @click="closeCart"
-          >
+          />
         </div>
       </header>
-      <section class="mc-goods-list"
-        data-scroll-lock-scrollable
-      >
+      <section class="mc-goods-list" data-scroll-lock-scrollable>
         <div
           class="mc-card-contain"
-
-          v-for="( item, i ) in cartItems"
+          v-for="(item, i) in cartItems"
           :key="i"
-
-          @click.stop="openMobileMenu( item.id )"
+          @click.stop="openMobileMenu(item.id)"
         >
-          <img class="mc-glass-img"
+          <img
+            class="mc-glass-img"
             :src="`./img/${item.id}/1.jpg`"
             alt="pict"
-          >
+          />
           <div class="mc-info-contain">
             <div class="mc-info-brend">
               {{ item.brend }}
@@ -186,67 +164,48 @@
             <div class="mc-info-model">
               {{ item.model | fixLength }}
             </div>
-            <div class="mc-info-coast"
-              v-if="!item.sale"
-            >
-              ${{ item.coast }}
-            </div>
-            <div class="mc-info-coast"
-              v-else
-            >
+            <div class="mc-info-coast" v-if="!item.sale">${{ item.coast }}</div>
+            <div class="mc-info-coast" v-else>
               <span class="mc-sale-old-price">${{ item.oldCoast }}</span>
               <span class="mc-sale-new-price">${{ item.coast }}</span>
             </div>
           </div>
-          <div class="mc-new"
-            v-if="item.isNew"
-          >new</div>
-          <div class="mc-new mc-hide"
-            v-else
-          >new</div>
+          <div class="mc-new" v-if="item.isNew">new</div>
+          <div class="mc-new mc-hide" v-else>new</div>
         </div>
       </section>
     </div>
 
-<!-- / mobile cart -->
+    <!-- / mobile cart -->
 
-    <div class="mobile-shoose-action-modal-contain"
+    <div
+      class="mobile-shoose-action-modal-contain"
       v-if="mobileShooseActionModalOpened"
       @click.stop="mobileShooseActionModalOpened = false"
     >
       <div class="mobile-shoose-action-modal shadowOn">
         <div class="close-contain">
-          <img class=""
+          <img
+            class=""
             :src="'./img/sliderControl/closeBttn.svg'"
             alt="close"
             id="close"
             @click.stop="mobileShooseActionModalOpened = false"
-          >
+          />
         </div>
         <div class="buttons-contain">
-          <button
-            class="mobile-buy action-bttn"
-            @click="msBuyIt"
-          >
+          <button class="mobile-buy action-bttn" @click="msBuyIt">
             buy
           </button>
-          <button
-            class="mobile-wiew action-bttn"
-            @click="msOpenIt"
-          >
+          <button class="mobile-wiew action-bttn" @click="msOpenIt">
             wiew
           </button>
-          <button
-            class="mobile-delete action-bttn"
-            @click="msDeleteIt"
-          >
+          <button class="mobile-delete action-bttn" @click="msDeleteIt">
             delete
           </button>
         </div>
-          
       </div>
     </div>
-    
   </div>
 </template>
 
@@ -262,10 +221,11 @@ import ButtonsMobile from './buttons/ButtonsMobile.vue';
 export default {
   name: 'PopupShop',
   components: {
-    ButtonsDesktop, ButtonsMobile
+    ButtonsDesktop,
+    ButtonsMobile,
   },
-  props: ["cart", "allItemsInTheCatolog", "totalPrice"],
-  data(){
+  props: ['cart', 'allItemsInTheCatolog', 'totalPrice'],
+  data() {
     return {
       cartItems: [],
       hideArrow: false,
@@ -275,96 +235,101 @@ export default {
       desktop: true,
       showContainShadow: false,
       mobileShooseActionModalOpened: false,
-      msChoseId: null
-    }
+      msChoseId: null,
+    };
   },
   methods: {
-    msBuyIt(){
-      this.buyIt( this.msChoseId );
+    msBuyIt() {
+      this.buyIt(this.msChoseId);
     },
-    msOpenIt(){
-      this.openIt( this.msChoseId );
+    msOpenIt() {
+      this.openIt(this.msChoseId);
     },
-    msDeleteIt(){
-      this.deleteIt( this.msChoseId );
+    msDeleteIt() {
+      this.deleteIt(this.msChoseId);
     },
-    openMobileMenu( id ){
-      if( this.desktop === false ){
+    openMobileMenu(id) {
+      if (this.desktop === false) {
         this.msChoseId = id;
         this.mobileShooseActionModalOpened = true;
       }
     },
-    deleteAnimationOn( id ){
+    deleteAnimationOn(id) {
       this.deleteAnimation = id;
     },
-    buyAll(){
-      if( this.cartItems.length < 1 ){
+    buyAll() {
+      if (this.cartItems.length < 1) {
         this.addGoods();
       } else {
-        openPayWindow( {
-          coast: this.totalPrice,
-          id: 'all'
-        }, this.cartItems.length, () => {
-          this.$emit( 'refreshTotalPrice' );
-          this.closeCart();
-        });
+        openPayWindow(
+          {
+            coast: this.totalPrice,
+            id: 'all',
+          },
+          this.cartItems.length,
+          () => {
+            this.$emit('refreshTotalPrice');
+            this.closeCart();
+          }
+        );
       }
     },
-    closeMobileButtons(){
-      if( this.$refs.buttonsMobile !== undefined )
-        this.$refs.buttonsMobile.forEach( component => {
+    closeMobileButtons() {
+      if (this.$refs.buttonsMobile !== undefined)
+        this.$refs.buttonsMobile.forEach((component) => {
           component.dontShowButtns();
         });
     },
-    closeCart( e ){
-      this.$emit( 'closeCart' );
+    closeCart(e) {
+      this.$emit('closeCart');
     },
-    addGoods( e ){
+    addGoods(e) {
       scrollToGoods();
       this.closeCart();
     },
-    popupScroll( e ){
-      if( e.target.scrollTop !== 0 ){
+    popupScroll(e) {
+      if (e.target.scrollTop !== 0) {
         this.hideArrow = true;
       }
     },
-    buyIt( id ){        
-      this.$emit( 'buyIt', id );
+    buyIt(id) {
+      this.$emit('buyIt', id);
     },
-    openIt( id ){
-      this.$emit( 'openIt', id );
+    openIt(id) {
+      this.$emit('openIt', id);
     },
-    deleteIt( id ){
-      this.$emit( 'deleteIt', id );
-      this.cartItems.forEach( ( item, i ) => {
-        if( id === item.id ){
-          this.cartItems.splice( i, 1 );
+    deleteIt(id) {
+      this.$emit('deleteIt', id);
+      this.cartItems.forEach((item, i) => {
+        if (id === item.id) {
+          this.cartItems.splice(i, 1);
         }
       });
-    }
+    },
   },
-  mounted() {    
-    this.allItemsInTheCatolog.forEach( item => {
-      this.cart.forEach( id => {
-        if( item !== undefined && item !== null && item.id === id ){
-          this.cartItems.push( item );
+  mounted() {
+    this.allItemsInTheCatolog.forEach((item) => {
+      this.cart.forEach((id) => {
+        if (item !== undefined && item !== null && item.id === id) {
+          this.cartItems.push(item);
         }
       });
     });
 
     // check touchscreens devices
-    this.desktop = !( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test( navigator.userAgent ) );
+    this.desktop = !/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+      navigator.userAgent
+    );
   },
   filters: {
-    fixLength( value ){
-      return value.split( ' ' )[0];
-    }
-  }
-}
+    fixLength(value) {
+      return value.split(' ')[0];
+    },
+  },
+};
 </script>
 
 <style scoped>
-
 ._close_ {
   width: 25px !important;
   height: 25px !important;
@@ -381,7 +346,7 @@ export default {
   height: 100%;
   position: absolute;
   z-index: 101;
-  background-color: rgba( 255, 255, 255, 0.8 );
+  background-color: rgba(255, 255, 255, 0.8);
 
   overflow: hidden;
 }
@@ -394,8 +359,8 @@ export default {
 
 .mobile-buy {
   background-color: red !important;
-	border-color: red !important;
-	color: white;
+  border-color: red !important;
+  color: white;
 }
 
 .buttons-contain {
@@ -425,8 +390,8 @@ export default {
   padding: 15px;
   height: 200px;
   background-color: white;
-  left: calc( 50% - 155px );
-  top: calc( 40% - 100px );
+  left: calc(50% - 155px);
+  top: calc(40% - 100px);
 }
 
 .mobile-shoose-action-modal button {
@@ -479,9 +444,9 @@ export default {
 }
 
 .shadowOn {
-  -webkit-box-shadow: 0px 0px 32px -4px rgba(0,0,0,0.75);
-  -moz-box-shadow: 0px 0px 32px -4px rgba(0,0,0,0.75);
-  box-shadow: 0px 0px 32px -4px rgba(0,0,0,0.75);
+  -webkit-box-shadow: 0px 0px 32px -4px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 0px 32px -4px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 0px 32px -4px rgba(0, 0, 0, 0.75);
 }
 
 .items-in-cart {
@@ -509,7 +474,7 @@ export default {
   /* border-bottom: 1px solid rgb(153,153,153); */
 }
 
-@media ( max-device-width: 1000px ){
+@media (max-device-width: 1000px) {
   .shop-header-contain {
     padding: 0.7% 0 6%;
   }
@@ -638,11 +603,11 @@ button:active {
 .buy-all-contain .buy-all {
   border: 1px solid #e86868;
 
-  color:#e86868;
+  color: #e86868;
 }
 
 .buy-all-contain .buy-all:hover {
-  background-color: rgb( 227, 38, 54 );
+  background-color: rgb(227, 38, 54);
   color: white;
   transition: 0.5s;
 }
@@ -663,7 +628,7 @@ button:active {
   outline: none;
 }
 .small-icon {
-  width: 100%;  
+  width: 100%;
 }
 
 .p-info-contain > span {
@@ -693,7 +658,7 @@ button:active {
 .cart-is-empty {
   font-size: 16px;
   margin: 4%;
-  color: rgb( 153 153 153 );
+  color: rgb(153 153 153);
   text-transform: uppercase;
   letter-spacing: 0.45em;
   text-align: center;
@@ -723,21 +688,25 @@ button:active {
   left: auto;
   right: auto;
   overflow: hidden;
-  -webkit-box-shadow: 0px 0px 32px -4px rgba(0,0,0,0.75);
-  -moz-box-shadow: 0px 0px 32px -4px rgba(0,0,0,0.75);
-  box-shadow: 0px 0px 32px -4px rgba(0,0,0,0.75);
+  -webkit-box-shadow: 0px 0px 32px -4px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 0px 32px -4px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 0px 32px -4px rgba(0, 0, 0, 0.75);
   opacity: 1;
   border-bottom: 10px solid #fff;
 }
 
-.contain::-webkit-scrollbar { width: 5px; }
-.contain { -ms-overflow-style: none; }
+.contain::-webkit-scrollbar {
+  width: 5px;
+}
+.contain {
+  -ms-overflow-style: none;
+}
 
 ._close-bttn {
-    width: 25px;
-    height: 25px;
-    opacity: 0.5;
-  }
+  width: 25px;
+  height: 25px;
+  opacity: 0.5;
+}
 ._close-bttn:hover {
   cursor: pointer;
 }
@@ -751,7 +720,7 @@ button:active {
   left: 48%;
   z-index: 4;
   -webkit-animation: jump 1.5s infinite;
-          animation: jump 1.5s infinite;
+  animation: jump 1.5s infinite;
   transition: 0.7s;
 }
 @-webkit-keyframes jump {
@@ -776,28 +745,27 @@ button:active {
     bottom: 0;
   }
 }
-@media ( min-device-width: 1300px ){
+@media (min-device-width: 1300px) {
   .contain {
     padding: 38px;
   }
 }
-@media ( max-device-width: 900px ) {
+@media (max-device-width: 900px) {
   .shop-header-contain {
     border: none;
   }
 }
-@media ( max-device-width: 502px ) and ( orientation: portrait ){
+@media (max-device-width: 502px) and (orientation: portrait) {
   .goods-list {
     justify-content: space-evenly;
   }
 }
 
-@media ( orientation: landscape ) and ( max-device-width: 494px ) {
+@media (orientation: landscape) and (max-device-width: 494px) {
   .shop-header-contain {
     padding: 0.7% 0 15% 0;
   }
 }
-
 
 /* position, shadow, ect */
 .mobile-cart {
@@ -808,13 +776,12 @@ button:active {
   top: 70px;
   position: fixed;
 
-  
   left: auto;
   right: auto;
   overflow: hidden;
-  -webkit-box-shadow: 0px 0px 32px -4px rgba(0,0,0,0.75);
-  -moz-box-shadow: 0px 0px 32px -4px rgba(0,0,0,0.75);
-  box-shadow: 0px 0px 32px -4px rgba(0,0,0,0.75);
+  -webkit-box-shadow: 0px 0px 32px -4px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 0px 32px -4px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 0px 32px -4px rgba(0, 0, 0, 0.75);
   opacity: 1;
 }
 
@@ -824,7 +791,7 @@ button:active {
   flex-direction: column;
   flex-wrap: wrap;
   overflow: hidden;
-  
+
   border: 15px solid #fff;
 }
 .mobile-cart > * {
@@ -838,10 +805,9 @@ button:active {
   display: flex;
 }
 
-
 /* header > action-buttons + close */
 .mc-action-buttons {
-  width: calc( 100% - 50px );
+  width: calc(100% - 50px);
   height: 100%;
   margin-left: 25px;
 }
@@ -851,7 +817,6 @@ button:active {
   height: 25px;
   opacity: 0.5;
 }
-
 
 /* cart-icon + total price */
 .mc-cart-icon {
@@ -893,15 +858,14 @@ button:active {
   font-weight: 300;
   text-transform: uppercase;
 
-  border: 1px solid rgb(232,104,104);
-  color: rgb(232,104,104);
-  margin: 0 calc( 50% - 80px );
-
+  border: 1px solid rgb(232, 104, 104);
+  color: rgb(232, 104, 104);
+  margin: 0 calc(50% - 80px);
 }
 
 /* cart body contain */
 .mc-goods-list {
-  height: calc( 85% - 45px );
+  height: calc(85% - 45px);
   margin-top: 45px;
   overflow-y: scroll;
 
@@ -937,7 +901,7 @@ button:active {
   transition: 0.5s;
   height: 7px;
   margin-bottom: 16px;
-  color: rgb( 153, 153, 153 );
+  color: rgb(153, 153, 153);
 }
 
 .mc-sale-old-price {
@@ -958,13 +922,13 @@ button:active {
   height: 41px;
   text-align: center;
   line-height: 41px;
-  color: rgb( 255, 0, 0 );
+  color: rgb(255, 0, 0);
   font-size: 10px;
   font-weight: 400;
   border: 1px solid red;
   border-radius: 50%;
 
-  transform: rotate( -15deg );
+  transform: rotate(-15deg);
 
   -webkit-animation: rotating 12s linear infinite;
   -moz-animation: rotating 12s linear infinite;
@@ -977,7 +941,7 @@ button:active {
   opacity: 0 !important;
 }
 
-@media ( max-device-width: 445px ) and ( orientation: portrait ){
+@media (max-device-width: 445px) and (orientation: portrait) {
   .mobile-cart {
     display: flex;
   }
@@ -986,10 +950,9 @@ button:active {
   }
 }
 
-@media ( max-device-width: 335px ) and ( orientation: portrait ) {
+@media (max-device-width: 335px) and (orientation: portrait) {
   .mc-card-contain {
     width: 80%;
   }
 }
-
 </style>
