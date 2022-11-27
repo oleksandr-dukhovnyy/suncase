@@ -6,6 +6,8 @@ const openWin = (item, count = 1, callback) => {
   );
   //
 
+  newWindow.document.body.classList.add('pay-modal-hidden');
+
   newWindow.document.write(`
 	<div class="modal-contain">
 		<div class="modal-content">
@@ -13,7 +15,7 @@ const openWin = (item, count = 1, callback) => {
 		<div class="right-side">
         <div class="left-side">
           
-		    Goats: ${count}, Total price: ${item.coast} $
+		    Goats: ${count}, Total price: $${item.coast}
         
         </div>
 				<!-- /mobile header -->
@@ -54,8 +56,7 @@ const openWin = (item, count = 1, callback) => {
 							alt="mastercard"
 						>
 						<img
-							src="https://investor100.ru/wp-content/uploads/2016/11/Visa.jpg"
-
+							src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Visa_Inc._logo.svg/1280px-Visa_Inc._logo.svg.png"
 							class="visa clear"
 							alt="visa"
 						>
@@ -151,7 +152,12 @@ const openWin = (item, count = 1, callback) => {
 
 		cardFields[0].focus();
 
-		document.head.innerHTML = '<link rel="stylesheet" href="./css/payModal.css"><meta name="viewport" content="width=device-width, initial-scale=1"></meta>';
+    function show() {
+      document.body.classList.remove('pay-modal-hidden');
+      console.log('show');
+    }
+
+		document.head.innerHTML = '<link rel="stylesheet" href="./css/payModal.css" onload="show()"><meta name="viewport" content="width=device-width, initial-scale=1"></meta>';
 	</script>
 
 	`);
