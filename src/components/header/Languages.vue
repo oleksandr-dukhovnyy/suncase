@@ -5,8 +5,9 @@
       :key="i"
       :class="{ lang: true, _active: langActive === item }"
       @click.stop="setLanguage(item)"
-      >{{ item }}</span
     >
+      {{ item }}
+    </span>
   </div>
 </template>
 
@@ -16,7 +17,7 @@ export default {
   props: ['langActive'],
   data() {
     return {
-      allLanguages: ['eng', 'ua', 'ru'],
+      allLanguages: ['eng', 'ua'],
     };
   },
   methods: {

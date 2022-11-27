@@ -1,4 +1,7 @@
 import glassList from './glassList.js';
+import applyFilters from './applyFilters.js';
+
+const getFilterItem = (filters, name) => filters.find((f) => f.name === name);
 
 export default {
   namespaced: true,
@@ -14,6 +17,12 @@ export default {
     TOGGLE_FILTER_GENDERS({ commit }, gender) {
       commit('TOGGLE_FILTER_GENDERS', gender);
     },
+    TOGGLE_FILTER_CATEGORIES({ commit }, category) {
+      commit('TOGGLE_FILTER_CATEGORIES', category);
+    },
+    TOGGLE_FILTER_BRANDS({ commit }, brand) {
+      commit('TOGGLE_FILTER_BRANDS', brand);
+    },
   },
   mutations: {
     SET_SUNGLASESS(state, sunglasessList) {
@@ -23,13 +32,35 @@ export default {
       state.loading = value;
     },
     TOGGLE_FILTER_GENDERS(state, gender) {
-      const index = state.filters.genders.indexOf(gender);
+      const item = state.filters.genders.find((i) => i.name === gender);
 
-      if (index !== -1) {
-        state.filters.genders.splice(index, 1);
-      } else {
-        state.filters.genders = [...state.filters.genders, gender];
+      item.active = !item.active;
+    },
+    TOGGLE_FILTER_CATEGORIES(state, category) {
+      const item = state.filters.categories.find((i) => i.name === category);
+
+      if (category === 'price-low-to-hight') {
+        const priceHightToLow = getFilterItem(
+          state.filters.categories,
+          'price-hight-to-low'
+        );
+
+        priceHightToLow.active = false;
+      } else if (category === 'price-hight-to-low') {
+        const priceLowToHight = getFilterItem(
+          state.filters.categories,
+          'price-low-to-hight'
+        );
+
+        priceLowToHight.active = false;
       }
+
+      item.active = !item.active;
+    },
+    TOGGLE_FILTER_BRANDS(state, brand) {
+      const item = state.filters.brands.find((i) => i.name === brand);
+
+      item.active = !item.active;
     },
   },
   state: {
@@ -41,7 +72,13 @@ export default {
         { name: 'woman', active: false },
         { name: 'kids', active: false },
       ],
-      categories: [],
+      categories: [
+        { name: 'new', active: false },
+        { name: 'sale', active: false },
+        { name: 'most-popular', active: false },
+        { name: 'price-low-to-hight', active: false },
+        { name: 'price-hight-to-low', active: false },
+      ],
       brands: [
         { name: 'Levis', active: false },
         { name: 'Prada', active: false },
@@ -59,27 +96,22 @@ export default {
   getters: {
     SUNGLASESS_LOADING: (state) => state.loading,
     SUNGLASESS_LIST: (state) =>
-      state.sunglasessList.filter((item) => {
-        const rules = [
-          state.filters.genders.length === 0 ||
-            item.gender === 'all' ||
-            state.filters.genders
-              .filter(({ active }) => active)
-              .map(({ name }) => name)
-              .includes(item.gender),
-          state.filters.brands.length === 0 ||
-            state.filters.brands.includes(item.brend) ||
-            state.filters.brands
-              .filter(({ active }) => active)
-              .map(({ name }) => name)
-              .includes(item.gender),
-          item.brend === 'all',
-        ];
-
-        return rules.every((r) => r === true);
-      }),
+      applyFilters(state.filters, state.sunglasessList),
     ACTIVE_GENDERS: (state) => state.filters.genders,
     ACTIVE_CATEGORIES: (state) => state.filters.categories,
     ACTIVE_BRANDS: (state) => state.filters.brands,
+    FILTERS: (state) => {
+      const filters = {};
+
+      for (let filterType in state.filters) {
+        filters[filterType] = state.filters[filterType].map((item) => ({
+          ...item,
+          title: item.name.replace(/-/g, ' '),
+        }));
+      }
+
+      return filters;
+    },
+    UNFILTERED_SUNGLASESS_LIST: (state) => state.sunglasessList,
   },
 };

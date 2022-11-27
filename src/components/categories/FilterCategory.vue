@@ -1,22 +1,31 @@
 <template>
   <div class="filters">
     <button
-      v-for="(value, name, index) of filterCategies"
+      v-for="(item, index) of FILTERS.categories"
       :key="index"
       :class="{
         filtersBttn: true,
-        selected: value,
+        selected: item.active,
         'menu-button': true,
         screen: !touchScreen,
       }"
-      @click="selectedIt(name)"
+      @click="TOGGLE_FILTER_CATEGORIES(item.name)"
     >
-      {{ name | toNormalName }}
+      {{ item.title }}
     </button>
   </div>
 </template>
 
 <script>
+import { mapActions, mapGetters } from 'vuex';
+
+const vuexActions = {
+  TOGGLE_FILTER_CATEGORIES: 'glasses/TOGGLE_FILTER_CATEGORIES',
+};
+const vuexGetters = {
+  FILTERS: 'glasses/FILTERS',
+};
+
 export default {
   name: 'FilterCategory',
   props: ['filterCategies'],
@@ -25,37 +34,42 @@ export default {
       touchScreen: null,
     };
   },
-  methods: {
-    selectedIt(category) {
-      this.$emit('toggledCategory', category);
-    },
+  computed: {
+    ...mapGetters(vuexGetters),
   },
-  filters: {
-    toNormalName(name) {
-      let normalNames = {
-        newActive: 'new',
-        saleActive: 'sale',
-        mostPopularActive: 'most popular',
-        from$to$$$: 'price low to high',
-        from$$$to$: 'price high to low',
-      };
-      for (let prop in normalNames) {
-        if (name === prop) {
-          return normalNames[prop];
-        }
-      }
-      console.warn(
-        `App > Catalog > FilterCategory > filters > toNormalName: name (${name}) is not defined in normalNames (returned no fixed value)`,
-        normalNames
-      );
-      return name;
-    },
+  methods: {
+    ...mapActions(vuexActions),
+    // selectedIt(category) {
+    //   this.$emit('toggledCategory', category);
+    // },
   },
   mounted() {
-    this.touchScreen = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-      navigator.userAgent
-    );
+    this.touchScreen =
+      /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+        navigator.userAgent
+      );
   },
+  // filters: {
+  // toNormalName(name) {
+  //   let normalNames = {
+  //     newActive: 'new',
+  //     saleActive: 'sale',
+  //     mostPopularActive: 'most popular',
+  //     from$to$$$: 'price low to high',
+  //     from$$$to$: 'price high to low',
+  //   };
+  //   for (let prop in normalNames) {
+  //     if (name === prop) {
+  //       return normalNames[prop];
+  //     }
+  //   }
+  //   console.warn(
+  //     `App > Catalog > FilterCategory > filters > toNormalName: name (${name}) is not defined in normalNames (returned no fixed value)`,
+  //     normalNames
+  //   );
+  //   return name;
+  // },
+  // },
 };
 </script>
 

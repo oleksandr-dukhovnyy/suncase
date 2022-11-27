@@ -7,48 +7,17 @@
         @click.stop="opendHamburger"
         class="hamburger-menu-icon"
       />
-      <MobileMenu
-        :show="openedHamburger"
-        :allBrends="allBrends"
-        :brandsActive="brandsActive"
-        :allGenderCategory="allGenderCategory"
-        :genderActive="genderActive"
-        :filterCategies="{
-          newActive,
-          saleActive,
-          mostPopularActive,
-          from$to$$$,
-          from$$$to$,
-        }"
-        @toggledCategory="toggledCategory"
-        @closeMenu="closeMobileHamburger"
-      />
+      <MobileMenu :show="openedHamburger" @closeMenu="closeMobileHamburger" />
     </div>
     <div class="menu">
-      <!-- :categories="allGenderCategory"
-      :genderActive="genderActive" -->
-      <!-- @toggledCategory="toggledCategory" -->
       <GenderCategory />
       <span class="line"></span>
-      <FilterCategory
-        :filterCategies="{
-          newActive,
-          saleActive,
-          mostPopularActive,
-          from$to$$$,
-          from$$$to$,
-        }"
-        @toggledCategory="toggledCategory"
-      />
+      <FilterCategory />
       <div class="line"></div>
-      <BrendCategory
-        :allBrends="allBrends"
-        :brandsActive="brandsActive"
-        @toggledCategory="toggledCategory"
-      />
+      <BrendCategory />
     </div>
 
-    <div :class="{ catalog: true, 'space-evenly': false }">
+    <div :class="{ catalog: true }">
       <button
         :class="{
           'contain-bttn': true,
@@ -83,9 +52,6 @@
 </template>
 
 <script>
-// funks
-import { generatedFiltredItems } from '../js/generatedFiltredItems.js';
-
 // components
 import GenderCategory from './categories/GenderCategory.vue';
 import FilterCategory from './categories/FilterCategory.vue';
@@ -93,7 +59,12 @@ import BrendCategory from './categories/BrendCategory.vue';
 import MobileMenu from './hamburger for mobile/Menu.vue';
 
 // vuex
-import { mapGetters } from 'vuex';
+import { mapActions, mapGetters } from 'vuex';
+
+const vuexActions = {
+  SET_SELECTED: 'slider/SET_SELECTED',
+  SHOW_SLIDER: 'slider/SHOW_SLIDER',
+};
 
 const vuexGetters = {
   ACTIVE_GENDERS: 'glasses/ACTIVE_GENDERS',
@@ -104,13 +75,6 @@ const vuexGetters = {
 
 export default {
   name: 'Catalog',
-  props: [
-    // 'allItemsInTheCatolog',
-    // 'itemsInCart',
-    // 'totalPrice',
-    'showCartIcon',
-    // 'genderActive',
-  ],
   components: {
     GenderCategory,
     FilterCategory,
@@ -120,119 +84,24 @@ export default {
   computed: { ...mapGetters(vuexGetters) },
   data() {
     return {
-      filtredItems: [],
-      brandsActive: [''],
-      newActive: false,
-      saleActive: false,
-      mostPopularActive: false,
-      from$to$$$: false,
-      from$$$to$: false,
-      allGenderCategory: ['man', 'woman', 'kids'],
-      allBrends: [
-        'Levis',
-        'Ray-Ban',
-        'Oakley',
-        'Prada',
-        'Persol',
-        'Versace',
-        'Polaroid',
-        'Saint Laurent',
-        'Christian Dior',
-        'Maui Jim',
-      ],
-      showLength: 12,
-      showMoreClicked: false,
       openedHamburger: false,
     };
   },
   methods: {
+    ...mapActions(vuexActions),
     openItInModal(id) {
       this.closeMobileHamburger();
-      this.$emit('openSlider', id);
-    },
-    refreshFilters() {
-      this.filtredItems = generatedFiltredItems(
-        this._data,
-        this.allItemsInTheCatolog,
-        this.genderActive
-      );
-    },
-    showMore() {
-      if (
-        this.showLength + 12 > this.allItemsInTheCatolog.length &&
-        this.showLength !== this.allItemsInTheCatolog.length
-      ) {
-        this.showLength = this.allItemsInTheCatolog.length;
-      } else {
-        this.showLength += 12;
-      }
-      this.refreshFilters();
-      this.showMoreClicked = true;
-    },
-    openCart() {
-      this.closeMobileHamburger();
-      this.$emit('openCart');
-    },
-    toggledCategory(category) {
-      this.showMoreClicked = false;
-      this.showLength = Infinity;
-
-      if (this.allGenderCategory.indexOf(category) !== -1) {
-        if (this.genderActive[0] === '') {
-          this.genderActive.splice(0, 1);
-        }
-        let genderIndex = this.genderActive.indexOf(category);
-        if (genderIndex === -1) {
-          this.genderActive.push(category);
-        } else {
-          this.genderActive.splice(genderIndex, 1);
-        }
-      }
-      if (this.allBrends.indexOf(category) !== -1) {
-        let brandIndex = this.brandsActive.indexOf(category);
-        if (this.brandsActive[0] === '') {
-          this.brandsActive.splice(0, 1);
-        }
-        if (brandIndex === -1) {
-          this.brandsActive.push(category);
-        } else {
-          this.brandsActive.splice(brandIndex, 1);
-        }
-      }
-      if (category === 'newActive') {
-        this.newActive = !this.newActive;
-      }
-      if (category === 'saleActive') {
-        this.saleActive = !this.saleActive;
-      }
-      if (category === 'mostPopularActive') {
-        this.mostPopularActive = !this.mostPopularActive;
-      }
-      if (category === 'from$to$$$') {
-        this.from$to$$$ = !this.from$to$$$;
-        if (this.from$to$$$ === true && this.from$$$to$ === true) {
-          this.from$$$to$ = false;
-        }
-      }
-      if (category === 'from$$$to$') {
-        this.from$$$to$ = !this.from$$$to$;
-        if (this.from$to$$$ && this.from$$$to$) {
-          this.from$to$$$ = false;
-        }
-      }
-      this.refreshFilters();
+      this.SET_SELECTED(id);
+      this.SHOW_SLIDER();
     },
     closeMobileHamburger() {
-      this.$emit('addBodyScroll');
+      this.addBodyScroll_();
       this.openedHamburger = false;
     },
     opendHamburger() {
-      this.$emit('removeBodyScroll');
+      this.removeBodyScroll_();
       this.openedHamburger = true;
     },
-  },
-  mounted() {
-    this.refreshFilters();
   },
 };
 </script>

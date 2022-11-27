@@ -6,11 +6,9 @@
       activeButton: activeButton || ActiveButtons,
     }"
   >
-    <button id="buy" @click="buyIt">
-      buy
-    </button>
+    <button id="buy" @click="buyIt_(id)">buy</button>
     <button
-      @click="openIt"
+      @click="openModal_(id)"
       :class="{
         view: true,
       }"
@@ -42,14 +40,8 @@ export default {
     };
   },
   methods: {
-    openIt() {
-      this.$emit('openIt', this.id);
-    },
     deleteIt() {
       this.$emit('deleteIt', this.id);
-    },
-    buyIt() {
-      this.$emit('buyIt', this.id);
     },
   },
 };
