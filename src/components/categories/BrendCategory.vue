@@ -1,39 +1,45 @@
 <template>
   <div class="brends">
     <button
-      v-for="(item, i) in allBrends"
+      v-for="(item, i) in FILTERS.brands"
       :key="i"
       :class="{
         brendBttn: true,
-        selected: brandsActive.indexOf(item) !== -1,
+        selected: item.active,
         'menu-button': true,
         screen: touchScreen,
       }"
-      @click="selectIt(item)"
+      @click="TOGGLE_FILTER_BRANDS(item.name)"
     >
-      {{ item }}
+      {{ item.title }}
     </button>
   </div>
 </template>
 
 <script>
+import { mapActions, mapGetters } from 'vuex';
+
+const vuexActions = {
+  TOGGLE_FILTER_BRANDS: 'glasses/TOGGLE_FILTER_BRANDS',
+};
+const vuexGetters = {
+  FILTERS: 'glasses/FILTERS',
+};
+
 export default {
   name: 'BrendCategory',
-  props: ['allBrends', 'brandsActive'],
   data() {
     return {
       touchScreen: false,
     };
   },
-  methods: {
-    selectIt(category) {
-      this.$emit('toggledCategory', category);
-    },
-  },
+  computed: mapGetters(vuexGetters),
+  methods: mapActions(vuexActions),
   mounted() {
-    this.touchScreen = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-      navigator.userAgent
-    );
+    this.touchScreen =
+      /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+        navigator.userAgent
+      );
   },
 };
 </script>

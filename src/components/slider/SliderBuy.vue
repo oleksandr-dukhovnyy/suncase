@@ -1,12 +1,12 @@
 <template>
   <div class="button-contain">
-    <button class="buy action-bttn" @click="buyIt()">
+    <button class="buy action-bttn" @click="buyIt_(SELECTED_ITEM.item.id)">
       buy
     </button>
 
     <button
       class="add-to-cart-bttn action-bttn"
-      @click="addToCartIt(productData.id)"
+      @click="addToCartIt(SELECTED_ITEM.item.id)"
     >
       <svg v-if="animateOn" class="checkmark" viewBox="0 0 52 52">
         <path
@@ -20,20 +20,26 @@
         <span class="add-to-cart-bttn-plus">+</span>
         <span>to cart</span>
       </div>
-      <!-- <div v-if="animateOn" class="lds-ring">
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-        </div> -->
     </button>
   </div>
 </template>
 
 <script>
+import { mapActions, mapGetters } from 'vuex';
+
+const vuexActions = {
+  ADD_TO_CART: 'cart/ADD_TO_CART',
+};
+
+const vuexGetters = {
+  SELECTED_ITEM: 'slider/SELECTED_ITEM',
+};
+
 export default {
   name: 'SliderBuy',
-  props: ['productData'],
+  computed: {
+    ...mapGetters(vuexGetters),
+  },
   data() {
     return {
       animateOn: false,
@@ -45,15 +51,14 @@ export default {
     };
   },
   methods: {
-    buyIt(id) {
-      this.$emit('buyIt', this.productData.id);
-    },
-    addToCartIt(id) {
+    ...mapActions(vuexActions),
+    addToCartIt() {
       this.animateOn = true;
-      this.$emit('addToCart', id);
+      this.ADD_TO_CART(this.SELECTED_ITEM.item.id);
+
       setTimeout(() => {
         this.animateOn = false;
-      }, 2000);
+      }, 1000);
     },
   },
 };
@@ -163,8 +168,8 @@ export default {
   display: block;
 
   stroke: #000;
-  animation: fill 0.4s ease-in-out 0.4s forwards,
-    scale 0.3s ease-in-out 0.9s both;
+  animation: fill 0.2s ease-in-out 0.2s forwards,
+    scale 0.2s ease-in-out 0.2s both;
   margin-left: 38%;
   margin-top: -3px;
 }
@@ -172,7 +177,7 @@ export default {
   transform-origin: 60% 60%;
   stroke-dasharray: 48;
   stroke-dashoffset: 48;
-  animation: stroke 0.3s cubic-bezier(0, 0, 0.45, 1) 0.8s forwards;
+  animation: stroke 0.2s cubic-bezier(0, 0, 0.45, 1) 0.2s forwards;
 }
 .small {
   display: none;

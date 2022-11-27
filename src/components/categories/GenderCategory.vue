@@ -1,47 +1,39 @@
 <template>
   <div class="gender">
     <button
-      v-for="(item, i) in categories"
+      v-for="(item, i) in FILTERS.genders"
       :key="i"
+      class="genderBttn"
       :class="{
-        genderBttn: true,
-        selected: genderActive.indexOf(item) !== -1,
+        selected: item.active,
         screen: !touchScreen,
       }"
-      @click="selectedIt(item)"
+      @click="TOGGLE_FILTER_GENDERS(item.name)"
     >
-      {{ item }}
+      {{ item.title }}
     </button>
   </div>
 </template>
 
 <script>
-// vuex
-import { mapGetters } from 'vuex';
+import { mapActions, mapGetters } from 'vuex';
+const vuexActions = {
+  TOGGLE_FILTER_GENDERS: 'glasses/TOGGLE_FILTER_GENDERS',
+};
 
 const vuexGetters = {
-  ACTIVE_GENDERS: 'glasses/ACTIVE_GENDERS',
-  ACTIVE_CATEGORIES: 'glasses/ACTIVE_CATEGORIES',
-  ACTIVE_BRANDS: 'glasses/ACTIVE_BRANDS',
-  SUNGLASESS_LIST: 'glasses/SUNGLASESS_LIST',
+  FILTERS: 'glasses/FILTERS',
 };
 
 export default {
   name: 'GenderCategory',
-  // props: ['categories', 'genderActive'],
   data() {
     return {
       touchScreen: null,
     };
   },
-  methods: {
-    selectedIt(category) {
-      this.$emit('toggledCategory', category);
-    },
-  },
-  computed: {
-    ...mapGetters(vuexGetters),
-  },
+  methods: mapActions(vuexActions),
+  computed: mapGetters(vuexGetters),
   mounted() {
     this.touchScreen =
       /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(

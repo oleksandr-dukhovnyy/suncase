@@ -1,5 +1,5 @@
 <template>
-  <div class="bloor-contain" @click="closeCart">
+  <div class="bloor-contain" @click="HIDE_CART" v-if="SHOW_CART_POPUP">
     <!-- desktop cart -->
     <div
       class="contain contain-content_rules"
@@ -13,13 +13,13 @@
         <div class="shop-header-contain">
           <!-- header contain -->
 
+          <!-- close -->
           <div class="close-bttn-container">
-            <!-- close -->
             <img
               id="close"
               :src="'./img/sliderControl/closeBttn.svg'"
               alt="close"
-              @click="closeCart"
+              @click="HIDE_CART"
             />
           </div>
           <!-- / close -->
@@ -27,22 +27,20 @@
           <div class="shop-controls-info">
             <div class="info-container">
               <div class="cart-icon">
-                <span class="total-price"> ${{ totalPrice }} </span>
+                <span class="total-price"> ${{ CART_TOTAL_PRICE }} </span>
                 <img
                   class="cart-icon-img"
                   :src="'./img/cart/cartIcon.jpg'"
                   alt="cart"
                 />
                 <span class="items-in-cart">
-                  {{ cart.length }}
+                  {{ CART_LENGTH }}
                 </span>
               </div>
 
               <div class="buy-all-contain">
                 <!-- buy all -->
-                <button class="buy-all action-bttn" @click="buyAll">
-                  Buy
-                </button>
+                <button class="buy-all action-bttn" @click="buyAll">Buy</button>
               </div>
             </div>
             <!-- info contain -->
@@ -52,13 +50,13 @@
       <div class="goods-list-contain">
         <div
           :class="{ 'goods-list': true }"
-          v-if="cartItems.length > 0"
+          v-if="CART_LENGTH > 0"
           :ref="'goodsList'"
           data-scroll-lock-scrollable
         >
           <div
             class="contain-bttn"
-            v-for="(item, i) in cartItems"
+            v-for="(item, i) in CART"
             :key="item.id"
             :class="{
               animate__animated: true,
@@ -70,8 +68,8 @@
           >
             <ButtonsDesktop
               v-if="desktop"
-              @openIt="openIt"
-              @buyIt="buyIt"
+              @openIt="openIt_"
+              @buyIt="buyIt_"
               @deleteIt="deleteIt"
               @deleteAnimationOn="deleteAnimationOn"
               :active="showButtons === i"
@@ -79,19 +77,15 @@
               :activeButton="showButtons === i"
             />
 
-            <!-- <ButtonsMobile
+            <ButtonsMobile
               v-if="!desktop"
-
               @closeMobileButtons="closeMobileButtons"
-
-              @openIt="openIt"
-              @buyIt="buyIt"
+              @openIt="openIt_"
+              @buyIt="buyIt_"
               @deleteIt="deleteIt"
-
               :id="item.id"
-
               ref="buttonsMobile"
-            /> -->
+            />
             <img
               class="small-icon"
               :src="`./img/${item.id}/1.jpg`"
@@ -124,14 +118,14 @@
       <header class="mc-header">
         <div class="mc-action-buttons">
           <div class="mc-cart-icon">
-            <div class="mc-total-price">${{ totalPrice }}</div>
+            <div class="mc-total-price">${{ CART_TOTAL_PRICE }}</div>
             <img
               class="mc-cart-icon-img"
               :src="'./img/cart/cartIcon.jpg'"
               alt="cart"
             />
             <div class="mc-items-in-cart">
-              {{ cart.length }}
+              {{ CART_LENGTH }}
             </div>
           </div>
           <button class="mc-buy" @click="buyAll">Buy</button>
@@ -141,14 +135,14 @@
             class="mc-close-icon _close_"
             :src="'./img/sliderControl/closeBttn.svg'"
             alt="close"
-            @click="closeCart"
+            @click="HIDE_CART"
           />
         </div>
       </header>
       <section class="mc-goods-list" data-scroll-lock-scrollable>
         <div
           class="mc-card-contain"
-          v-for="(item, i) in cartItems"
+          v-for="(item, i) in CART"
           :key="i"
           @click.stop="openMobileMenu(item.id)"
         >
@@ -194,9 +188,7 @@
           />
         </div>
         <div class="buttons-contain">
-          <button class="mobile-buy action-bttn" @click="msBuyIt">
-            buy
-          </button>
+          <button class="mobile-buy action-bttn" @click="msBuyIt">buy</button>
           <button class="mobile-wiew action-bttn" @click="msOpenIt">
             wiew
           </button>
@@ -211,12 +203,30 @@
 
 <script>
 // funcs
-import openPayWindow from '../../js/openPayWindow.js';
 import scrollToGoods from '../../js/scrollToGoods.js';
 
 // Components
 import ButtonsDesktop from './buttons/ButtonsDesktop.vue';
 import ButtonsMobile from './buttons/ButtonsMobile.vue';
+
+// vuex
+import { mapActions, mapGetters } from 'vuex';
+
+const vuexActions = {
+  HIDE_CART: 'cart/HIDE_CART',
+  SHOW_CART: 'cart/SHOW_CART',
+  DELETE_ITEM: 'cart/DELETE_ITEM',
+  SET_SELECTED: 'slider/SET_SELECTED',
+  SHOW_SLIDER: 'slider/SHOW_SLIDER',
+};
+const vuexGetters = {
+  CART_TOTAL_PRICE: 'cart/CART_TOTAL_PRICE',
+  SHOW_CART_POPUP: 'cart/SHOW_CART_POPUP',
+  CART: 'cart/CART',
+  CART_LENGTH: 'cart/CART_LENGTH',
+};
+
+// ms - mobile store (cart)
 
 export default {
   name: 'PopupShop',
@@ -224,29 +234,26 @@ export default {
     ButtonsDesktop,
     ButtonsMobile,
   },
-  props: ['cart', 'allItemsInTheCatolog', 'totalPrice'],
   data() {
     return {
-      cartItems: [],
       hideArrow: false,
       showButtons: -1,
-      dontUnselect: [],
-      stopDelete: 0,
       desktop: true,
-      showContainShadow: false,
       mobileShooseActionModalOpened: false,
       msChoseId: null,
     };
   },
   methods: {
+    ...mapActions(vuexActions),
     msBuyIt() {
-      this.buyIt(this.msChoseId);
+      this.buyIt_(this.msChoseId);
     },
     msOpenIt() {
-      this.openIt(this.msChoseId);
+      // this.openIt(this.msChoseId);
+      this.openModal_(this.msChoseId);
     },
     msDeleteIt() {
-      this.deleteIt(this.msChoseId);
+      this.DELETE_ITEM(this.msChoseId);
     },
     openMobileMenu(id) {
       if (this.desktop === false) {
@@ -258,20 +265,10 @@ export default {
       this.deleteAnimation = id;
     },
     buyAll() {
-      if (this.cartItems.length < 1) {
+      if (this.CART_LENGTH < 1) {
         this.addGoods();
       } else {
-        openPayWindow(
-          {
-            coast: this.totalPrice,
-            id: 'all',
-          },
-          this.cartItems.length,
-          () => {
-            this.$emit('refreshTotalPrice');
-            this.closeCart();
-          }
-        );
+        this.buyAll_();
       }
     },
     closeMobileButtons() {
@@ -280,46 +277,44 @@ export default {
           component.dontShowButtns();
         });
     },
-    closeCart(e) {
-      this.$emit('closeCart');
-    },
-    addGoods(e) {
+    addGoods() {
       scrollToGoods();
-      this.closeCart();
+      this.HIDE_CART();
     },
     popupScroll(e) {
       if (e.target.scrollTop !== 0) {
         this.hideArrow = true;
       }
     },
-    buyIt(id) {
-      this.$emit('buyIt', id);
-    },
+    // buyIt(id) {
+    //   this.$emit('buyIt', id);
+    // },
     openIt(id) {
-      this.$emit('openIt', id);
+      // this.$emit('openIt', id);
+      this.SET_SELECTED(id);
+      this.SHOW_SLIDER();
     },
     deleteIt(id) {
-      this.$emit('deleteIt', id);
-      this.cartItems.forEach((item, i) => {
-        if (id === item.id) {
-          this.cartItems.splice(i, 1);
-        }
-      });
+      this.DELETE_ITEM(id);
     },
   },
+  computed: {
+    ...mapGetters(vuexGetters),
+  },
   mounted() {
-    this.allItemsInTheCatolog.forEach((item) => {
-      this.cart.forEach((id) => {
-        if (item !== undefined && item !== null && item.id === id) {
-          this.cartItems.push(item);
-        }
-      });
-    });
+    // this.allItemsInTheCatolog.forEach((item) => {
+    //   this.cart.forEach((id) => {
+    //     if (item !== undefined && item !== null && item.id === id) {
+    //       this.cartItems.push(item);
+    //     }
+    //   });
+    // });
 
     // check touchscreens devices
-    this.desktop = !/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-      navigator.userAgent
-    );
+    this.desktop =
+      !/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+        navigator.userAgent
+      );
   },
   filters: {
     fixLength(value) {

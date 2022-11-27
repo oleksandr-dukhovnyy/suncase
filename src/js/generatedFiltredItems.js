@@ -22,14 +22,14 @@ export const generatedFiltredItems = (config, arr, genderActive) => {
 
   if (settings.showLogs) {
     console.log(`
-            brandsActive - ${typeof brandsActive}
-            genderActive - ${typeof genderActive}
-            newActive - ${typeof newActive}
-            mostPopularActive - ${typeof mostPopularActive}
-            from$to$$$ - ${from$to$$$}
-            allGenderCategory - ${allGenderCategory.join(', ')}
-            allBrends - ${allBrends.join(', ')}
-        `);
+      brandsActive - ${typeof brandsActive}
+      genderActive - ${typeof genderActive}
+      newActive - ${typeof newActive}
+      mostPopularActive - ${typeof mostPopularActive}
+      from$to$$$ - ${from$to$$$}
+      allGenderCategory - ${allGenderCategory.join(', ')}
+      allBrends - ${allBrends.join(', ')}
+    `);
   }
 
   for (let i = 0; i < arr.length; i++) {

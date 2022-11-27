@@ -28,44 +28,44 @@
           <div class="hamburger-nav-flex-contain">
             <div class="hamburger-nav-contain gender">
               <button
-                v-for="(item, i) in allGenderCategory"
-                :key="i"
+                v-for="item in FILTERS.genders"
+                :key="item.name"
                 :class="{
                   'hamburger-nav-item': true,
-                  selected: genderActive.indexOf(item) !== -1,
+                  selected: item.active,
                 }"
-                @click="toggledCategory(item)"
+                @click="TOGGLE_FILTER_GENDERS(item.name)"
               >
-                {{ item }}
+                {{ item.title }}
               </button>
             </div>
             <div class="line"></div>
             <div class="hamburger-nav-contain">
               <button
-                v-for="(item, name, i) in filterCategies"
-                :key="i + 1000"
+                v-for="item in FILTERS.categories"
+                :key="item.name"
                 :class="{
                   'hamburger-nav-item': true,
-                  selected: filterCategies[name],
+                  selected: item.active,
                 }"
-                @click="toggledCategory(name)"
+                @click="TOGGLE_FILTER_CATEGORIES(item.name)"
               >
-                {{ name | toNormalName }}
+                {{ item.title }}
               </button>
             </div>
             <div class="line"></div>
           </div>
           <div class="hamburger-nav-contain-brends">
             <button
-              v-for="(item, i) in allBrends"
-              :key="i + 100"
+              v-for="item in FILTERS.brands"
+              :key="item.name"
               :class="{
                 'hamburger-nav-item': true,
-                selected: brandsActive.indexOf(item) !== -1,
+                selected: item.active,
               }"
-              @click="toggledCategory(item)"
+              @click="TOGGLE_FILTER_BRANDS(item.name)"
             >
-              {{ item }}
+              {{ item.title }}
             </button>
           </div>
         </nav>
@@ -75,31 +75,39 @@
 </template>
 
 <script>
+import { mapActions, mapGetters } from 'vuex';
+
+const vuexActions = {
+  TOGGLE_FILTER_BRANDS: 'glasses/TOGGLE_FILTER_BRANDS',
+  TOGGLE_FILTER_GENDERS: 'glasses/TOGGLE_FILTER_GENDERS',
+  TOGGLE_FILTER_CATEGORIES: 'glasses/TOGGLE_FILTER_CATEGORIES',
+};
+
+const vuexGetters = {
+  FILTERS: 'glasses/FILTERS',
+};
+
 export default {
   name: 'MobileMenu',
-  props: [
-    'allBrends',
-    'brandsActive',
-    'allGenderCategory',
-    'genderActive',
-    'filterCategies',
-    'show',
-  ],
+  props: {
+    show: {
+      type: Boolean,
+      default: false,
+    },
+  },
   data() {
     return {
       touchTimeStamp: 0,
       clientX: 0,
     };
   },
+  computed: {
+    ...mapGetters(vuexGetters),
+  },
   methods: {
-    toggledCategory(category) {
-      this.$emit('toggledCategory', category);
-    },
+    ...mapActions(vuexActions),
     closeMenu() {
       this.$emit('closeMenu');
-    },
-    showE(e) {
-      console.log(e);
     },
     checkTouchEnd(e) {
       if (e.changedTouches[0].clientX <= -50) {
@@ -111,27 +119,6 @@ export default {
     startTouch(e) {
       this.touchTimeStamp = e.timeStamp;
       this.clientX = e.changedTouches[0].clientX;
-    },
-  },
-  filters: {
-    toNormalName(name) {
-      let normalNames = {
-        newActive: 'new',
-        saleActive: 'sale',
-        mostPopularActive: 'most popular',
-        from$to$$$: 'price low to high',
-        from$$$to$: 'price high to low',
-      };
-      for (let prop in normalNames) {
-        if (name === prop) {
-          return normalNames[prop];
-        }
-      }
-      console.warn(
-        `App > Catalog > FilterCategory > filters > toNormalName: name (${name}) is not defined in normalNames (returned no fixed value)`,
-        normalNames
-      );
-      return name;
     },
   },
 };

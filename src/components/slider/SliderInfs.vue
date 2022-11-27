@@ -1,15 +1,21 @@
 <template>
   <div class="info-contain">
-    <div class="brend letterS250">{{ imgData.brend }}</div>
-    <div class="model letterS250">{{ imgData.model }}</div>
-    <div class="coast letterS250">${{ imgData.coast }}</div>
+    <div class="brend letterS250">{{ SELECTED_ITEM.item.brend }}</div>
+    <div class="model letterS250">{{ SELECTED_ITEM.item.model }}</div>
+    <div class="coast letterS250">${{ SELECTED_ITEM.item.coast }}</div>
   </div>
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
+
+const vuexGetters = { SELECTED_ITEM: 'slider/SELECTED_ITEM' };
+
 export default {
   name: 'SliderInfs',
-  props: ['imgData'],
+  computed: {
+    ...mapGetters(vuexGetters),
+  },
 };
 </script>
 

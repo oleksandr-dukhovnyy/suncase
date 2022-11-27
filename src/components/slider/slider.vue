@@ -1,17 +1,18 @@
 <template>
-  <div class="bloor-contain" @click="closeModal" v-if="show">
+  <div class="bloor-contain" @click="HIDE_SLIDER" v-if="SLIDER_SHOW">
     <div class="slider-contain-position slider-contain-content" @click.stop>
       <div class="second-close-bttn-contain">
         <img
           :src="'./img/sliderControl/closeBttn.svg'"
           alt="x"
           class="second-close-bttn _close_"
-          @click="closeModal"
+          @click="HIDE_SLIDER"
         />
       </div>
 
       <div class="img-contain">
-        <SliderImgs :imgData="selected" />
+        <!-- :imgData="SELECTED_ITEM.item" -->
+        <SliderImgs />
       </div>
       <div class="controls-contain">
         <div class="first-close-bttn-contain">
@@ -19,15 +20,15 @@
             :src="'./img/sliderControl/closeBttn.svg'"
             alt="x"
             class="first-close-bttn _close_"
-            @click="closeModal"
+            @click="HIDE_SLIDER"
           />
         </div>
-        <SliderInfs :imgData="selected" />
-        <SliderBuy
-          :productData="selected"
-          @addToCart="addToCart"
-          @buyIt="buyIt"
-        />
+        <!-- :imgData="SELECTED_ITEM.item" -->
+        <SliderInfs />
+        <!-- @addToCart="addToCart" -->
+        <!-- @buyIt="buyIt" -->
+        <!-- :productData="SELECTED_ITEM.item" -->
+        <SliderBuy />
       </div>
     </div>
   </div>
@@ -37,12 +38,27 @@
 import SliderImgs from './SliderImgs.vue';
 import SliderInfs from './SliderInfs.vue';
 import SliderBuy from './SliderBuy.vue';
+import { mapActions, mapGetters } from 'vuex';
+
+// vuex
+const vuexActions = {
+  HIDE_SLIDER: 'slider/HIDE_SLIDER',
+  SHOW_SLIDER: 'slider/SHOW_SLIDER',
+};
+
+const vuexGetters = {
+  SLIDER_SHOW: 'slider/SLIDER_SHOW',
+  SELECTED_ITEM: 'slider/SELECTED_ITEM',
+};
 
 export default {
   name: 'slider',
-  props: ['show', 'selected'],
   components: { SliderImgs, SliderInfs, SliderBuy },
+  computed: {
+    ...mapGetters(vuexGetters),
+  },
   methods: {
+    ...mapActions(vuexActions),
     closeModal() {
       this.$emit('closeSlider');
     },

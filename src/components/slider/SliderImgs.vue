@@ -1,8 +1,8 @@
 <template>
-  <div class="slider-img-contain">
+  <div class="slider-img-contain" v-if="SELECTED_ITEM.defined">
     <img
       class="scoped-img"
-      v-bind:src="`${url}${imgData.id}/${showNow}${filesExtension}`"
+      v-bind:src="`${url}${SELECTED_ITEM.item.id}/${showNow}${filesExtension}`"
       alt="pict"
       v-if="isDesktop"
       @mouseenter="stopAutoFlipping"
@@ -11,7 +11,7 @@
 
     <img
       class="scoped-img"
-      v-bind:src="`${url}${imgData.id}/${showNow}${filesExtension}`"
+      v-bind:src="`${url}${SELECTED_ITEM.item.id}/${showNow}${filesExtension}`"
       alt="pict"
       v-if="!isDesktop"
       @click="toggleFlipping"
@@ -26,10 +26,10 @@
       />
 
       <SmallImg
-        v-for="i in imgData.lng"
+        v-for="i in SELECTED_ITEM.item.lng"
         :key="i"
         :id="i"
-        :imgPath="url + imgData.id + '/'"
+        :imgPath="url + SELECTED_ITEM.item.id + '/'"
         :isActive="i === activeImg"
         @openIt="openIt"
       />
@@ -47,12 +47,19 @@
 <script>
 import SmallImg from './SmallImg.vue';
 
+// vuex
+import { mapActions, mapGetters } from 'vuex';
+
+const vuexGetters = {
+  SELECTED_ITEM: 'slider/SELECTED_ITEM',
+};
+
 export default {
   name: 'Sliderimgs',
   components: {
     SmallImg,
   },
-  props: ['imgData'],
+  // props: ['imgData'],
   data() {
     return {
       showNow: 1,
@@ -65,14 +72,18 @@ export default {
       isDesktop: true,
     };
   },
+  computed: {
+    ...mapGetters(vuexGetters),
+  },
   mounted() {
     this.showNow = 1;
     this.activeImg = 1;
     this.startAutoFlipping();
 
-    this.isDesktop = !/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-      navigator.userAgent
-    );
+    this.isDesktop =
+      !/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+        navigator.userAgent
+      );
   },
   methods: {
     toggleFlipping() {
@@ -88,7 +99,9 @@ export default {
       clearInterval(this.timer);
     },
     go() {
-      if (this.showNow >= this.imgData.lng) {
+      if (!this.SELECTED_ITEM.defined) return;
+
+      if (this.showNow >= this.SELECTED_ITEM.item.lng) {
         this.showNow = 1;
       } else {
         this.showNow++;
@@ -98,7 +111,7 @@ export default {
 
     back() {
       if (this.showNow <= 1) {
-        this.showNow = this.imgData.lng;
+        this.showNow = this.SELECTED_ITEM.item.lng;
       } else {
         this.showNow--;
       }
