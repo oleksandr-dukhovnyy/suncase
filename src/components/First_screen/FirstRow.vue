@@ -8,7 +8,7 @@
         <span>for all</span>
         <span>life</span>
         <span>seasons</span>
-        <button class="browse" @click="browse">browse</button>
+        <button class="browse cta-color" @click="browse">browse</button>
       </div>
     </div>
 
