@@ -9,9 +9,15 @@
     <!-- MENU -->
     <div class="menu">
       <div class="menu-buttons-contain">
-        <button @click="toggledCategory('man')">man</button>
-        <button @click="toggledCategory('woman')">woman</button>
-        <button @click="toggledCategory('kids')">kids</button>
+        <button class="cta-color font-black" @click="toggledCategory('man')">
+          man
+        </button>
+        <button class="cta-color font-black" @click="toggledCategory('woman')">
+          woman
+        </button>
+        <button class="cta-color font-black" @click="toggledCategory('kids')">
+          kids
+        </button>
       </div>
     </div>
 

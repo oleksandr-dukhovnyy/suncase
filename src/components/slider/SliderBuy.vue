@@ -167,7 +167,7 @@ export default {
   height: 38px;
   display: block;
 
-  stroke: #000;
+  stroke: #0878ff;
   animation: fill 0.2s ease-in-out 0.2s forwards,
     scale 0.2s ease-in-out 0.2s both;
   margin-left: 38%;

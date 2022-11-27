@@ -234,7 +234,7 @@ export default {
 
 .selected::after {
   content: '';
-  background-image: url(https://img.icons8.com/ios/13/000000/checkmark.png);
+  background-image: url(https://img.icons8.com/ios/13/0878ff/checkmark.png);
   width: 13px;
   height: 13px;
   position: absolute;

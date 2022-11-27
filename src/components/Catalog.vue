@@ -32,15 +32,17 @@
           alt="pict"
         />
         <div class="c-info-contain">
-          <span class="c-brend">
+          <span class="c-brend cta-color">
             {{ item.brend }}
           </span>
           <span class="c-model">
             {{ item.model }}
           </span>
-          <span class="C_coast" v-if="!item.sale"> ${{ item.coast }} </span>
+          <span class="C_coast cta-color" v-if="!item.sale">
+            ${{ item.coast }}
+          </span>
           <span class="C_sale" v-else>
-            <span class="old-price">${{ item.oldCoast }}</span>
+            <span class="old-price cta-color">${{ item.oldCoast }}</span>
             <span class="new-price">${{ item.coast }}</span>
           </span>
 

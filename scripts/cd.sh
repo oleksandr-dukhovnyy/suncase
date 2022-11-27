@@ -4,6 +4,8 @@ date=$(date +"%Y.%m.%d-%H:%M");
 tag=$(git describe --tags);
 build_name="build_$tag.$date";
 
+echo "build $build_name";
+
 cd ../;
 
 npm run build;

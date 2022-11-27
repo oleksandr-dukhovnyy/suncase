@@ -89,6 +89,7 @@ html {
   margin: 0px;
   padding: 0px;
   outline: none;
+  font-family: 'Roboto', sans-serif;
   /* border: 1px solid black; */
 }
 *:hover {
@@ -124,5 +125,13 @@ body {
 }
 .back-show {
   background-color: darkorange !important;
+}
+
+.cta-color {
+  color: #0878ff;
+}
+
+.font-black {
+  font-weight: 900 !important;
 }
 </style>

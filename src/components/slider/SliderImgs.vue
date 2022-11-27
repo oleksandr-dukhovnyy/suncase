@@ -48,7 +48,7 @@
 import SmallImg from './SmallImg.vue';
 
 // vuex
-import { mapActions, mapGetters } from 'vuex';
+import { mapGetters } from 'vuex';
 
 const vuexGetters = {
   SELECTED_ITEM: 'slider/SELECTED_ITEM',
@@ -67,7 +67,7 @@ export default {
       url: './img/',
       filesExtension: '.jpg',
       timer: 0,
-      flipSecTime: 5,
+      flipSecTime: 2,
       flippingOn: true,
       isDesktop: true,
     };

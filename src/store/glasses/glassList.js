@@ -71,7 +71,7 @@ export default [
     gender: 'all',
     saled: 343,
     isNew: true,
-    lng: 5,
+    lng: 4,
   },
   {
     brend: 'Oakley',
@@ -182,7 +182,7 @@ export default [
     gender: 'all',
     saled: 90,
     isNew: false,
-    lng: 5,
+    lng: 4,
   },
 
   {

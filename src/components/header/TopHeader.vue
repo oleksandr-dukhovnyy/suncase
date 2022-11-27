@@ -5,7 +5,7 @@
       <Languages :langActive="langActive" @setLanguage="setLanguage" />
 
       <div class="cart-icon" @click="openCart_">
-        <span class="total-price" @click="openCart_">
+        <span class="total-price cta-color" @click="openCart_">
           ${{ CART_TOTAL_PRICE }}
         </span>
         <img
@@ -99,7 +99,7 @@ export default {
   height: 36px;
   line-height: 36px;
   text-align: center;
-  font-weight: 600;
+  font-weight: 900;
   font-size: 10px;
   letter-spacing: 0.45em;
 }

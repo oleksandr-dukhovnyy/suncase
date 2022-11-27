@@ -27,7 +27,9 @@
           <div class="shop-controls-info">
             <div class="info-container">
               <div class="cart-icon">
-                <span class="total-price"> ${{ CART_TOTAL_PRICE }} </span>
+                <span class="total-price cta-color">
+                  ${{ CART_TOTAL_PRICE }}
+                </span>
                 <img
                   class="cart-icon-img"
                   :src="'./img/cart/cartIcon.jpg'"
@@ -92,15 +94,17 @@
               alt="pict"
             />
             <div class="p-info-contain">
-              <span class="p-brend">
+              <span class="p-brend cta-color">
                 {{ item.brend }}
               </span>
               <span class="p-model">
                 {{ item.model | fixLength }}
               </span>
-              <span class="P_coast" v-if="!item.sale"> ${{ item.coast }} </span>
+              <span class="P_coast cta-color" v-if="!item.sale">
+                ${{ item.coast }}
+              </span>
               <span class="P_sale" v-else>
-                <span class="old-price">${{ item.oldCoast }}</span>
+                <span class="old-price cta-color">${{ item.oldCoast }}</span>
                 <span class="new-price">${{ item.coast }}</span>
               </span>
             </div>
@@ -118,7 +122,7 @@
       <header class="mc-header">
         <div class="mc-action-buttons">
           <div class="mc-cart-icon">
-            <div class="mc-total-price">${{ CART_TOTAL_PRICE }}</div>
+            <div class="mc-total-price cta-color">${{ CART_TOTAL_PRICE }}</div>
             <img
               class="mc-cart-icon-img"
               :src="'./img/cart/cartIcon.jpg'"
@@ -152,15 +156,19 @@
             alt="pict"
           />
           <div class="mc-info-contain">
-            <div class="mc-info-brend">
+            <div class="mc-info-brend cta-color">
               {{ item.brend }}
             </div>
             <div class="mc-info-model">
               {{ item.model | fixLength }}
             </div>
-            <div class="mc-info-coast" v-if="!item.sale">${{ item.coast }}</div>
-            <div class="mc-info-coast" v-else>
-              <span class="mc-sale-old-price">${{ item.oldCoast }}</span>
+            <div class="mc-info-coast cta-color" v-if="!item.sale">
+              ${{ item.coast }}
+            </div>
+            <div class="mc-info-coast cta-color" v-else>
+              <span class="mc-sale-old-price cta-color"
+                >${{ item.oldCoast }}</span
+              >
               <span class="mc-sale-new-price">${{ item.coast }}</span>
             </div>
           </div>
@@ -497,7 +505,7 @@ export default {
 
 .total-price {
   margin-top: 15.3%;
-  font-weight: 600;
+  font-weight: 900;
   font-size: 12px;
   letter-spacing: 0.45em;
 }

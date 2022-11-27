@@ -38,6 +38,7 @@
 import SliderImgs from './SliderImgs.vue';
 import SliderInfs from './SliderInfs.vue';
 import SliderBuy from './SliderBuy.vue';
+import Scroll from '../../js/removeBodyScroll.js';
 import { mapActions, mapGetters } from 'vuex';
 
 // vuex
@@ -57,19 +58,15 @@ export default {
   computed: {
     ...mapGetters(vuexGetters),
   },
+  watch: {
+    SLIDER_SHOW(n) {
+      Scroll[n ? 'rem' : 'add']();
+    },
+  },
   methods: {
     ...mapActions(vuexActions),
-    closeModal() {
-      this.$emit('closeSlider');
-    },
     stopPropagation(e) {
       e.stopPropagation();
-    },
-    addToCart(id) {
-      this.$emit('addToCart', id);
-    },
-    buyIt(id) {
-      this.$emit('buyIt', id);
     },
   },
 };
@@ -84,10 +81,6 @@ export default {
 
 .border {
   border: 1px solid black;
-}
-
-* {
-  font-family: 'Roboto', sans-serif;
 }
 
 .slider-contain-position {

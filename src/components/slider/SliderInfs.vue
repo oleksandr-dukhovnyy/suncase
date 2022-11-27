@@ -1,8 +1,10 @@
 <template>
   <div class="info-contain">
-    <div class="brend letterS250">{{ SELECTED_ITEM.item.brend }}</div>
+    <div class="brend letterS250 cta-color">{{ SELECTED_ITEM.item.brend }}</div>
     <div class="model letterS250">{{ SELECTED_ITEM.item.model }}</div>
-    <div class="coast letterS250">${{ SELECTED_ITEM.item.coast }}</div>
+    <div class="coast letterS250 cta-color">
+      ${{ SELECTED_ITEM.item.coast }}
+    </div>
   </div>
 </template>
 
