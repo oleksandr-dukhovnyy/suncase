@@ -1,5 +1,10 @@
 const openWin = (item, count = 1, callback) => {
-  let newWindow = open('/', '', 'width=353,height=411,top=center,right=center');
+  let newWindow = open(
+    '/',
+    'Buy sunglasses!',
+    'width=353,height=411,top=center,right=center'
+  );
+  //
 
   newWindow.document.write(`
 	<div class="modal-contain">
@@ -8,7 +13,7 @@ const openWin = (item, count = 1, callback) => {
 		<div class="right-side">
         <div class="left-side">
           
-		  Goats: ${count}, Total price: ${item.coast} $
+		    Goats: ${count}, Total price: ${item.coast} $
         
         </div>
 				<!-- /mobile header -->
@@ -146,19 +151,28 @@ const openWin = (item, count = 1, callback) => {
 
 		cardFields[0].focus();
 
-		document.head.innerHTML = '<link rel="stylesheet" href="./css/payModal.css">';
+		document.head.innerHTML = '<link rel="stylesheet" href="./css/payModal.css"><meta name="viewport" content="width=device-width, initial-scale=1"></meta>';
 	</script>
 
 	`);
+
+  const modalContain = newWindow.document.querySelector('.modal-contain');
+
+  newWindow.document.body.addEventListener('click', (e) => {
+    if (e.target === modalContain) {
+      newWindow.close();
+    }
+  });
 
   newWindow.document
     .querySelector('.buy-bttn')
     .addEventListener('click', (e) => {
       if (item !== null) callback(item.id);
       e.target.classList.add('load');
+
       setTimeout(() => {
         newWindow.close();
-      }, 1000);
+      }, 100);
     });
 };
 
