@@ -17,7 +17,7 @@
         animate__fadeOutLeft: !show,
       }"
       @click.stop
-      data-scroll-lock-scrollable
+      body-scroll-lock-ignore
     >
       <button class="hamburger-close" @click="closeMenu">
         <img :src="'./img/sliderControl/closeBttn.svg'" alt="x" />

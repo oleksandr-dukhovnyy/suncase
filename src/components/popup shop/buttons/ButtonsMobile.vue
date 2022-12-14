@@ -1,15 +1,9 @@
 <template>
-  <div class="mobileContain" @click="showBttns">
+  <div class="mobileContain" @click="showBttns" body-scroll-lock-ignore>
     <div v-if="isShowBttns" class="mobileButtonsContain">
-      <button class="mobileBuy" @click="buyIt">
-        buy
-      </button>
-      <button class="mobileWiew" @click="openIt">
-        wiew
-      </button>
-      <button class="mobileDelete" @click="deleteIt">
-        delete
-      </button>
+      <button class="mobileBuy" @click="buyIt">buy</button>
+      <button class="mobileWiew" @click="openIt">wiew</button>
+      <button class="mobileDelete" @click="deleteIt">delete</button>
     </div>
   </div>
 </template>

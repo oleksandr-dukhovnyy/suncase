@@ -1,21 +1,21 @@
-// libs
-import {
-  disablePageScroll,
-  enablePageScroll,
-  clearQueueScrollLocks,
-} from '../js/scroll-lock-fixed/scroll-lock.js';
+import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock';
 
-const mobileHamburger = document.querySelector('.hamburger');
-
-const addBodyScroll = () => {
-  clearQueueScrollLocks();
-  enablePageScroll(mobileHamburger);
-};
-
-const removeBodyScroll = () => {
-  disablePageScroll(mobileHamburger);
-};
 export default {
-  add: addBodyScroll,
-  rem: removeBodyScroll,
+  add: (target = document.body) => {
+    enableBodyScroll(target);
+  },
+  rem: (target = document.body) => {
+    console.log('rem');
+    disableBodyScroll(target, {
+      allowTouchMove: (el) => {
+        while (el && el !== document.body) {
+          if (el.getAttribute('body-scroll-lock-ignore') !== null) {
+            return true;
+          }
+
+          el = el.parentElement;
+        }
+      },
+    });
+  },
 };

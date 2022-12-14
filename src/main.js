@@ -1,15 +1,8 @@
 import Vue from 'vue';
 import App from './App.vue';
-import { Copy } from './js/CopyJS.js';
 import store from './store';
 import Scroll from './js/removeBodyScroll.js';
 import openPayWindow from './js/openPayWindow.js';
-
-Copy._configurate({
-  loggingMsg: false,
-  loggingWarns: true,
-  loggingErrors: true,
-});
 
 Vue.config.productionTip = false;
 Vue.config.silent = true;

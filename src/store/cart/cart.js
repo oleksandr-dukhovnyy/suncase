@@ -1,4 +1,5 @@
 import { LocalStTool } from '../../js/LocalStTool.js';
+import Scroll from '../../js/removeBodyScroll.js';
 
 export default {
   namespaced: true,
@@ -12,6 +13,7 @@ export default {
       commit('SETUP_CART', ids);
     },
     SET_SHOW({ commit }, value) {
+      // Scroll[value ? 'rem' : 'add']();
       commit('SET_SHOW', value);
     },
     HIDE_CART({ dispatch }) {
