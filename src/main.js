@@ -75,6 +75,11 @@ Vue.mixin({
       );
     },
   },
+  computed: {
+    pathToImgs() {
+      return './img';
+    },
+  },
 });
 
 new Vue({
