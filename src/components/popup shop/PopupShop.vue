@@ -50,12 +50,13 @@
         </div>
       </div>
       <div class="goods-list-contain" data-scroll-lock-scrollable>
-        <div
-          v-if="CART_LENGTH > 0"
-          class="goods-list"
-          data-scroll-lock-scrollable
-        >
-          <!-- <div
+        <div class="goods-list-contain" data-scroll-lock-scrollable>
+          <div
+            v-if="CART_LENGTH > 0"
+            class="goods-list"
+            data-scroll-lock-scrollable
+          >
+            <!-- <div
             class="contain-bttn"
             v-for="(item, i) in CART"
             :key="item.id"
@@ -110,106 +111,109 @@
             <div class="new" v-if="item.isNew">new</div>
             <div v-else class="new ghost">new</div>
           </div> -->
-          <GoodsListItem
-            v-for="item in CART"
-            :key="item.id"
-            :item="item"
-            @open-item="openModal_(item.id)"
-            @buy-item="buyIt_(item.id)"
-            @delete-item="deleteIt(item.id)"
-          />
+            <GoodsListItem
+              v-for="item in CART"
+              :key="item.id"
+              :item="item"
+              @open-item="openModal_(item.id)"
+              @buy-item="buyIt_(item.id)"
+              @delete-item="deleteIt(item.id)"
+            />
+          </div>
         </div>
       </div>
-    </div>
-    <!-- / desktop cart -->
+      <!-- / desktop cart -->
 
-    <!-- mobile cart -->
+      <!-- mobile cart -->
 
-    <div class="mobile-cart">
-      <header class="mc-header">
-        <div class="mc-action-buttons">
-          <div class="mc-cart-icon">
-            <div class="mc-total-price cta-color">${{ CART_TOTAL_PRICE }}</div>
+      <div class="mobile-cart">
+        <header class="mc-header">
+          <div class="mc-action-buttons">
+            <div class="mc-cart-icon">
+              <div class="mc-total-price cta-color">
+                ${{ CART_TOTAL_PRICE }}
+              </div>
+              <img
+                class="mc-cart-icon-img"
+                :src="'./img/cart/cartIcon.jpg'"
+                alt="cart"
+              />
+              <div class="mc-items-in-cart">
+                {{ CART_LENGTH }}
+              </div>
+            </div>
+            <button class="mc-buy" @click="buyAll">Buy</button>
+          </div>
+          <div class="mc-close-bttn-contain">
             <img
-              class="mc-cart-icon-img"
-              :src="'./img/cart/cartIcon.jpg'"
-              alt="cart"
+              class="mc-close-icon _close_"
+              :src="'./img/sliderControl/closeBttn.svg'"
+              alt="close"
+              @click="HIDE_CART"
             />
-            <div class="mc-items-in-cart">
-              {{ CART_LENGTH }}
-            </div>
           </div>
-          <button class="mc-buy" @click="buyAll">Buy</button>
-        </div>
-        <div class="mc-close-bttn-contain">
-          <img
-            class="mc-close-icon _close_"
-            :src="'./img/sliderControl/closeBttn.svg'"
-            alt="close"
-            @click="HIDE_CART"
-          />
-        </div>
-      </header>
-      <section class="mc-goods-list" data-scroll-lock-scrollable>
-        <div
-          class="mc-card-contain"
-          v-for="(item, i) in CART"
-          :key="i"
-          @click.stop="openMobileMenu(item.id)"
-        >
-          <img
-            class="mc-glass-img"
-            :src="`./img/${item.id}/1.jpg`"
-            alt="pict"
-          />
-          <div class="mc-info-contain">
-            <div class="mc-info-brend cta-color">
-              {{ item.brend }}
+        </header>
+        <section class="mc-goods-list" data-scroll-lock-scrollable>
+          <div
+            class="mc-card-contain"
+            v-for="(item, i) in CART"
+            :key="i"
+            @click.stop="openMobileMenu(item.id)"
+          >
+            <img
+              class="mc-glass-img"
+              :src="`./img/${item.id}/1.jpg`"
+              alt="pict"
+            />
+            <div class="mc-info-contain">
+              <div class="mc-info-brend cta-color">
+                {{ item.brend }}
+              </div>
+              <div class="mc-info-model">
+                {{ item.model | fixLength }}
+              </div>
+              <div class="mc-info-coast cta-color" v-if="!item.sale">
+                ${{ item.coast }}
+              </div>
+              <div class="mc-info-coast cta-color" v-else>
+                <span class="mc-sale-old-price cta-color"
+                  >${{ item.oldCoast }}</span
+                >
+                <span class="mc-sale-new-price">${{ item.coast }}</span>
+              </div>
             </div>
-            <div class="mc-info-model">
-              {{ item.model | fixLength }}
-            </div>
-            <div class="mc-info-coast cta-color" v-if="!item.sale">
-              ${{ item.coast }}
-            </div>
-            <div class="mc-info-coast cta-color" v-else>
-              <span class="mc-sale-old-price cta-color"
-                >${{ item.oldCoast }}</span
-              >
-              <span class="mc-sale-new-price">${{ item.coast }}</span>
-            </div>
+            <div class="mc-new" v-if="item.isNew">new</div>
+            <div class="mc-new mc-hide" v-else>new</div>
           </div>
-          <div class="mc-new" v-if="item.isNew">new</div>
-          <div class="mc-new mc-hide" v-else>new</div>
-        </div>
-      </section>
-    </div>
+        </section>
+      </div>
 
-    <!-- / mobile cart -->
+      <!-- / mobile cart -->
 
-    <div
-      class="mobile-shoose-action-modal-contain"
-      v-if="mobileShooseActionModalOpened"
-      @click.stop="mobileShooseActionModalOpened = false"
-    >
-      <div class="mobile-shoose-action-modal shadowOn">
-        <div class="close-contain">
-          <img
-            class=""
-            :src="'./img/sliderControl/closeBttn.svg'"
-            alt="close"
-            id="close"
-            @click.stop="mobileShooseActionModalOpened = false"
-          />
-        </div>
-        <div class="buttons-contain">
-          <button class="mobile-buy action-bttn" @click="msBuyIt">buy</button>
-          <button class="mobile-wiew action-bttn" @click="msOpenIt">
-            wiew
-          </button>
-          <button class="mobile-delete action-bttn" @click="msDeleteIt">
-            delete
-          </button>
+      <div
+        class="mobile-shoose-action-modal-contain"
+        v-if="mobileShooseActionModalOpened"
+        @click.stop="mobileShooseActionModalOpened = false"
+      >
+        <div class="mobile-shoose-action-modal shadowOn">
+          <div class="close-contain">
+            <img
+              class=""
+              :src="'./img/sliderControl/closeBttn.svg'"
+              alt="close"
+              id="close"
+              @click.stop="mobileShooseActionModalOpened = false"
+            />
+          </div>
+          <div class="buttons-contain">
+            <button class="mobile-buy action-bttn" @click="msBuyIt">buy</button>
+            <button class="mobile-wiew action-bttn" @click="msOpenIt">
+              wiew
+            </button>
+            <button class="mobile-delete action-bttn" @click="msDeleteIt">
+              delete
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -221,6 +225,9 @@
 import scrollToGoods from '../../js/scrollToGoods.js';
 
 // Components
+// import ButtonsDesktop from './buttons/ButtonsDesktop.vue';
+// import ButtonsMobile from './buttons/ButtonsMobile.vue';
+import GoodsListItem from './GoodsListItem.vue';
 // import ButtonsDesktop from './buttons/ButtonsDesktop.vue';
 // import ButtonsMobile from './buttons/ButtonsMobile.vue';
 import GoodsListItem from './GoodsListItem.vue';
