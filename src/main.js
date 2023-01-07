@@ -49,9 +49,9 @@ Vue.mixin({
       openPayWindow(
         {
           coast: item.coast,
-          id: 'all',
+          id,
         },
-        this.$store.getters['cart/CART_LENGTH'],
+        1,
         () => {
           this.$store.dispatch('cart/HIDE_CART');
 
@@ -73,6 +73,11 @@ Vue.mixin({
           this.$store.dispatch('cart/CLEAR_CART');
         }
       );
+    },
+  },
+  computed: {
+    pathToImgs() {
+      return './img';
     },
   },
 });

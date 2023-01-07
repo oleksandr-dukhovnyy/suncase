@@ -1,10 +1,11 @@
-import { LocalStTool } from '../../js/LocalStTool.js';
+// import { LocalStTool } from '../../js/LocalStTool.js';
+import cartStorage from './saveToStorage.js';
 
 export default {
   namespaced: true,
   actions: {
     FETCH_CART({ commit }) {
-      const cloudCart = LocalStTool._get('cart-items') || [];
+      const cloudCart = cartStorage.loadCart() || [];
 
       commit('SETUP_CART', cloudCart);
     },
@@ -29,40 +30,93 @@ export default {
     DELETE_ITEM({ commit }, id) {
       commit('DELETE_ITEM', id);
     },
+    CHANGE_ITEM_COUNT({ commit, getters }, { id, count }) {
+      const item = getters.CART.find(({ id: _id }) => _id === id);
+
+      if (!item)
+        return console.error('CHANGE_ITEM_COUNT: item === undefined', {
+          id,
+          count,
+        });
+
+      const sum = item.count + count;
+
+      if (sum < 1) return console.error('CHANGE_ITEM_COUNT: sum < 0', { item });
+      if (sum > 9) return console.error('CHANGE_ITEM_COUNT: sum > 9', { item });
+
+      commit('CHANGE_ITEM_DATA', {
+        id,
+        data: { count: sum },
+      });
+    },
+    DEC_ITEM_COUNT({ dispatch }, id) {
+      dispatch('CHANGE_ITEM_COUNT', {
+        id,
+        count: -1,
+      });
+    },
+    INC_ITEM_COUNT({ dispatch }, id) {
+      dispatch('CHANGE_ITEM_COUNT', {
+        id,
+        count: 1,
+      });
+    },
   },
   mutations: {
-    SETUP_CART(state, ids) {
-      state.cart = [...ids];
+    SETUP_CART(state, cartItems) {
+      const newCart = structuredClone(cartItems);
 
-      LocalStTool._add('cart-items', state.cart);
+      state.cart = newCart;
+
+      cartStorage.saveCart(newCart);
     },
     SET_SHOW(state, value) {
       state.showCartPopup = value;
     },
-    ADD_TO_CART(state, id) {
-      state.cart.push(id);
+    ADD_TO_CART(state, { id, count = 1 }) {
+      state.cart.push({ id, count });
 
-      LocalStTool._add('cart-items', state.cart);
+      cartStorage.saveCart(state.cart);
     },
     DELETE_ITEM(state, id) {
-      state.cart = state.cart.filter((itemId) => itemId !== id);
+      state.cart = state.cart.filter(({ id: itemId }) => itemId !== id);
 
-      LocalStTool._add('cart-items', state.cart);
+      cartStorage.saveCart(state.cart);
+    },
+    CHANGE_ITEM_DATA(state, { id, data = {} }) {
+      const newCart = state.cart.map((cartItem) => {
+        return cartItem.id === id ? { ...cartItem, ...data } : cartItem;
+      });
+
+      state.cart = newCart;
+      cartStorage.saveCart(newCart);
     },
   },
   state: {
     cart: [],
+    /*
+    cart: [
+      { id: 1, count: 5 },
+      { id: 2, count: 1 },
+      { id: 3, count: 3 },
+      { id: 4, count: 7 },
+    ]
+    */
     showCartPopup: false,
   },
   getters: {
     CART(state, _, __, rootGetters) {
-      return rootGetters['glasses/UNFILTERED_SUNGLASESS_LIST'].filter((item) =>
-        state.cart.includes(item.id)
-      );
+      return rootGetters['glasses/UNFILTERED_SUNGLASESS_LIST']
+        .filter((item) => state.cart.find(({ id }) => item.id === id))
+        .map((item) => ({
+          ...item,
+          count: state.cart.find(({ id }) => item.id === id).count,
+        }));
     },
-    CART_LENGTH: (_, getters) => getters.CART.length,
+    CART_LENGTH: (_, getters) =>
+      getters.CART.reduce((acc, curr) => acc + curr.count, 0),
     CART_TOTAL_PRICE: (_, getters) =>
-      getters.CART.reduce((a, c) => a + c.coast, 0),
+      getters.CART.reduce((a, c) => a + c.coast * c.count, 0),
     SHOW_CART_POPUP: (state) => state.showCartPopup,
   },
 };

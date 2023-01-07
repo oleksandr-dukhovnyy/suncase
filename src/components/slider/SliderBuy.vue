@@ -6,7 +6,7 @@
 
     <button
       class="add-to-cart-bttn action-bttn"
-      @click="addToCartIt(SELECTED_ITEM.item.id)"
+      @click="addToCartIt({ id: SELECTED_ITEM.item.id })"
     >
       <svg v-if="animateOn" class="checkmark" viewBox="0 0 52 52">
         <path
@@ -54,7 +54,7 @@ export default {
     ...mapActions(vuexActions),
     addToCartIt() {
       this.animateOn = true;
-      this.ADD_TO_CART(this.SELECTED_ITEM.item.id);
+      this.ADD_TO_CART({ id: this.SELECTED_ITEM.item.id });
 
       setTimeout(() => {
         this.animateOn = false;

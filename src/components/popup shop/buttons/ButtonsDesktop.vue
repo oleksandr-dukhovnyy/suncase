@@ -63,11 +63,10 @@ export default {
   position: relative;
   width: 100%;
   height: 100%;
-  margin-bottom: -96%;
+  margin-bottom: -105%;
   transition: 0.7s;
   text-align: center;
   z-index: 3;
-  margin-top: -15%;
 }
 
 .buttons button {

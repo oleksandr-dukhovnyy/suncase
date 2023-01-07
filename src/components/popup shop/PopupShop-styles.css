@@ -1,0 +1,134 @@
+.item {
+  width: 150px;
+  display: grid;
+  /* grid-template-columns: 1fr; */
+  grid-template-rows: 73px 67px 40px;
+  animation-duration: 300ms;
+}
+
+.item-count {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #c4c4c4;
+  border-radius: 5px;
+  padding: 0 4px;
+  height: 23px;
+}
+
+.item-count > * {
+  width: 16px;
+  /* background-color: #c4c4c4; */
+  padding: 7px;
+  margin: 1px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  letter-spacing: initial !important;
+  cursor: pointer;
+  height: 10px;
+  font-weight: 700;
+  font-size: 12px;
+}
+
+.item-count > *::selection {
+  background-color: transparent;
+}
+
+.disabled {
+  opacity: 0.3;
+}
+
+.item-count > *:first-child {
+  border-right: 1px solid #c4c4c4;
+}
+
+.item-count > *:last-child {
+  border-left: 1px solid #c4c4c4;
+}
+
+.item.remove-on {
+  opacity: 0.5;
+}
+
+.item * {
+  letter-spacing: 0.25em;
+  font-weight: 300;
+}
+
+.item-actions {
+  display: grid;
+  grid-template-columns: 80px;
+  grid-gap: 8px;
+  padding-top: 8px;
+}
+
+.item-name {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.item-brend {
+  color: #0878ff;
+  font-size: 15px;
+}
+
+.item-info {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.item-old-coast {
+  color: #f00;
+  text-decoration: line-through;
+}
+
+.item-coast {
+  color: #0878ff;
+  font-weight: 700;
+  padding-right: 8px;
+}
+
+.item-price {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.item-price svg {
+  width: 16px;
+  height: 16px;
+}
+
+.item-model {
+  color: #999;
+  font-size: 12px;
+}
+
+.item-actions svg {
+  width: 30px;
+  height: 30px;
+}
+
+button,
+.item-actions button:hover,
+.item-actions button:active {
+  background-color: transparent;
+}
+
+.item-trash {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border: none;
+}
+
+.item-buy {
+  border: 1px solid black;
+  border-radius: 5px;
+}
