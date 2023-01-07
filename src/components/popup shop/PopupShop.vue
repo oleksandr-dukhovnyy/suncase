@@ -228,9 +228,6 @@ import scrollToGoods from '../../js/scrollToGoods.js';
 // import ButtonsDesktop from './buttons/ButtonsDesktop.vue';
 // import ButtonsMobile from './buttons/ButtonsMobile.vue';
 import GoodsListItem from './GoodsListItem.vue';
-// import ButtonsDesktop from './buttons/ButtonsDesktop.vue';
-// import ButtonsMobile from './buttons/ButtonsMobile.vue';
-import GoodsListItem from './GoodsListItem.vue';
 
 // vuex
 import { mapActions, mapGetters } from 'vuex';
