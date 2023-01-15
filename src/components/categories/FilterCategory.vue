@@ -12,6 +12,27 @@
       @click="TOGGLE_FILTER_CATEGORIES(item.name)"
     >
       {{ item.title }}
+      <svg
+        v-if="item.active"
+        width="23px"
+        height="23px"
+        viewBox="-2.4 -2.4 28.80 28.80"
+        role="img"
+        xmlns="http://www.w3.org/2000/svg"
+        aria-labelledby="okIconTitle"
+        stroke="#0878ff"
+        stroke-width="0.768"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        fill="none"
+        color="#000000"
+      >
+        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+        <g id="SVGRepo_iconCarrier">
+          <title id="okIconTitle">Ok</title>
+          <polyline points="4 13 9 18 20 7"></polyline>
+        </g>
+      </svg>
     </button>
   </div>
 </template>
@@ -80,6 +101,11 @@ export default {
   justify-content: flex-end;
 }
 
+.filters svg {
+  position: absolute;
+  top: calc(50% - 12px);
+}
+
 .filtersBttn {
   width: 100%;
   font-size: 12px;
@@ -90,17 +116,17 @@ export default {
   letter-spacing: 0.45em;
   color: #999;
   transition: 2s;
+  position: relative;
 
   margin-bottom: 12%;
 }
-.selected::after {
+/* .selected::after {
   content: '';
   background-image: url(https://img.icons8.com/ios/13/0878ff/checkmark.png);
   width: 13px;
   height: 13px;
-  /* z-index: 10; */
   position: absolute;
-}
+} */
 .F_checkmark {
   transition: 0.5s;
   margin-left: -8px;

@@ -100,11 +100,12 @@ export default {
 }
 
 .buy {
-  border: 1px solid #e86868;
-  color: #e86868;
+  border: 1px solid #f00;
+  color: #f00;
 }
+
 .buy:hover {
-  background-color: rgb(227, 38, 54);
+  background-color: #f00;
   color: white;
   transition: 0.5s;
 }

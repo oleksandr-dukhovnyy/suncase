@@ -2,8 +2,17 @@
   width: 150px;
   display: grid;
   /* grid-template-columns: 1fr; */
-  grid-template-rows: 73px 67px 40px;
+  grid-template-rows: 73px 67px 34px;
   animation-duration: 300ms;
+  position: relative;
+  /* outline: 1px dotted coral; */
+}
+
+@media screen and (max-device-width: 420px) {
+  .item,
+  .item img {
+    width: 130px;
+  }
 }
 
 .item-count {
@@ -14,6 +23,7 @@
   border-radius: 5px;
   padding: 0 4px;
   height: 23px;
+  margin: auto 0;
 }
 
 .item-count > * {
@@ -58,9 +68,20 @@
 
 .item-actions {
   display: grid;
-  grid-template-columns: 80px;
+  grid-template-columns: 80px 24px;
   grid-gap: 8px;
   padding-top: 8px;
+  justify-content: space-between;
+  position: relative;
+}
+
+.item-actions svg {
+  width: 15px;
+  height: 15px;
+  margin: auto 0;
+  position: absolute;
+  right: 14px;
+  bottom: 14px;
 }
 
 .item-name {
@@ -109,11 +130,6 @@
   font-size: 12px;
 }
 
-.item-actions svg {
-  width: 30px;
-  height: 30px;
-}
-
 button,
 .item-actions button:hover,
 .item-actions button:active {
@@ -131,4 +147,54 @@ button,
 .item-buy {
   border: 1px solid black;
   border-radius: 5px;
+}
+
+.item-delete-confirmation {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #ffffffdf;
+  display: grid;
+  grid-template-columns: 120px;
+  justify-content: center;
+  grid-template-rows: 1fr 24px;
+  animation-duration: 100ms;
+}
+
+.item-delete-confirmation__controlls {
+  margin-top: -40px;
+  height: 24px;
+}
+
+.item-delete-confirmation strong {
+  margin: auto;
+  font-size: 18px;
+  color: #f00;
+}
+
+.item-delete-confirmation button {
+  width: 50%;
+  height: 100%;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 5px;
+  color: #000;
+}
+
+.item-delete-confirmation button:first-of-type {
+  border-radius: 5px 0 0 5px;
+  color: #f00;
+}
+
+.item-delete-confirmation button:last-of-type {
+  border-radius: 0 5px 5px 0;
+  border-left: 1px solid transparent !important;
+}
+
+.item-delete-confirmation button,
+.item-delete-confirmation button:hover,
+.item-delete-confirmation button:active {
+  border: 1px solid #000;
+  background-color: transparent;
+  font-size: 14px;
 }

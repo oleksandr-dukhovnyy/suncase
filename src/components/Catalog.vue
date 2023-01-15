@@ -17,7 +17,7 @@
       <BrendCategory />
     </div>
 
-    <div :class="{ catalog: true }">
+    <div class="catalog">
       <button
         :class="{
           'contain-bttn': true,
@@ -294,8 +294,8 @@ export default {
 }
 
 .hamburger-menu-icon {
-  width: 68px;
-  height: 55px;
+  width: 40px;
+  height: 32px;
   opacity: 0.5;
   margin-bottom: 7%;
 }

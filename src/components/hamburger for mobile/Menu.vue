@@ -37,6 +37,27 @@
                 @click="TOGGLE_FILTER_GENDERS(item.name)"
               >
                 {{ item.title }}
+                <svg
+                  v-if="item.active"
+                  width="23px"
+                  height="23px"
+                  viewBox="-2.4 -2.4 28.80 28.80"
+                  role="img"
+                  xmlns="http://www.w3.org/2000/svg"
+                  aria-labelledby="okIconTitle"
+                  stroke="#0878ff"
+                  stroke-width="0.768"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  fill="none"
+                  color="#000000"
+                >
+                  <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                  <g id="SVGRepo_iconCarrier">
+                    <title id="okIconTitle">Ok</title>
+                    <polyline points="4 13 9 18 20 7"></polyline>
+                  </g>
+                </svg>
               </button>
             </div>
             <div class="line"></div>
@@ -44,13 +65,34 @@
               <button
                 v-for="item in FILTERS.categories"
                 :key="item.name"
+                class="hamburger-nav-item"
                 :class="{
-                  'hamburger-nav-item': true,
                   selected: item.active,
                 }"
                 @click="TOGGLE_FILTER_CATEGORIES(item.name)"
               >
                 {{ item.title }}
+                <svg
+                  v-if="item.active"
+                  width="23px"
+                  height="23px"
+                  viewBox="-2.4 -2.4 28.80 28.80"
+                  role="img"
+                  xmlns="http://www.w3.org/2000/svg"
+                  aria-labelledby="okIconTitle"
+                  stroke="#0878ff"
+                  stroke-width="0.768"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  fill="none"
+                  color="#000000"
+                >
+                  <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                  <g id="SVGRepo_iconCarrier">
+                    <title id="okIconTitle">Ok</title>
+                    <polyline points="4 13 9 18 20 7"></polyline>
+                  </g>
+                </svg>
               </button>
             </div>
             <div class="line"></div>
@@ -66,6 +108,27 @@
               @click="TOGGLE_FILTER_BRANDS(item.name)"
             >
               {{ item.title }}
+              <svg
+                v-if="item.active"
+                width="23px"
+                height="23px"
+                viewBox="-2.4 -2.4 28.80 28.80"
+                role="img"
+                xmlns="http://www.w3.org/2000/svg"
+                aria-labelledby="okIconTitle"
+                stroke="#0878ff"
+                stroke-width="0.768"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                fill="none"
+                color="#000000"
+              >
+                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                <g id="SVGRepo_iconCarrier">
+                  <title id="okIconTitle">Ok</title>
+                  <polyline points="4 13 9 18 20 7"></polyline>
+                </g>
+              </svg>
             </button>
           </div>
         </nav>
@@ -125,6 +188,11 @@ export default {
 </script>
 
 <style scoped>
+svg {
+  position: absolute;
+  top: calc(50% - 12px);
+}
+
 .hamburger-nav-flex-contain {
   margin-top: 45px;
 }
@@ -155,7 +223,7 @@ export default {
 .hamburger-content-contain {
   width: 50%;
   background-color: rgba(255, 255, 255, 1);
-  padding: 25px 0px 25px 25px;
+  padding: 25px 8px 25px 25px;
   height: 100%;
   overflow-y: scroll;
   -webkit-box-shadow: 0px 0px 32px -4px rgba(0, 0, 0, 0.75);
@@ -164,7 +232,7 @@ export default {
 }
 
 .hamburger-close {
-  margin: 0px 0 0 calc(48% - 55px);
+  margin: 0px 0 0 calc(48% - 40px);
   background: none;
   border: none;
   opacity: 0.6;
@@ -190,6 +258,7 @@ export default {
 }
 
 .hamburger-nav-item {
+  position: relative;
   width: 100%;
   padding: 8px;
   font-size: 11px;
@@ -231,14 +300,14 @@ export default {
 .selected {
   color: black;
 }
-
+/* 
 .selected::after {
   content: '';
   background-image: url(https://img.icons8.com/ios/13/0878ff/checkmark.png);
   width: 13px;
   height: 13px;
   position: absolute;
-}
+} */
 
 .gender > * {
   font-size: 17px;

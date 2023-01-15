@@ -94,10 +94,9 @@ export default {
   max-height: 550px;
   position: fixed;
   padding: 5%;
-
+  border-radius: 5px;
   left: auto;
   right: auto;
-
   -webkit-box-shadow: 0px 0px 32px -4px rgba(0, 0, 0, 0.75);
   -moz-box-shadow: 0px 0px 32px -4px rgba(0, 0, 0, 0.75);
   box-shadow: 0px 0px 32px -4px rgba(0, 0, 0, 0.75);
@@ -184,7 +183,7 @@ export default {
 
   .slider-contain-content {
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: space-between;
   }
 
   .controls-contain {
