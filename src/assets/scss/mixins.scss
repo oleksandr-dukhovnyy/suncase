@@ -1,0 +1,35 @@
+@import './adaptive-sass/src/index.scss';
+
+// sizes
+@mixin container {
+  max-width: $container-max-width;
+}
+
+// font size
+@mixin font-xsm {
+  font-size: $font-size-xsm;
+}
+
+@mixin font-sm {
+  font-size: $font-size-sm;
+}
+
+@mixin font-base {
+  font-size: $font-size-base;
+}
+
+@mixin font-md {
+  font-size: $font-size-md;
+}
+
+@mixin font-lg {
+  font-size: $font-size-lg;
+}
+
+@mixin font-xl {
+  font-size: $font-size-xl;
+}
+
+@mixin font-xxl {
+  font-size: $font-size-xxl;
+}

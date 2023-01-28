@@ -1,0 +1,49 @@
+$padding: 8px;
+$container-max-width: 1200px;
+$header-height: 65px;
+
+$font-size-xsm: clamp(0.75rem, 0.11vw + 0.7rem, 0.8rem);
+$font-size-sm: clamp(0.8rem, 0.11vw + 0.76rem, 0.89rem);
+$font-size-base: clamp(1rem, 0.23vw + 0.92rem, 1.19rem);
+$font-size-md: clamp(1.25rem, 0.4vw + 1.11rem, 1.58rem);
+$font-size-lg: clamp(1.56rem, 0.66vw + 1.32rem, 2.11rem);
+$font-size-xl: clamp(1.95rem, 1.04vw + 1.58rem, 2.81rem);
+$font-size-xxl: clamp(2.44rem, 1.58vw + 1.87rem, 3.75rem);
+
+$font-color-cta: #0878ff;
+$font-color-link: #0000ee;
+$font-color-muted: #999;
+$font-color-black: #222;
+
+/* Fluid font size variables, for browsers that support clamp */
+// @supports (font-size: clamp(1rem, 1vw, 1rem)) {
+//   :root {
+//     --font-size-sm: clamp(0.8rem, 0.11vw + 0.76rem, 0.89rem);
+//     --font-size-base: clamp(1rem, 0.23vw + 0.92rem, 1.19rem);
+//     --font-size-md: clamp(1.25rem, 0.4vw + 1.11rem, 1.58rem);
+//     --font-size-lg: clamp(1.56rem, 0.66vw + 1.32rem, 2.11rem);
+//     --font-size-xl: clamp(1.95rem, 1.04vw + 1.58rem, 2.81rem);
+//     --font-size-xxl: clamp(2.44rem, 1.58vw + 1.87rem, 3.75rem);
+//   }
+// }
+// /* Fallback variables for browsers that don't support clamp */
+// @supports not (font-size: clamp(1rem, 1vw, 1rem)) {
+//   :root {
+//     --font-size-sm: 0.8rem;
+//     --font-size-base: 1rem;
+//     --font-size-md: 1.25rem;
+//     --font-size-lg: 1.56rem;
+//     --font-size-xl: 1.95rem;
+//     --font-size-xxl: 2.44rem;
+//   }
+//   @media screen and (min-width: 1900px) {
+//     :root {
+//       --font-size-sm: 0.89rem;
+//       --font-size-base: 1.19rem;
+//       --font-size-md: 1.58rem;
+//       --font-size-lg: 2.11rem;
+//       --font-size-xl: 2.81rem;
+//       --font-size-xxl: 3.75rem;
+//     }
+//   }
+// }

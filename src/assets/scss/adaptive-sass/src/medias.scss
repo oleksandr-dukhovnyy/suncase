@@ -1,0 +1,23 @@
+@mixin _media-up($medianame, $breakpoints: $breakpoints-list) {
+  $size: map-get($breakpoints, $medianame);
+
+  @if $size {
+    @media (min-width: $size) {
+      @content;
+    }
+  } @else {
+    @error 'incurrect $medianame';
+  }
+}
+
+@mixin _media-down($medianame, $breakpoints: $breakpoints-list) {
+  $size: map-get($breakpoints, $medianame);
+
+  @if $size {
+    @media (max-width: $size) {
+      @content;
+    }
+  } @else {
+    @error 'incurrect $medianame';
+  }
+}

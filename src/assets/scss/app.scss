@@ -1,0 +1,12 @@
+@import './variables.scss';
+@import './functions.scss';
+@import './mixins.scss';
+
+* {
+  box-sizing: border-box;
+  font-family: Roboto, sans-serif;
+}
+
+p {
+  margin: 0;
+}

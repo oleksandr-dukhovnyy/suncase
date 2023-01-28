@@ -1,31 +1,29 @@
-# Internet shop “Suncase” ![logo](https://github.com/Aleksandr-JS-Developer/suncase/blob/main/public/favicons/new/6.png)
+# .
 
-(vue.js, vue-cli, webpack, photoshop)
+This template should help get you started developing with Vue 3 in Vite.
 
----
+## Recommended IDE Setup
 
-### [live-demo](https://aleksandr-js-developer.github.io/suncase/)
+[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
 
----
+## Customize configuration
 
-## Project setup
+See [Vite Configuration Reference](https://vitejs.dev/config/).
 
-```
+## Project Setup
+
+```sh
 npm install
 ```
 
-### Compiles and hot-reloads for development
+### Compile and Hot-Reload for Development
 
-```
-npm run serve
+```sh
+npm run dev
 ```
 
-### Compiles and minifies for production
+### Compile and Minify for Production
 
-```
+```sh
 npm run build
 ```
-
-### Customize configuration
-
-See [Configuration Reference](https://cli.vuejs.org/config/).

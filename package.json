@@ -1,27 +1,22 @@
 {
   "name": "suncase",
-  "version": "0.1.2",
+  "version": "0.0.0",
   "scripts": {
-    "dev": "vue-cli-service serve --port 3000 --copy",
-    "build": "vue-cli-service build",
-    "cd": "cd ./scripts && cd.sh"
+    "dev": "vite --host",
+    "build": "vite build",
+    "preview": "vite preview --port 4173"
   },
   "dependencies": {
-    "@fortawesome/fontawesome-free": "^5.13.0",
-    "core-js": "^3.6.4",
-    "scroll-lock": "^2.1.4",
-    "vue": "^2.6.11",
+    "normalize.css": "^8.0.1",
+    "vue": "^2.7.7",
+    "vue-router": "^3.5.4",
     "vuex": "^3.6.2"
   },
   "devDependencies": {
-    "@deraw/vue-cli-plugin-proxy": "^2.2.6",
-    "@vue/cli-plugin-babel": "^4.3.0",
-    "@vue/cli-service": "^4.3.0",
-    "vue-template-compiler": "^2.6.11"
-  },
-  "browserslist": [
-    "> 0.1%",
-    "last 2 versions",
-    "not dead"
-  ]
+    "@vitejs/plugin-legacy": "^2.0.0",
+    "@vitejs/plugin-vue2": "^1.1.2",
+    "sass": "^1.57.1",
+    "terser": "^5.14.2",
+    "vite": "^3.0.2"
+  }
 }

@@ -1,15 +1,13 @@
 import Vue from 'vue';
-import App from './App.vue';
-import { Copy } from './js/CopyJS.js';
-import store from './store';
-import Scroll from './js/removeBodyScroll.js';
-import openPayWindow from './js/openPayWindow.js';
+import store from './store/index.js';
+import Vuex from 'vuex';
 
-Copy._configurate({
-  loggingMsg: false,
-  loggingWarns: true,
-  loggingErrors: true,
-});
+Vue.use(Vuex);
+
+import App from './App.vue';
+import router from './router';
+import openPayWindow from './js/openPayWindow.js';
+import 'normalize.css';
 
 Vue.config.productionTip = false;
 Vue.config.silent = true;
@@ -74,15 +72,22 @@ Vue.mixin({
         }
       );
     },
+    image(path) {
+      return `${this.pathToImgs}/${path}`;
+    },
   },
   computed: {
     pathToImgs() {
       return './img';
     },
+    phone() {
+      return '+38 063 244 1587';
+    },
   },
 });
 
 new Vue({
+  router,
   store,
   render: (h) => h(App),
 }).$mount('#app');

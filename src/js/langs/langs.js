@@ -1,3 +1,6 @@
+// TODO:
+// add more langs
+
 const langs = {
   en: {
     header: {
