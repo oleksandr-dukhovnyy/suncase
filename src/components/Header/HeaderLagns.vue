@@ -12,7 +12,7 @@
 </template>
 
 <script setup>
-import { ref as $ref, watch as $watch, defineEmits } from 'vue';
+import { ref as $ref, watch as $watch } from 'vue';
 
 const $emit = defineEmits(['change-current-lang']);
 

@@ -1,6 +1,6 @@
 <template>
   <header>
-    <div class="contacts">
+    <div class="contacts" @click="scrollToTop">
       <p>
         <span class="contacts__phone">{{ phone }}</span>
         <span class="contacts__city"> Kyiv </span>
@@ -16,6 +16,13 @@
 <script setup>
 import HeaderLagns from './HeaderLagns.vue';
 import HeaderCart from './HeaderCart.vue';
+
+const scrollToTop = () => {
+  self.scrollTo({
+    top: 0,
+    behavior: 'smooth',
+  });
+};
 
 const changeCurrentCang = (newLang) => {
   console.log('changeCurrentCang', newLang);
@@ -37,6 +44,7 @@ header {
     height: $header-height;
     display: flex;
     align-items: center;
+    cursor: pointer;
 
     p {
       display: flex;
@@ -47,6 +55,7 @@ header {
 
     &__phone {
       @include font-base;
+
       font-weight: 300;
     }
 

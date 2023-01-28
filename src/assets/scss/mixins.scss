@@ -33,3 +33,13 @@
 @mixin font-xxl {
   font-size: $font-size-xxl;
 }
+
+// base styles
+@mixin link($color: $font-color-link) {
+  color: $color;
+  text-decoration: none;
+
+  &:visited {
+    color: $color;
+  }
+}

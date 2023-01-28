@@ -1,3 +1,3 @@
 <template>
-  <div>Catalog</div>
+  <section id="catalog">Catalog</section>
 </template>
