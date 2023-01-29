@@ -26,14 +26,22 @@ const selectCategory = (category) => {
 
 <style lang="scss" scoped>
 nav {
+  outline: 1px dotted coral;
+
   @include font-sm;
   display: flex;
-  justify-content: center;
-  gap: padding(8);
+  flex-direction: column;
+  column-gap: padding(8);
   margin: padding(4) auto;
+
+  @include _media-up(md) {
+    justify-content: center;
+    flex-direction: row;
+  }
 
   span {
     @include font-sm;
+    text-align: center;
     color: $font-color-cta;
     text-transform: uppercase;
     padding: padding(2);

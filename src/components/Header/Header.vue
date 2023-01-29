@@ -32,19 +32,38 @@ const changeCurrentCang = (newLang) => {
 <style lang="scss" scoped>
 header {
   @include container;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   height: $header-height;
   background-color: #fff;
-  display: flex;
   justify-content: space-between;
   width: 100%;
   position: fixed;
   top: 0;
+  gap: padding(2);
+  padding: 0 padding(2);
+  z-index: 1;
+
+  @include _media-up(md) {
+    flex-direction: row;
+    height: $header-height-md;
+  }
+
+  @include _media-up(xxl) {
+    padding: 0;
+  }
 
   .contacts {
-    height: $header-height;
+    // height: $header-height;
+    padding-top: padding(2);
     display: flex;
     align-items: center;
     cursor: pointer;
+
+    @include _media-up(md) {
+      height: $header-height-md;
+    }
 
     p {
       display: flex;
@@ -69,6 +88,14 @@ header {
   .left-group {
     display: flex;
     gap: padding(4);
+    width: 100%;
+    justify-content: space-evenly;
+
+    @include _media-up(md) {
+      width: max-content;
+      // gap: unset;
+      justify-content: unset;
+    }
   }
 }
 </style>

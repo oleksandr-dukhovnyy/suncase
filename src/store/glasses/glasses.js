@@ -15,15 +15,12 @@ export default {
       }, 200);
     },
     TOGGLE_FILTER_GENDERS({ commit }, gender) {
-      console.log('TOGGLE_FILTER_GENDERS', gender);
       commit('TOGGLE_FILTER_GENDERS', gender);
     },
     TOGGLE_FILTER_CATEGORIES({ commit }, category) {
-      console.log('TOGGLE_FILTER_CATEGORIES', category);
       commit('TOGGLE_FILTER_CATEGORIES', category);
     },
     TOGGLE_FILTER_BRANDS({ commit }, brand) {
-      console.log('TOGGLE_FILTER_BRANDS', brand);
       commit('TOGGLE_FILTER_BRANDS', brand);
     },
   },

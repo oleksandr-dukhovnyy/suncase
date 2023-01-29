@@ -16,11 +16,15 @@ import ItemsList from './ItemsList.vue';
 
 <style lang="scss" scoped>
 .catalog {
+  @include container;
+
+  outline: 1px dotted coral;
   @include _media-up(md) {
-    outline: 1px dotted coral;
+    outline: none;
   }
 
   display: grid;
-  grid-template-columns: 220px 1fr;
+  grid-template-columns: 180px 1fr;
+  grid-gap: padding(4);
 }
 </style>
