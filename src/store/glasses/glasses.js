@@ -15,12 +15,15 @@ export default {
       }, 200);
     },
     TOGGLE_FILTER_GENDERS({ commit }, gender) {
+      console.log('TOGGLE_FILTER_GENDERS', gender);
       commit('TOGGLE_FILTER_GENDERS', gender);
     },
     TOGGLE_FILTER_CATEGORIES({ commit }, category) {
+      console.log('TOGGLE_FILTER_CATEGORIES', category);
       commit('TOGGLE_FILTER_CATEGORIES', category);
     },
     TOGGLE_FILTER_BRANDS({ commit }, brand) {
+      console.log('TOGGLE_FILTER_BRANDS', brand);
       commit('TOGGLE_FILTER_BRANDS', brand);
     },
   },
@@ -101,13 +104,16 @@ export default {
     ACTIVE_CATEGORIES: (state) => state.filters.categories,
     ACTIVE_BRANDS: (state) => state.filters.brands,
     FILTERS: (state) => {
-      const filters = {};
+      const filters = [];
 
       for (let filterType in state.filters) {
-        filters[filterType] = state.filters[filterType].map((item) => ({
-          ...item,
-          title: item.name.replace(/-/g, ' '),
-        }));
+        filters.push({
+          type: filterType,
+          items: state.filters[filterType].map((item) => ({
+            ...item,
+            title: item.name.replace(/-/g, ' '),
+          })),
+        });
       }
 
       return filters;
