@@ -1,5 +1,5 @@
 <template>
-  <div class="filters">
+  <div class="filters animate__animated animate__fadeInLeft">
     <div v-for="({ items, type }, key) in FILTERS" :key="key">
       <FiltersGroup :items="items" :type="type" @selected="selected" />
       <div v-if="key !== FILTERS.length - 1" class="filters__diliver"></div>

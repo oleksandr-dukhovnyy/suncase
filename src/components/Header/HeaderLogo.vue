@@ -15,7 +15,7 @@
 <style scoped lang="scss">
 .logo {
   @include container;
-  z-index: 2;
+  // z-index: 2;
   display: grid;
   grid-template-columns: 42px 1fr;
   grid-gap: padding(2);
@@ -25,6 +25,7 @@
   left: calc(50% - 128px);
 
   @include _media-up(md) {
+    z-index: 2;
     top: 4px;
   }
 

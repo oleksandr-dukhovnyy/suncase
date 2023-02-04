@@ -10,7 +10,9 @@ $header-height-md: 65px;
 // $font-size-lg: clamp(1.56rem, 0.66vw + 1.32rem, 2.11rem);
 // $font-size-xl: clamp(1.95rem, 1.04vw + 1.58rem, 2.81rem);
 // $font-size-xxl: clamp(2.44rem, 1.58vw + 1.87rem, 3.75rem);
-$font-size-xsm: 13px;
+
+$font-size-xxsm: 10px;
+$font-size-xsm: 12px;
 $font-size-sm: 14px;
 $font-size-base: 16px;
 $font-size-md: 18px;
@@ -22,7 +24,10 @@ $font-color-cta: #0878ff;
 $font-color-link: #0000ee;
 $font-color-muted: #999;
 $font-color-black: #222;
+// $font-color-red: #df0000;
+$font-color-red: #f00;
 
+$font-letter-spacing-sm: 0.25em;
 $font-letter-spacing-base: 0.35em;
 $font-letter-spacing-md: 0.45em;
 

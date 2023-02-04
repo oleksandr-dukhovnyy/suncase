@@ -26,7 +26,7 @@ const selectCategory = (category) => {
 
 <style lang="scss" scoped>
 nav {
-  outline: 1px dotted coral;
+  // outline: 1px dotted coral;
 
   @include font-sm;
   display: flex;

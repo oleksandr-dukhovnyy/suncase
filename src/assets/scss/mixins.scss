@@ -6,6 +6,10 @@
 }
 
 // font size
+@mixin font-xxsm {
+  font-size: $font-size-xxsm;
+}
+
 @mixin font-xsm {
   font-size: $font-size-xsm;
 }
@@ -42,4 +46,19 @@
   &:visited {
     color: $color;
   }
+}
+
+// animations
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@mixin rotate($speed: 5500ms) {
+  animation: rotate $speed infinite linear;
 }

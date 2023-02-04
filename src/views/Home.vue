@@ -21,9 +21,10 @@ import Footer from '@/components/Footer.vue';
 <style scoped lang="scss">
 main {
   @include container;
+  min-height: 100vh;
   background-color: #fff;
   padding-top: $header-height;
   position: relative;
-  margin: 0 auto;
+  margin: 0 auto padding(10);
 }
 </style>

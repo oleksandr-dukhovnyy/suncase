@@ -1,5 +1,5 @@
 <template>
-  <section class="f-screen" style="display: none">
+  <section class="f-screen">
     <div
       class="f-screen__item"
       v-for="(section, i) in sections"
@@ -52,6 +52,8 @@ $img-size-xl: 276px;
   }
 
   &__item {
+    height: 530px;
+
     &-img {
       width: $img-size-xl;
       height: 530px;

@@ -1,5 +1,5 @@
 <template>
-  <section class="catalog" id="catalog">
+  <section :class="'d-none d-xl-grid'" class="catalog" id="catalog">
     <div class="catalog__filters">
       <Filters />
     </div>

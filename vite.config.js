@@ -7,6 +7,8 @@ import vue2 from '@vitejs/plugin-vue2';
 
 import packageJSON from './package.json';
 
+// import 'animate.css';
+
 // https://vitejs.dev/config/
 const getConfig = (IS_DEV) => {
   return {

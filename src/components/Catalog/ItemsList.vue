@@ -3,7 +3,7 @@
     <div class="items-list__item" v-for="(item, i) in ITEMS" :key="i">
       <Item
         :title="item.brend"
-        :brand="item.model"
+        :model="item.model"
         :coast="item.coast"
         :sale="item.sale"
         :oldCoast="item.oldCoast"
