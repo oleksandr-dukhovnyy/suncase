@@ -9,8 +9,12 @@ import router from './router';
 import openPayWindow from './js/openPayWindow.js';
 import 'normalize.css';
 
+import TheButton from './components/General/TheButton.vue';
+
 Vue.config.productionTip = false;
 Vue.config.silent = true;
+
+Vue.component('TheButton', TheButton);
 
 Vue.mixin({
   methods: {

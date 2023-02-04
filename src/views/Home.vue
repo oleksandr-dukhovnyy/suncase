@@ -21,6 +21,9 @@ import Footer from '@/components/Footer.vue';
 <style scoped lang="scss">
 main {
   @include container;
+  display: flex;
+  gap: padding(5);
+  flex-direction: column;
   min-height: 100vh;
   background-color: #fff;
   padding-top: $header-height;

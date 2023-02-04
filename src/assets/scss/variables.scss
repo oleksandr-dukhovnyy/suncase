@@ -11,6 +11,10 @@ $header-height-md: 65px;
 // $font-size-xl: clamp(1.95rem, 1.04vw + 1.58rem, 2.81rem);
 // $font-size-xxl: clamp(2.44rem, 1.58vw + 1.87rem, 3.75rem);
 
+$color-red: #f00;
+$color-blue: #00ddff;
+$color-cta: #0878ff;
+
 $font-size-xxsm: 10px;
 $font-size-xsm: 12px;
 $font-size-sm: 14px;
@@ -20,16 +24,18 @@ $font-size-lg: 20px;
 $font-size-xl: 28px;
 $font-size-xxl: 32px;
 
-$font-color-cta: #0878ff;
+$font-color-cta: $color-cta;
 $font-color-link: #0000ee;
 $font-color-muted: #999;
 $font-color-black: #222;
 // $font-color-red: #df0000;
-$font-color-red: #f00;
+$font-color-red: $color-red;
 
 $font-letter-spacing-sm: 0.25em;
 $font-letter-spacing-base: 0.35em;
 $font-letter-spacing-md: 0.45em;
+
+$border-radius: 6px;
 
 /* Fluid font size variables, for browsers that support clamp */
 // @supports (font-size: clamp(1rem, 1vw, 1rem)) {

@@ -19,13 +19,14 @@
           life <br />
           seasons
         </strong>
-        <button>browse</button>
+        <TheButton size="md" @click="browse"> browse </TheButton>
       </div>
     </div>
   </section>
 </template>
 
 <script setup>
+import scrollToGoods from '@/js/scrollToGoods.js';
 const getPathToImgs = (index) => `LineSlider/1/${index}.jpg`;
 
 const sections = [
@@ -36,16 +37,30 @@ const sections = [
   { type: 'img', url: getPathToImgs(2) },
   { type: 'img', url: getPathToImgs(3) },
 ];
+
+const browse = () => {
+  scrollToGoods();
+};
 </script>
 
 <style lang="scss" scoped>
 $img-size-sm: 276px;
+$img-size-md: 226px;
 $img-size-xl: 276px;
 
 .f-screen {
   display: grid;
   grid-gap: padding(4);
   grid-template-rows: auto;
+  justify-content: center;
+
+  @include _media-up(sm) {
+    grid-template-columns: repeat(2, $img-size-sm);
+  }
+
+  @include _media-up(md) {
+    grid-template-columns: repeat(3, $img-size-md);
+  }
 
   @include _media-up(xl) {
     grid-template-columns: repeat(4, $img-size-xl);
@@ -54,8 +69,17 @@ $img-size-xl: 276px;
   &__item {
     height: 530px;
 
-    &-img {
+    width: $img-size-sm;
+
+    @include _media-up(md) {
+      width: $img-size-md;
+    }
+
+    @include _media-up(xl) {
       width: $img-size-xl;
+    }
+
+    &-img {
       height: 530px;
       background-repeat: no-repeat;
       background-position: 50%;
@@ -69,9 +93,10 @@ $img-size-xl: 276px;
       justify-content: center;
       width: 100%;
       height: 100%;
+      gap: padding(5);
 
       strong {
-        @include font-base;
+        @include font-lg;
         text-transform: uppercase;
         font-weight: 200;
         letter-spacing: $font-letter-spacing-md;
@@ -80,15 +105,34 @@ $img-size-xl: 276px;
 
     &--0 {
       order: 2;
+
+      @include _media-up(sm) {
+        order: 1;
+      }
     }
     &--1 {
       order: 1;
+
+      @include _media-up(sm) {
+        order: 2;
+      }
     }
+
     &--2 {
       display: none;
+      order: 3;
+
+      @include _media-up(md) {
+        display: block;
+      }
     }
     &--3 {
       display: none;
+      order: 4;
+
+      @include _media-up(xl) {
+        display: block;
+      }
     }
   }
 }
