@@ -1,14 +1,11 @@
-import Vue from 'vue';
-import VueRouter from 'vue-router';
+import { createRouter, createWebHistory } from 'vue-router';
 import HomeView from '../views/Home.vue';
 // import store from '../store/index.js';
 
 // const { dispatch } = store;
 
-Vue.use(VueRouter);
-
-const router = new VueRouter({
-  mode: 'history',
+const router = createRouter({
+  history: createWebHistory(),
   base: import.meta.env.BASE_URL,
   routes: [
     {
@@ -16,10 +13,7 @@ const router = new VueRouter({
       name: 'home',
       component: HomeView,
     },
-    {
-      path: '*',
-      redirect: '/',
-    },
+    { path: '/:pathMatch(.*)*', name: 'not-found', redirect: { name: 'home' } },
     // {
     //   path: '/about',
     //   name: 'about',

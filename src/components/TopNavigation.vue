@@ -11,7 +11,7 @@
 </template>
 
 <script setup>
-import { useStore } from 'vue2-helpers/vuex';
+import { useStore } from 'vuex';
 import scrollToGoods from '@/js/scrollToGoods.js';
 
 const $store = useStore();

@@ -1,26 +1,12 @@
-// import { fileURLToPath, URL } from 'node:url';
-import path from 'path';
-
 import { defineConfig } from 'vite';
-import legacy from '@vitejs/plugin-legacy';
-import vue2 from '@vitejs/plugin-vue2';
+import vue from '@vitejs/plugin-vue';
+import path from 'path';
 
 import packageJSON from './package.json';
 
-// import 'animate.css';
-
-// https://vitejs.dev/config/
 const getConfig = (IS_DEV) => {
   return {
-    plugins: [
-      vue2(),
-      legacy({
-        targets: IS_DEV ? [] : ['ie >= 11'],
-        additionalLegacyPolyfills: IS_DEV
-          ? []
-          : ['regenerator-runtime/runtime'],
-      }),
-    ],
+    plugins: [vue()],
     resolve: {
       alias: {
         '@': path.resolve(__dirname, 'src'),

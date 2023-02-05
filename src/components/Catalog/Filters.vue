@@ -9,7 +9,7 @@
 
 <script setup>
 import FiltersGroup from './FiltersGroup.vue';
-import { useStore } from 'vue2-helpers/vuex';
+import { useStore } from 'vuex';
 import { computed } from 'vue';
 
 const $store = useStore();

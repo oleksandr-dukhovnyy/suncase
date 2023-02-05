@@ -17,7 +17,7 @@
 
 <script setup>
 import Item from './Item.vue';
-import { useStore } from 'vue2-helpers/vuex';
+import { useStore } from 'vuex';
 import { computed } from 'vue';
 
 const $store = useStore();
