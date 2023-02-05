@@ -31,18 +31,25 @@ const openSlider = (id) => {
 </script>
 
 <style scoped lang="scss">
-$item-width: 150px;
-$item-width-md: 170px;
-$item-width-xl: 200px;
+@import './catalog-style-vars.scss';
 
 .items-list {
   display: grid;
   gap: padding(4);
-  grid-template-columns: repeat(3, $item-width);
+  grid-template-columns: repeat(2, $item-width);
+
+  @include _media-up(sm) {
+    grid-template-columns: repeat(3, $item-width-sm);
+  }
 
   @include _media-up(md) {
-    grid-template-columns: repeat(4, $item-width-md);
-    gap: padding(5);
+    grid-template-columns: repeat(3, $item-width-md);
+    gap: padding(2);
+  }
+
+  @include _media-up(lg) {
+    grid-template-columns: repeat(3, $item-width-xl);
+    gap: padding(3);
   }
 
   @include _media-up(xl) {

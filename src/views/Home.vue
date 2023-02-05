@@ -29,5 +29,9 @@ main {
   padding-top: $header-height;
   position: relative;
   margin: 0 auto padding(10);
+
+  @include _media-up(md) {
+    padding-top: $header-height-md;
+  }
 }
 </style>

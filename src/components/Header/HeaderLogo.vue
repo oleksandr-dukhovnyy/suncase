@@ -22,7 +22,7 @@
   align-items: center;
   position: absolute;
   top: 130px;
-  left: calc(50% - 128px);
+  left: calc(50% - 104px);
 
   @include _media-up(md) {
     z-index: 2;

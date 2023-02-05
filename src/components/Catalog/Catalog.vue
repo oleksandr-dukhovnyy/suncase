@@ -1,5 +1,6 @@
 <template>
-  <section :class="'d-none d-xl-grid'" class="catalog" id="catalog">
+  <!-- :class="'d-none d-xl-grid'" -->
+  <section class="catalog" id="catalog">
     <div class="catalog__filters">
       <Filters />
     </div>
@@ -17,14 +18,22 @@ import ItemsList from './ItemsList.vue';
 <style lang="scss" scoped>
 .catalog {
   @include container;
+  // outline: 1px dotted coral;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: padding(4);
+  margin: 0 auto;
 
-  outline: 1px dotted coral;
   @include _media-up(md) {
-    outline: none;
+    grid-template-columns: 180px 1fr;
   }
 
-  display: grid;
-  grid-template-columns: 180px 1fr;
-  grid-gap: padding(4);
+  &__filters {
+    display: none;
+
+    @include _media-up(md) {
+      display: block;
+    }
+  }
 }
 </style>

@@ -1,6 +1,10 @@
-# .
+# Internet shop “Suncase” ![logo](https://github.com/Aleksandr-JS-Developer/suncase/blob/main/public/favicons/new/6.png)
 
-This template should help get you started developing with Vue 3 in Vite.
+(vue.js, vite, babel, photoshop)
+
+---
+
+### [live-demo](https://aleksandr-js-developer.github.io/suncase/)
 
 ## Recommended IDE Setup
 

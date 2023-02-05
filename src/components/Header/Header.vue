@@ -42,7 +42,7 @@ header {
   position: fixed;
   top: 0;
   gap: padding(2);
-  padding: 0 padding(2);
+  padding: 0 padding(2) padding(2);
   z-index: 1;
 
   @include _media-up(md) {

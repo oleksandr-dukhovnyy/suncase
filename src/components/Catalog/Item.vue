@@ -44,9 +44,7 @@ const { title, model, coast, sale, oldCoast, isNew, id } = defineProps({
 </script>
 
 <style lang="scss" scoped>
-$item-width: 150px;
-$item-width-md: 170px;
-$item-width-xl: 200px;
+@import './catalog-style-vars.scss';
 
 .item {
   width: $item-width;
@@ -57,6 +55,10 @@ $item-width-xl: 200px;
   flex-direction: column;
   gap: padding();
   position: relative;
+
+  @include _media-up(sm) {
+    width: $item-width-sm;
+  }
 
   @include _media-up(md) {
     width: $item-width-md;
@@ -104,14 +106,20 @@ $item-width-xl: 200px;
     border: 1px solid red;
     position: absolute;
     border-radius: 50%;
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
     display: flex;
     justify-content: center;
     align-items: center;
     color: $font-color-red;
-    bottom: 62px;
+    bottom: 85px;
     right: 0;
+
+    @include _media-up(xl) {
+      bottom: 62px;
+      width: 50px;
+      height: 50px;
+    }
   }
 
   strong {
