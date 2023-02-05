@@ -16,6 +16,7 @@ import TopNavigation from '@/components/TopNavigation.vue';
 import FirstScreen from '@/components/FirstScreen.vue';
 import Catalog from '@/components/Catalog/Catalog.vue';
 import Footer from '@/components/Footer.vue';
+// import Modal from '../components/Modal.vue';
 </script>
 
 <style scoped lang="scss">

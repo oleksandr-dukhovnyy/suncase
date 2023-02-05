@@ -26,7 +26,8 @@ $store.dispatch('glasses/FETCH_SUNGLASESS');
 const ITEMS = computed(() => $store.getters['glasses/SUNGLASESS_LIST']);
 
 const openSlider = (id) => {
-  console.log('open in slider ' + id);
+  $store.dispatch('slider/SET_SELECTED', id);
+  $store.dispatch('slider/SHOW_SLIDER');
 };
 </script>
 

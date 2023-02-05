@@ -62,3 +62,13 @@
 @mixin rotate($speed: 5500ms) {
   animation: rotate $speed infinite linear;
 }
+
+// shadows
+
+@mixin shadow {
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+@mixin shadow-large {
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}

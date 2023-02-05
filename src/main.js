@@ -8,6 +8,7 @@ import 'normalize.css';
 import 'animate.css';
 
 import TheButton from './components/General/TheButton.vue';
+import Modal from './components/General/Modal.vue';
 
 const app = createApp(App);
 
@@ -15,6 +16,8 @@ app.use(router);
 app.use(store);
 
 app.component('TheButton', TheButton);
+app.component('Modal', Modal);
+
 app.mixin({
   methods: {
     image(path) {

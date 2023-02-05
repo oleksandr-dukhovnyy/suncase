@@ -55,6 +55,7 @@ const { title, model, coast, sale, oldCoast, isNew, id } = defineProps({
   flex-direction: column;
   gap: padding();
   position: relative;
+  cursor: pointer;
 
   @include _media-up(sm) {
     width: $item-width-sm;

@@ -8,9 +8,11 @@
       <ItemsList />
     </div>
   </section>
+  <CatalogModal />
 </template>
 
 <script setup>
+import CatalogModal from './CatalogModal.vue';
 import Filters from './Filters.vue';
 import ItemsList from './ItemsList.vue';
 </script>
