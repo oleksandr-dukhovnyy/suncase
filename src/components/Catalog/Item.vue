@@ -127,7 +127,7 @@ const { title, model, coast, sale, oldCoast, isNew, id } = defineProps({
     @include font-base;
     letter-spacing: $font-letter-spacing-sm;
     color: $font-color-cta;
-    font-weight: 200;
+    font-weight: $font-weight-light;
   }
 
   em {

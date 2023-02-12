@@ -7,15 +7,23 @@
       </p>
     </div>
     <div class="left-group">
-      <HeaderLagns @change-current-lang="changeCurrentCang" />
-      <HeaderCart />
+      <HeaderLagns @change-current-lang="changeCurrentLang" />
+      <HeaderCart @open-cart="$store.dispatch('cart/SHOW_CART')" />
     </div>
+    <Cart v-if="show" @close="$store.dispatch('cart/HIDE_CART')" />
   </header>
 </template>
 
 <script setup>
 import HeaderLagns from './HeaderLagns.vue';
 import HeaderCart from './HeaderCart.vue';
+import Cart from './Cart/Cart.vue';
+import { useStore } from 'vuex';
+import { computed } from '@vue/reactivity';
+
+const $store = useStore();
+
+const show = computed(() => $store.getters['cart/SHOW_CART_POPUP']);
 
 const scrollToTop = () => {
   self.scrollTo({
@@ -24,8 +32,8 @@ const scrollToTop = () => {
   });
 };
 
-const changeCurrentCang = (newLang) => {
-  console.log('changeCurrentCang', newLang);
+const changeCurrentLang = (newLang) => {
+  console.log('changeCurrentLang', newLang);
 };
 </script>
 
@@ -75,7 +83,7 @@ header {
     &__phone {
       @include font-base;
 
-      font-weight: 300;
+      font-weight: $font-weight-light;
     }
 
     &__city {

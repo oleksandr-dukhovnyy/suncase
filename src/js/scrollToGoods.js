@@ -9,7 +9,7 @@ const scrollToGoods = () => {
 
   if (document.body.clientWidth < 531) {
     let hamburgerMenu = document.querySelector('#hamburger-menu');
-    let hamburgerMenuY = hamburgerMenu.getBoundingClientRect().y;
+    let hamburgerMenuY = hamburgerMenu.getBoundingClientRect().top;
     console.log(hamburgerMenu, hamburgerMenuY);
     window.scrollTo({
       top: hamburgerMenuY - 100,

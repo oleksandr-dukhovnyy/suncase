@@ -45,7 +45,7 @@
 
   h1 {
     @include font-md;
-    font-weight: 600;
+    font-weight: $font-weight-bold;
     letter-spacing: 0.5em;
     text-transform: uppercase;
     line-height: 1;
@@ -55,7 +55,7 @@
 
     span {
       @include font-xsm;
-      font-weight: 400;
+      font-weight: $font-weight-light;
       text-transform: uppercase;
       letter-spacing: 0.35em;
     }

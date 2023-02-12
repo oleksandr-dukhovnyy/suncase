@@ -23,6 +23,9 @@ app.mixin({
     image(path) {
       return `${this.pathToImgs}/${path}`;
     },
+    icon(name, ext = 'svg') {
+      return this.image(`/icons/${name}.${ext}`);
+    },
     openPayWindow,
   },
   computed: {

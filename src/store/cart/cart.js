@@ -107,10 +107,10 @@ export default {
   getters: {
     CART(state, _, __, rootGetters) {
       return rootGetters['glasses/UNFILTERED_SUNGLASESS_LIST']
-        .filter((item) => state.cart.find(({ id }) => item.id === id))
+        .filter((item) => state.cart.find(({ id }) => '' + item.id === '' + id))
         .map((item) => ({
           ...item,
-          count: state.cart.find(({ id }) => item.id === id).count,
+          count: state.cart.find(({ id }) => '' + item.id === '' + id).count,
         }));
     },
     CART_LENGTH: (_, getters) =>

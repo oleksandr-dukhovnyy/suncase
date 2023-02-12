@@ -1,5 +1,5 @@
 <template>
-  <div class="cart">
+  <div class="cart" @click="$emit('open-cart')">
     <div class="cart__total-price">${{ totalPrice }}</div>
     <div class="cart__count">
       <img :src="image('/cart/cartIcon.jpg')" alt="cart" />
@@ -11,8 +11,15 @@
 </template>
 
 <script setup>
-const totalPrice = 123;
-const cartItemsCount = 2;
+import { useStore } from 'vuex';
+import { computed } from '@vue/reactivity';
+
+const $state = useStore();
+
+const cartItemsCount = computed(() => $state.getters['cart/CART_LENGTH']);
+const totalPrice = computed(() => $state.getters['cart/CART_TOTAL_PRICE']);
+
+const $emit = defineEmits(['open-cart']);
 </script>
 
 <style lang="scss" scoped>
@@ -23,7 +30,7 @@ const cartItemsCount = 2;
 
   &__total-price {
     @include font-sm;
-    font-weight: 600;
+    font-weight: $font-weight-bold;
     color: $font-color-cta;
   }
 

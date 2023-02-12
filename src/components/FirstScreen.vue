@@ -19,7 +19,7 @@
           life <br />
           seasons
         </strong>
-        <TheButton size="md" @click="browse"> browse </TheButton>
+        <TheButton size="md" type="cta" @click="browse"> browse </TheButton>
       </div>
     </div>
   </section>
@@ -98,7 +98,7 @@ $img-size-xl: 276px;
       strong {
         @include font-lg;
         text-transform: uppercase;
-        font-weight: 200;
+        font-weight: $font-weight-light;
         letter-spacing: $font-letter-spacing-md;
       }
     }

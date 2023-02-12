@@ -45,7 +45,7 @@ nav {
     color: $font-color-cta;
     text-transform: uppercase;
     padding: padding(2);
-    font-weight: 700;
+    font-weight: $font-weight-bold;
     letter-spacing: 0.3em;
     cursor: pointer;
   }

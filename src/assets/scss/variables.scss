@@ -14,6 +14,8 @@ $header-height-md: 65px;
 $color-red: #f00;
 $color-blue: #00ddff;
 $color-cta: #0878ff;
+$color-black: #222;
+$color-muted: #999;
 
 $font-size-xxsm: 10px;
 $font-size-xsm: 12px;
@@ -24,10 +26,15 @@ $font-size-lg: 20px;
 $font-size-xl: 28px;
 $font-size-xxl: 32px;
 
+$font-weight-light: 400;
+$font-weight-base: 500;
+$font-weight-bold: 700;
+$font-weight-strong: 900;
+
 $font-color-cta: $color-cta;
 $font-color-link: #0000ee;
-$font-color-muted: #999;
-$font-color-black: #222;
+$font-color-muted: $color-muted;
+$font-color-black: $color-black;
 // $font-color-red: #df0000;
 $font-color-red: $color-red;
 

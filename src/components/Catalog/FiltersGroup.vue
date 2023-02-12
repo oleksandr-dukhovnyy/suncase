@@ -57,7 +57,7 @@ const selected = (name) => {
       color: $font-color-muted;
       text-align: right;
       width: 100%;
-      font-weight: 200;
+      font-weight: $font-weight-light;
 
       &::selection {
         background-color: transparent;

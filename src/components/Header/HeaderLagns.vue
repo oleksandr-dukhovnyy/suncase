@@ -55,7 +55,7 @@ div {
     }
 
     &.selected {
-      font-weight: 600;
+      font-weight: $font-weight-bold;
       color: $font-color-black;
     }
   }

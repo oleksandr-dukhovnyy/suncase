@@ -7,6 +7,7 @@
       [`button--size--${size}`]: size !== '',
     }"
   >
+    <img v-if="iconName !== ''" :src="icon(iconName)" :alt="iconName" />
     <slot></slot>
   </button>
 </template>
@@ -15,21 +16,25 @@
 const $emit = defineEmits(['click']);
 
 const { trustedOnly } = defineProps({
-  icon: String,
   size: {
     type: String,
     default: '', // '' - is "max-content"
     validate: (str) =>
-      ['', 'sm', 'base', 'md', 'xl', 'xxl', 'fit'].includes(str),
+      ['', 'sm', 'base', 'md', 'lg', 'xl', 'xxl', 'fit'].includes(str),
   },
   type: {
     type: String,
     default: '',
-    validate: (str) => ['', 'ghost', 'error', 'info', 'cta'].includes(str),
+    validate: (str) =>
+      ['', 'ghost', 'error', 'info', 'cta', 'black'].includes(str),
   },
   trustedOnly: {
     type: Boolean,
     default: true,
+  },
+  iconName: {
+    type: String,
+    default: '',
   },
 });
 
@@ -46,6 +51,7 @@ const onClick = (e) => {
 
 <style lang="scss" scoped>
 .button {
+  @include font-base;
   text-transform: uppercase;
   padding: padding() padding(2);
   text-transform: uppercase;
@@ -53,20 +59,32 @@ const onClick = (e) => {
   border: 1px solid #939393;
   border-radius: $border-radius;
 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  img {
+    height: calc(36px - padding(2));
+    margin-right: padding();
+  }
+
   &--type {
     &--error {
-      border-color: #000;
-      background-color: $color-red;
+      color: $color-red;
+      border-color: $color-red;
     }
-
     &--info {
-      border-color: #000;
-      background-color: $color-blue;
+      color: $color-blue;
+      border-color: $color-blue;
     }
 
     &--cta {
-      border-color: #000;
-      background-color: $color-cta;
+      color: $color-cta;
+    }
+
+    &--black {
+      color: $color-black;
+      border-color: $color-black;
     }
   }
 
@@ -77,6 +95,10 @@ const onClick = (e) => {
 
     &--md {
       width: 120px;
+    }
+
+    &--lg {
+      width: 170px;
     }
 
     &--xl {

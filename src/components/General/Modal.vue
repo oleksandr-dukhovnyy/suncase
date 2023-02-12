@@ -1,13 +1,15 @@
 <template>
   <Teleport to="body">
-    <div class="layout">
-      <div class="modal">
+    <div class="layout" @click.self="close">
+      <div
+        class="modal animate__animated"
+        :class="{
+          animate__fadeInDown: !closingOn,
+          animate__fadeOutDown: closingOn,
+        }"
+      >
         <div class="modal__close">
-          <img
-            @click="$emit('close')"
-            :src="image('/slider/closeBttn.svg')"
-            alt=""
-          />
+          <img @click="close" :src="image('/slider/closeBttn.svg')" alt="X" />
         </div>
         <div class="modal__body">
           <slot></slot>
@@ -18,7 +20,20 @@
 </template>
 
 <script setup>
+import { ref } from 'vue';
+
 const $emit = defineEmits(['close']);
+
+const closingOn = ref(false);
+
+const close = () => {
+  if (closingOn.value) return;
+  closingOn.value = true;
+
+  setTimeout(() => {
+    $emit('close');
+  }, 250);
+};
 </script>
 
 <style scoped lang="scss">
@@ -41,6 +56,9 @@ const $emit = defineEmits(['close']);
 .modal {
   width: 80vw;
   height: 80vh;
+  vertical-align: middle;
+  max-height: 668px;
+  max-width: 1100px;
   background-color: #fff;
   display: grid;
   grid-template-rows: 24px 1fr;
@@ -48,9 +66,12 @@ const $emit = defineEmits(['close']);
   gap: padding();
   padding: padding(2);
 
+  --animate-duration: 400ms;
+
   @include shadow-large;
 
   &__body {
+    max-height: 668px;
   }
   &__close {
     text-align: right;
