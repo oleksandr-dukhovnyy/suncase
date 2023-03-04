@@ -5,12 +5,9 @@
 	Problem: if you change the user agent in devtools and do not reload the page, then scrollToGoods will not work correctly
 */
 const scrollToGoods = () => {
-  // let isMobile = ( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test( navigator.userAgent ) );
-
   if (document.body.clientWidth < 531) {
     let hamburgerMenu = document.querySelector('#hamburger-menu');
-    let hamburgerMenuY = hamburgerMenu.getBoundingClientRect().top;
-    console.log(hamburgerMenu, hamburgerMenuY);
+    let hamburgerMenuY = hamburgerMenu.offsetTop;
     window.scrollTo({
       top: hamburgerMenuY - 100,
       left: 0,
@@ -18,8 +15,7 @@ const scrollToGoods = () => {
     });
   } else {
     window.scrollTo({
-      top: document.querySelector('#catalog').getBoundingClientRect().y - 100,
-      left: 0,
+      top: document.querySelector('#catalog').offsetTop - 100,
       behavior: 'smooth',
     });
   }

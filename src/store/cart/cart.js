@@ -1,5 +1,7 @@
 // import { LocalStTool } from '../../js/LocalStTool.js';
 import cartStorage from './saveToStorage.js';
+import bodyScroll from '../../js/bodyScroll.js';
+import openWin from '../../js/openPayWindow.js';
 
 export default {
   namespaced: true,
@@ -21,8 +23,12 @@ export default {
     SHOW_CART({ dispatch }) {
       dispatch('SET_SHOW', true);
     },
-    ADD_TO_CART({ commit }, id) {
-      commit('ADD_TO_CART', id);
+    ADD_TO_CART({ commit, state, dispatch }, id) {
+      if (state.cart.map(({ id }) => id).includes(id)) {
+        dispatch('INC_ITEM_COUNT', id);
+      } else {
+        commit('ADD_TO_CART', { id, count: 1 });
+      }
     },
     CLEAR_CART({ dispatch }) {
       dispatch('SETUP_CART', []);
@@ -61,6 +67,18 @@ export default {
         count: 1,
       });
     },
+    CHANGE_ITEM_DATA({ commit }, { id, data }) {
+      commit('CHANGE_ITEM_DATA', {
+        id,
+        data,
+      });
+    },
+    BUY_ALL({ dispatch, getters }) {
+      openWin({ coast: getters.CART_TOTAL_PRICE }, getters.CART.length, () => {
+        dispatch('CLEAR_CART');
+        dispatch('HIDE_CART');
+      });
+    },
   },
   mutations: {
     SETUP_CART(state, cartItems) {
@@ -71,6 +89,8 @@ export default {
       cartStorage.saveCart(newCart);
     },
     SET_SHOW(state, value) {
+      bodyScroll.set(value);
+
       state.showCartPopup = value;
     },
     ADD_TO_CART(state, { id, count = 1 }) {

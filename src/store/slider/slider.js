@@ -1,3 +1,6 @@
+import bodyScroll from '../../js/bodyScroll.js';
+import openWin from '../../js/openPayWindow.js';
+
 export default {
   namespaced: true,
   actions: {
@@ -16,9 +19,24 @@ export default {
     SET_SELECTED({ commit }, id) {
       commit('SET_SELECTED', id);
     },
+    BUY_IT({ dispatch, rootGetters }, id) {
+      const item = rootGetters['glasses/UNFILTERED_SUNGLASESS_LIST'].find(
+        ({ id: itemId }) => itemId === id
+      );
+
+      if (item) {
+        openWin(item, 1, () => {
+          dispatch('HIDE_SLIDER');
+        });
+      } else {
+        console.error(`item (id === ${id}) not found`);
+      }
+    },
   },
   mutations: {
     SET_SLIDER_SHOW(state, bool) {
+      bodyScroll.set(bool);
+
       state.show = bool;
     },
     SET_SELECTED(state, id) {

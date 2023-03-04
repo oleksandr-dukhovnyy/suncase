@@ -1,7 +1,7 @@
 <template>
-  <div class="cart" @click="$emit('open-cart')">
-    <div class="cart__total-price">${{ totalPrice }}</div>
-    <div class="cart__count">
+  <div class="header-cart" @click="$emit('open-cart')">
+    <div class="header-cart__total-price">${{ totalPrice }}</div>
+    <div class="header-cart__count">
       <img :src="image('/cart/cartIcon.jpg')" alt="cart" />
       <p>
         {{ cartItemsCount }}
@@ -23,10 +23,11 @@ const $emit = defineEmits(['open-cart']);
 </script>
 
 <style lang="scss" scoped>
-.cart {
+.header-cart {
   display: flex;
   gap: padding(1);
   align-items: center;
+  cursor: pointer;
 
   &__total-price {
     @include font-sm;

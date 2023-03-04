@@ -5,6 +5,7 @@
     :class="{
       [`button--type--${type}`]: type !== '',
       [`button--size--${size}`]: size !== '',
+      'animate__animated animate__pulse': clicked && animated,
     }"
   >
     <img v-if="iconName !== ''" :src="icon(iconName)" :alt="iconName" />
@@ -13,7 +14,10 @@
 </template>
 
 <script setup>
+import { ref } from 'vue';
+
 const $emit = defineEmits(['click']);
+const clicked = ref(false);
 
 const { trustedOnly } = defineProps({
   size: {
@@ -36,6 +40,10 @@ const { trustedOnly } = defineProps({
     type: String,
     default: '',
   },
+  animated: {
+    type: Boolean,
+    default: true,
+  },
 });
 
 const onClick = (e) => {
@@ -45,6 +53,9 @@ const onClick = (e) => {
   )
     return false;
 
+  clicked.value = true;
+  setTimeout(() => (clicked.value = false), 600);
+
   $emit('click');
 };
 </script>
@@ -52,6 +63,7 @@ const onClick = (e) => {
 <style lang="scss" scoped>
 .button {
   @include font-base;
+  cursor: pointer;
   text-transform: uppercase;
   padding: padding() padding(2);
   text-transform: uppercase;

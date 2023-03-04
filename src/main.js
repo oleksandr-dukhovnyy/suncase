@@ -9,6 +9,7 @@ import 'animate.css';
 
 import TheButton from './components/General/TheButton.vue';
 import Modal from './components/General/Modal.vue';
+import SideModal from './components/General/SideModal.vue';
 
 const app = createApp(App);
 
@@ -17,6 +18,7 @@ app.use(store);
 
 app.component('TheButton', TheButton);
 app.component('Modal', Modal);
+app.component('SideModal', SideModal);
 
 app.mixin({
   methods: {
@@ -24,7 +26,7 @@ app.mixin({
       return `${this.pathToImgs}/${path}`;
     },
     icon(name, ext = 'svg') {
-      return this.image(`/icons/${name}.${ext}`);
+      return this.image(`icons/${name}.${ext}`);
     },
     openPayWindow,
   },

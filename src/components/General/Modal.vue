@@ -9,7 +9,7 @@
         }"
       >
         <div class="modal__close">
-          <img @click="close" :src="image('/slider/closeBttn.svg')" alt="X" />
+          <img @click="close" :src="image('slider/closeBttn.svg')" alt="X" />
         </div>
         <div class="modal__body">
           <slot></slot>
@@ -54,8 +54,9 @@ const close = () => {
 }
 
 .modal {
-  width: 80vw;
-  height: 80vh;
+  border-radius: $border-radius-xl;
+  width: 82vw;
+  height: 82vh;
   vertical-align: middle;
   max-height: 668px;
   max-width: 1100px;
@@ -72,9 +73,13 @@ const close = () => {
 
   &__body {
     max-height: 668px;
+    overflow-y: auto;
+    position: relative;
   }
   &__close {
     text-align: right;
+    position: relative;
+    z-index: 10;
 
     img {
       cursor: pointer;

@@ -1,6 +1,6 @@
 <template>
   <div class="logo__contain">
-    <div class="logo">
+    <div class="logo animate__animated animate__fadeInDown">
       <img width="42" height="42" :src="image('logo.png')" alt="sun" />
       <h1>
         suncase <br />

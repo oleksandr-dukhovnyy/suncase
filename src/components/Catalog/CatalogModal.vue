@@ -1,5 +1,5 @@
 <template>
-  <Modal v-if="show" @close="store.dispatch('slider/HIDE_SLIDER')">
+  <Modal v-if="show" @close="$store.dispatch('slider/HIDE_SLIDER')">
     <div class="catalog-modal">
       <div class="catalog-modal__slider">
         <img
@@ -54,8 +54,15 @@
           </div>
         </div>
         <div class="catalog-modal__actions">
-          <TheButton size="lg" type="error"> buy </TheButton>
-          <TheButton size="lg" type="black" iconName="add"> to cart </TheButton>
+          <TheButton size="lg" type="error" @click="buy"> buy </TheButton>
+          <TheButton
+            size="lg"
+            type="black"
+            :iconName="showAddToCartAnimation ? 'ok' : 'add'"
+            @click="addToCart"
+          >
+            <span v-if="!showAddToCartAnimation">to cart</span>
+          </TheButton>
         </div>
       </div>
     </div>
@@ -67,15 +74,16 @@ import { computed } from '@vue/reactivity';
 import { ref, watch } from 'vue';
 import { useStore } from 'vuex';
 
-import TheButton from '../General/TheButton.vue';
+// import TheButton from '../General/TheButton.vue';
 
 // vars
-const store = useStore();
-const selected = computed(() => store.getters['slider/SELECTED_ITEM']);
+const $store = useStore();
+const selected = computed(() => $store.getters['slider/SELECTED_ITEM']);
 const show = computed(
-  () => store.getters['slider/SLIDER_SHOW'] && selected.value.defined
+  () => $store.getters['slider/SLIDER_SHOW'] && selected.value.defined
 );
 const selectedID = ref(1);
+const showAddToCartAnimation = ref(false);
 
 // /vars
 
@@ -104,6 +112,19 @@ const moveBack = () => {
   selectedID.value--;
 };
 
+const addToCart = () => {
+  showAddToCartAnimation.value = true;
+  $store.dispatch('cart/ADD_TO_CART', selected.value.item.id);
+
+  setTimeout(() => {
+    showAddToCartAnimation.value = false;
+  }, 860);
+};
+
+const buy = () => {
+  $store.dispatch('slider/BUY_IT', selected.value.item.id);
+};
+
 // /methods
 
 // other
@@ -113,19 +134,20 @@ setInterval(moveForward, import.meta.env.MODE === 'development' ? 7000 : 3000);
 <style scoped lang="scss">
 .catalog-modal {
   display: grid;
-  gap: padding(4);
+  // gap: padding(4);
 
   grid-template-columns: 1fr;
-  grid-template-rows: 385px 1fr;
+  grid-template-columns: 1fr;
+  grid-template-rows: 356px 1fr;
 
   @include _media-up(md) {
     grid-template-columns: 1fr 250px;
     grid-template-rows: 1fr;
   }
 
-  & > * {
-    // outline: 1px dotted orange;
-  }
+  // & > * {
+  //   // outline: 1px dotted orange;
+  // }
 
   &__slider {
     max-height: 600px;

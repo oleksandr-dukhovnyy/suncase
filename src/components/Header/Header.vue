@@ -1,12 +1,15 @@
 <template>
   <header>
-    <div class="contacts" @click="scrollToTop">
+    <div
+      class="contacts animate__animated animate__fadeInLeft"
+      @click="scrollToTop"
+    >
       <p>
         <span class="contacts__phone">{{ phone }}</span>
         <span class="contacts__city"> Kyiv </span>
       </p>
     </div>
-    <div class="left-group">
+    <div class="left-group animate__animated animate__fadeInRight">
       <HeaderLagns @change-current-lang="changeCurrentLang" />
       <HeaderCart @open-cart="$store.dispatch('cart/SHOW_CART')" />
     </div>

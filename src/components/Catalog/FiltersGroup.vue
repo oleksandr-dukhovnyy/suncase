@@ -51,6 +51,11 @@ const selected = (name) => {
     display: flex;
     align-items: center;
     cursor: pointer;
+    padding: padding(0.5) 0;
+
+    @include _media-up(md) {
+      padding: 0;
+    }
 
     span {
       text-transform: uppercase;
