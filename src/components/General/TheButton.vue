@@ -75,6 +75,14 @@ const onClick = (e) => {
   align-items: center;
   justify-content: center;
 
+  transition: transform 0.7s;
+
+  @include _media-screen() {
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+
   img {
     height: calc(36px - padding(2));
     margin-right: padding();

@@ -7,9 +7,11 @@ import openPayWindow from './js/openPayWindow.js';
 import 'normalize.css';
 import 'animate.css';
 
+// components
 import TheButton from './components/General/TheButton.vue';
 import Modal from './components/General/Modal.vue';
 import SideModal from './components/General/SideModal.vue';
+import Confirmation from './components/General/Confirmation.vue';
 
 const app = createApp(App);
 
@@ -19,6 +21,7 @@ app.use(store);
 app.component('TheButton', TheButton);
 app.component('Modal', Modal);
 app.component('SideModal', SideModal);
+app.component('Confirmation', Confirmation);
 
 app.mixin({
   methods: {

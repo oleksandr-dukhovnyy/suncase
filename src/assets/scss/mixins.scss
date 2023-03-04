@@ -67,8 +67,22 @@
 
 @mixin shadow {
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  border: 1px solid #dfdfdf;
 }
 
 @mixin shadow-large {
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+@mixin button-reset {
+  cursor: pointer;
+  padding: 0;
+
+  &,
+  &:hover,
+  &:active,
+  &:focus {
+    border: none;
+    background-color: transparent;
+  }
 }

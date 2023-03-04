@@ -12,9 +12,18 @@
         ${{ sale ? oldCoast : coast }}
       </p>
       <p v-if="sale" class="item__new-coast">${{ coast }}</p>
-      <div class="item__remove" @click.stop>
-        <img @click="$emit('remove')" :src="icon('close')" alt="X" />
-      </div>
+
+      <Confirmation
+        @click.stop
+        color="red"
+        :text="'Delete?'"
+        @confirm="$emit('remove')"
+      >
+        <div class="item__remove">
+          <img :src="icon('close')" alt="X" />
+        </div>
+      </Confirmation>
+      <!-- <img :src="icon('close')" @click="$emit('remove')" alt="X" /> -->
     </div>
     <div class="item__new" v-if="isNew">new</div>
     <div @click.stop>
@@ -150,6 +159,9 @@ $item-width-xl: $item-width-lg;
   &__remove {
     margin-left: auto;
     cursor: pointer;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
 
     img {
       width: 14px;

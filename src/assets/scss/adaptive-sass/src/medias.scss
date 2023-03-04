@@ -21,3 +21,9 @@
     @error 'incurrect $medianame';
   }
 }
+
+@mixin _media-screen {
+  @media screen {
+    @content;
+  }
+}

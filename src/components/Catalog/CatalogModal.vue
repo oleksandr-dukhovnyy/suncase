@@ -229,6 +229,10 @@ setInterval(moveForward, import.meta.env.MODE === 'development' ? 7000 : 3000);
   &__selected-img {
     margin: 0 auto;
     width: 100%;
+
+    @include _media-up(md) {
+      width: 75%;
+    }
   }
 
   &__slider-img {
