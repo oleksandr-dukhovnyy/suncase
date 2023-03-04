@@ -12,7 +12,7 @@ node_modules
 dist
 dist-ssr
 *.local
-package-lock.json
+# package-lock.json
 
 /cypress/videos/
 /cypress/screenshots/
