@@ -51,35 +51,49 @@ const close = () => {
   position: fixed;
   z-index: 10;
   background-color: #fcfcfce6;
+
+  @include media-down(lg) {
+    align-items: flex-start;
+    padding-top: 24px;
+  }
 }
 
 .modal {
   border-radius: $border-radius-xl;
-  width: 82vw;
-  height: 82vh;
+  width: 86vw;
+  height: 86vh;
   vertical-align: middle;
-  max-height: 668px;
-  max-width: 1100px;
+  max-height: 720px;
+  max-width: 1200px;
   background-color: #fff;
   display: grid;
-  grid-template-rows: 24px 1fr;
+  grid-template-rows: 1fr;
   grid-template-columns: 1fr;
   gap: padding();
-  padding: padding(2);
+  padding: padding(4);
+  position: relative;
 
   --animate-duration: 400ms;
 
   @include shadow-large;
+
+  @include media-down-landscape(lg) {
+    height: 72vh;
+    max-height: 648px;
+  }
 
   &__body {
     max-height: 668px;
     overflow-y: auto;
     position: relative;
   }
+
   &__close {
     text-align: right;
-    position: relative;
-    z-index: 10;
+    position: absolute;
+    z-index: 999;
+    padding: 24px;
+    right: 0;
 
     img {
       cursor: pointer;

@@ -10,9 +10,9 @@ $breakpoints-list: (
 */
 
 $padding: 8px;
-$container-max-width: 1200px;
+$container-max-width: 1250px;
 $header-height: 108px;
-$header-height-md: 65px;
+$header-height-md: 75px; // 65px
 
 // $font-size-xsm: clamp(0.75rem, 0.11vw + 0.7rem, 0.8rem);
 // $font-size-sm: clamp(0.8rem, 0.11vw + 0.76rem, 0.89rem);
@@ -29,12 +29,12 @@ $color-black: #222;
 $color-muted: #999;
 $color-muted-lighter: #bfbfbf;
 
-$font-size-xxsm: 10px;
+$font-size-xxsm: 11px;
 $font-size-xsm: 12px;
 $font-size-sm: 14px;
 $font-size-base: 16px;
 $font-size-md: 18px;
-$font-size-lg: 20px;
+$font-size-lg: 25px;
 $font-size-xl: 28px;
 $font-size-xxl: 32px;
 

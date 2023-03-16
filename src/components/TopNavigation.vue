@@ -27,26 +27,23 @@ const selectCategory = (category) => {
 <style lang="scss" scoped>
 nav {
   // outline: 1px dotted coral;
-
-  @include font-sm;
   display: flex;
   flex-direction: column;
-  column-gap: padding(8);
-  margin: padding(4) auto;
+  column-gap: padding(4);
 
-  @include _media-up(md) {
+  @include media-up(md) {
     justify-content: center;
     flex-direction: row;
   }
 
   span {
-    @include font-sm;
+    font-size: 13px;
     text-align: center;
     color: $font-color-cta;
     text-transform: uppercase;
-    padding: padding(2);
-    font-weight: $font-weight-bold;
-    letter-spacing: 0.3em;
+    padding: 0 padding(2) padding(3);
+    font-weight: 900;
+    letter-spacing: 0.5em;
     cursor: pointer;
   }
 }

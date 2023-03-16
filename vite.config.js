@@ -1,12 +1,13 @@
 import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import path from 'path';
+// import viteJoinMediaQueries from 'vite-join-media-queries';
 
 import packageJSON from './package.json';
 
 const getConfig = (IS_DEV) => {
   return {
-    plugins: [vue()],
+    plugins: [vue() /*viteJoinMediaQueries({})*/],
     resolve: {
       alias: {
         '@': path.resolve(__dirname, 'src'),
@@ -15,7 +16,7 @@ const getConfig = (IS_DEV) => {
     },
 
     // for GH-Pages deploy
-    base: IS_DEV ? './' : `/${packageJSON.name}/`,
+    base: IS_DEV ? '/' : `/${packageJSON.name}/`,
 
     // global scss mixins & vars
     css: {

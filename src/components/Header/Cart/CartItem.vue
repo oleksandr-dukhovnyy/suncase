@@ -86,7 +86,6 @@ const modelShorted = computed(() => getShorted(model, 6));
 </script>
 
 <style lang="scss" scoped>
-// @import './cart-sizes.scss';
 $item-width: 115px;
 $item-width-sm: 120px;
 $item-width-md: 165px;
@@ -105,34 +104,34 @@ $item-width-xl: $item-width-lg;
   position: relative;
   cursor: pointer;
 
-  @include _media-up(sm) {
+  @include media-up(sm) {
     width: $item-width-sm;
   }
 
-  @include _media-up(md) {
+  @include media-up(md) {
     width: $item-width-md;
   }
 
-  @include _media-up(lg) {
+  @include media-up(lg) {
     width: $item-width-lg;
   }
 
-  @include _media-up(xl) {
+  @include media-up(xl) {
     width: $item-width-xl;
   }
 
   img {
     width: $item-width;
 
-    @include _media-up(md) {
+    @include media-up(md) {
       width: $item-width-md;
     }
 
-    @include _media-up(lg) {
+    @include media-up(lg) {
       width: $item-width-lg;
     }
 
-    @include _media-up(xl) {
+    @include media-up(xl) {
       width: $item-width-xl;
     }
   }
@@ -167,7 +166,7 @@ $item-width-xl: $item-width-lg;
       width: 14px;
       height: 14px;
 
-      @include _media-up(xl) {
+      @include media-up(xl) {
         width: 21px;
         height: 21px;
       }
@@ -192,14 +191,14 @@ $item-width-xl: $item-width-lg;
     top: 38px;
     right: 0;
 
-    @include _media-up(md) {
+    @include media-up(md) {
       @include font-xxsm;
       top: 48px;
       width: 45px;
       height: 45px;
     }
 
-    @include _media-up(xl) {
+    @include media-up(xl) {
       @include font-xxsm;
       // bottom: 62px;
       top: 70px;
@@ -215,7 +214,7 @@ $item-width-xl: $item-width-lg;
     color: $font-color-cta;
     font-weight: $font-weight-light;
 
-    @include _media-up(md) {
+    @include media-up(md) {
       @include font-md;
     }
   }
@@ -227,7 +226,7 @@ $item-width-xl: $item-width-lg;
     font-style: normal;
     color: $font-color-muted;
 
-    @include _media-up(md) {
+    @include media-up(md) {
       @include font-base;
     }
   }
@@ -236,14 +235,14 @@ $item-width-xl: $item-width-lg;
   &__title {
     display: none;
 
-    @include _media-up(lg) {
+    @include media-up(lg) {
       display: block;
     }
 
     &--shorted {
       display: block;
 
-      @include _media-up(lg) {
+      @include media-up(lg) {
         display: none;
       }
     }

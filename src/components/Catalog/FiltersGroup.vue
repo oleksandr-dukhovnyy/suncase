@@ -1,6 +1,11 @@
 <template>
   <ul class="filter-group">
-    <li v-for="(item, i) in items" :key="i" @click="selected(item.name)">
+    <li
+      :class="`filter-group--size-${size}`"
+      v-for="(item, i) in items"
+      :key="i"
+      @click="selected(item.name)"
+    >
       <span :class="item.active ? 'active' : ''">
         {{ item.title }}
       </span>
@@ -14,12 +19,17 @@
 <script setup>
 import Checkmark from './Checkmark.vue';
 
-const { items, type } = defineProps({
+const { items, type, size } = defineProps({
   items: {
     type: Array,
   },
   type: {
     type: String,
+  },
+  size: {
+    type: String,
+    default: 'md',
+    validate: (n) => ['sm', 'md', 'xl'].includes(n),
   },
 });
 
@@ -31,38 +41,55 @@ const selected = (name) => {
 </script>
 
 <style lang="scss" scoped>
+// TODO: bring into line with
 .filter-group {
   padding: 0;
   margin: 0;
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: padding();
+  letter-spacing: 5.4px;
+  gap: 18px;
+
+  &--size {
+    &-xsm {
+      font-size: 12px;
+    }
+
+    &-md {
+      font-size: 18px;
+      letter-spacing: 8.1px;
+    }
+  }
+
+  @include media-up(md) {
+    gap: 18px;
+  }
 
   &__checkmark {
     position: absolute;
-    right: (-20px - padding());
+    right: -20px;
     // 20px/20px - is a checkmark size
   }
 
   li {
-    @include font-base;
     list-style: none;
     display: flex;
     align-items: center;
     cursor: pointer;
     padding: padding(0.5) 0;
+    font-weight: 400;
+    color: #999;
 
-    @include _media-up(md) {
+    @include media-up(md) {
       padding: 0;
     }
 
     span {
       text-transform: uppercase;
-      color: $font-color-muted;
       text-align: right;
       width: 100%;
-      font-weight: $font-weight-light;
+      line-height: 1.25;
 
       &::selection {
         background-color: transparent;
@@ -70,6 +97,15 @@ const selected = (name) => {
 
       &.active {
         color: $font-color-black;
+      }
+
+      @include media-screen {
+        transition: color 700ms;
+
+        &:hover {
+          transition: color 150ms;
+          color: $font-color-black;
+        }
       }
     }
   }

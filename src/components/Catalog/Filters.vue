@@ -1,7 +1,12 @@
 <template>
   <div class="filters animate__animated animate__fadeInLeft">
     <div v-for="({ items, type }, key) in FILTERS" :key="key">
-      <FiltersGroup :items="items" :type="type" @selected="selected" />
+      <FiltersGroup
+        :size="key === 0 ? 'md' : 'xsm'"
+        :items="items"
+        :type="type"
+        @selected="selected"
+      />
       <div v-if="key !== FILTERS.length - 1" class="filters__diliver"></div>
     </div>
   </div>
@@ -24,10 +29,10 @@ const selected = ({ type, value }) => {
 <style lang="scss" scoped>
 .filters {
   &__diliver {
-    width: 60%;
+    width: 50%;
     height: 1px;
-    background-color: #000;
-    margin: 20px 0 20px auto;
+    background-color: #999;
+    margin: 40px 0 20px auto;
   }
 }
 </style>

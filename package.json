@@ -8,6 +8,7 @@
     "preview": "vite preview --port 4173"
   },
   "dependencies": {
+    "@vueuse/head": "^1.1.19",
     "animate.css": "^4.1.1",
     "normalize.css": "^8.0.1",
     "vue": "^3.2.45",
@@ -16,7 +17,11 @@
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.0.0",
+    "cssnano": "^5.1.15",
+    "postcss": "^8.4.21",
+    "postcss-combine-media-query": "^1.0.1",
     "sass": "^1.58.0",
-    "vite": "^4.0.0"
+    "vite": "^4.0.0",
+    "vite-join-media-queries": "^0.1.0"
   }
 }

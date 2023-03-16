@@ -57,6 +57,7 @@ const onMouseenter = () => {
 .confirm {
   width: 100%;
   position: relative;
+  z-index: 10;
 
   &__bttns {
     border: 1px solid $color-muted-lighter;

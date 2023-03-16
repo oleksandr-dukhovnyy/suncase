@@ -19,7 +19,7 @@
           life <br />
           seasons
         </strong>
-        <TheButton size="md" type="cta" @click="browse"> browse </TheButton>
+        <TheButton size="lg" type="cta" @click="browse"> browse </TheButton>
       </div>
     </div>
   </section>
@@ -54,15 +54,15 @@ $img-size-xl: 276px;
   grid-template-rows: auto;
   justify-content: center;
 
-  @include _media-up(sm) {
+  @include media-up(sm) {
     grid-template-columns: repeat(2, $img-size-sm);
   }
 
-  @include _media-up(md) {
+  @include media-up(md) {
     grid-template-columns: repeat(3, $img-size-md);
   }
 
-  @include _media-up(xl) {
+  @include media-up(xl) {
     grid-template-columns: repeat(4, $img-size-xl);
   }
 
@@ -71,11 +71,11 @@ $img-size-xl: 276px;
 
     width: $img-size-sm;
 
-    @include _media-up(md) {
+    @include media-up(md) {
       width: $img-size-md;
     }
 
-    @include _media-up(xl) {
+    @include media-up(xl) {
       width: $img-size-xl;
     }
 
@@ -89,31 +89,43 @@ $img-size-xl: 276px;
     &-cta-text {
       display: flex;
       flex-direction: column;
-      align-items: center;
+      align-items: flex-start;
       justify-content: center;
-      width: 100%;
+      width: 215px;
       height: 100%;
-      gap: padding(5);
+      gap: 20px;
+      margin: 0 auto;
 
       strong {
-        @include font-lg;
+        // @include font-lg;
         text-transform: uppercase;
-        font-weight: $font-weight-light;
-        letter-spacing: $font-letter-spacing-md;
+        // font-weight: $font-weight-light;
+        // letter-spacing: $font-letter-spacing-md;
+
+        font-size: 20px;
+        line-height: 22px;
+        letter-spacing: 0.45em;
+        font-weight: 400;
+      }
+
+      button {
+        font-size: 12px;
+        letter-spacing: 0.45em;
+        font-weight: 400;
       }
     }
 
     &--0 {
       order: 2;
 
-      @include _media-up(sm) {
+      @include media-up(sm) {
         order: 1;
       }
     }
     &--1 {
       order: 1;
 
-      @include _media-up(sm) {
+      @include media-up(sm) {
         order: 2;
       }
     }
@@ -122,7 +134,7 @@ $img-size-xl: 276px;
       display: none;
       order: 3;
 
-      @include _media-up(md) {
+      @include media-up(md) {
         display: block;
       }
     }
@@ -130,7 +142,7 @@ $img-size-xl: 276px;
       display: none;
       order: 4;
 
-      @include _media-up(xl) {
+      @include media-up(xl) {
         display: block;
       }
     }

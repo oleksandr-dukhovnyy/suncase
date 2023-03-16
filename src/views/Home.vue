@@ -18,7 +18,6 @@ import TopNavigation from '@/components/TopNavigation.vue';
 import FirstScreen from '@/components/FirstScreen.vue';
 import Catalog from '@/components/Catalog/Catalog.vue';
 import Footer from '@/components/Footer.vue';
-// import Modal from '../components/Modal.vue';
 
 const $store = useStore();
 
@@ -29,7 +28,7 @@ $store.dispatch('cart/FETCH_CART');
 main {
   @include container;
   display: flex;
-  gap: padding(5);
+  gap: 50px;
   flex-direction: column;
   min-height: 100vh;
   background-color: #fff;
@@ -37,8 +36,83 @@ main {
   position: relative;
   margin: 0 auto padding(10);
 
-  @include _media-up(md) {
+  @include media-up(md) {
     padding-top: $header-height-md;
+  }
+}
+</style>
+
+<style lang="scss">
+* {
+  box-sizing: border-box;
+  font-family: Roboto, sans-serif;
+  line-height: 1;
+  -webkit-tap-highlight-color: transparent;
+
+  // outline: 1px dotted coral;
+}
+
+p {
+  margin: 0;
+}
+
+html,
+body {
+  scroll-behavior: smooth;
+  background-color: #fff;
+  position: relative;
+}
+
+.d {
+  &-block {
+    display: block !important;
+  }
+  &-none {
+    display: none !important;
+  }
+
+  &-sm {
+    @include media-up(sm) {
+      &-block {
+        display: block !important;
+      }
+      &-none {
+        display: none !important;
+      }
+    }
+  }
+  &-md {
+    @include media-up(md) {
+      &-block {
+        display: block !important;
+      }
+      &-none {
+        display: none !important;
+      }
+    }
+  }
+  &-xl {
+    @include media-up(xl) {
+      &-block {
+        display: block !important;
+      }
+      &-grid {
+        display: grid !important;
+      }
+      &-none {
+        display: none !important;
+      }
+    }
+  }
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
   }
 }
 </style>

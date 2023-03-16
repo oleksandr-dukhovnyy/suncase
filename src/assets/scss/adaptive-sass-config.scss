@@ -1,0 +1,66 @@
+@import './adaptive-sass/src/index.scss';
+
+$list: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  // xl: 1300px,
+  xxl: 1400px,
+  xxxl: 1700px,
+) !default;
+
+@mixin media-up($name) {
+  @include _media-up($name, $list) {
+    @content;
+  }
+}
+
+@mixin media-down($name) {
+  @include _media-down($name, $list) {
+    @content;
+  }
+}
+
+@mixin media-up-portrait($name) {
+  @include _media-up-portrait($name, $list) {
+    @content;
+  }
+}
+
+@mixin media-up-landscape($name) {
+  @include _media-up-landscape($name, $list) {
+    @content;
+  }
+}
+
+@mixin media-down-portrait($name) {
+  @include _media-down-portrait($name, $list) {
+    @content;
+  }
+}
+
+@mixin media-down-landscape($name) {
+  @include _media-down-landscape($name, $list) {
+    @content;
+  }
+}
+
+@mixin media-screen {
+  @include _media-screen {
+    @content;
+  }
+}
+
+@mixin media-portrait {
+  @include _media-portrait {
+    @content;
+  }
+}
+
+@mixin media-landscape {
+  @include _media-landscape {
+    @content;
+  }
+}

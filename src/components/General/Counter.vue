@@ -63,7 +63,7 @@ $height-xl: 26px;
   // padding: 0 padding();
   border-radius: $border-radius;
 
-  @include _media-up(xl) {
+  @include media-up(xl) {
     height: $height-xl;
     width: $width-xl;
   }
@@ -73,7 +73,7 @@ $height-xl: 26px;
     width: 1px;
     background-color: $color-muted-lighter;
 
-    @include _media-up(xl) {
+    @include media-up(xl) {
       height: $height-xl;
     }
   }

@@ -3,7 +3,7 @@
     <div class="cart">
       <div class="cart__price">
         <HeaderCart />
-        <TheButton size="lg" type="error" @click="buy"> buy </TheButton>
+        <TheButton size="lg" type="error-filled" @click="buy"> buy </TheButton>
       </div>
       <div v-if="CART_ITEMS.length > 0" class="cart__list">
         <CartItem
@@ -74,29 +74,40 @@ const buy = () => {
 </script>
 
 <style lang="scss" scoped>
-// @import './cart-sizes.scss';
-
 .cart {
   display: grid;
   gap: padding(2);
   grid-template-columns: 1fr;
   grid-template-rows: 1fr;
-  padding-top: padding(11);
+  padding-top: 108px;
+
+  @include media-up(sm) {
+    padding-top: 83px;
+  }
 
   &__price {
     display: flex;
     flex-direction: column;
     gap: padding(2);
     align-items: center;
-    margin-top: -24px;
-    // position: fixed;
-    z-index: 3;
+    z-index: 11;
     position: fixed;
-    // left: calc(50% - 85px);
     background-color: #fff;
     left: padding(2);
     width: calc(100% - padding(4));
     padding-bottom: padding(3);
+    justify-content: center;
+    margin-top: -3px;
+
+    @include media-up(sm) {
+      flex-direction: row;
+      gap: 36px;
+    }
+
+    @include media-down-landscape(lg) {
+      padding-bottom: 16px;
+      margin-top: -16px;
+    }
   }
 
   &__list {
@@ -106,12 +117,12 @@ const buy = () => {
     column-gap: padding();
     row-gap: padding(4);
 
-    @include _media-up(sm) {
+    @include media-up(sm) {
       grid-template-columns: repeat(3, 1fr);
       row-gap: padding(6);
     }
 
-    @include _media-up(xl) {
+    @include media-up(xl) {
       grid-template-columns: repeat(4, 1fr);
     }
   }
@@ -130,7 +141,20 @@ const buy = () => {
     color: $font-color-muted;
 
     img {
-      height: 273px;
+      height: 150px;
+
+      @include media-up(xl) {
+        height: 273px;
+      }
+    }
+
+    @include media-down-landscape(xl) {
+      flex-direction: row;
+      height: 200px;
+
+      img {
+        height: 100px;
+      }
     }
   }
 }

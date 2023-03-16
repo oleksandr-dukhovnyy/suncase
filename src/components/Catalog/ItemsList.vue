@@ -39,21 +39,21 @@ const openSlider = (id) => {
   gap: padding(4);
   grid-template-columns: repeat(2, $item-width);
 
-  @include _media-up(sm) {
+  @include media-up(sm) {
     grid-template-columns: repeat(3, $item-width-sm);
   }
 
-  @include _media-up(md) {
+  @include media-up(md) {
     grid-template-columns: repeat(3, $item-width-md);
-    gap: padding(2);
+    gap: padding(4);
   }
 
-  @include _media-up(lg) {
+  @include media-up(lg) {
     grid-template-columns: repeat(3, $item-width-xl);
-    gap: padding(3);
+    gap: padding(5);
   }
 
-  @include _media-up(xl) {
+  @include media-up(xl) {
     gap: padding(6);
     grid-template-columns: repeat(4, $item-width-xl);
   }

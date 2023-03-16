@@ -134,16 +134,18 @@ setInterval(moveForward, import.meta.env.MODE === 'development' ? 7000 : 3000);
 <style scoped lang="scss">
 .catalog-modal {
   display: grid;
-  // gap: padding(4);
-
   grid-template-columns: 1fr;
-  grid-template-columns: 1fr;
-  grid-template-rows: 356px 1fr;
+  grid-template-rows: 400px 1fr;
 
-  @include _media-up(md) {
+  @include media-up(md) {
     grid-template-columns: 1fr 250px;
+    grid-template-rows: 440px 1fr;
     grid-template-rows: 1fr;
   }
+
+  // @include media-down-landscape(lg) {
+  //   height: calc(70vh - padding(8));
+  // }
 
   // & > * {
   //   // outline: 1px dotted orange;
@@ -156,8 +158,12 @@ setInterval(moveForward, import.meta.env.MODE === 'development' ? 7000 : 3000);
     align-items: center;
     justify-content: center;
 
-    @include _media-up(md) {
+    @include media-up(md) {
       height: calc(80vh - padding(8));
+    }
+
+    @include media-down-landscape(lg) {
+      height: calc(70vh - padding(8));
     }
   }
 
@@ -172,7 +178,7 @@ setInterval(moveForward, import.meta.env.MODE === 'development' ? 7000 : 3000);
     gap: padding();
     margin-bottom: padding();
 
-    @include _media-up(xl) {
+    @include media-up(xl) {
       @include font-md;
     }
   }
@@ -187,7 +193,6 @@ setInterval(moveForward, import.meta.env.MODE === 'development' ? 7000 : 3000);
     flex-direction: column;
     margin-top: padding(2);
     gap: padding();
-    align-items: center;
     justify-content: center;
   }
 
@@ -203,7 +208,7 @@ setInterval(moveForward, import.meta.env.MODE === 'development' ? 7000 : 3000);
       color: $font-color-cta;
       font-weight: $font-weight-light;
 
-      @include _media-up(xl) {
+      @include media-up(xl) {
         @include font-md;
       }
     }
@@ -230,8 +235,12 @@ setInterval(moveForward, import.meta.env.MODE === 'development' ? 7000 : 3000);
     margin: 0 auto;
     width: 100%;
 
-    @include _media-up(md) {
+    @include media-up(md) {
       width: 75%;
+    }
+
+    @include media-down-landscape(lg) {
+      width: 65%;
     }
   }
 
@@ -241,16 +250,20 @@ setInterval(moveForward, import.meta.env.MODE === 'development' ? 7000 : 3000);
     transition: 300ms;
     cursor: pointer;
 
-    @include _media-up(md) {
+    @include media-up(md) {
       width: 80px;
     }
 
-    @include _media-up(lg) {
+    @include media-up(lg) {
       width: 85px;
     }
 
-    @include _media-up(xl) {
+    @include media-up(xl) {
       width: 120px;
+    }
+
+    @include media-down-landscape(lg) {
+      width: 65px;
     }
 
     &--selected {
@@ -271,7 +284,7 @@ setInterval(moveForward, import.meta.env.MODE === 'development' ? 7000 : 3000);
       display: none;
       align-items: center;
 
-      @include _media-up(lg) {
+      @include media-up(lg) {
         display: flex;
       }
     }
@@ -285,18 +298,22 @@ setInterval(moveForward, import.meta.env.MODE === 'development' ? 7000 : 3000);
     grid-template-columns: 1fr 1fr;
     grid-auto-flow: row;
 
-    @include _media-up(lg) {
+    @include media-up(lg) {
       gap: padding();
       grid-template-rows: 1fr;
       grid-template-columns: none;
       grid-auto-flow: column;
     }
 
-    @include _media-up(xl) {
+    @include media-up(xl) {
       gap: padding(2);
       grid-template-rows: 1fr;
       grid-template-columns: none;
       grid-auto-flow: column;
+    }
+
+    @include media-down-landscape(lg) {
+      grid-template-columns: repeat(4, 1fr);
     }
   }
 }

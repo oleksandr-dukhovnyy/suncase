@@ -6,6 +6,7 @@ import store from './store/index.js';
 import openPayWindow from './js/openPayWindow.js';
 import 'normalize.css';
 import 'animate.css';
+// import { createHead } from '@vueuse/head';
 
 // components
 import TheButton from './components/General/TheButton.vue';
@@ -17,6 +18,7 @@ const app = createApp(App);
 
 app.use(router);
 app.use(store);
+// app.use(createHead());
 
 app.component('TheButton', TheButton);
 app.component('Modal', Modal);
@@ -39,6 +41,9 @@ app.mixin({
     },
     phone() {
       return '+38 063 244 1587';
+    },
+    email() {
+      return 'script@vip-person.net';
     },
   },
 });

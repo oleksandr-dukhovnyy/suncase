@@ -10,7 +10,7 @@
       </p>
     </div>
     <div class="left-group animate__animated animate__fadeInRight">
-      <HeaderLagns @change-current-lang="changeCurrentLang" />
+      <HeaderLagns @change-current-lang="onChangeCurrentLang" :langs="langs" />
       <HeaderCart @open-cart="$store.dispatch('cart/SHOW_CART')" />
     </div>
     <Cart v-if="show" @close="$store.dispatch('cart/HIDE_CART')" />
@@ -22,12 +22,11 @@ import HeaderLagns from './HeaderLagns.vue';
 import HeaderCart from './HeaderCart.vue';
 import Cart from './Cart/Cart.vue';
 import { useStore } from 'vuex';
-import { computed } from '@vue/reactivity';
+import { computed, ref } from '@vue/reactivity';
 
+// store
 const $store = useStore();
-
 const show = computed(() => $store.getters['cart/SHOW_CART_POPUP']);
-
 const scrollToTop = () => {
   self.scrollTo({
     top: 0,
@@ -35,8 +34,34 @@ const scrollToTop = () => {
   });
 };
 
-const changeCurrentLang = (newLang) => {
-  console.log('changeCurrentLang', newLang);
+// langs
+const langs = ref([
+  {
+    title: 'eng',
+    value: 'en-US',
+    selected: true,
+  },
+  {
+    title: 'ua',
+    value: 'uk-UA',
+    selected: false,
+  },
+]);
+
+const setSelectedLang = (langValue) => {
+  langs.value = langs.value.map((lng) => ({
+    ...lng,
+    selected: lng.value === langValue,
+  }));
+};
+
+const latestSelectedLang = localStorage.getItem('lang');
+if (latestSelectedLang) setSelectedLang(latestSelectedLang);
+
+const onChangeCurrentLang = (newLang) => {
+  // $store.dispatch('locale/CHANGE_LANG', newLang);
+  setSelectedLang(newLang.value);
+  localStorage.setItem('lang', newLang.value);
 };
 </script>
 
@@ -56,12 +81,13 @@ header {
   padding: 0 padding(2) padding(2);
   z-index: 1;
 
-  @include _media-up(md) {
+  @include media-up(sm) {
     flex-direction: row;
     height: $header-height-md;
+    padding-top: padding(2);
   }
 
-  @include _media-up(xxl) {
+  @include media-up(xxl) {
     padding: 0;
   }
 
@@ -72,7 +98,7 @@ header {
     align-items: center;
     cursor: pointer;
 
-    @include _media-up(md) {
+    @include media-up(sm) {
       height: $header-height-md;
     }
 
@@ -84,15 +110,19 @@ header {
     }
 
     &__phone {
-      @include font-base;
-
-      font-weight: $font-weight-light;
+      @include font-sm;
+      font-weight: 400;
+      letter-spacing: 0.25em;
     }
 
     &__city {
-      @include font-sm;
+      font-size: $font-size-xxsm;
+      color: #999;
+      letter-spacing: 0.35em;
       text-transform: uppercase;
       color: $font-color-muted;
+      display: block;
+      margin-top: 9px;
     }
   }
 
@@ -102,9 +132,8 @@ header {
     width: 100%;
     justify-content: space-evenly;
 
-    @include _media-up(md) {
+    @include media-up(sm) {
       width: max-content;
-      // gap: unset;
       justify-content: unset;
     }
   }

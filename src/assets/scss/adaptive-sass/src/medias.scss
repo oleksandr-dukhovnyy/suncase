@@ -10,6 +10,35 @@
   }
 }
 
+// @mixin _media($fromName, $toName: $fromName, $breakpoints: $breakpoints-list) {
+//   @if ($fromName == $toName) {
+//     $size: map-get($breakpoints, $fromName);
+
+//     @if $size {
+//       @media (min-width: $size) {
+//         @content;
+//       }
+//     } @else {
+//       @error 'incurrect medianame';
+//     }
+//   } @else {
+//     $sizeFrom: map-get($breakpoints, $fromName);
+//     $sizeTo: map-get($breakpoints, $toName);
+
+//     @if $sizeFrom {
+//       @if $sizeTo {
+//         @media (min-width: $sizeFrom) and (max-width: $sizeTo) {
+//           @content;
+//         }
+//       } @else {
+//         @error 'incurrect medianame';
+//       }
+//     } @else {
+//       @error 'incurrect medianame';
+//     }
+//   }
+// }
+
 @mixin _media-down($medianame, $breakpoints: $breakpoints-list) {
   $size: map-get($breakpoints, $medianame);
 
@@ -18,12 +47,72 @@
       @content;
     }
   } @else {
-    @error 'incurrect $medianame';
+    @error 'incurrect medianame';
+  }
+}
+
+@mixin _media-up-portrait($medianame, $breakpoints: $breakpoints-list) {
+  $size: map-get($breakpoints, $medianame);
+
+  @if $size {
+    @media (orientation: portrait) and (min-width: $size) {
+      @content;
+    }
+  } @else {
+    @error 'incurrect medianame';
+  }
+}
+
+@mixin _media-up-landscape($medianame, $breakpoints: $breakpoints-list) {
+  $size: map-get($breakpoints, $medianame);
+
+  @if $size {
+    @media (orientation: landscape) and (min-width: $size) {
+      @content;
+    }
+  } @else {
+    @error 'incurrect medianame';
+  }
+}
+
+@mixin _media-down-portrait($medianame, $breakpoints: $breakpoints-list) {
+  $size: map-get($breakpoints, $medianame);
+
+  @if $size {
+    @media (orientation: portrait) and (max-width: $size) {
+      @content;
+    }
+  } @else {
+    @error 'incurrect medianame';
+  }
+}
+
+@mixin _media-down-landscape($medianame, $breakpoints: $breakpoints-list) {
+  $size: map-get($breakpoints, $medianame);
+
+  @if $size {
+    @media (orientation: landscape) and (max-width: $size) {
+      @content;
+    }
+  } @else {
+    @error 'incurrect medianame';
   }
 }
 
 @mixin _media-screen {
   @media screen {
+    @content;
+  }
+}
+
+@mixin _media-portrait {
+  @media (orientation: portrait) {
+    @content;
+  }
+}
+
+@mixin _media-landscape {
+  @media (orientation: landscape) {
     @content;
   }
 }

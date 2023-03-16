@@ -33,7 +33,7 @@ yarn add adaptive-css
 
 ### Default usage
 
-Этот **scss**:
+Следующий **scss**:
 
 ```scss
 @import 'adaptive-css';

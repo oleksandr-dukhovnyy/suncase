@@ -33,16 +33,21 @@ const $emit = defineEmits(['open-cart']);
     @include font-sm;
     font-weight: $font-weight-bold;
     color: $font-color-cta;
+    font-weight: 900;
+    font-size: $font-size-xxsm - 1;
+    letter-spacing: 0.45em;
   }
 
   &__count {
-    @include font-xsm;
+    font-weight: 600;
+    font-size: 10px;
+    letter-spacing: 0.45em;
     position: relative;
     color: $font-color-black;
 
     p {
       position: absolute;
-      bottom: -4px;
+      bottom: 0px;
       left: 14px;
     }
   }

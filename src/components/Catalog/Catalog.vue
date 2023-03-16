@@ -4,14 +4,14 @@
     <div class="catalog__filters">
       <Filters />
     </div>
-    <div class="catalog__hamburder" @click="setShowSideModal(true)">
+    <div class="catalog__hamburder" @click="showSideModal = true">
       <img :src="icon('menu')" alt="menu" />
     </div>
     <div class="catalog__items">
       <ItemsList />
     </div>
   </section>
-  <CatalogHamburgerMenu v-if="showSideModal" @close="setShowSideModal(false)" />
+  <CatalogHamburgerMenu v-if="showSideModal" @close="showSideModal = false" />
   <CatalogModal />
 </template>
 
@@ -24,10 +24,6 @@ import CatalogHamburgerMenu from './CatalogHamburgerMenu.vue';
 import { ref } from 'vue';
 
 const showSideModal = ref(false);
-
-const setShowSideModal = (bool) => {
-  showSideModal.value = bool;
-};
 </script>
 
 <style lang="scss" scoped>
@@ -37,25 +33,33 @@ const setShowSideModal = (bool) => {
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 42px 1fr;
-  column-gap: padding(4);
+  column-gap: 50px;
   row-gap: padding(4);
-  margin: 0 auto;
+  margin: 30px auto 0;
 
-  @include _media-up(md) {
+  @include media-up(md) {
     grid-template-rows: 1fr;
     grid-template-columns: 180px 1fr;
+  }
+
+  @include media-up(xl) {
+    column-gap: 72px;
+  }
+
+  @include media-up(xxl) {
+    column-gap: 98px;
   }
 
   &__filters {
     display: none;
 
-    @include _media-up(md) {
+    @include media-up(md) {
       display: block;
     }
   }
 
   &__hamburder {
-    @include _media-up(md) {
+    @include media-up(md) {
       display: none;
     }
   }

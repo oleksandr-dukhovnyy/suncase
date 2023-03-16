@@ -68,20 +68,22 @@ const onClick = (e) => {
   padding: padding() padding(2);
   text-transform: uppercase;
   background-color: transparent;
-  border: 1px solid #939393;
+  border: 1px solid #000;
   border-radius: $border-radius;
+  height: 43px;
+  line-height: 1;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
-  transition: transform 0.7s;
+  // transition: transform 0.7s;
 
-  @include _media-screen() {
-    &:hover {
-      transform: scale(1.05);
-    }
-  }
+  // @include media-screen {
+  //   &:hover {
+  //     transform: scale(1.05);
+  //   }
+  // }
 
   img {
     height: calc(36px - padding(2));
@@ -93,6 +95,13 @@ const onClick = (e) => {
       color: $color-red;
       border-color: $color-red;
     }
+
+    &--error-filled {
+      color: #fff;
+      background-color: $color-red;
+      border-color: $color-red;
+    }
+
     &--info {
       color: $color-blue;
       border-color: $color-blue;

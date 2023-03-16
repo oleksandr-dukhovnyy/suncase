@@ -9,7 +9,7 @@ const router = createRouter({
   base: import.meta.env.BASE_URL,
   routes: [
     {
-      path: '/',
+      path: '/suncase',
       name: 'home',
       component: HomeView,
     },

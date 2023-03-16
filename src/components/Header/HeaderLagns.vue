@@ -3,8 +3,8 @@
     <span
       v-for="lang in langs"
       :key="lang.value"
-      @click="setLang(lang)"
-      :class="currentLang === lang.value ? 'selected' : ''"
+      @click="$emit('change-current-lang', lang)"
+      :class="lang.selected ? 'selected' : ''"
     >
       {{ lang.title }}
     </span>
@@ -12,29 +12,11 @@
 </template>
 
 <script setup>
-import { ref as $ref, watch as $watch } from 'vue';
-
-const $emit = defineEmits(['change-current-lang']);
-
-const currentLang = $ref('en-US');
-
-const setLang = ({ value }) => {
-  currentLang.value = value;
-};
-
-const langs = [
-  {
-    title: 'eng',
-    value: 'en-US',
+defineProps({
+  langs: {
+    type: Array,
+    default: () => [],
   },
-  {
-    title: 'ua',
-    value: 'uk-UA',
-  },
-];
-
-$watch(currentLang, () => {
-  $emit('change-current-lang', currentLang.value);
 });
 </script>
 
@@ -43,20 +25,23 @@ div {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: padding();
+  gap: 16px;
 
   span {
     color: $font-color-muted;
-    @include font-sm;
+    @include font-xxsm;
     cursor: pointer;
     text-transform: uppercase;
+    color: #999;
+    letter-spacing: 0.35em;
+
     &::selection {
       background-color: transparent;
     }
 
     &.selected {
-      font-weight: $font-weight-bold;
-      color: $font-color-black;
+      font-weight: 700;
+      color: #000;
     }
   }
 }

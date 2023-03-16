@@ -1,4 +1,4 @@
-@import './adaptive-sass/src/index.scss';
+@import './adaptive-sass-config.scss';
 
 // sizes
 @mixin container {
@@ -49,16 +49,6 @@
 }
 
 // animations
-@keyframes rotate {
-  0% {
-    transform: rotate(0deg);
-  }
-
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
 @mixin rotate($speed: 5500ms) {
   animation: rotate $speed infinite linear;
 }

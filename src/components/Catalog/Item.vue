@@ -57,26 +57,26 @@ const { title, model, coast, sale, oldCoast, isNew, id } = defineProps({
   position: relative;
   cursor: pointer;
 
-  @include _media-up(sm) {
+  @include media-up(sm) {
     width: $item-width-sm;
   }
 
-  @include _media-up(md) {
+  @include media-up(md) {
     width: $item-width-md;
   }
 
-  @include _media-up(xl) {
+  @include media-up(xl) {
     width: $item-width-xl;
   }
 
   img {
     width: $item-width;
 
-    @include _media-up(md) {
+    @include media-up(md) {
       width: $item-width-md;
     }
 
-    @include _media-up(xl) {
+    @include media-up(xl) {
       width: $item-width-xl;
     }
   }
@@ -84,10 +84,14 @@ const { title, model, coast, sale, oldCoast, isNew, id } = defineProps({
   &__price {
     display: flex;
     gap: padding();
+
+    letter-spacing: 5.4px;
+    font-weight: 300;
+    font-size: 12px;
   }
 
   &__coast {
-    @include font-base;
+    // @include font-base;
     color: $font-color-cta;
 
     &--line-through {
@@ -116,7 +120,7 @@ const { title, model, coast, sale, oldCoast, isNew, id } = defineProps({
     bottom: 85px;
     right: 0;
 
-    @include _media-up(xl) {
+    @include media-up(xl) {
       bottom: 62px;
       width: 50px;
       height: 50px;
@@ -124,17 +128,25 @@ const { title, model, coast, sale, oldCoast, isNew, id } = defineProps({
   }
 
   strong {
-    @include font-base;
-    letter-spacing: $font-letter-spacing-sm;
+    // @include font-base;
+    // letter-spacing: $font-letter-spacing-sm;
+    // font-weight: $font-weight-light;
+    font-size: 15px;
+    letter-spacing: 6.75px;
     color: $font-color-cta;
-    font-weight: $font-weight-light;
+    font-weight: 400;
+    margin-bottom: 8px;
   }
 
   em {
-    @include font-sm;
-    letter-spacing: $font-letter-spacing-sm;
+    // @include font-sm;
+    // letter-spacing: $font-letter-spacing-sm;
+    // color: $font-color-muted;
     font-style: normal;
-    color: $font-color-muted;
+    letter-spacing: 5.4px;
+    font-size: 12px;
+    color: #999;
+    margin-bottom: 8px;
   }
 }
 </style>

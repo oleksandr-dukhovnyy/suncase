@@ -22,17 +22,17 @@
   align-items: center;
   position: absolute;
   top: 130px;
-  left: calc(50% - 104px);
+  left: calc(50% - 133.5px);
 
-  @include _media-up(md) {
+  @include media-up(md) {
     z-index: 2;
-    top: 4px;
+    top: 12px;
   }
 
   &__contain {
     margin-bottom: padding(15);
 
-    @include _media-up(md) {
+    @include media-up(md) {
       margin-bottom: 0;
     }
   }
@@ -44,11 +44,11 @@
   }
 
   h1 {
-    @include font-md;
+    @include font-lg;
     font-weight: $font-weight-bold;
     letter-spacing: 0.5em;
     text-transform: uppercase;
-    line-height: 1;
+    line-height: 0.8;
     text-align: center;
     width: max-content;
     margin: padding() 0;
@@ -57,7 +57,7 @@
       @include font-xsm;
       font-weight: $font-weight-light;
       text-transform: uppercase;
-      letter-spacing: 0.35em;
+      letter-spacing: 0.45em;
     }
   }
 }
