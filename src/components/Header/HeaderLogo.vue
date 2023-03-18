@@ -21,12 +21,12 @@
   grid-gap: padding(2);
   align-items: center;
   position: absolute;
-  top: 130px;
+  top: 154px; // 130px
   left: calc(50% - 133.5px);
 
   @include media-up(md) {
     z-index: 2;
-    top: 12px;
+    top: 36px;
   }
 
   &__contain {

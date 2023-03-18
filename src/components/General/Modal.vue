@@ -11,7 +11,7 @@
         <div class="modal__close">
           <img @click="close" :src="image('slider/closeBttn.svg')" alt="X" />
         </div>
-        <div class="modal__body">
+        <div class="modal__body" @keydown.esc="close">
           <slot></slot>
         </div>
       </div>

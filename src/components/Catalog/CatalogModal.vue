@@ -1,5 +1,5 @@
 <template>
-  <Modal v-if="show" @close="$store.dispatch('slider/HIDE_SLIDER')">
+  <Modal v-if="show" @close="closeSlider">
     <div class="catalog-modal">
       <div class="catalog-modal__slider">
         <img
@@ -52,6 +52,9 @@
               ${{ selected.item.coast }}
             </p>
           </div>
+          <div>
+            <Counter :value="count" :max="9" @inc="count++" @dec="count--" />
+          </div>
         </div>
         <div class="catalog-modal__actions">
           <TheButton size="lg" type="error" @click="buy"> buy </TheButton>
@@ -70,8 +73,8 @@
 </template>
 
 <script setup>
-import { computed } from '@vue/reactivity';
-import { ref, watch } from 'vue';
+import Counter from '../General/Counter.vue';
+import { ref, watch, computed } from 'vue';
 import { useStore } from 'vuex';
 
 // import TheButton from '../General/TheButton.vue';
@@ -84,7 +87,8 @@ const show = computed(
 );
 const selectedID = ref(1);
 const showAddToCartAnimation = ref(false);
-
+const count = ref(1);
+const resetCounter = () => (count.value = 1);
 // /vars
 
 // watchers
@@ -114,7 +118,11 @@ const moveBack = () => {
 
 const addToCart = () => {
   showAddToCartAnimation.value = true;
-  $store.dispatch('cart/ADD_TO_CART', selected.value.item.id);
+  $store.dispatch('cart/ADD_TO_CART', {
+    id: selected.value.item.id,
+    count: count.value,
+    overflow: 'cut',
+  });
 
   setTimeout(() => {
     showAddToCartAnimation.value = false;
@@ -123,6 +131,11 @@ const addToCart = () => {
 
 const buy = () => {
   $store.dispatch('slider/BUY_IT', selected.value.item.id);
+};
+
+const closeSlider = () => {
+  resetCounter();
+  $store.dispatch('slider/HIDE_SLIDER');
 };
 
 // /methods
@@ -137,15 +150,22 @@ setInterval(moveForward, import.meta.env.MODE === 'development' ? 7000 : 3000);
   grid-template-columns: 1fr;
   grid-template-rows: 400px 1fr;
 
+  height: calc(100% - 30px);
+  padding: 30px 0;
+
   @include media-up(md) {
     grid-template-columns: 1fr 250px;
-    grid-template-rows: 440px 1fr;
+    // grid-template-rows: 440px 1fr;
     grid-template-rows: 1fr;
   }
 
-  // @include media-down-landscape(lg) {
-  //   height: calc(70vh - padding(8));
-  // }
+  @include media-down-landscape(lg) {
+    padding: 0;
+  }
+
+  @include media-down-portrait(lg) {
+    grid-template-rows: 350px 1fr;
+  }
 
   // & > * {
   //   // outline: 1px dotted orange;

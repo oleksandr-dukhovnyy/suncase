@@ -23,11 +23,14 @@ export default {
     SHOW_CART({ dispatch }) {
       dispatch('SET_SHOW', true);
     },
-    ADD_TO_CART({ commit, state, dispatch }, id) {
+    ADD_TO_CART(
+      { commit, state, dispatch },
+      { id, count, overflow = 'error' }
+    ) {
       if (state.cart.map(({ id }) => id).includes(id)) {
-        dispatch('INC_ITEM_COUNT', id);
+        dispatch('CHANGE_ITEM_COUNT', { id, count, overflow });
       } else {
-        commit('ADD_TO_CART', { id, count: 1 });
+        commit('ADD_TO_CART', { id, count });
       }
     },
     CLEAR_CART({ dispatch }) {
@@ -36,7 +39,7 @@ export default {
     DELETE_ITEM({ commit }, id) {
       commit('DELETE_ITEM', id);
     },
-    CHANGE_ITEM_COUNT({ commit, getters }, { id, count }) {
+    CHANGE_ITEM_COUNT({ commit, getters }, { id, count, overflow = 'error' }) {
       const item = getters.CART.find(({ id: _id }) => _id === id);
 
       if (!item)
@@ -45,14 +48,24 @@ export default {
           count,
         });
 
-      const sum = item.count + count;
+      let sum = item.count + count;
 
-      if (sum < 1) return console.error('CHANGE_ITEM_COUNT: sum < 0', { item });
-      if (sum > 9) return console.error('CHANGE_ITEM_COUNT: sum > 9', { item });
+      switch (overflow) {
+        case 'error': {
+          if (sum < 1)
+            return console.error('CHANGE_ITEM_COUNT: sum < 0', { item });
+          if (sum > 9)
+            return console.error('CHANGE_ITEM_COUNT: sum > 9', { item });
+        }
+
+        case 'cut': {
+          sum = sum > 9 ? 9 : sum < 1 ? 1 : sum;
+        }
+      }
 
       commit('CHANGE_ITEM_DATA', {
         id,
-        data: { count: sum },
+        data: { count: sum > 9 ? 9 : sum < 1 ? 1 : sum },
       });
     },
     DEC_ITEM_COUNT({ dispatch }, id) {
