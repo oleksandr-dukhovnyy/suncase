@@ -26,7 +26,7 @@
 
   @include media-up(md) {
     z-index: 2;
-    top: 36px;
+    top: 30px;
   }
 
   &__contain {

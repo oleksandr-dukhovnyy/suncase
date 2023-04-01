@@ -1,20 +1,25 @@
 <template>
-  <header>
-    <div
-      class="contacts animate__animated animate__fadeInLeft"
-      @click="scrollToTop"
-    >
-      <p>
-        <span class="contacts__phone">{{ phone }}</span>
-        <span class="contacts__city"> Kyiv </span>
-      </p>
-    </div>
-    <div class="left-group animate__animated animate__fadeInRight">
-      <HeaderLagns @change-current-lang="onChangeCurrentLang" :langs="langs" />
-      <HeaderCart @open-cart="$store.dispatch('cart/SHOW_CART')" />
-    </div>
-    <Cart v-if="show" @close="$store.dispatch('cart/HIDE_CART')" />
-  </header>
+  <div class="header__contain">
+    <header class="header">
+      <div
+        class="contacts animate__animated animate__fadeInLeft"
+        @click="scrollToTop"
+      >
+        <p>
+          <span class="contacts__phone">{{ phone }}</span>
+          <span class="contacts__city"> Kyiv </span>
+        </p>
+      </div>
+      <div class="left-group animate__animated animate__fadeInRight">
+        <HeaderLagns
+          @change-current-lang="onChangeCurrentLang"
+          :langs="langs"
+        />
+        <HeaderCart @open-cart="$store.dispatch('cart/SHOW_CART')" />
+      </div>
+      <Cart v-if="show" @close="$store.dispatch('cart/HIDE_CART')" />
+    </header>
+  </div>
 </template>
 
 <script setup>
@@ -66,8 +71,9 @@ const onChangeCurrentLang = (newLang) => {
 </script>
 
 <style lang="scss" scoped>
-header {
+.header {
   @include container;
+  // max-width: 1310px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -75,8 +81,8 @@ header {
   background-color: #fff;
   justify-content: space-between;
   width: 100%;
-  position: fixed;
-  top: 0;
+  // position: fixed;
+  // top: 0;
   gap: padding(2);
   padding: 0 padding(2) padding(2);
   z-index: 1;
@@ -87,8 +93,27 @@ header {
     padding-top: padding(2);
   }
 
-  @include media-up(xxl) {
+  @include media-up(xxxl) {
     padding: 0;
+  }
+
+  // left: calc(50% - 655px);
+
+  // @include media-up(xxxl) {
+  //   padding: 0 30px;
+  //   // left: calc(50% - 655px);
+  // }
+
+  &__contain {
+    background-color: #fff;
+    position: fixed;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    top: 0;
+    left: 0;
   }
 
   .contacts {

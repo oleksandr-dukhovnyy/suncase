@@ -6,9 +6,8 @@ $list: (
   md: 768px,
   lg: 992px,
   xl: 1200px,
-  // xl: 1300px,
-  xxl: 1400px,
-  xxxl: 1700px,
+  xxl: 1360px,
+  xxxl: 1400px,
 ) !default;
 
 @mixin media-up($name) {

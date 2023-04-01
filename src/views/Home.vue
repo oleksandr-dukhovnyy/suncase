@@ -37,7 +37,7 @@ main {
   margin: 0 auto padding(10);
 
   @include media-up(md) {
-    padding-top: $header-height-md;
+    padding-top: 78px;
   }
 }
 </style>

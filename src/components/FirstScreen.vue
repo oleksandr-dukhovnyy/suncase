@@ -48,36 +48,45 @@ $img-size-sm: 276px;
 $img-size-md: 226px;
 $img-size-xl: 276px;
 
+$img-size-2nth: 326px;
+
 .f-screen {
   display: grid;
   grid-gap: padding(4);
   grid-template-rows: auto;
   justify-content: center;
+  // overflow-x: hidden;
 
-  @include media-up(sm) {
-    grid-template-columns: repeat(2, $img-size-sm);
+  @include media-down(sm) {
+    grid-template-columns: 1fr;
   }
 
-  @include media-up(md) {
-    grid-template-columns: repeat(3, $img-size-md);
+  @include media-up(sm) {
+    grid-template-columns: 280px 280px;
+    grid-gap: padding(2);
   }
 
   @include media-up(xl) {
-    grid-template-columns: repeat(4, $img-size-xl);
+    grid-template-columns: 351px 433px 351px;
+    grid-gap: 30px;
+  }
+
+  @include media-up(xxl) {
+    grid-template-columns: 276px 326px 276px 326px;
   }
 
   &__item {
     height: 530px;
+    // width: $img-size-sm;
+    width: 100%;
 
-    width: $img-size-sm;
+    // @include media-up(md) {
+    //   width: $img-size-md;
+    // }
 
-    @include media-up(md) {
-      width: $img-size-md;
-    }
-
-    @include media-up(xl) {
-      width: $img-size-xl;
-    }
+    // @include media-up(xl) {
+    //   width: $img-size-xl;
+    // }
 
     &-img {
       height: 530px;
@@ -122,8 +131,10 @@ $img-size-xl: 276px;
         order: 1;
       }
     }
+
     &--1 {
       order: 1;
+      margin: 0 auto;
 
       @include media-up(sm) {
         order: 2;
@@ -134,15 +145,16 @@ $img-size-xl: 276px;
       display: none;
       order: 3;
 
-      @include media-up(md) {
+      @include media-up(xl) {
         display: block;
       }
     }
+
     &--3 {
       display: none;
       order: 4;
 
-      @include media-up(xl) {
+      @include media-up(xxl) {
         display: block;
       }
     }

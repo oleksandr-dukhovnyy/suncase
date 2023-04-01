@@ -189,7 +189,7 @@ export default [
     brend: 'Versace',
     sale: false,
     oldCoast: 0,
-    model: 'PO9714S',
+    model: 'VE2183',
     coast: 199,
     id: '16',
     gender: 'all',

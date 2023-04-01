@@ -223,21 +223,25 @@ setInterval(moveForward, import.meta.env.MODE === 'development' ? 7000 : 3000);
     gap: padding();
 
     strong {
-      @include font-base;
+      // @include font-base;
       letter-spacing: $font-letter-spacing-sm;
       color: $font-color-cta;
       font-weight: $font-weight-light;
 
-      @include media-up(xl) {
-        @include font-md;
-      }
+      font-size: 15px;
+
+      // @include media-up(xl) {
+      //   @include font-md;
+      // }
     }
 
     em {
-      @include font-sm;
+      // @include font-sm;
       letter-spacing: $font-letter-spacing-sm;
       font-style: normal;
       color: $font-color-muted;
+
+      font-size: 12px;
 
       &--line-through {
         text-decoration: line-through;

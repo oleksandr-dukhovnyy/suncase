@@ -39,14 +39,15 @@ const showSideModal = ref(false);
 
   @include media-up(md) {
     grid-template-rows: 1fr;
-    grid-template-columns: 180px 1fr;
+    // grid-template-columns: 180px 1fr;
+    grid-template-columns: 155px 1fr;
   }
 
   @include media-up(xl) {
     column-gap: 72px;
   }
 
-  @include media-up(xxl) {
+  @include media-up(xxxl) {
     column-gap: 98px;
   }
 

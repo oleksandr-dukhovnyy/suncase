@@ -36,6 +36,10 @@ nav {
     flex-direction: row;
   }
 
+  @include media-up(xl) {
+    padding: 30px 0;
+  }
+
   span {
     font-size: 13px;
     text-align: center;
@@ -45,6 +49,10 @@ nav {
     font-weight: 900;
     letter-spacing: 0.5em;
     cursor: pointer;
+
+    @include media-up(xl) {
+      padding: 0 16px;
+    }
   }
 }
 </style>

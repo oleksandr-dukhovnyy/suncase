@@ -208,27 +208,31 @@ $item-width-xl: $item-width-lg;
   }
 
   strong {
-    @include font-base;
+    // @include font-base;
     // min-height: 32px;
     letter-spacing: $font-letter-spacing-sm;
     color: $font-color-cta;
     font-weight: $font-weight-light;
 
-    @include media-up(md) {
-      @include font-md;
-    }
+    font-size: 15px;
+
+    // @include media-up(md) {
+    //   @include font-md;
+    // }
   }
 
   em {
-    @include font-sm;
+    // @include font-sm;
     // min-height: 28px;
     letter-spacing: $font-letter-spacing-xs;
     font-style: normal;
     color: $font-color-muted;
 
-    @include media-up(md) {
-      @include font-base;
-    }
+    font-size: 12px;
+
+    // @include media-up(md) {
+    //   @include font-base;
+    // }
   }
 
   &__model,
