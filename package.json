@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@vueuse/head": "^1.1.19",
+    "adaptive-scss": "^1.1.0",
     "animate.css": "^4.1.1",
     "normalize.css": "^8.0.1",
     "vue": "^3.2.45",

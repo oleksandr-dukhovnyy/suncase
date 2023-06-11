@@ -19,7 +19,9 @@
           life <br />
           seasons
         </strong>
-        <TheButton size="lg" type="cta" @click="browse"> browse </TheButton>
+        <TheButton size="lg" type="cta" @click="scrollToGoods">
+          browse
+        </TheButton>
       </div>
     </div>
   </section>
@@ -37,17 +39,10 @@ const sections = [
   { type: 'img', url: getPathToImgs(2) },
   { type: 'img', url: getPathToImgs(3) },
 ];
-
-const browse = () => {
-  scrollToGoods();
-};
 </script>
 
 <style lang="scss" scoped>
 $img-size-sm: 276px;
-$img-size-md: 226px;
-$img-size-xl: 276px;
-
 $img-size-2nth: 326px;
 
 .f-screen {
@@ -55,38 +50,29 @@ $img-size-2nth: 326px;
   grid-gap: padding(4);
   grid-template-rows: auto;
   justify-content: center;
-  // overflow-x: hidden;
+  gap: 30px;
+  grid-template-columns: $img-size-2nth;
 
-  @include media-down(sm) {
-    grid-template-columns: 1fr;
-  }
+  // see project tasks for complete it
+  // @include media-up(xs) {
+  //   grid-template-columns: $img-size-2nth;
+  // }
+
+  // @include media-up(sm) {
+  //   grid-template-columns: $img-size-sm $img-size-2nth;
+  // }
 
   @include media-up(sm) {
-    grid-template-columns: 280px 280px;
-    grid-gap: padding(2);
-  }
-
-  @include media-up(xl) {
-    grid-template-columns: 351px 433px 351px;
-    grid-gap: 30px;
+    grid-template-columns: $img-size-sm $img-size-2nth $img-size-sm;
   }
 
   @include media-up(xxl) {
-    grid-template-columns: 276px 326px 276px 326px;
+    grid-template-columns: $img-size-sm $img-size-2nth $img-size-sm $img-size-2nth;
   }
 
   &__item {
     height: 530px;
-    // width: $img-size-sm;
     width: 100%;
-
-    // @include media-up(md) {
-    //   width: $img-size-md;
-    // }
-
-    // @include media-up(xl) {
-    //   width: $img-size-xl;
-    // }
 
     &-img {
       height: 530px;
@@ -106,11 +92,7 @@ $img-size-2nth: 326px;
       margin: 0 auto;
 
       strong {
-        // @include font-lg;
         text-transform: uppercase;
-        // font-weight: $font-weight-light;
-        // letter-spacing: $font-letter-spacing-md;
-
         font-size: 20px;
         line-height: 22px;
         letter-spacing: 0.45em;
