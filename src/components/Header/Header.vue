@@ -95,9 +95,9 @@ const onChangeCurrentLang = (newLang) => {
     padding-right: 30px;
   }
 
-  @include media-up(xxxl) {
-    padding: 0;
-  }
+  // @include media-up(xxxl) {
+  //   padding: 0;
+  // }
 
   // left: calc(50% - 655px);
 
