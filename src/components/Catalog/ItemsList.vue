@@ -37,7 +37,11 @@ const openSlider = (id) => {
 .items-list {
   display: grid;
   gap: padding(4);
-  grid-template-columns: repeat(2, $item-width);
+  grid-template-columns: repeat(1, $item-width);
+
+  @include media-up(smx) {
+    grid-template-columns: repeat(2, $item-width);
+  }
 
   @include media-up(sm) {
     grid-template-columns: repeat(3, $item-width-sm);

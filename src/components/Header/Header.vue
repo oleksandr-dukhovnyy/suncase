@@ -91,6 +91,8 @@ const onChangeCurrentLang = (newLang) => {
     flex-direction: row;
     height: $header-height-md;
     padding-top: padding(2);
+    padding-left: 30px;
+    padding-right: 30px;
   }
 
   @include media-up(xxxl) {

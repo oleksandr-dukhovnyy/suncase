@@ -50,6 +50,10 @@ nav {
     letter-spacing: 0.5em;
     cursor: pointer;
 
+    @include media-up(md) {
+      padding: 30px padding(2);
+    }
+
     @include media-up(xl) {
       padding: 0 16px;
     }

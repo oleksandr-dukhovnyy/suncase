@@ -42,7 +42,7 @@ const sections = [
 </script>
 
 <style lang="scss" scoped>
-$img-size-sm: 276px;
+$img-size: 276px;
 $img-size-2nth: 326px;
 
 .f-screen {
@@ -51,7 +51,7 @@ $img-size-2nth: 326px;
   grid-template-rows: auto;
   justify-content: center;
   gap: 30px;
-  grid-template-columns: $img-size-2nth;
+  grid-template-columns: 1fr;
 
   // see project tasks for complete it
   // @include media-up(xs) {
@@ -59,15 +59,23 @@ $img-size-2nth: 326px;
   // }
 
   // @include media-up(sm) {
-  //   grid-template-columns: $img-size-sm $img-size-2nth;
+  //   grid-template-columns: $img-size $img-size-2nth;
   // }
 
-  @include media-up(sm) {
-    grid-template-columns: $img-size-sm $img-size-2nth $img-size-sm;
+  @include media-up(smx) {
+    grid-template-columns: $img-size-2nth;
+  }
+
+  @include media-up(xsm) {
+    grid-template-columns: $img-size $img-size-2nth;
+  }
+
+  @include media-up(xlg) {
+    grid-template-columns: $img-size $img-size-2nth $img-size;
   }
 
   @include media-up(xxl) {
-    grid-template-columns: $img-size-sm $img-size-2nth $img-size-sm $img-size-2nth;
+    grid-template-columns: $img-size $img-size-2nth $img-size $img-size-2nth;
   }
 
   &__item {
@@ -109,7 +117,7 @@ $img-size-2nth: 326px;
     &--0 {
       order: 2;
 
-      @include media-up(sm) {
+      @include media-down(sm) {
         order: 1;
       }
     }
@@ -127,7 +135,7 @@ $img-size-2nth: 326px;
       display: none;
       order: 3;
 
-      @include media-up(xl) {
+      @include media-up(xlg) {
         display: block;
       }
     }
