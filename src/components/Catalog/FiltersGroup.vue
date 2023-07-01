@@ -57,7 +57,7 @@ const selected = (name) => {
     }
 
     &-md {
-      font-size: 18px;
+      font-size: 20px;
       letter-spacing: 8.1px;
     }
   }

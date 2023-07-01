@@ -22,18 +22,18 @@ defineProps({
 
 <style scoped lang="scss">
 div {
+  gap: 10px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 16px;
 
   span {
     color: $font-color-muted;
     @include font-xxsm;
     cursor: pointer;
-    text-transform: uppercase;
     color: #999;
     letter-spacing: 0.35em;
+    text-transform: uppercase;
 
     &::selection {
       background-color: transparent;

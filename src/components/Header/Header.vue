@@ -73,38 +73,22 @@ const onChangeCurrentLang = (newLang) => {
 <style lang="scss" scoped>
 .header {
   @include container;
-  // max-width: 1310px;
+  max-width: 1300px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: $header-height;
-  background-color: #fff;
   justify-content: space-between;
   width: 100%;
-  // position: fixed;
-  // top: 0;
   gap: padding(2);
-  padding: 0 padding(2) padding(2);
   z-index: 1;
+  padding: 30px;
+
+  background-color: #fff;
 
   @include media-up(sm) {
     flex-direction: row;
-    height: $header-height-md;
-    padding-top: padding(2);
-    padding-left: 30px;
-    padding-right: 30px;
+    // align-items: flex-start;
   }
-
-  // @include media-up(xxxl) {
-  //   padding: 0;
-  // }
-
-  // left: calc(50% - 655px);
-
-  // @include media-up(xxxl) {
-  //   padding: 0 30px;
-  //   // left: calc(50% - 655px);
-  // }
 
   &__contain {
     background-color: #fff;
@@ -119,21 +103,18 @@ const onChangeCurrentLang = (newLang) => {
   }
 
   .contacts {
-    // height: $header-height;
-    padding-top: padding(2);
     display: flex;
     align-items: center;
     cursor: pointer;
-
-    @include media-up(sm) {
-      height: $header-height-md;
-    }
+    padding: 0;
 
     p {
       display: flex;
       flex-direction: column;
       justify-items: center;
       align-items: center;
+
+      height: 36px;
     }
 
     &__phone {
@@ -149,13 +130,13 @@ const onChangeCurrentLang = (newLang) => {
       text-transform: uppercase;
       color: $font-color-muted;
       display: block;
-      margin-top: 9px;
+      margin-top: 10px;
     }
   }
 
   .left-group {
     display: flex;
-    gap: padding(4);
+    gap: 50px;
     width: 100%;
     justify-content: space-evenly;
 

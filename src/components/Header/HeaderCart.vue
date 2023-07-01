@@ -2,7 +2,7 @@
   <div class="header-cart" @click="$emit('open-cart')">
     <div class="header-cart__total-price">${{ totalPrice }}</div>
     <div class="header-cart__count">
-      <img :src="image('/cart/cartIcon.jpg')" alt="cart" />
+      <img :src="image('/cart/cart.svg')" alt="cart" />
       <p>
         {{ cartItemsCount }}
       </p>
@@ -25,7 +25,7 @@ const $emit = defineEmits(['open-cart']);
 <style lang="scss" scoped>
 .header-cart {
   display: flex;
-  gap: padding(1);
+  gap: 10px;
   align-items: center;
   cursor: pointer;
 
@@ -34,21 +34,27 @@ const $emit = defineEmits(['open-cart']);
     font-weight: $font-weight-bold;
     color: $font-color-cta;
     font-weight: 900;
-    font-size: $font-size-xxsm - 1;
+    font-size: 14px;
     letter-spacing: 0.45em;
   }
 
   &__count {
     font-weight: 600;
-    font-size: 10px;
+    font-size: 11px;
     letter-spacing: 0.45em;
     position: relative;
     color: $font-color-black;
+    margin-top: -5px;
+
+    img {
+      width: 24px;
+      height: 27px;
+    }
 
     p {
       position: absolute;
       bottom: 0px;
-      left: 14px;
+      left: 18px;
     }
   }
 }

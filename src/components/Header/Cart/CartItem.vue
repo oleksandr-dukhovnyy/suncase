@@ -138,12 +138,13 @@ $item-width-xl: $item-width-lg;
 
   &__price {
     display: flex;
-    gap: padding();
+    gap: 10px;
     position: relative;
   }
 
   &__coast {
-    @include font-base;
+    // @include font-base;
+    font-size: 14px;
     color: $font-color-cta;
 
     &--line-through {
@@ -152,6 +153,7 @@ $item-width-xl: $item-width-lg;
   }
 
   &__new-coast {
+    font-size: 14px;
     color: $font-color-red;
   }
 
@@ -161,6 +163,8 @@ $item-width-xl: $item-width-lg;
     width: 100%;
     display: flex;
     justify-content: flex-end;
+    margin-top: -4px;
+    margin-left: -16px;
 
     img {
       width: 14px;

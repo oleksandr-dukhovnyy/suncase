@@ -82,7 +82,8 @@ const buy = () => {
   padding-top: 108px;
 
   @include media-up(sm) {
-    padding-top: 83px;
+    // padding-top: 83px;
+    padding-top: 93px;
   }
 
   &__price {
@@ -95,13 +96,13 @@ const buy = () => {
     background-color: #fff;
     left: padding(2);
     width: calc(100% - padding(4));
-    padding-bottom: padding(3);
     justify-content: center;
-    margin-top: -3px;
+    // margin-top: -3px;
+    padding-bottom: 30px;
 
     @include media-up(sm) {
       flex-direction: row;
-      gap: 36px;
+      gap: 50px;
     }
 
     @include media-down-landscape(lg) {
@@ -114,12 +115,12 @@ const buy = () => {
     display: grid;
     grid-template-columns: 1fr 1fr;
     justify-items: center;
-    column-gap: padding();
-    row-gap: padding(4);
+    column-gap: 10px;
+    row-gap: 50px;
 
     @include media-up(sm) {
       grid-template-columns: repeat(3, 1fr);
-      row-gap: padding(6);
+      // row-gap: padding(6);
     }
 
     @include media-up(xl) {

@@ -62,7 +62,8 @@ const onClick = (e) => {
 
 <style lang="scss" scoped>
 .button {
-  @include font-base;
+  // @include font-base;
+  font-size: 14px;
   cursor: pointer;
   text-transform: uppercase;
   padding: padding() padding(2);
@@ -72,21 +73,12 @@ const onClick = (e) => {
   border-radius: $border-radius;
   height: 43px;
   line-height: 1;
-
   display: flex;
   align-items: center;
   justify-content: center;
 
-  // transition: transform 0.7s;
-
-  // @include media-screen {
-  //   &:hover {
-  //     transform: scale(1.05);
-  //   }
-  // }
-
   img {
-    height: calc(36px - padding(2));
+    height: 11px;
     margin-right: padding();
   }
 

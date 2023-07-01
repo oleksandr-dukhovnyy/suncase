@@ -47,20 +47,11 @@ $img-size-2nth: 326px;
 
 .f-screen {
   display: grid;
-  grid-gap: padding(4);
+  gap: padding(4);
   grid-template-rows: auto;
   justify-content: center;
   gap: 30px;
   grid-template-columns: 1fr;
-
-  // see project tasks for complete it
-  // @include media-up(xs) {
-  //   grid-template-columns: $img-size-2nth;
-  // }
-
-  // @include media-up(sm) {
-  //   grid-template-columns: $img-size $img-size-2nth;
-  // }
 
   @include media-up(smx) {
     grid-template-columns: $img-size-2nth;
@@ -96,7 +87,7 @@ $img-size-2nth: 326px;
       justify-content: center;
       width: 215px;
       height: 100%;
-      gap: 20px;
+      gap: 30px;
       margin: 0 auto;
 
       strong {
@@ -108,7 +99,7 @@ $img-size-2nth: 326px;
       }
 
       button {
-        font-size: 12px;
+        // font-size: 12px;
         letter-spacing: 0.45em;
         font-weight: 400;
       }

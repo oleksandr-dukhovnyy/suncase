@@ -61,7 +61,7 @@
           <TheButton
             size="lg"
             type="black"
-            :iconName="showAddToCartAnimation ? 'ok' : 'add'"
+            :iconName="showAddToCartAnimation ? 'ok' : 'plus'"
             @click="addToCart"
           >
             <span v-if="!showAddToCartAnimation">to cart</span>
@@ -189,17 +189,18 @@ setInterval(moveForward, import.meta.env.MODE === 'development' ? 7000 : 3000);
 
   &__new-coast {
     color: $font-color-red;
-    @include font-md;
+    // @include font-md;
   }
 
   &__price {
     color: $font-color-cta;
     display: flex;
-    gap: padding();
+    gap: 10px;
     margin-bottom: padding();
 
     @include media-up(xl) {
-      @include font-md;
+      // @include font-md;
+      font-size: 14px;
     }
   }
 
@@ -214,6 +215,16 @@ setInterval(moveForward, import.meta.env.MODE === 'development' ? 7000 : 3000);
     margin-top: padding(2);
     gap: padding();
     justify-content: center;
+
+    img {
+      width: 11px;
+      height: 11px;
+    }
+
+    button > span {
+      display: block;
+      padding-top: 4px;
+    }
   }
 
   &__info {

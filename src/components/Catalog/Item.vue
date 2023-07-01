@@ -86,8 +86,8 @@ const { title, model, coast, sale, oldCoast, isNew, id } = defineProps({
     gap: padding();
 
     letter-spacing: 5.4px;
-    font-weight: 300;
-    font-size: 12px;
+    font-weight: 400;
+    font-size: 14px;
   }
 
   &__coast {

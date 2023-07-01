@@ -214,7 +214,7 @@ export default [
     brend: 'Polaroid',
     sale: true,
     oldCoast: 80,
-    model: 'PLD4139B',
+    model: 'PLD4138B',
     coast: 75,
     id: '18',
     gender: 'all',

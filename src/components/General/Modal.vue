@@ -70,7 +70,7 @@ const close = () => {
   grid-template-rows: 1fr;
   grid-template-columns: 1fr;
   gap: padding();
-  padding: padding(4);
+  padding: 30px;
   position: relative;
 
   --animate-duration: 400ms;
@@ -92,8 +92,8 @@ const close = () => {
     text-align: right;
     position: absolute;
     z-index: 999;
-    padding: 24px;
     right: 0;
+    padding: 27px;
 
     img {
       cursor: pointer;

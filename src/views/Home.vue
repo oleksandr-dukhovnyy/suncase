@@ -31,13 +31,14 @@ main {
   gap: 50px;
   flex-direction: column;
   min-height: 100vh;
-  background-color: #fff;
   padding-top: $header-height;
   position: relative;
   margin: 0 auto padding(10);
 
+  background-color: #fff;
+
   @include media-up(md) {
-    padding-top: 78px;
+    padding-top: 76px;
   }
 }
 </style>

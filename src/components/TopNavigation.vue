@@ -37,11 +37,11 @@ nav {
   }
 
   @include media-up(xl) {
-    padding: 30px 0;
+    // padding: 30px 0;
+    padding: 30px;
   }
 
   span {
-    font-size: 13px;
     text-align: center;
     color: $font-color-cta;
     text-transform: uppercase;
@@ -49,6 +49,7 @@ nav {
     font-weight: 900;
     letter-spacing: 0.5em;
     cursor: pointer;
+    font-size: 15px;
 
     @include media-up(md) {
       padding: 30px padding(2);
