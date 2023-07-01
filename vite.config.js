@@ -7,7 +7,15 @@ import packageJSON from './package.json';
 
 const getConfig = (IS_DEV) => {
   return {
-    plugins: [vue() /*viteJoinMediaQueries({})*/],
+    plugins: [
+      vue({
+        template: {
+          compilerOptions: {
+            isCustomElement: (tag) => tag.startsWith('swiper-'),
+          },
+        },
+      }),
+    ],
     resolve: {
       alias: {
         '@': path.resolve(__dirname, 'src'),

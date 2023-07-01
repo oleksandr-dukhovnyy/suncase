@@ -3,6 +3,7 @@
     <Header />
     <HeaderLogo />
     <TopNavigation />
+    <!-- <Slider /> -->
     <FirstScreen />
     <Catalog />
     <Footer />
@@ -15,6 +16,7 @@ import { useStore } from 'vuex';
 import Header from '@/components/Header/Header.vue';
 import HeaderLogo from '@/components/Header/HeaderLogo.vue';
 import TopNavigation from '@/components/TopNavigation.vue';
+// import Slider from '@/components/Slider.vue';
 import FirstScreen from '@/components/FirstScreen.vue';
 import Catalog from '@/components/Catalog/Catalog.vue';
 import Footer from '@/components/Footer.vue';
@@ -54,6 +56,10 @@ main {
 
 p {
   margin: 0;
+}
+
+swiper-container {
+  max-width: 100%;
 }
 
 html,

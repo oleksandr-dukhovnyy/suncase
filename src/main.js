@@ -3,6 +3,10 @@ import App from './App.vue';
 import router from './router';
 import store from './store/index.js';
 
+// register Swiper custom elements
+import { register } from 'swiper/element/bundle';
+register();
+
 import openPayWindow from './js/openPayWindow.js';
 import 'normalize.css';
 import 'animate.css';
