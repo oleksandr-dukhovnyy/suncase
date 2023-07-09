@@ -1,12 +1,12 @@
 <template>
   <div class="items-list">
     <div class="items-list__item" v-for="(item, i) in ITEMS" :key="i">
-      <Item
+      <ProductCard
         :title="item.brend"
         :model="item.model"
         :coast="item.coast"
         :sale="item.sale"
-        :oldCoast="item.oldCoast"
+        :old-coast="item.oldCoast"
         :isNew="item.isNew"
         :id="item.id"
         @clicked="openSlider(item.id)"
@@ -16,7 +16,7 @@
 </template>
 
 <script setup>
-import Item from './Item.vue';
+import ProductCard from '../General/ProductCard.vue';
 import { useStore } from 'vuex';
 import { computed } from 'vue';
 

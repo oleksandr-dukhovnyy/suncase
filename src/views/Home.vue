@@ -11,6 +11,7 @@
 
 <script setup>
 import { useStore } from 'vuex';
+import { onMounted, onUnmounted } from 'vue';
 
 import Header from '@/components/Header/Header.vue';
 import HeaderLogo from '@/components/Header/HeaderLogo.vue';
@@ -22,6 +23,23 @@ import Footer from '@/components/Footer.vue';
 const $store = useStore();
 
 $store.dispatch('cart/FETCH_CART');
+
+const listenESC = function (e) {
+  if (e.key === 'Escape') {
+    if (
+      $store.getters['cart/SHOW_CART_POPUP'] &&
+      $store.getters['slider/SLIDER_SHOW']
+    ) {
+      $store.dispatch('slider/HIDE_SLIDER');
+    } else {
+      $store.dispatch('cart/HIDE_CART');
+      $store.dispatch('slider/HIDE_SLIDER');
+    }
+  }
+};
+
+onMounted(() => document.addEventListener('keydown', listenESC));
+onUnmounted(() => document.removeEventListener('keydown', listenESC));
 </script>
 
 <style scoped lang="scss">
@@ -62,6 +80,10 @@ body {
   scroll-behavior: smooth;
   background-color: #fff;
   position: relative;
+}
+
+img {
+  user-select: none;
 }
 
 .d {

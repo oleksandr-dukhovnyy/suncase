@@ -62,6 +62,7 @@ $height-xl: 26px;
   border: 1px solid $color-muted-lighter;
   // padding: 0 padding();
   border-radius: $border-radius;
+  // user-select: none;
 
   @include media-up(xl) {
     height: $height-xl;

@@ -1,14 +1,22 @@
 <template>
   <button
     class="button"
-    @click="onClick"
     :class="{
       [`button--type--${type}`]: type !== '',
       [`button--size--${size}`]: size !== '',
       'animate__animated animate__pulse': clicked && animated,
     }"
+    @click="onClick"
   >
-    <img v-if="iconName !== ''" :src="icon(iconName)" :alt="iconName" />
+    <img
+      v-if="iconName !== ''"
+      :style="{
+        width: `${iconSize}px`,
+        height: `${iconSize}px`,
+      }"
+      :src="icon(iconName)"
+      :alt="iconName"
+    />
     <slot></slot>
   </button>
 </template>
@@ -19,7 +27,7 @@ import { ref } from 'vue';
 const $emit = defineEmits(['click']);
 const clicked = ref(false);
 
-const { trustedOnly } = defineProps({
+const props = defineProps({
   size: {
     type: String,
     default: '', // '' - is "max-content"
@@ -40,6 +48,10 @@ const { trustedOnly } = defineProps({
     type: String,
     default: '',
   },
+  iconSize: {
+    type: Number,
+    default: 11,
+  },
   animated: {
     type: Boolean,
     default: true,
@@ -48,8 +60,8 @@ const { trustedOnly } = defineProps({
 
 const onClick = (e) => {
   if (
-    (trustedOnly && !e.isTrusted) ||
-    (trustedOnly && e.clientX === 0 && e.clientY === 0)
+    (props.trustedOnly && !e.isTrusted) ||
+    (props.trustedOnly && e.clientX === 0 && e.clientY === 0)
   )
     return false;
 
@@ -76,11 +88,6 @@ const onClick = (e) => {
   display: flex;
   align-items: center;
   justify-content: center;
-
-  img {
-    height: 11px;
-    margin-right: padding();
-  }
 
   &--type {
     &--error {

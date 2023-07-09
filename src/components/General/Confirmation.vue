@@ -68,8 +68,8 @@ const onMouseenter = () => {
   }
 
   &__control {
-    width: 80px;
-    right: 0;
+    width: max-content;
+    right: 16px;
     top: 10px + padding();
     border-radius: $border-radius 0 $border-radius $border-radius;
     display: flex;
@@ -90,6 +90,7 @@ const onMouseenter = () => {
     p {
       @include font-sm;
       text-align: center;
+      width: max-content;
     }
 
     img {

@@ -87,7 +87,7 @@ export default {
       });
     },
     BUY_ALL({ dispatch, getters }) {
-      openWin({ coast: getters.CART_TOTAL_PRICE }, getters.CART.length, () => {
+      openWin({ coast: getters.CART_TOTAL_PRICE }, getters.CART_LENGTH, () => {
         dispatch('CLEAR_CART');
         dispatch('HIDE_CART');
       });

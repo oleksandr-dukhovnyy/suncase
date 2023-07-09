@@ -6,17 +6,19 @@
         <TheButton size="lg" type="error-filled" @click="buy"> buy </TheButton>
       </div>
       <div v-if="CART_ITEMS.length > 0" class="cart__list">
-        <CartItem
+        <ProductCard
           v-for="item in CART_ITEMS"
           :key="item.id"
           :title="item.brend"
           :model="item.model"
           :coast="item.coast"
           :sale="item.sale"
-          :oldCoast="item.oldCoast"
-          :isNew="item.isNew"
+          :old-coast="item.oldCoast"
+          :is-new="item.isNew"
           :id="item.id"
           :count="item.count"
+          :use-remove-bttn="true"
+          :use-counter="true"
           @clicked="openInPopup(item.id)"
           @inc-count="incCount(item.id)"
           @dec-count="decCount(item.id)"
@@ -40,7 +42,8 @@
 <script setup>
 import Modal from '../../General/Modal.vue';
 import HeaderCart from '../HeaderCart.vue';
-import CartItem from './CartItem.vue';
+// import CartItem from './CartItem.vue';
+import ProductCard from '../../General/ProductCard.vue';
 import { useStore } from 'vuex';
 import { computed } from '@vue/reactivity';
 import scrollToGoods from '@/js/scrollToGoods.js';
@@ -94,8 +97,8 @@ const buy = () => {
     z-index: 11;
     position: fixed;
     background-color: #fff;
-    left: padding(2);
-    width: calc(100% - padding(4));
+    left: 30px;
+    width: calc(100% - 60px);
     justify-content: center;
     // margin-top: -3px;
     padding-bottom: 30px;
@@ -113,18 +116,19 @@ const buy = () => {
 
   &__list {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 200px 200px;
     justify-items: center;
-    column-gap: 10px;
+    // column-gap: 30px;
+    justify-content: space-evenly;
     row-gap: 50px;
 
     @include media-up(sm) {
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(3, 200px);
       // row-gap: padding(6);
     }
 
     @include media-up(xl) {
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(4, 200px);
     }
   }
 

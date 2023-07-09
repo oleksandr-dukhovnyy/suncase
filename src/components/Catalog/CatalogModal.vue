@@ -36,7 +36,21 @@
       </div>
       <div class="catalog-modal__controls">
         <div class="catalog-modal__info">
-          <strong>
+          <ProductCard
+            :title="selected.item.brend"
+            :model="selected.item.model"
+            :coast="selected.item.coast"
+            :sale="selected.item.sale"
+            :old-coast="selected.item.oldCoast"
+            :is-new="selected.item.isNew"
+            :id="selected.item.id"
+            :use-image="false"
+            :use-counter="true"
+            :count="count"
+            @inc-count="count++"
+            @dec-count="count--"
+          />
+          <!-- <strong>
             {{ selected.item.brend }}
           </strong>
           <em> {{ selected.item.model }} </em>
@@ -54,17 +68,28 @@
           </div>
           <div>
             <Counter :value="count" :max="9" @inc="count++" @dec="count--" />
-          </div>
+          </div> -->
         </div>
-        <div class="catalog-modal__actions">
+        <div
+          class="catalog-modal__actions"
+          :class="{
+            'catalog-modal__actions--large-icon': showAddToCartAnimation,
+          }"
+        >
           <TheButton size="lg" type="error" @click="buy"> buy </TheButton>
           <TheButton
             size="lg"
             type="black"
-            :iconName="showAddToCartAnimation ? 'ok' : 'plus'"
+            :icon-name="showAddToCartAnimation ? 'ok' : 'plus'"
+            :icon-size="showAddToCartAnimation ? 20 : 11"
             @click="addToCart"
           >
-            <span v-if="!showAddToCartAnimation">to cart</span>
+            <span
+              v-if="!showAddToCartAnimation"
+              style="margin: auto 0 auto 8px"
+            >
+              to cart
+            </span>
           </TheButton>
         </div>
       </div>
@@ -73,7 +98,8 @@
 </template>
 
 <script setup>
-import Counter from '../General/Counter.vue';
+// import Counter from '../General/Counter.vue';
+import ProductCard from '../General/ProductCard.vue';
 import { ref, watch, computed } from 'vue';
 import { useStore } from 'vuex';
 
@@ -221,42 +247,16 @@ setInterval(moveForward, import.meta.env.MODE === 'development' ? 7000 : 3000);
       height: 11px;
     }
 
+    &--large-icon {
+      button img {
+        width: 20px;
+        height: 20px;
+      }
+    }
+
     button > span {
       display: block;
       padding-top: 4px;
-    }
-  }
-
-  &__info {
-    @include font-md;
-    display: flex;
-    flex-direction: column;
-    gap: padding();
-
-    strong {
-      // @include font-base;
-      letter-spacing: $font-letter-spacing-sm;
-      color: $font-color-cta;
-      font-weight: $font-weight-light;
-
-      font-size: 15px;
-
-      // @include media-up(xl) {
-      //   @include font-md;
-      // }
-    }
-
-    em {
-      // @include font-sm;
-      letter-spacing: $font-letter-spacing-sm;
-      font-style: normal;
-      color: $font-color-muted;
-
-      font-size: 12px;
-
-      &--line-through {
-        text-decoration: line-through;
-      }
     }
   }
 

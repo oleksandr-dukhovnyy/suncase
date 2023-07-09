@@ -64,7 +64,8 @@ const close = () => {
   height: 86vh;
   vertical-align: middle;
   max-height: 720px;
-  max-width: 1200px;
+  // max-width: 1200px;
+  max-width: 1181px;
   background-color: #fff;
   display: grid;
   grid-template-rows: 1fr;
