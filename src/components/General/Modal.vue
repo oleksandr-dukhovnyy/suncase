@@ -8,8 +8,8 @@
           animate__fadeOutDown: closingOn,
         }"
       >
-        <div class="modal__close">
-          <img @click="close" :src="image('slider/closeBttn.svg')" alt="X" />
+        <div class="modal__close" @click="close">
+          <img :src="icon('close-modal')" alt="X" />
         </div>
         <div class="modal__body" @keydown.esc="close">
           <slot></slot>
@@ -94,12 +94,13 @@ const close = () => {
     position: absolute;
     z-index: 999;
     right: 0;
-    padding: 27px;
+    padding: 15px;
+    cursor: pointer;
 
     img {
-      cursor: pointer;
-      width: 24px;
-      height: 24px;
+      margin: 15px;
+      width: 18px;
+      height: 18px;
     }
   }
 }

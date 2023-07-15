@@ -17,11 +17,12 @@
         v-if="useRemoveBttn"
         color="red"
         :text="'Delete?'"
+        class="item__remove"
         @click.stop
         @confirm="$emit('remove')"
       >
-        <div class="item__remove">
-          <img :src="icon('close')" alt="X" />
+        <div class="item__remove-item">
+          <img :src="icon('remove')" alt="X" />
         </div>
       </Confirmation>
     </div>
@@ -85,7 +86,8 @@ const emit = defineEmits(['clicked', 'inc-count', 'dec-count', 'remove']);
   cursor: pointer;
 
   img {
-    width: 100%;
+    width: 200px;
+    height: 98px;
     margin-bottom: 3px;
   }
 
@@ -113,24 +115,21 @@ const emit = defineEmits(['clicked', 'inc-count', 'dec-count', 'remove']);
   }
 
   &__remove {
-    top: 2px;
     position: absolute;
-    margin-left: auto;
     cursor: pointer;
-    width: 100%;
     display: flex;
     justify-content: flex-end;
-    margin-top: -4px;
-    margin-left: -16px;
+    bottom: 20px;
+    right: 20px;
 
     img {
-      width: 14px;
-      height: 14px;
+      width: 12px;
+      height: 12px;
 
-      @include media-up(xl) {
-        width: 21px;
-        height: 21px;
-      }
+      // @include media-up(xl) {
+      //   width: 21px;
+      //   height: 21px;
+      // }
     }
   }
 
