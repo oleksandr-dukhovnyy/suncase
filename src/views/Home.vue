@@ -1,11 +1,13 @@
 <template>
-  <main>
+  <main class="page">
     <Header />
     <HeaderLogo />
     <TopNavigation />
     <FirstScreen />
     <Catalog />
-    <Footer />
+    <div class="page__footer">
+      <Footer />
+    </div>
   </main>
 </template>
 
@@ -43,7 +45,7 @@ onUnmounted(() => document.removeEventListener('keydown', listenESC));
 </script>
 
 <style scoped lang="scss">
-main {
+.page {
   @include container;
   display: flex;
   gap: 50px;
@@ -51,13 +53,18 @@ main {
   min-height: 100vh;
   padding-top: $header-height;
   position: relative;
-  margin: 0 auto padding(10);
+  margin: 0 auto;
 
   background-color: #fff;
 
-  @include media-up(md) {
-    padding-top: 76px;
+  &__footer {
+    margin: 30px 0;
+    height: 23px;
   }
+
+  // @include media-up(md) {
+  //   padding-top: 76px;
+  // }
 }
 </style>
 

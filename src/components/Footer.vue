@@ -14,18 +14,19 @@ footer {
   display: flex;
   justify-content: center;
   position: absolute;
-  bottom: 0;
+  // bottom: 0;
   text-align: center;
   width: 100%;
   display: flex;
-  bottom: -80px;
+  height: 23px;
+  // bottom: -80px;
 
   div {
     border-top: 1px solid black;
     padding-top: 10px;
     width: 310px;
     color: $font-color-muted;
-    margin-bottom: 15px;
+    // margin-bottom: 15px;
   }
 
   a {
