@@ -1,9 +1,9 @@
 <template>
   <ul class="filter-group">
     <li
-      :class="`filter-group--size-${size}`"
       v-for="(item, i) in items"
       :key="i"
+      :class="`filter-group--size-${size}`"
       @click="selected(item.name)"
     >
       <span :class="item.active ? 'active' : ''">
@@ -16,27 +16,29 @@
   </ul>
 </template>
 
-<script setup>
+<script lang="ts" setup>
+// @ts-ignore
 import Checkmark from './Checkmark.vue';
 
-const { items, type, size } = defineProps({
-  items: {
-    type: Array,
-  },
-  type: {
-    type: String,
-  },
-  size: {
-    type: String,
-    default: 'md',
-    validate: (n) => ['sm', 'md', 'xl'].includes(n),
-  },
-});
+const props = withDefaults(
+  defineProps<{
+    items: {
+      title: string;
+      name: string;
+      active: boolean;
+    }[];
+    type: string;
+    size?: 'sm' | 'md' | 'xl';
+  }>(),
+  {
+    size: 'md',
+  }
+);
 
 const $emit = defineEmits(['selected']);
 
 const selected = (name) => {
-  $emit('selected', { value: name, type });
+  $emit('selected', { value: name, type: props.type });
 };
 </script>
 

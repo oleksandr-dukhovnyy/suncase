@@ -1,6 +1,6 @@
 /*
   {
-    brend: 'Maui Jim',
+    brand: 'Maui Jim',
     sale: true,
     oldCoast: 385,
     model: 'Mavericks',
@@ -71,7 +71,7 @@ const applyFilters = (filters, list) => {
       )
         return false;
 
-      if (!showAllBrands && !checkInFilter(item.brend, filters.brands))
+      if (!showAllBrands && !checkInFilter(item.brand, filters.brands))
         return false;
 
       if (categoriesFilters.new && !item.isNew) return false;

@@ -1,6 +1,6 @@
 export default [
   {
-    brend: 'Maui Jim',
+    brand: 'Maui Jim',
     sale: true,
     oldCoast: 385,
     model: 'Mavericks',
@@ -13,7 +13,7 @@ export default [
   },
 
   {
-    brend: 'Ray-Ban',
+    brand: 'Ray-Ban',
     sale: false,
     oldCoast: 0,
     model: 'RB3447N Gold',
@@ -25,7 +25,7 @@ export default [
     lng: 4,
   },
   {
-    brend: 'Ray-Ban',
+    brand: 'Ray-Ban',
     sale: true,
     oldCoast: 165,
     model: 'RB3539 Black',
@@ -37,7 +37,7 @@ export default [
     lng: 4,
   },
   {
-    brend: 'Ray-Ban',
+    brand: 'Ray-Ban',
     sale: true,
     oldCoast: 188,
     model: 'Sugar',
@@ -50,7 +50,7 @@ export default [
   },
 
   {
-    brend: 'Oakley',
+    brand: 'Oakley',
     sale: false,
     oldCoast: 0,
     model: 'Sutro',
@@ -62,7 +62,7 @@ export default [
     lng: 4,
   },
   {
-    brend: 'Oakley',
+    brand: 'Oakley',
     sale: false,
     oldCoast: 0,
     model: 'Evzero Path',
@@ -74,7 +74,7 @@ export default [
     lng: 4,
   },
   {
-    brend: 'Oakley',
+    brand: 'Oakley',
     sale: false,
     oldCoast: 0,
     model: 'Holbrook',
@@ -87,7 +87,7 @@ export default [
   },
 
   {
-    brend: 'Prada',
+    brand: 'Prada',
     sale: false,
     oldCoast: 0,
     model: 'Cinema',
@@ -99,7 +99,7 @@ export default [
     lng: 3,
   },
   {
-    brend: 'Prada',
+    brand: 'Prada',
     sale: false,
     oldCoast: 0,
     model: 'PR53US',
@@ -111,7 +111,7 @@ export default [
     lng: 2,
   },
   {
-    brend: 'Prada',
+    brand: 'Prada',
     sale: false,
     oldCoast: 0,
     model: 'Millennials',
@@ -124,7 +124,7 @@ export default [
   },
 
   {
-    brend: 'Levis',
+    brand: 'Levis',
     sale: true,
     oldCoast: 64,
     model: 'Tortoise',
@@ -136,7 +136,7 @@ export default [
     lng: 2,
   },
   {
-    brend: 'Levis',
+    brand: 'Levis',
     sale: true,
     oldCoast: 40,
     model: 'LO22395 Red',
@@ -148,7 +148,7 @@ export default [
     lng: 2,
   },
   {
-    brend: 'Levis',
+    brand: 'Levis',
     sale: true,
     oldCoast: 40,
     model: 'LO22393 Tortoise',
@@ -161,7 +161,7 @@ export default [
   },
 
   {
-    brend: 'Persol',
+    brand: 'Persol',
     sale: false,
     oldCoast: 0,
     model: 'PO3092SM Brown',
@@ -173,7 +173,7 @@ export default [
     lng: 4,
   },
   {
-    brend: 'Persol',
+    brand: 'Persol',
     sale: false,
     oldCoast: 0,
     model: 'PO9714S',
@@ -186,7 +186,7 @@ export default [
   },
 
   {
-    brend: 'Versace',
+    brand: 'Versace',
     sale: false,
     oldCoast: 0,
     model: 'VE2183',
@@ -198,7 +198,7 @@ export default [
     lng: 4,
   },
   {
-    brend: 'Versace',
+    brand: 'Versace',
     sale: false,
     oldCoast: 0,
     model: 'VE2184',
@@ -211,7 +211,7 @@ export default [
   },
 
   {
-    brend: 'Polaroid',
+    brand: 'Polaroid',
     sale: true,
     oldCoast: 80,
     model: 'PLD4138B',
@@ -223,7 +223,7 @@ export default [
     lng: 4,
   },
   {
-    brend: 'Polaroid',
+    brand: 'Polaroid',
     sale: true,
     oldCoast: 90,
     model: 'PLD4139B',
@@ -236,7 +236,7 @@ export default [
   },
 
   {
-    brend: 'Saint Laurent',
+    brand: 'Saint Laurent',
     sale: true,
     oldCoast: 195,
     model: 'SL108 Fluo',
@@ -248,7 +248,7 @@ export default [
     lng: 1,
   },
   {
-    brend: 'Saint Laurent',
+    brand: 'Saint Laurent',
     sale: true,
     oldCoast: 550,
     model: 'SL302 LISA',
@@ -261,7 +261,7 @@ export default [
   },
 
   {
-    brend: 'Christian Dior',
+    brand: 'Christian Dior',
     sale: true,
     oldCoast: 203,
     model: 'DIORCLUB1 Black',
@@ -273,7 +273,7 @@ export default [
     lng: 3,
   },
   {
-    brend: 'Christian Dior',
+    brand: 'Christian Dior',
     sale: true,
     oldCoast: 203,
     model: 'DiorSplit1 Split1',

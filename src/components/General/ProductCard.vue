@@ -6,7 +6,7 @@
       alt="sunglasses picture"
       @click="$emit('clicked')"
     />
-    <strong @click="$emit('clicked')">{{ title }}</strong>
+    <strong @click="$emit('clicked')">{{ brand }}</strong>
     <em @click="$emit('clicked')">{{ model }}</em>
     <div @click="$emit('clicked')" class="item__price">
       <p class="item__coast" :class="sale ? 'item__coast--line-through' : ''">
@@ -14,7 +14,7 @@
       </p>
       <p v-if="sale" class="item__new-coast">${{ coast }}</p>
       <Confirmation
-        v-if="useRemoveBttn"
+        v-if="useRemoveBtn"
         color="red"
         :text="'Delete?'"
         class="item__remove"
@@ -51,7 +51,7 @@ const icon = (name: string, ext = 'svg'): string =>
 
 withDefaults(
   defineProps<{
-    title: string; // 'item.brend';
+    brand: string; // 'item.brand';
     model: string; //'item.model';
     coast: number; // 'item.coast';
     sale: boolean; // 'item.sale';
@@ -61,12 +61,12 @@ withDefaults(
     count?: number; //'item.count';
     useImage?: boolean;
     useCounter?: boolean;
-    useRemoveBttn?: boolean;
+    useRemoveBtn?: boolean;
   }>(),
   {
     useImage: true,
     useCounter: false,
-    useRemoveBttn: false,
+    useRemoveBtn: false,
     count: 0,
   }
 );

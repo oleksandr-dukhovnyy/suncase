@@ -47,5 +47,6 @@ module.exports = {
     '*.ico',
     '*.json',
     '*.md',
+    'node_modules',
   ],
 };

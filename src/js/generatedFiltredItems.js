@@ -1,9 +1,9 @@
-export const generatedFiltredItems = (config, arr, genderActive) => {
+export const generatedFilteredItems = (config, arr, genderActive) => {
   const settings = {
     showLogs: false,
   };
 
-  let filtredItems = [];
+  let filteredItems = [];
   let {
     brandsActive,
     newActive,
@@ -11,10 +11,10 @@ export const generatedFiltredItems = (config, arr, genderActive) => {
     mostPopularActive,
     from$to$$$,
     from$$$to$,
-    showLength,
+    // showLength,
 
     allGenderCategory,
-    allBrends,
+    allBrands,
   } = config;
 
   // bugfix log
@@ -28,7 +28,7 @@ export const generatedFiltredItems = (config, arr, genderActive) => {
       mostPopularActive - ${typeof mostPopularActive}
       from$to$$$ - ${from$to$$$}
       allGenderCategory - ${allGenderCategory.join(', ')}
-      allBrends - ${allBrends.join(', ')}
+      allBrands - ${allBrands.join(', ')}
     `);
   }
 
@@ -55,9 +55,9 @@ export const generatedFiltredItems = (config, arr, genderActive) => {
       }
     }
 
-    if (brandsActive.length === allBrends.length || brandsActive.length === 0) {
+    if (brandsActive.length === allBrands.length || brandsActive.length === 0) {
       pushIt = true;
-    } else if (selectPropFromArr(item, brandsActive, 'brend')) {
+    } else if (selectPropFromArr(item, brandsActive, 'brand')) {
       pushIt = true;
     } else if (brandsActive[0] === '') {
       pushIt = true;
@@ -79,26 +79,26 @@ export const generatedFiltredItems = (config, arr, genderActive) => {
     }
 
     if (pushIt && !deleIt) {
-      filtredItems.push(item);
+      filteredItems.push(item);
     }
   }
 
   if (mostPopularActive) {
-    filtredItems.sort((a, b) => (b.saled > a.saled ? 1 : -1));
+    filteredItems.sort((a, b) => (b.saled > a.saled ? 1 : -1));
   }
 
   if (from$to$$$) {
-    filtredItems.sort((a, b) => (a.coast > b.coast ? 1 : -1));
+    filteredItems.sort((a, b) => (a.coast > b.coast ? 1 : -1));
   } else if (from$$$to$) {
-    filtredItems.sort((a, b) => (b.coast > a.coast ? 1 : -1));
+    filteredItems.sort((a, b) => (b.coast > a.coast ? 1 : -1));
   }
 
-  // if( filtredItems.length > showLength ){
-  //     filtredItems = filtredItems.slice( 0 , showLength );
+  // if (filteredItems.length > showLength) {
+  //     filteredItems = filteredItems.slice(0, showLength);
   // }
   // Disconnected until better times...
 
-  return filtredItems;
+  return filteredItems;
 }; // end middle sort function
 
 // support funks:

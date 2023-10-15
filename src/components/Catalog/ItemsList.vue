@@ -1,16 +1,7 @@
 <template>
   <div class="items-list">
     <div class="items-list__item" v-for="(item, i) in ITEMS" :key="i">
-      <ProductCard
-        :title="item.brend"
-        :model="item.model"
-        :coast="item.coast"
-        :sale="item.sale"
-        :old-coast="item.oldCoast"
-        :isNew="item.isNew"
-        :id="item.id"
-        @clicked="openSlider(item.id)"
-      />
+      <ProductCard v-bind="item" @clicked="openSlider(item.id)" />
     </div>
   </div>
 </template>

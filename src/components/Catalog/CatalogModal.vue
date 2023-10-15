@@ -37,15 +37,9 @@
       <div class="catalog-modal__controls">
         <div class="catalog-modal__info">
           <ProductCard
-            :title="selected.item.brend"
-            :model="selected.item.model"
-            :coast="selected.item.coast"
-            :sale="selected.item.sale"
-            :old-coast="selected.item.oldCoast"
-            :is-new="selected.item.isNew"
-            :id="selected.item.id"
+            v-bind="selected.item"
             :use-image="false"
-            :use-counter="true"
+            use-counter
             :count="count"
             @inc-count="count++"
             @dec-count="count--"

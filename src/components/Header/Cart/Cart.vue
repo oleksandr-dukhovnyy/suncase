@@ -8,17 +8,9 @@
       <div v-if="CART_ITEMS.length > 0" class="cart__list">
         <ProductCard
           v-for="item in CART_ITEMS"
-          :key="item.id"
-          :title="item.brend"
-          :model="item.model"
-          :coast="item.coast"
-          :sale="item.sale"
-          :old-coast="item.oldCoast"
-          :is-new="item.isNew"
-          :id="item.id"
-          :count="item.count"
-          :use-remove-bttn="true"
-          :use-counter="true"
+          v-bind="item"
+          use-remove-btn
+          use-counter
           @clicked="openInPopup(item.id)"
           @inc-count="incCount(item.id)"
           @dec-count="decCount(item.id)"
@@ -100,6 +92,7 @@ const buy = () => {
     width: calc(100% - 60px);
     justify-content: center;
     padding-bottom: 30px;
+    top: 25px;
 
     @include media-up(sm) {
       flex-direction: row;

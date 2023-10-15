@@ -15,12 +15,11 @@
 </template>
 
 <script setup>
+import { ref } from 'vue';
 import CatalogModal from './CatalogModal.vue';
 import Filters from './Filters.vue';
 import ItemsList from './ItemsList.vue';
 import CatalogHamburgerMenu from './CatalogHamburgerMenu.vue';
-
-import { ref } from 'vue';
 
 const showSideModal = ref(false);
 </script>
