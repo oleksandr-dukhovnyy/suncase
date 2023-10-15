@@ -85,7 +85,6 @@ const buy = () => {
   padding-top: 108px;
 
   @include media-up(sm) {
-    // padding-top: 83px;
     padding-top: 93px;
   }
 
@@ -100,7 +99,6 @@ const buy = () => {
     left: 30px;
     width: calc(100% - 60px);
     justify-content: center;
-    // margin-top: -3px;
     padding-bottom: 30px;
 
     @include media-up(sm) {
@@ -116,20 +114,9 @@ const buy = () => {
 
   &__list {
     display: grid;
-    grid-template-columns: 200px 200px;
-    justify-items: center;
-    // column-gap: 30px;
-    justify-content: space-evenly;
-    row-gap: 50px;
-
-    @include media-up(sm) {
-      grid-template-columns: repeat(3, 200px);
-      // row-gap: padding(6);
-    }
-
-    @include media-up(xl) {
-      grid-template-columns: repeat(4, 200px);
-    }
+    gap: 50px;
+    justify-content: center;
+    grid-template-columns: repeat(auto-fill, 200px);
   }
 
   &__empty {

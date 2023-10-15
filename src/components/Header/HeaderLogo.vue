@@ -15,7 +15,6 @@
 <style scoped lang="scss">
 .logo {
   @include container;
-  // z-index: 2;
   display: grid;
   grid-template-columns: 42px 1fr;
   gap: 10px;

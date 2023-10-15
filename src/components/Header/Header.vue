@@ -49,9 +49,24 @@ const langs = ref([
   {
     title: 'ua',
     value: 'uk-UA',
+    documentLanguagesValue: 'uk',
     selected: false,
   },
 ]);
+
+const userLangs = navigator.languages;
+
+for (let i = 0; i < userLangs.length; i++) {
+  const lang = langs.value.find(
+    (loc) => (loc.documentLanguagesValue || loc.value) === userLangs[i]
+  );
+
+  if (lang) {
+    langs.value.forEach((l) => (l.selected = false));
+    lang.selected = true;
+    break;
+  }
+}
 
 const setSelectedLang = (langValue) => {
   langs.value = langs.value.map((lng) => ({
@@ -87,7 +102,6 @@ const onChangeCurrentLang = (newLang) => {
 
   @include media-up(sm) {
     flex-direction: row;
-    // align-items: flex-start;
   }
 
   &__contain {

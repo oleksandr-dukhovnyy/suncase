@@ -26,7 +26,6 @@ const selectCategory = (category) => {
 
 <style lang="scss" scoped>
 nav {
-  // outline: 1px dotted coral;
   display: flex;
   flex-direction: column;
   column-gap: padding(4);
@@ -37,7 +36,6 @@ nav {
   }
 
   @include media-up(xl) {
-    // padding: 30px 0;
     padding: 30px;
   }
 

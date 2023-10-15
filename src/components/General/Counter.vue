@@ -46,37 +46,20 @@ const { value, max, min } = defineProps({
 </script>
 
 <style scoped lang="scss">
-$width: 90px;
-$height: 24px;
-
-$width-xl: 120px;
-$height-xl: 26px;
-
 .counter {
-  width: $width;
-  height: $height;
+  width: 120px;
+  height: 26px;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
   border-radius: 20px;
   border: 1px solid $color-muted-lighter;
-  // padding: 0 padding();
   border-radius: $border-radius;
-  // user-select: none;
-
-  @include media-up(xl) {
-    height: $height-xl;
-    width: $width-xl;
-  }
 
   &__separator {
-    height: $height;
+    height: 26px;
     width: 1px;
     background-color: $color-muted-lighter;
-
-    @include media-up(xl) {
-      height: $height-xl;
-    }
   }
 
   &__item {

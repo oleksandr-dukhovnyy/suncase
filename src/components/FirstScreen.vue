@@ -99,7 +99,6 @@ $img-size-2nth: 326px;
       }
 
       button {
-        // font-size: 12px;
         letter-spacing: 0.45em;
         font-weight: 400;
       }

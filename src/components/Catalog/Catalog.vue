@@ -1,10 +1,9 @@
 <template>
-  <!-- :class="'d-none d-xl-grid'" -->
   <section class="catalog" id="catalog">
     <div class="catalog__filters">
       <Filters />
     </div>
-    <div class="catalog__hamburder" @click="showSideModal = true">
+    <div class="catalog__hamburger" @click="showSideModal = true">
       <img :src="icon('menu')" alt="menu" />
     </div>
     <div class="catalog__items">
@@ -29,38 +28,31 @@ const showSideModal = ref(false);
 <style lang="scss" scoped>
 .catalog {
   @include container;
-  // outline: 1px dotted coral;
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 42px 1fr;
-  column-gap: 50px;
-  row-gap: padding(4);
-  margin: 30px auto 0;
+  column-gap: 110px;
+  margin: 60px 0 0;
+  justify-content: space-evenly;
+  width: 100%;
+  row-gap: 30px;
+  padding: 0 30px;
 
-  @include media-up(md) {
+  @include media-up(xsm) {
     grid-template-rows: 1fr;
-    // grid-template-columns: 180px 1fr;
     grid-template-columns: 155px 1fr;
-  }
-
-  @include media-up(xl) {
-    column-gap: 72px;
-  }
-
-  @include media-up(xxxl) {
-    column-gap: 98px;
   }
 
   &__filters {
     display: none;
 
-    @include media-up(md) {
+    @include media-up(xsm) {
       display: block;
     }
   }
 
-  &__hamburder {
-    @include media-up(md) {
+  &__hamburger {
+    @include media-up(xsm) {
       display: none;
     }
   }

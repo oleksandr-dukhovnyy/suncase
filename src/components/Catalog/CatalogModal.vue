@@ -50,25 +50,6 @@
             @inc-count="count++"
             @dec-count="count--"
           />
-          <!-- <strong>
-            {{ selected.item.brend }}
-          </strong>
-          <em> {{ selected.item.model }} </em>
-          <div class="catalog-modal__price">
-            <p :class="selected.item.sale ? 'catalog-modal__sale' : ''">
-              ${{
-                selected.item.sale
-                  ? selected.item.oldCoast
-                  : selected.item.coast
-              }}
-            </p>
-            <p v-if="selected.item.sale" class="catalog-modal__new-coast">
-              ${{ selected.item.coast }}
-            </p>
-          </div>
-          <div>
-            <Counter :value="count" :max="9" @inc="count++" @dec="count--" />
-          </div> -->
         </div>
         <div
           class="catalog-modal__actions"
@@ -98,12 +79,9 @@
 </template>
 
 <script setup>
-// import Counter from '../General/Counter.vue';
 import ProductCard from '../General/ProductCard.vue';
 import { ref, watch, computed } from 'vue';
 import { useStore } from 'vuex';
-
-// import TheButton from '../General/TheButton.vue';
 
 // vars
 const $store = useStore();
@@ -193,10 +171,6 @@ setInterval(moveForward, import.meta.env.MODE === 'development' ? 7000 : 3000);
     grid-template-rows: 350px 1fr;
   }
 
-  // & > * {
-  //   // outline: 1px dotted orange;
-  // }
-
   &__slider {
     max-height: 600px;
     display: flex;
@@ -215,7 +189,6 @@ setInterval(moveForward, import.meta.env.MODE === 'development' ? 7000 : 3000);
 
   &__new-coast {
     color: $font-color-red;
-    // @include font-md;
   }
 
   &__price {
@@ -225,7 +198,6 @@ setInterval(moveForward, import.meta.env.MODE === 'development' ? 7000 : 3000);
     margin-bottom: padding();
 
     @include media-up(xl) {
-      // @include font-md;
       font-size: 14px;
     }
   }

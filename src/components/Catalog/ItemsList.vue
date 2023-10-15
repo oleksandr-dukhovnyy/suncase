@@ -32,34 +32,24 @@ const openSlider = (id) => {
 </script>
 
 <style scoped lang="scss">
-@import './catalog-style-vars.scss';
-
 .items-list {
   display: grid;
-  gap: padding(4);
-  grid-template-columns: repeat(1, $item-width);
+  gap: 50px;
+  justify-content: center;
+  grid-template-columns: repeat(auto-fill, 200px);
 
-  @include media-up(smx) {
-    grid-template-columns: repeat(2, $item-width);
+  // @include media_up(xsm) {
+  //   justify-content: flex-start;
+  // }
+
+  padding-right: 0;
+
+  @include media-up(xsm) {
+    padding-right: 80px;
   }
 
-  @include media-up(sm) {
-    grid-template-columns: repeat(3, $item-width-sm);
-  }
-
-  @include media-up(md) {
-    grid-template-columns: repeat(3, $item-width-md);
-    gap: padding(4);
-  }
-
-  @include media-up(lg) {
-    grid-template-columns: repeat(3, $item-width-xl);
-    gap: padding(5);
-  }
-
-  @include media-up(xl) {
-    gap: padding(6);
-    grid-template-columns: repeat(4, $item-width-xl);
+  @include media_up(xxl) {
+    padding-right: 0;
   }
 }
 </style>

@@ -46,7 +46,6 @@
 import Counter from './Counter.vue';
 
 const image = (relativeImgPath: string): string => `./img/${relativeImgPath}`;
-
 const icon = (name: string, ext = 'svg'): string =>
   `./img/icons/${name}.${ext}`;
 
@@ -125,11 +124,6 @@ const emit = defineEmits(['clicked', 'inc-count', 'dec-count', 'remove']);
     img {
       width: 12px;
       height: 12px;
-
-      // @include media-up(xl) {
-      //   width: 21px;
-      //   height: 21px;
-      // }
     }
   }
 
@@ -145,7 +139,7 @@ const emit = defineEmits(['clicked', 'inc-count', 'dec-count', 'remove']);
     justify-content: center;
     align-items: center;
     color: $font-color-red;
-    right: 0;
+    right: 10px;
     top: 70px;
     width: 50px;
     height: 50px;

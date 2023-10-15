@@ -51,20 +51,14 @@ const close = () => {
   position: fixed;
   z-index: 10;
   background-color: #fcfcfce6;
-
-  @include media-down(lg) {
-    align-items: flex-start;
-    padding-top: 24px;
-  }
 }
 
 .modal {
   border-radius: $border-radius-xl;
-  width: 86vw;
-  height: 86vh;
+  width: 100vw;
+  height: 100vh;
   vertical-align: middle;
-  max-height: 720px;
-  // max-width: 1200px;
+  max-height: 748px;
   max-width: 1181px;
   background-color: #fff;
   display: grid;
@@ -77,11 +71,6 @@ const close = () => {
   --animate-duration: 400ms;
 
   @include shadow-large;
-
-  @include media-down-landscape(lg) {
-    height: 72vh;
-    max-height: 648px;
-  }
 
   &__body {
     max-height: 668px;

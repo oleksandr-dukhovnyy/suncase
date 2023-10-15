@@ -55,8 +55,6 @@ const onMouseenter = () => {
 
 <style scoped lang="scss">
 .confirm {
-  // width: 100%;
-  // position: relative;
   z-index: 10;
 
   &__bttns {

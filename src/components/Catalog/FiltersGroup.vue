@@ -77,13 +77,9 @@ const selected = (name) => {
     display: flex;
     align-items: center;
     cursor: pointer;
-    padding: padding(0.5) 0;
+    padding: 0;
     font-weight: 400;
     color: #999;
-
-    @include media-up(md) {
-      padding: 0;
-    }
 
     span {
       text-transform: uppercase;

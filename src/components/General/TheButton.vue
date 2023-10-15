@@ -74,7 +74,6 @@ const onClick = (e) => {
 
 <style lang="scss" scoped>
 .button {
-  // @include font-base;
   font-size: 14px;
   cursor: pointer;
   text-transform: uppercase;

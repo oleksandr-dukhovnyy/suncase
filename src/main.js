@@ -1,4 +1,5 @@
 import { createApp } from 'vue';
+// import * as Sentry from '@sentry/vue';
 import App from './App.vue';
 import router from './router';
 import store from './store/index.js';
@@ -36,16 +37,27 @@ app.mixin({
     openPayWindow,
   },
   computed: {
-    pathToImgs() {
-      return './img';
-    },
-    phone() {
-      return '+38 063 244 1587';
-    },
-    email() {
-      return 'script@vip-person.net';
-    },
+    pathToImgs: () => './img',
+    phone: () => '+38 063 244 1587',
+    email: () => 'script@vip-person.net',
   },
 });
+
+// Sentry.init({
+//   Vue: app,
+//   dsn: '-',
+//   integrations: [
+//     new Sentry.BrowserTracing({
+//       // Set 'tracePropagationTargets' to control for which URLs distributed tracing should be enabled
+//       tracePropagationTargets: [location.origin, 'https:yourserver.io/api/'],
+//       routingInstrumentation: Sentry.vueRouterInstrumentation(router),
+//     }),
+//     new Sentry.Replay(),
+//   ],
+//   tracesSampleRate: 1.0, // Capture 100% of the transactions, reduce in production!
+//   // Session Replay
+//   replaysSessionSampleRate: 0.1, // This sets the sample rate at 10%. You may want to change it to 100% while in development and then sample at a lower rate in production.
+//   replaysOnErrorSampleRate: 1.0, // If you're not already sampling the entire session, change the sample rate to 100% when sampling sessions where errors occur.
+// });
 
 app.mount('#app');
