@@ -1,16 +1,25 @@
 import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import path from 'path';
-// import viteJoinMediaQueries from 'vite-join-media-queries';
+import viteJoinMediaQueries from 'vite-join-media-queries';
 
 import packageJSON from './package.json';
 
-const getConfig = (IS_DEV) => {
+export default defineConfig(({ mode }) => {
+  const IS_DEV = mode === 'development';
+
   return {
-    plugins: [vue() /*viteJoinMediaQueries({})*/],
+    plugins: [
+      vue(),
+      viteJoinMediaQueries({
+        paths2css: ['./dist/assets'],
+      }),
+    ],
     resolve: {
       alias: {
+        // eslint-disable-next-line no-undef
         '@': path.resolve(__dirname, 'src'),
+        // eslint-disable-next-line no-undef
         '~': path.resolve(__dirname, 'src/assets'),
       },
     },
@@ -22,11 +31,9 @@ const getConfig = (IS_DEV) => {
     css: {
       preprocessorOptions: {
         scss: {
-          additionalData: `@import "src/assets/scss/app.scss";`,
+          additionalData: '@import "src/assets/scss/app.scss";',
         },
       },
     },
   };
-};
-
-export default defineConfig(({ mode }) => getConfig(mode === 'development'));
+});

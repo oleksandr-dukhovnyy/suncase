@@ -1,0 +1,14 @@
+{
+  "target": "ESNext",
+  "module": "ESNext",
+  "moduleResolution": "Node",
+  "exclude": ["node_modules"],
+  "compilerOptions": {
+    "lib": ["ESNext", "ESNext.AsyncIterable", "DOM"],
+    "strict": true,
+    "paths": {
+      "~/*": ["./*"],
+      "@/*": ["./components/*"]
+    }
+  }
+}

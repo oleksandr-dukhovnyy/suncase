@@ -2,7 +2,7 @@ import { createApp } from 'vue';
 // import * as Sentry from '@sentry/vue';
 import App from './App.vue';
 import router from './router';
-import store from './store/index.js';
+import store from './store/index';
 
 import openPayWindow from './js/openPayWindow.js';
 import 'normalize.css';

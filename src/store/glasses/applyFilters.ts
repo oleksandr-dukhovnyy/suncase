@@ -40,24 +40,24 @@
   }
 */
 
-const checkInFilter = (name, list) => {
+const checkInFilter = (name: string, list: Filter[]) => {
   const listItem = list.find((item) => item.name === name) || { active: false };
 
   return listItem.active;
 };
 
-const applyFilters = (filters, list) => {
+const applyFilters = (filters: Glasses.Filters, list: Glasses.Item[]) => {
   const priceFilter = filters.categories
     .filter(({ name }) =>
       ['price-low-to-hight', 'price-hight-to-low'].includes(name)
     )
-    .reduce((a, c) => ((a[c.name] = c.active), a), {});
+    .reduce((a, c) => ((a[c.name] = c.active), a), {} as Filter);
 
   const categoriesFilters = filters.categories
     .filter(
       ({ name }) => !['price-low-to-hight', 'price-hight-to-low'].includes(name)
     )
-    .reduce((a, c) => ((a[c.name] = c.active), a), {});
+    .reduce((a, c) => ((a[c.name] = c.active), a), {} as Filter);
 
   const showAllGenders = filters.genders.every((item) => !item.active);
   const showAllBrands = filters.brands.every((item) => !item.active);

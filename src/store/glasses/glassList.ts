@@ -1,4 +1,4 @@
-export default [
+export default <Glasses.Item[]>[
   {
     brand: 'Maui Jim',
     sale: true,

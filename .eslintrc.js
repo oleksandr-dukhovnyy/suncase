@@ -32,7 +32,6 @@ module.exports = {
         endOfLine: 'auto',
       },
     ],
-    'vue/no-multiple-template-root': 'off', // Nuxt can handle multiroot
     'vue/html-self-closing': 'off',
     'vue/max-attributes-per-line': 'off', // Prettier conflicts
     'vue/multi-word-component-names': 'off',
