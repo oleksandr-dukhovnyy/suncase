@@ -27,9 +27,10 @@
   </section>
 </template>
 
-<script setup>
+<script lang="ts" setup>
+// @ts-ignore
 import scrollToGoods from '@/js/scrollToGoods.js';
-const getPathToImgs = (index) => `LineSlider/1/${index}.jpg`;
+const getPathToImgs = (index: number | string) => `LineSlider/1/${index}.jpg`;
 
 const sections = [
   { type: 'img', url: getPathToImgs(1) },

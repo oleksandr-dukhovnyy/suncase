@@ -1,8 +1,11 @@
+import basicSsl from '@vitejs/plugin-basic-ssl';
 import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
+// @ts-ignore
 import path from 'path';
 import viteJoinMediaQueries from 'vite-join-media-queries';
 
+// @ts-ignore
 import packageJSON from './package.json';
 
 export default defineConfig(({ mode }) => {
@@ -14,6 +17,7 @@ export default defineConfig(({ mode }) => {
       viteJoinMediaQueries({
         paths2css: ['./dist/assets'],
       }),
+      basicSsl(),
     ],
     resolve: {
       alias: {
@@ -26,6 +30,13 @@ export default defineConfig(({ mode }) => {
 
     // for GH-Pages deploy
     base: IS_DEV ? '/' : `/${packageJSON.name}/`,
+    // base: '/',
+
+    preview: {
+      port: 8080,
+      host: 'local.suncase.com',
+      https: true,
+    },
 
     // global scss mixins & vars
     css: {
