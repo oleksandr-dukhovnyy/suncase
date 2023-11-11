@@ -1,4 +1,4 @@
-# Internet shop “Suncase” ![logo](https://github.com/Aleksandr-JS-Developer/suncase/blob/main/public/favicons/new/6.png)
+# Internet shop “Suncase” ![logo](https://github.com/Aleksandr-JS-Developer/suncase/blob/main/public/suncase-logo.png)
 
 (nuxt, vue.js, vue-router, vuex, vite, babel, photoshop, figma)
 
