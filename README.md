@@ -1,6 +1,10 @@
-# Nuxt 3 Minimal Starter
+# Internet shop “Suncase” ![logo](https://github.com/Aleksandr-JS-Developer/suncase/blob/main/public/favicons/new/6.png)
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+(nuxt, vue.js, vue-router, vuex, vite, babel, photoshop, figma)
+
+---
+
+### [live-demo](https://aleksandr-js-developer.github.io/suncase/)
 
 ## Setup
 
