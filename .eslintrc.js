@@ -33,8 +33,8 @@ module.exports = {
       },
     ],
     'vue/html-self-closing': 'off',
-    'vue/max-attributes-per-line': 'off', // Prettier conflicts
     'vue/multi-word-component-names': 'off',
+    'vue/max-attributes-per-line': 'off', // Prettier conflicts
     'vue/singleline-html-element-content-newline': 'off', // Prettier conflicts
     'vue/multiline-html-element-content-newline': 'off', // Prettier conflicts
   },
