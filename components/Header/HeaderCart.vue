@@ -4,7 +4,7 @@
       ${{ cartStore.CART_TOTAL_PRICE }}
     </div>
     <div class="header-cart__count">
-      <img :src="image('/cart/cart.svg')" alt="cart" />
+      <img :src="image('cart/cart.svg')" alt="cart" />
       <p>
         {{ cartStore.CART_LENGTH }}
       </p>
