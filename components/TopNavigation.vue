@@ -12,7 +12,7 @@
 
 <script lang="ts" setup>
 // @ts-ignore
-import scrollToGoods from '@/helpers/scrollToGoods.js';
+import scrollToGoods from '~/helpers/scrollToGoods.js';
 import { useGlassesStore } from '~/store/glasses';
 
 const glassesStore = useGlassesStore();

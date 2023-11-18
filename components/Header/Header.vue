@@ -32,6 +32,8 @@ const cartStore = useCartStore();
 const show = computed(() => cartStore.SHOW_CART_POPUP);
 
 const scrollToTop = () => {
+  navigateTo('/');
+
   self.scrollTo({
     top: 0,
     behavior: 'smooth',

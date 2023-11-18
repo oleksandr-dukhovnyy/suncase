@@ -1,1 +1,1 @@
-export default (path: string) => `./img/${path}`;
+export default (path: string) => `/img/${path}`;

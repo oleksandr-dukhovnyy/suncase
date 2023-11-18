@@ -1,5 +1,5 @@
 <template>
-  <div class="logo__contain">
+  <div class="logo__contain" @click="toMain">
     <div class="logo animate__animated animate__fadeInDown">
       <img width="42" height="42" :src="image('logo.png')" alt="sun" />
       <h1>
@@ -10,7 +10,9 @@
   </div>
 </template>
 
-<script setup></script>
+<script lang="ts" setup>
+const toMain = () => navigateTo('/');
+</script>
 
 <style scoped lang="scss">
 .logo {
@@ -22,6 +24,7 @@
   position: absolute;
   top: 154px; // 130px
   left: calc(50% - 125.795px);
+  cursor: pointer;
 
   @include media-up(md) {
     z-index: 2;

@@ -1,1 +1,1 @@
-export default (path: string) => `./img/icons/${path}.svg`;
+export default (path: string) => `/img/icons/${path}.svg`;

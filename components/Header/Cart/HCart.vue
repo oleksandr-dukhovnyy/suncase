@@ -33,7 +33,7 @@
 
 <script lang="ts" setup>
 // @ts-expect-error
-import scrollToGoods from '@/helpers/scrollToGoods.js';
+import scrollToGoods from '~/helpers/scrollToGoods.js';
 
 import { useCartStore } from '~/store/cart';
 import { useSliderStore } from '~/store/slider';

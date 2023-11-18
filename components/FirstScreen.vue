@@ -28,7 +28,7 @@
 </template>
 
 <script lang="ts" setup>
-import scrollToGoods from '@/helpers/scrollToGoods.js';
+import scrollToGoods from '~/helpers/scrollToGoods.js';
 // import TheButton from '~/components/General/TheButton.vue';
 
 const getPathToImgs = (index: number | string) => `LineSlider/1/${index}.jpg`;
