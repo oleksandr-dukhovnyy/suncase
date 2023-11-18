@@ -1,22 +1,24 @@
 <template>
-  <div class="header-cart" @click="$emit('open-cart')">
-    <div class="header-cart__total-price">${{ totalPrice }}</div>
+  <div class="header-cart" data-test="open-cart" @click="$emit('open-cart')">
+    <div class="header-cart__total-price">
+      ${{ cartStore.CART_TOTAL_PRICE }}
+    </div>
     <div class="header-cart__count">
       <img :src="image('/cart/cart.svg')" alt="cart" />
       <p>
-        {{ cartItemsCount }}
+        {{ cartStore.CART_LENGTH }}
       </p>
     </div>
   </div>
 </template>
 
-<script setup>
-import { useStore } from 'vuex';
+<script lang="ts" setup>
+import { useCartStore } from '~/store/cart';
 
-const $state = useStore();
+const cartStore = useCartStore();
 
-const cartItemsCount = computed(() => $state.getters['cart/CART_LENGTH']);
-const totalPrice = computed(() => $state.getters['cart/CART_TOTAL_PRICE']);
+// const cartItemsCount = computed(() => cartStore.CART_LENGTH);
+// const totalPrice = computed(() => cartStore.CART_TOTAL_PRICE);
 
 const $emit = defineEmits(['open-cart']);
 </script>

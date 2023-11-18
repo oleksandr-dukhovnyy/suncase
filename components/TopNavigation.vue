@@ -10,16 +10,17 @@
   </nav>
 </template>
 
-<script setup>
-import { useStore } from 'vuex';
-import scrollToGoods from '@/js-utils/scrollToGoods.js';
+<script lang="ts" setup>
+// @ts-ignore
+import scrollToGoods from '@/helpers/scrollToGoods.js';
+import { useGlassesStore } from '~/store/glasses';
 
-const $store = useStore();
+const glassesStore = useGlassesStore();
 
 const navItems = ['man', 'woman', 'kids'];
 
-const selectCategory = (category) => {
-  $store.dispatch('glasses/TOGGLE_FILTER_GENDERS', category);
+const selectCategory = (category: string) => {
+  glassesStore.TOGGLE_FILTER_GENDERS(category);
   scrollToGoods();
 };
 </script>

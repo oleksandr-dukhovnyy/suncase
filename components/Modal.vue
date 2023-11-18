@@ -1,6 +1,6 @@
 <template>
   <Teleport to="body">
-    <div class="layout" @click.self="close">
+    <div class="layout" @click.self="close" data-test="close-modal">
       <div
         class="modal animate__animated"
         :class="{

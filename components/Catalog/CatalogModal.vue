@@ -4,7 +4,7 @@
       <div class="catalog-modal__slider">
         <img
           class="catalog-modal__selected-img"
-          :src="image(`${selected.item.id}/${selectedID}.jpg`)"
+          :src="image(`${selected.item?.id}/${selectedID}.jpg`)"
           alt="glasses"
         />
         <div class="catalog-modal__slider-contain">
@@ -16,12 +16,12 @@
             />
           </div>
           <img
-            v-for="i in selected.item.lng"
+            v-for="i in selected.item?.lng"
             class="catalog-modal__slider-img"
             :class="{
               [`catalog-modal__slider-img--selected`]: i === selectedID,
             }"
-            :src="image(`${selected.item.id}/${i}.jpg`)"
+            :src="image(`${selected.item?.id}/${i}.jpg`)"
             @click="selectedID = i"
             alt="glasses"
           />
@@ -57,6 +57,7 @@
             type="black"
             :icon-name="showAddToCartAnimation ? 'ok' : 'plus'"
             :icon-size="showAddToCartAnimation ? 20 : 11"
+            data-test="add-to-cart"
             @click="addToCart"
           >
             <span
@@ -72,18 +73,19 @@
   </Modal>
 </template>
 
-<script setup>
+<script lang="ts" setup>
 // import ProductCard from '../General/ProductCard.vue';
 // import TheButton from '~/components/General/TheButton.vue';
 // import Modal from '~/components/General/Modal.vue';
-import { useStore } from 'vuex';
+import { useSliderStore } from '~/store/slider';
+import { useCartStore } from '~/store/cart';
+
+const cartStore = useCartStore();
+const sliderStore = useSliderStore();
 
 // vars
-const $store = useStore();
-const selected = computed(() => $store.getters['slider/SELECTED_ITEM']);
-const show = computed(
-  () => $store.getters['slider/SLIDER_SHOW'] && selected.value.defined
-);
+const selected = computed(() => sliderStore.SELECTED_ITEM);
+const show = computed(() => sliderStore.SLIDER_SHOW && selected.value.defined);
 const selectedID = ref(1);
 const showAddToCartAnimation = ref(false);
 const count = ref(1);
@@ -96,7 +98,7 @@ watch(show, () => (selectedID.value = 1));
 
 // methods
 const moveForward = () => {
-  if (!selected.value?.defined) return;
+  if (!selected.value?.defined || !selected.value.item) return;
 
   if (selectedID.value + 1 > selected.value.item.lng) {
     return (selectedID.value = 1);
@@ -106,7 +108,7 @@ const moveForward = () => {
 };
 
 const moveBack = () => {
-  if (!selected.value?.defined) return;
+  if (!selected.value?.defined || !selected.value.item) return;
 
   if (selectedID.value - 1 < 1) {
     return (selectedID.value = selected.value.item.lng);
@@ -117,8 +119,9 @@ const moveBack = () => {
 
 const addToCart = () => {
   showAddToCartAnimation.value = true;
-  $store.dispatch('cart/ADD_TO_CART', {
-    id: selected.value.item.id,
+
+  cartStore.ADD_TO_CART({
+    id: selected.value.item?.id || '-',
     count: count.value,
     overflow: 'cut',
   });
@@ -129,15 +132,15 @@ const addToCart = () => {
 };
 
 const buy = () => {
-  $store.dispatch('slider/BUY_IT', selected.value.item.id);
+  if (selected.value.item) {
+    sliderStore.BUY_IT(selected.value.item.id);
+  }
 };
 
 const closeSlider = () => {
   resetCounter();
-  $store.dispatch('slider/HIDE_SLIDER');
+  sliderStore.HIDE_SLIDER();
 };
-
-// /methods
 
 // other
 setInterval(moveForward, import.meta.env.MODE === 'development' ? 7000 : 3000);

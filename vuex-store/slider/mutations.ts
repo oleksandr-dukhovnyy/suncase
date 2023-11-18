@@ -1,5 +1,5 @@
 // @ts-ignore
-import bodyScroll from '../../js-utils/bodyScroll.js';
+import bodyScroll from '../../helpers/bodyScroll.js';
 
 export default <Store.Mutations<Slider.State>>{
   SET_SLIDER_SHOW(state, bool) {

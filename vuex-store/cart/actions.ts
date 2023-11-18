@@ -1,7 +1,7 @@
 // @ts-ignore
 import cartStorage from './saveToStorage.js';
 // @ts-ignore
-import openWin from '../../js-utils/openPayWindow.js';
+import openWin from '../../helpers/openPayWindow.js';
 
 export default <Store.Actions>{
   async FETCH_CART({ commit }) {
@@ -27,9 +27,11 @@ export default <Store.Actions>{
       id,
       count,
       overflow = 'error',
-    }: { id: Cart.ItemId; count: number; overflow?: 'error' | 'cut' }
+    }: { id: Cart.CartItem['id']; count: number; overflow?: 'error' | 'cut' }
   ) {
-    if (state.cart.map(({ id }: { id: Cart.ItemId }) => id).includes(id)) {
+    if (
+      state.cart.map(({ id }: { id: Cart.CartItem['id'] }) => id).includes(id)
+    ) {
       dispatch('CHANGE_ITEM_COUNT', { id, count, overflow });
     } else {
       commit('ADD_TO_CART', { id, count });
@@ -38,12 +40,12 @@ export default <Store.Actions>{
   CLEAR_CART({ dispatch }) {
     dispatch('SETUP_CART', []);
   },
-  DELETE_ITEM({ commit }, id: Cart.ItemId) {
+  DELETE_ITEM({ commit }, id: Cart.CartItem['id']) {
     commit('DELETE_ITEM', id);
   },
   CHANGE_ITEM_COUNT({ commit, getters }, { id, count, overflow = 'error' }) {
     const item = getters.CART.find(
-      ({ id: _id }: { id: Cart.ItemId }) => _id === id
+      ({ id: _id }: { id: Cart.CartItem['id'] }) => _id === id
     );
 
     if (!item)
@@ -74,19 +76,22 @@ export default <Store.Actions>{
       data: { count: sum > 9 ? 9 : sum < 1 ? 1 : sum },
     });
   },
-  DEC_ITEM_COUNT({ dispatch }, id: Cart.ItemId) {
+  DEC_ITEM_COUNT({ dispatch }, id: Cart.CartItem['id']) {
     dispatch('CHANGE_ITEM_COUNT', {
       id,
       count: -1,
     });
   },
-  INC_ITEM_COUNT({ dispatch }, id: Cart.ItemId) {
+  INC_ITEM_COUNT({ dispatch }, id: Cart.CartItem['id']) {
     dispatch('CHANGE_ITEM_COUNT', {
       id,
       count: 1,
     });
   },
-  CHANGE_ITEM_DATA({ commit }, { id, data }: { id: Cart.ItemId; data: any }) {
+  CHANGE_ITEM_DATA(
+    { commit },
+    { id, data }: { id: Cart.CartItem['id']; data: any }
+  ) {
     commit('CHANGE_ITEM_DATA', {
       id,
       data,

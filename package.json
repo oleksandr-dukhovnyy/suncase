@@ -8,19 +8,24 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+    "e2e": "npx cypress open"
   },
   "devDependencies": {
     "@nuxt/devtools": "latest",
+    "cypress": "^13.5.0",
     "nuxt": "^3.8.0",
     "sass": "^1.69.5",
+    "typescript": "^5.2.2",
     "vue": "^3.3.7",
     "vue-router": "^4.2.5"
   },
   "dependencies": {
+    "@pinia/nuxt": "^0.5.1",
     "adaptive-scss": "^1.2.1",
     "normalize.css": "^8.0.1",
     "nuxt3-vuex-module": "^1.0.13",
+    "pinia": "^2.1.7",
     "vuex": "^4.1.0"
   }
 }

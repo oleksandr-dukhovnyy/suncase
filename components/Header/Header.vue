@@ -15,22 +15,22 @@
           @change-current-lang="onChangeCurrentLang"
           :langs="langs"
         />
-        <HeaderCart @open-cart="$store.dispatch('cart/SHOW_CART')" />
+        <HeaderCart @open-cart="cartStore.SHOW_CART" />
       </div>
-      <Cart v-if="show" @close="$store.dispatch('cart/HIDE_CART')" />
+      <Cart v-if="show" @close="cartStore.HIDE_CART" />
     </header>
   </div>
 </template>
 
-<script setup>
+<script lang="ts" setup>
 import HeaderLagns from './HeaderLagns.vue';
 import HeaderCart from './HeaderCart.vue';
 import Cart from './Cart/HCart.vue';
-import { useStore } from 'vuex';
+import { useCartStore } from '~/store/cart';
 
-// store
-const $store = useStore();
-const show = computed(() => $store.getters['cart/SHOW_CART_POPUP']);
+const cartStore = useCartStore();
+const show = computed(() => cartStore.SHOW_CART_POPUP);
+
 const scrollToTop = () => {
   self.scrollTo({
     top: 0,

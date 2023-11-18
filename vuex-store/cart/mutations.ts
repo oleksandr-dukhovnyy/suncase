@@ -1,5 +1,5 @@
 // @ts-ignore
-import bodyScroll from '../../js-utils/bodyScroll.js';
+import bodyScroll from '../../helpers/bodyScroll.js';
 // @ts-ignore
 import cartStorage from './saveToStorage.js';
 

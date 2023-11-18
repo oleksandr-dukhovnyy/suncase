@@ -11,10 +11,7 @@
   </main>
 </template>
 
-<script setup>
-import { useStore } from 'vuex';
-import { onMounted, onUnmounted } from 'vue';
-
+<script lang="ts" setup>
 import Header from '@/components/Header/Header.vue';
 import HeaderLogo from '@/components/Header/HeaderLogo.vue';
 import TopNavigation from '@/components/TopNavigation.vue';
@@ -22,20 +19,22 @@ import FirstScreen from '@/components/FirstScreen.vue';
 import Catalog from '@/components/Catalog/Catalog.vue';
 import Footer from '@/components/Footer.vue';
 
-const $store = useStore();
+import { useCartStore } from '~/store/cart';
+import { useSliderStore } from '~/store/slider';
 
-$store.dispatch('cart/FETCH_CART');
+const cartStore = useCartStore();
+const sliderStore = useSliderStore();
+// const $store = useStore();
+
+cartStore.FETCH_CART();
 
 const listenESC = function (e) {
   if (e.key === 'Escape') {
-    if (
-      $store.getters['cart/SHOW_CART_POPUP'] &&
-      $store.getters['slider/SLIDER_SHOW']
-    ) {
-      $store.dispatch('slider/HIDE_SLIDER');
+    if (cartStore.SHOW_CART_POPUP && sliderStore.SLIDER_SHOW) {
+      sliderStore.HIDE_SLIDER();
     } else {
-      $store.dispatch('cart/HIDE_CART');
-      $store.dispatch('slider/HIDE_SLIDER');
+      cartStore.HIDE_CART();
+      sliderStore.HIDE_SLIDER();
     }
   }
 };

@@ -4,6 +4,11 @@ export default defineNuxtConfig({
   css: ['normalize.css', '~/assets/scss/global.scss'],
   telemetry: false,
   ssr: false,
+  modules: ['@pinia/nuxt'],
+  devServer: {
+    port: 5437,
+    host: 'local.suncase.com',
+  },
   vite: {
     css: {
       preprocessorOptions: {

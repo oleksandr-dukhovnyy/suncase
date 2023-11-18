@@ -1,11 +1,11 @@
 import glassList from './glassList';
 
 export default <Store.Actions>{
-  FETCH_SUNGLASESS({ commit }) {
+  FETCH_SUNGLASSES({ commit }) {
     commit('SET_LOADER', true);
 
     setTimeout(() => {
-      commit('SET_SUNGLASESS', JSON.parse(JSON.stringify(glassList)));
+      commit('SET_SUNGLASSES', JSON.parse(JSON.stringify(glassList)));
       commit('SET_LOADER', false);
     }, 200);
   },

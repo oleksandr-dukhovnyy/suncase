@@ -1,5 +1,5 @@
 // @ts-ignore
-import openWin from '../../js-utils/openPayWindow.js';
+import openWin from '../../helpers/openPayWindow.js';
 
 export default <Store.Actions>{
   SET_SLIDER_SHOW({ commit }, bool: boolean) {
@@ -18,7 +18,7 @@ export default <Store.Actions>{
     commit('SET_SELECTED', id);
   },
   BUY_IT({ dispatch, rootGetters }, id) {
-    const item = rootGetters['glasses/UNFILTERED_SUNGLASESS_LIST'].find(
+    const item = rootGetters['glasses/UNFILTERED_SUNGLASSES_LIST'].find(
       ({ id: itemId }: { id: string }) => itemId === id
     );
 

@@ -26,7 +26,7 @@
 
 <script setup>
 import { ref } from 'vue';
-import bodyScroll from '../../js-utils/bodyScroll.js';
+import bodyScroll from '../../helpers/bodyScroll.js';
 
 if (!bodyScroll.lockedNow()) bodyScroll.rem();
 

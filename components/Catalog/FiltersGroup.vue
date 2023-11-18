@@ -28,7 +28,7 @@ const props = withDefaults(
       active: boolean;
     }[];
     type: string;
-    size?: 'sm' | 'md' | 'xl';
+    size?: 'sm' | 'md' | 'xl' | 'xsm';
   }>(),
   {
     size: 'md',

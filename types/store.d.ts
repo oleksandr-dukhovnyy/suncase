@@ -23,19 +23,24 @@ declare interface Filter {
   active: boolean;
 }
 
+declare type FiltersList = {
+  type: string;
+  items: {
+    title: string;
+    name: string;
+    active: boolean;
+  }[];
+}[];
+
 declare namespace Glasses {
-  export type ItemId = string;
-
-  export type Gender = 'woman' | 'man' | 'all';
-
   export interface Item {
-    id: ItemId;
+    id: string;
     brand: string; //'Prada',
     model: string; //'PR53US';
     sale: boolean;
     oldCoast: number;
     coast: number;
-    gender: Gender;
+    gender: 'woman' | 'man' | 'all';
     saled: number; //1343;
     isNew: boolean;
     lng: number; // count of images on store. Needs for carousel
@@ -49,18 +54,16 @@ declare namespace Glasses {
   }
 
   export interface State {
-    sunglasessList: Glasses.Item[];
+    SUNGLASSESList: Glasses.Item[];
     loading: boolean;
     filters: Filters;
   }
 }
 
 declare namespace Cart {
-  export type ItemId = string;
-
   export interface CartItem {
-    id: ItemId;
-    count: 3;
+    id: string;
+    count: number;
   }
 
   export interface State {

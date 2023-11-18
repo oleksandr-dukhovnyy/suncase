@@ -3,11 +3,12 @@
 //   disablePageScroll,
 //   enablePageScroll,
 //   clearQueueScrollLocks,
-// } from '../js-utils/scroll-lock-fixed/scroll-lock.js';
+// } from '../helpers/scroll-lock-fixed/scroll-lock.js';
 
 // const mobileHamburger = document.querySelector('.hamburger');
 
 let locked = false;
+let balance = 0;
 
 const getScrollWidth = () => {
   let div = document.createElement('div');
@@ -24,11 +25,11 @@ const getScrollWidth = () => {
   return scrollWidth;
 };
 
-const toggleScroll = (bool = !locked) => {
-  document.body.style.overflow = bool ? 'hidden' : '';
-  document.body.style.paddingRight = bool ? `${getScrollWidth()}px` : '';
+const toggleScroll = (disable = !locked) => {
+  document.body.style.overflow = disable ? 'hidden' : '';
+  document.body.style.paddingRight = disable ? `${getScrollWidth()}px` : '';
 
-  locked = bool;
+  locked = disable;
 };
 
 export default {
@@ -36,5 +37,18 @@ export default {
   rem: () => toggleScroll(true),
   tggl: () => toggleScroll(),
   set: toggleScroll,
+  balancedSet(disable = !locked) {
+    if (disable) {
+      balance += 1;
+    } else {
+      balance -= 1;
+    }
+
+    if (balance > 0) {
+      toggleScroll(true);
+    } else {
+      toggleScroll(false);
+    }
+  },
   lockedNow: () => locked,
 };

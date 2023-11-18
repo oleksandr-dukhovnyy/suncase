@@ -1,6 +1,6 @@
 <template>
   <Modal @close="$emit('close')">
-    <div class="cart">
+    <div class="cart" data-test="cart">
       <div class="cart__price">
         <HeaderCart />
         <TheButton size="lg" type="error-filled" @click="buy"> buy </TheButton>
@@ -31,38 +31,36 @@
   </Modal>
 </template>
 
-<script setup>
+<script lang="ts" setup>
+// @ts-expect-error
+import scrollToGoods from '@/helpers/scrollToGoods.js';
+
+import { useCartStore } from '~/store/cart';
+import { useSliderStore } from '~/store/slider';
+
 import HeaderCart from '../HeaderCart.vue';
-// import TheButton from '~/components/General/TheButton.vue';
-// import CartItem from './CartItem.vue';
-// import Modal from '~/components/General/Modal.vue';
-// import ProductCard from '../../General/ProductCard.vue';
-import { useStore } from 'vuex';
-import scrollToGoods from '@/js-utils/scrollToGoods.js';
 
-const $state = useStore();
+const cartStore = useCartStore();
+const sliderStore = useSliderStore();
 
-const CART_ITEMS = computed(() => $state.getters['cart/CART']);
+const CART_ITEMS = computed(() => cartStore.CART);
 
-const openInPopup = (id) => {
-  $state.dispatch('slider/SET_SELECTED', id);
-  $state.dispatch('slider/SHOW_SLIDER');
+const openInPopup = (id: Glasses.Item['id']) => {
+  sliderStore.SET_SELECTED(id);
+  sliderStore.SHOW_SLIDER();
 };
 
-const incCount = (id) => $state.dispatch('cart/INC_ITEM_COUNT', id);
-const decCount = (id) => $state.dispatch('cart/DEC_ITEM_COUNT', id);
-
-const remove = (id) => {
-  $state.dispatch('cart/DELETE_ITEM', id);
-};
+const incCount = (id: Glasses.Item['id']) => cartStore.INC_ITEM_COUNT(id);
+const decCount = (id: Glasses.Item['id']) => cartStore.DEC_ITEM_COUNT(id);
+const remove = (id: Glasses.Item['id']) => cartStore.DELETE_ITEM(id);
 
 const $emit = defineEmits(['close']);
 
 const buy = () => {
   if (CART_ITEMS.value.length > 0) {
-    $state.dispatch('cart/BUY_ALL');
+    cartStore.BUY_ALL();
   } else {
-    $state.dispatch('cart/HIDE_CART');
+    cartStore.HIDE_CART();
     scrollToGoods();
   }
 };

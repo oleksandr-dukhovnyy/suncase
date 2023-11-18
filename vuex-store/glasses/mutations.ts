@@ -2,8 +2,8 @@ const getFilterItem = (filters: Filter[], name: string) =>
   filters.find((f) => f.name === name);
 
 export default <Store.Mutations<Glasses.State>>{
-  SET_SUNGLASESS(state, sunglasessList) {
-    state.sunglasessList = sunglasessList;
+  SET_SUNGLASSES(state, SUNGLASSESList) {
+    state.SUNGLASSESList = SUNGLASSESList;
   },
   SET_LOADER(state, value) {
     state.loading = value;

@@ -1,3 +1,45 @@
+/*
+  {
+    brand: 'Maui Jim',
+    sale: true,
+    oldCoast: 385,
+    model: 'Mavericks',
+    coast: 255,
+    id: '1',
+    gender: 'all',
+    saled: 453,
+    isNew: false,
+    lng: 4,
+  }
+
+  {
+    genders: [
+      { name: 'man', active: false },
+      { name: 'kids', active: false },
+      { name: 'woman', active: false },
+    ],
+    categories: [
+      { name: 'new', active: false },
+      { name: 'sale', active: false },
+      { name: 'most-popular', active: false },
+      { name: 'price-low-to-hight', active: false },
+      { name: 'price-hight-to-low', active: false },
+    ],
+    brands: [
+      { name: 'Levis', active: false },
+      { name: 'Prada', active: false },
+      { name: 'Oakley', active: false },
+      { name: 'Persol', active: false },
+      { name: 'Versace', active: false },
+      { name: 'Ray-Ban', active: false },
+      { name: 'Polaroid', active: false },
+      { name: 'Maui Jim', active: false },
+      { name: 'Saint Laurent', active: false },
+      { name: 'Christian Dior', active: false },
+    ]
+  }
+*/
+
 const checkInFilter = (name: string, list: Filter[]) => {
   const listItem = list.find((item) => item.name === name) || { active: false };
 

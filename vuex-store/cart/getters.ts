@@ -1,8 +1,8 @@
 type CounteredGlassesItem = Cart.CartItem & Glasses.Item;
 
 const getters: Store.Getters<Cart.State, any> = {
-  CART: (state, _, __, rootGetters): CounteredGlassesItem => {
-    return rootGetters['glasses/UNFILTERED_SUNGLASESS_LIST']
+  CART: (state, _, __, rootGetters): CounteredGlassesItem[] => {
+    return rootGetters['glasses/UNFILTERED_SUNGLASSES_LIST']
       .filter((item: Glasses.Item) =>
         state.cart.find(({ id }) => '' + item.id === '' + id)
       )

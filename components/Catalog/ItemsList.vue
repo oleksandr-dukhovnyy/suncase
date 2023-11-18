@@ -6,19 +6,20 @@
   </div>
 </template>
 
-<script setup>
-// import ProductCard from '../General/ProductCard.vue';
-import { useStore } from 'vuex';
-import { computed } from 'vue';
+<script lang="ts" setup>
+import { useGlassesStore } from '~/store/glasses';
+import { useSliderStore } from '~/store/slider';
 
-const $store = useStore();
-$store.dispatch('glasses/FETCH_SUNGLASESS');
+const glassesStore = useGlassesStore();
+const sliderStore = useSliderStore();
 
-const ITEMS = computed(() => $store.getters['glasses/SUNGLASESS_LIST']);
+glassesStore.FETCH_SUNGLASSES();
 
-const openSlider = (id) => {
-  $store.dispatch('slider/SET_SELECTED', id);
-  $store.dispatch('slider/SHOW_SLIDER');
+const ITEMS = computed(() => glassesStore.SUNGLASSES_LIST);
+
+const openSlider = (id: Glasses.Item['id']) => {
+  sliderStore.SET_SELECTED(id);
+  sliderStore.SHOW_SLIDER();
 };
 </script>
 
@@ -28,11 +29,6 @@ const openSlider = (id) => {
   gap: 50px;
   justify-content: center;
   grid-template-columns: repeat(auto-fill, 200px);
-
-  // @include media_up(xsm) {
-  //   justify-content: flex-start;
-  // }
-
   padding-right: 0;
 
   @include media-up(xsm) {

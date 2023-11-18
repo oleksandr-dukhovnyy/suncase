@@ -1,5 +1,5 @@
 <template>
-  <article class="item">
+  <article class="item" data-test="product-card">
     <img
       v-if="useImage"
       :src="image(`${id}/1.jpg`)"
@@ -93,10 +93,10 @@ const emit = defineEmits(['clicked', 'inc-count', 'dec-count', 'remove']);
   &__price {
     display: flex;
     gap: padding();
-
     letter-spacing: 5.4px;
     font-weight: 400;
     font-size: 14px;
+    position: relative;
   }
 
   &__coast {

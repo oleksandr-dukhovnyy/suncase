@@ -1,5 +1,5 @@
 export default <Glasses.State>{
-  sunglasessList: [],
+  SUNGLASSESList: [],
   loading: false,
   filters: {
     genders: [

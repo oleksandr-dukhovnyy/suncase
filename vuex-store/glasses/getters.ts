@@ -1,8 +1,8 @@
 import applyFilters from './applyFilters';
 
 export default <Store.Getters<Glasses.State, any>>{
-  SUNGLASESS_LOADING: (state) => state.loading,
-  SUNGLASESS_LIST: (state) => applyFilters(state.filters, state.sunglasessList),
+  SUNGLASSES_LOADING: (state) => state.loading,
+  SUNGLASSES_LIST: (state) => applyFilters(state.filters, state.SUNGLASSESList),
   ACTIVE_GENDERS: (state) => state.filters.genders,
   ACTIVE_CATEGORIES: (state) => state.filters.categories,
   ACTIVE_BRANDS: (state) => state.filters.brands,
@@ -21,5 +21,5 @@ export default <Store.Getters<Glasses.State, any>>{
 
     return filters;
   },
-  UNFILTERED_SUNGLASESS_LIST: (state) => state.sunglasessList,
+  UNFILTERED_SUNGLASSES_LIST: (state) => state.SUNGLASSESList,
 };
