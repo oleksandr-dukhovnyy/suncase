@@ -1,6 +1,6 @@
 {
   "name": "suncase",
-  "version": "3.0.4",
+  "version": "3.0.5",
   "description": "Online sunglasses store",
   "type": "module",
   "author": "alex-js-dev",
@@ -28,5 +28,9 @@
     "nuxt3-vuex-module": "^1.0.13",
     "pinia": "^2.1.7",
     "vuex": "^4.1.0"
+  },
+  "engines": {
+    "node": "^18.18.2",
+    "npm": "^10.2.3"
   }
 }
