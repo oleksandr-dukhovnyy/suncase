@@ -24,13 +24,15 @@
   </Teleport>
 </template>
 
-<script setup>
-import { ref } from 'vue';
-import bodyScroll from '../../helpers/bodyScroll.js';
+<script lang="ts" setup>
+import bodyScroll from '~/helpers/bodyScroll';
 
 if (!bodyScroll.lockedNow()) bodyScroll.rem();
 
-const $emit = defineEmits(['close']);
+const emit = defineEmits<{
+  (e: 'close'): void;
+}>();
+
 const closing = ref(false);
 
 const close = () => {
@@ -39,7 +41,7 @@ const close = () => {
   closing.value = true;
 
   setTimeout(() => {
-    $emit('close');
+    emit('close');
     closing.value = false;
     bodyScroll.add();
   }, 400);

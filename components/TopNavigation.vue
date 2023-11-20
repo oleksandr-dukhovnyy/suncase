@@ -11,8 +11,7 @@
 </template>
 
 <script lang="ts" setup>
-// @ts-ignore
-import scrollToGoods from '~/helpers/scrollToGoods.js';
+import { scrollToGoods } from '~/helpers/scrollToGoods';
 import { useGlassesStore } from '~/store/glasses';
 
 const glassesStore = useGlassesStore();
@@ -42,7 +41,7 @@ nav {
 
   span {
     text-align: center;
-    color: $font-color-cta;
+    color: $color-cta;
     text-transform: uppercase;
     padding: 0 padding(2) padding(3);
     font-weight: 900;

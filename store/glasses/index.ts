@@ -1,9 +1,12 @@
 import { defineStore } from 'pinia';
 import glassesList from '~/helpers/glassesList';
-import applyFilters from './applyFilters';
+import { applyFilters } from './applyFilters';
 
 export const useGlassesStore = defineStore('glasses', {
   actions: {
+    /**
+     * Fetches sunglasses data asynchronously.
+     */
     FETCH_SUNGLASSES() {
       this.loading = true;
 
@@ -12,11 +15,19 @@ export const useGlassesStore = defineStore('glasses', {
         this.loading = false;
       }, Math.random() * 200);
     },
+
+    /**
+     * Toggles the active state of the specified gender filter.
+     */
     TOGGLE_FILTER_GENDERS(gender: string) {
       const item = this.filters.genders.find((i) => i.name === gender);
 
       if (item) item.active = !item.active;
     },
+
+    /**
+     * Toggles the filter categories based on the provided category.
+     */
     TOGGLE_FILTER_CATEGORIES(category: string) {
       const item = this.filters.categories.find((i) => i.name === category);
 
@@ -44,6 +55,10 @@ export const useGlassesStore = defineStore('glasses', {
         item.active = !item.active;
       }
     },
+
+    /**
+     * Toggles the active state of a brand filter.
+     */
     TOGGLE_FILTER_BRANDS(brand: string) {
       const item = this.filters.brands.find((i) => i.name === brand);
 
@@ -84,11 +99,20 @@ export const useGlassesStore = defineStore('glasses', {
   }),
   getters: {
     SUNGLASSES_LOADING: (state) => state.loading,
+
+    /**
+     * Apply filters to the sunglasses list.
+     */
     SUNGLASSES_LIST: (state) =>
       applyFilters(state.filters, state.sunglassesList),
+
     ACTIVE_GENDERS: (state) => state.filters.genders,
     ACTIVE_CATEGORIES: (state) => state.filters.categories,
     ACTIVE_BRANDS: (state) => state.filters.brands,
+
+    /**
+     * Generates a list of filters based on the state object.
+     */
     FILTERS: (state) => {
       const filters = [] as FiltersList;
 
@@ -108,6 +132,15 @@ export const useGlassesStore = defineStore('glasses', {
   },
 });
 
+/**
+ * Finds a filter item in the given array of filters based on the name.
+ */
 function getFilterItem(filters: Filter[], name: string) {
   return filters.find((f) => f.name === name);
 }
+
+/**
+ * Hot reloads the store.
+ */
+if (import.meta.hot)
+  import.meta.hot.accept(acceptHMRUpdate(useGlassesStore, import.meta.hot));

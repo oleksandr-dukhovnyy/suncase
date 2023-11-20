@@ -4,11 +4,11 @@
       v-if="useImage"
       :src="image(`${id}/1.jpg`)"
       alt="sunglasses picture"
-      @click="$emit('clicked')"
+      @click="emit('clicked')"
     />
-    <strong @click="$emit('clicked')">{{ brand }}</strong>
-    <em @click="$emit('clicked')">{{ model }}</em>
-    <div @click="$emit('clicked')" class="item__price">
+    <strong @click="emit('clicked')">{{ brand }}</strong>
+    <em @click="emit('clicked')">{{ model }}</em>
+    <div @click="emit('clicked')" class="item__price">
       <p class="item__coast" :class="sale ? 'item__coast--line-through' : ''">
         ${{ sale ? oldCoast : coast }}
       </p>
@@ -19,14 +19,14 @@
         :text="'Delete?'"
         class="item__remove"
         @click.stop
-        @confirm="$emit('remove')"
+        @confirm="emit('remove')"
       >
         <div class="item__remove-item">
           <img :src="icon('remove')" alt="X" />
         </div>
       </Confirmation>
     </div>
-    <div @click="$emit('clicked')" class="item__new" v-if="isNew && useImage">
+    <div @click="emit('clicked')" class="item__new" v-if="isNew && useImage">
       new
     </div>
     <Counter
@@ -42,23 +42,18 @@
 </template>
 
 <script lang="ts" setup>
-// @ts-ignore
 import Counter from './Counter.vue';
-
-const image = (relativeImgPath: string): string => `./img/${relativeImgPath}`;
-const icon = (name: string, ext = 'svg'): string =>
-  `./img/icons/${name}.${ext}`;
 
 withDefaults(
   defineProps<{
-    brand: string; // 'item.brand';
-    model: string; //'item.model';
-    coast: number; // 'item.coast';
-    sale: boolean; // 'item.sale';
-    oldCoast: number; //'item.oldCoast';
-    isNew: boolean; //'item.isNew';
-    id: string; // 'item.id';
-    count?: number; //'item.count';
+    brand: string;
+    model: string;
+    coast: number;
+    sale: boolean;
+    oldCoast: number;
+    isNew: boolean;
+    id: string;
+    count?: number;
     useImage?: boolean;
     useCounter?: boolean;
     useRemoveBtn?: boolean;
@@ -71,7 +66,12 @@ withDefaults(
   }
 );
 
-const emit = defineEmits(['clicked', 'inc-count', 'dec-count', 'remove']);
+const emit = defineEmits<{
+  (e: 'clicked'): void;
+  (e: 'inc-count'): void;
+  (e: 'dec-count'): void;
+  (e: 'remove'): void;
+}>();
 </script>
 
 <style lang="scss" scoped>
@@ -100,7 +100,7 @@ const emit = defineEmits(['clicked', 'inc-count', 'dec-count', 'remove']);
   }
 
   &__coast {
-    color: $font-color-cta;
+    color: $color-cta;
     line-height: 22px;
 
     &--line-through {
@@ -109,7 +109,7 @@ const emit = defineEmits(['clicked', 'inc-count', 'dec-count', 'remove']);
   }
 
   &__new-coast {
-    color: $font-color-red;
+    color: $color-red;
     line-height: 22px;
   }
 
@@ -128,7 +128,7 @@ const emit = defineEmits(['clicked', 'inc-count', 'dec-count', 'remove']);
   }
 
   &__new {
-    @include font-xxsm;
+    font-size: 11px;
     @include rotate;
     text-transform: uppercase;
     line-height: 1;
@@ -138,7 +138,7 @@ const emit = defineEmits(['clicked', 'inc-count', 'dec-count', 'remove']);
     display: flex;
     justify-content: center;
     align-items: center;
-    color: $font-color-red;
+    color: $color-red;
     right: 10px;
     top: 70px;
     width: 50px;
@@ -149,7 +149,7 @@ const emit = defineEmits(['clicked', 'inc-count', 'dec-count', 'remove']);
   strong {
     font-size: 15px;
     letter-spacing: 6.75px;
-    color: $font-color-cta;
+    color: $color-cta;
     font-weight: 400;
     margin: 0;
     line-height: 22px;
@@ -160,7 +160,7 @@ const emit = defineEmits(['clicked', 'inc-count', 'dec-count', 'remove']);
     font-style: normal;
     letter-spacing: 5.4px;
     font-size: 12px;
-    color: #999;
+    color: $color-muted;
     margin: 0;
     line-height: 22px;
     margin-bottom: 6px;

@@ -5,7 +5,7 @@
       :class="{
         'counter__action--disabled': value <= min,
       }"
-      @click="value > min ? $emit('dec', value) : null"
+      @click="less"
     >
       <img :src="icon('dec')" alt="-" />
     </div>
@@ -19,30 +19,43 @@
       :class="{
         'counter__action--disabled': value >= max,
       }"
-      @click="value < max ? $emit('inc', value) : null"
+      @click="more"
     >
       <img :src="icon('add')" alt="+" />
     </div>
   </div>
 </template>
 
-<script setup>
-const $emit = defineEmits(['inc', 'dec']);
+<script lang="ts" setup>
+const emit = defineEmits<{
+  (e: 'inc', value: number): void;
+  (e: 'dec', value: number): void;
+}>();
 
-const { value, max, min } = defineProps({
-  value: {
-    type: Number,
-    default: 0,
-  },
-  max: {
-    type: Number,
-    default: Infinity,
-  },
-  min: {
-    type: Number,
-    default: 1,
-  },
-});
+const props = withDefaults(
+  defineProps<{
+    value: number;
+    max: number;
+    min: number;
+  }>(),
+  {
+    value: 0,
+    max: Infinity,
+    min: 1,
+  }
+);
+
+const less = () => {
+  if (props.value > props.min) {
+    emit('dec', props.value);
+  }
+};
+
+const more = () => {
+  if (props.value < props.max) {
+    emit('inc', props.value);
+  }
+};
 </script>
 
 <style scoped lang="scss">
@@ -54,7 +67,7 @@ const { value, max, min } = defineProps({
   align-items: center;
   border-radius: 20px;
   border: 1px solid $color-muted-lighter;
-  border-radius: $border-radius;
+  border-radius: 6px;
 
   &__separator {
     height: 26px;
@@ -82,7 +95,7 @@ const { value, max, min } = defineProps({
   }
 
   &__value {
-    @include font-sm;
+    font-size: 14px;
     width: 20px;
   }
 }

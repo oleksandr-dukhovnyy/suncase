@@ -1,18 +1,6 @@
-/*
-$breakpoints-list: (
-  xs: 0,
-  sm: 576px,
-  md: 768px,
-  lg: 992px,
-  xl: 1200px,
-  xxl: 1600px,
-) !default;
-*/
-
 $padding: 8px;
-$container-max-width: 1295px;
 $header-height: 108px;
-$header-height-md: 75px; // 65px
+$header-height-md: 75px;
 
 $color-red: #f00;
 $color-blue: #00ddff;
@@ -21,31 +9,4 @@ $color-black: #222;
 $color-muted: #999;
 $color-muted-lighter: #bfbfbf;
 
-$font-size-xxsm: 11px;
-$font-size-xsm: 12px;
-$font-size-sm: 14px;
-$font-size-base: 16px;
-$font-size-md: 18px;
-$font-size-lg: 25px;
-$font-size-xl: 28px;
-$font-size-xxl: 32px;
-
-$font-weight-light: 400;
-$font-weight-base: 500;
-$font-weight-bold: 700;
-$font-weight-strong: 900;
-
-$font-color-cta: $color-cta;
-$font-color-link: #0000ee;
-$font-color-muted: $color-muted;
 $font-color-black: $color-black;
-// $font-color-red: #df0000;
-$font-color-red: $color-red;
-
-$font-letter-spacing-xs: 0.15em;
-$font-letter-spacing-sm: 0.25em;
-$font-letter-spacing-base: 0.35em;
-$font-letter-spacing-md: 0.45em;
-
-$border-radius: 6px;
-$border-radius-xl: 8px;

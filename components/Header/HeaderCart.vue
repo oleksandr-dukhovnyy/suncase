@@ -1,5 +1,5 @@
 <template>
-  <div class="header-cart" data-test="open-cart" @click="$emit('open-cart')">
+  <div class="header-cart" data-test="open-cart" @click="emit('open-cart')">
     <div class="header-cart__total-price">
       ${{ cartStore.CART_TOTAL_PRICE }}
     </div>
@@ -17,10 +17,9 @@ import { useCartStore } from '~/store/cart';
 
 const cartStore = useCartStore();
 
-// const cartItemsCount = computed(() => cartStore.CART_LENGTH);
-// const totalPrice = computed(() => cartStore.CART_TOTAL_PRICE);
-
-const $emit = defineEmits(['open-cart']);
+const emit = defineEmits<{
+  (e: 'open-cart'): void;
+}>();
 </script>
 
 <style lang="scss" scoped>
@@ -31,9 +30,8 @@ const $emit = defineEmits(['open-cart']);
   cursor: pointer;
 
   &__total-price {
-    @include font-sm;
-    font-weight: $font-weight-bold;
-    color: $font-color-cta;
+    font-weight: 700;
+    color: $color-cta;
     font-weight: 900;
     font-size: 14px;
     letter-spacing: 5.4px;
@@ -44,7 +42,7 @@ const $emit = defineEmits(['open-cart']);
     font-size: 11px;
     letter-spacing: 0.45em;
     position: relative;
-    color: $font-color-black;
+    color: $color-black;
     margin-top: -5px;
 
     img {

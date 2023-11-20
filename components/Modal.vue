@@ -19,10 +19,10 @@
   </Teleport>
 </template>
 
-<script setup>
-import { ref } from 'vue';
-
-const $emit = defineEmits(['close']);
+<script lang="ts" setup>
+const emit = defineEmits<{
+  (e: 'close'): void;
+}>();
 
 const closingOn = ref(false);
 
@@ -31,7 +31,7 @@ const close = () => {
   closingOn.value = true;
 
   setTimeout(() => {
-    $emit('close');
+    emit('close');
   }, 250);
 };
 </script>
@@ -54,7 +54,7 @@ const close = () => {
 }
 
 .modal {
-  border-radius: $border-radius-xl;
+  border-radius: 8px;
   width: 100vw;
   height: 100vh;
   vertical-align: middle;
@@ -74,7 +74,6 @@ const close = () => {
 
   &__body {
     max-height: 668px;
-    // overflow-y: auto;
     position: relative;
   }
 

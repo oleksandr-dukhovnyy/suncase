@@ -1,10 +1,9 @@
-// TODO:
-// add more langs
-
-const langs = {
+export const langs: {
+  [key: string]: Localization.UI;
+} = {
   en: {
     header: {
-      logoDesciption: 'original shop',
+      logoDescription: 'original shop',
     },
     main: {
       shopFilters: [

@@ -1,10 +1,7 @@
-const checkInFilter = (name: string, list: Filter[]) => {
-  const listItem = list.find((item) => item.name === name) || { active: false };
-
-  return listItem.active;
-};
-
-const applyFilters = (filters: Glasses.Filters, list: Glasses.Item[]) => {
+export const applyFilters = (
+  filters: Glasses.Filters,
+  list: Glasses.Item[]
+) => {
   const priceFilter = filters.categories
     .filter(({ name }) =>
       ['price-low-to-hight', 'price-hight-to-low'].includes(name)
@@ -40,7 +37,7 @@ const applyFilters = (filters: Glasses.Filters, list: Glasses.Item[]) => {
     })
     .sort((a, b) => {
       if (categoriesFilters['most-popular']) {
-        return b.saled - a.saled;
+        return b.sold - a.sold;
       }
 
       return 0;
@@ -59,4 +56,6 @@ const applyFilters = (filters: Glasses.Filters, list: Glasses.Item[]) => {
     });
 };
 
-export default applyFilters;
+function checkInFilter(name: string, list: Filter[]) {
+  return (list.find((item) => item.name === name) || { active: false }).active;
+}

@@ -1,19 +1,19 @@
-declare namespace Store {
-  export interface Actions {
-    [key: string]: (api: any, payload: any) => void;
+declare namespace Localization {
+  export interface UI {
+    header: {
+      logoDescription: string;
+    };
+    main: {
+      shopFilters: string[][];
+    };
+    menu: string[];
   }
 
-  export interface Mutations<State> {
-    [key: string]: (state: State, payload: any) => void;
-  }
-
-  export interface Getters<S, T> {
-    [key: string]: (
-      state: S,
-      localGetters: T,
-      rootState: any,
-      rootGetters: any
-    ) => void;
+  export interface Lang {
+    value: string;
+    selected: boolean;
+    title: string;
+    documentLanguagesValue?: string;
   }
 }
 
@@ -41,7 +41,7 @@ declare namespace Glasses {
     oldCoast: number;
     coast: number;
     gender: 'woman' | 'man' | 'all';
-    saled: number; //1343;
+    sold: number; //1343;
     isNew: boolean;
     lng: number; // count of images on store. Needs for carousel
   }

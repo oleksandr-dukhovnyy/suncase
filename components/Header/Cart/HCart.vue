@@ -1,5 +1,5 @@
 <template>
-  <Modal @close="$emit('close')">
+  <Modal @close="emit('close')">
     <div class="cart" data-test="cart">
       <div class="cart__price">
         <HeaderCart />
@@ -16,7 +16,6 @@
           @dec-count="decCount(item.id)"
           @remove="remove(item.id)"
         />
-        <!-- @counter-change="(count) => counterChange(item.id, count)" -->
       </div>
       <div v-else class="cart__empty">
         <!-- https://undraw.co/search -> "empty" -->
@@ -32,13 +31,10 @@
 </template>
 
 <script lang="ts" setup>
-// @ts-expect-error
-import scrollToGoods from '~/helpers/scrollToGoods.js';
-
+import { scrollToGoods } from '~/helpers/scrollToGoods';
 import { useCartStore } from '~/store/cart';
 import { useSliderStore } from '~/store/slider';
-
-import HeaderCart from '../HeaderCart.vue';
+import HeaderCart from '~/components/Header/HeaderCart.vue';
 
 const cartStore = useCartStore();
 const sliderStore = useSliderStore();
@@ -54,7 +50,9 @@ const incCount = (id: Glasses.Item['id']) => cartStore.INC_ITEM_COUNT(id);
 const decCount = (id: Glasses.Item['id']) => cartStore.DEC_ITEM_COUNT(id);
 const remove = (id: Glasses.Item['id']) => cartStore.DELETE_ITEM(id);
 
-const $emit = defineEmits(['close']);
+const emit = defineEmits<{
+  (e: 'close'): void;
+}>();
 
 const buy = () => {
   if (CART_ITEMS.value.length > 0) {
@@ -114,7 +112,7 @@ const buy = () => {
   }
 
   &__empty {
-    @include font-lg;
+    font-size: 25px;
     width: 100%;
     height: 400px;
 
@@ -124,7 +122,7 @@ const buy = () => {
     align-items: center;
     gap: padding(6);
 
-    color: $font-color-muted;
+    color: $color-muted;
 
     img {
       height: 150px;

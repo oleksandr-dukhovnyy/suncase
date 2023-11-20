@@ -1,5 +1,5 @@
 <template>
-  <section class="catalog" id="catalog">
+  <section class="catalog scroll-anchor" id="js-catalog">
     <div class="catalog__filters">
       <Filters />
     </div>
@@ -14,8 +14,7 @@
   <CatalogModal />
 </template>
 
-<script setup>
-import { ref } from 'vue';
+<script lang="ts" setup>
 import CatalogModal from './CatalogModal.vue';
 import Filters from './Filters.vue';
 import ItemsList from './ItemsList.vue';

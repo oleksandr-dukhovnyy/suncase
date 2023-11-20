@@ -3,7 +3,7 @@
     <span
       v-for="lang in langs"
       :key="lang.value"
-      @click="$emit('change-current-lang', lang)"
+      @click="emit('change-current-lang', lang)"
       :class="lang.selected ? 'selected' : ''"
     >
       {{ lang.title }}
@@ -11,13 +11,14 @@
   </div>
 </template>
 
-<script setup>
-defineProps({
-  langs: {
-    type: Array,
-    default: () => [],
-  },
-});
+<script lang="ts" setup>
+defineProps<{
+  langs: Localization.Lang[];
+}>();
+
+const emit = defineEmits<{
+  (e: 'change-current-lang', lang: Localization.Lang): void;
+}>();
 </script>
 
 <style scoped lang="scss">
@@ -28,10 +29,10 @@ div {
   justify-content: space-between;
 
   span {
-    color: $font-color-muted;
-    @include font-xxsm;
+    color: $color-muted;
+    font-size: 11px;
     cursor: pointer;
-    color: #999;
+    color: $color-muted;
     letter-spacing: 0.35em;
     text-transform: uppercase;
 

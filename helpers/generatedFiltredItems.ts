@@ -1,9 +1,23 @@
-export const generatedFilteredItems = (config, arr, genderActive) => {
-  const settings = {
-    showLogs: false,
-  };
+const SHOW_LOGS = false;
 
-  let filteredItems = [];
+/**
+ * Filters an array of items based on the provided configuration and gender.
+ */
+export const generatedFilteredItems = (
+  config: {
+    brandsActive: string[];
+    newActive: boolean;
+    saleActive: boolean;
+    mostPopularActive: boolean;
+    from$to$$$: boolean;
+    from$$$to$: boolean;
+    allGenderCategory: string[];
+    allBrands: string[];
+  },
+  arr: Glasses.Item[],
+  genderActive: string[]
+) => {
+  let filteredItems: Glasses.Item[] = [];
   let {
     brandsActive,
     newActive,
@@ -11,26 +25,23 @@ export const generatedFilteredItems = (config, arr, genderActive) => {
     mostPopularActive,
     from$to$$$,
     from$$$to$,
-    // showLength,
 
     allGenderCategory,
     allBrands,
   } = config;
 
-  // bugfix log
-  // console.clear();
-
-  if (settings.showLogs) {
-    console.log(`
-      brandsActive - ${typeof brandsActive}
-      genderActive - ${typeof genderActive}
-      newActive - ${typeof newActive}
-      mostPopularActive - ${typeof mostPopularActive}
-      from$to$$$ - ${from$to$$$}
-      allGenderCategory - ${allGenderCategory.join(', ')}
-      allBrands - ${allBrands.join(', ')}
-    `);
-  }
+  if (SHOW_LOGS)
+    console.log(
+      `
+        brandsActive - ${typeof brandsActive}
+        genderActive - ${typeof genderActive}
+        newActive - ${typeof newActive}
+        mostPopularActive - ${typeof mostPopularActive}
+        from$to$$$ - ${from$to$$$}
+        allGenderCategory - ${allGenderCategory.join(', ')}
+        allBrands - ${allBrands.join(', ')}
+      `
+    );
 
   for (let i = 0; i < arr.length; i++) {
     let item = arr[i];
@@ -84,7 +95,7 @@ export const generatedFilteredItems = (config, arr, genderActive) => {
   }
 
   if (mostPopularActive) {
-    filteredItems.sort((a, b) => (b.saled > a.saled ? 1 : -1));
+    filteredItems.sort((a, b) => (b.sold > a.sold ? 1 : -1));
   }
 
   if (from$to$$$) {
@@ -93,21 +104,14 @@ export const generatedFilteredItems = (config, arr, genderActive) => {
     filteredItems.sort((a, b) => (b.coast > a.coast ? 1 : -1));
   }
 
-  // if (filteredItems.length > showLength) {
-  //     filteredItems = filteredItems.slice(0, showLength);
-  // }
-  // Disconnected until better times...
-
   return filteredItems;
-}; // end middle sort function
-
-// support funks:
-const selectPropFromArr = (item, PropArr, neededProp) => {
-  if (PropArr.indexOf(item[neededProp]) !== -1) {
-    return true;
-  } else if (item[neededProp] === 'all') {
-    return true;
-  } else {
-    return false;
-  }
 };
+
+// support funks
+function selectPropFromArr(
+  item: Glasses.Item,
+  PropArr: string[],
+  neededProp: string
+) {
+  return PropArr.indexOf(item[neededProp]) !== -1 || item[neededProp] === 'all';
+}

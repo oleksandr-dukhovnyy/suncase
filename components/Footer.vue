@@ -6,8 +6,6 @@
   </footer>
 </template>
 
-<script setup></script>
-
 <style lang="scss" scoped>
 footer {
   font-size: 12px;
@@ -23,12 +21,12 @@ footer {
     border-top: 1px solid black;
     padding-top: 10px;
     width: 310px;
-    color: $font-color-muted;
+    color: $color-muted;
   }
 
   a {
     text-decoration: underline;
-    color: $font-color-muted;
+    color: $color-muted;
   }
 }
 </style>

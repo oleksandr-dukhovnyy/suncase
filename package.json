@@ -1,8 +1,9 @@
 {
   "name": "suncase",
-  "private": false,
-  "version": "3.0.3",
+  "version": "3.0.4",
+  "description": "Online sunglasses store",
   "type": "module",
+  "author": "alex-js-dev",
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",

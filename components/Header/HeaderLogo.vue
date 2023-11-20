@@ -22,7 +22,7 @@ const toMain = () => navigateTo('/');
   gap: 10px;
   align-items: center;
   position: absolute;
-  top: 154px; // 130px
+  top: 154px;
   left: calc(50% - 125.795px);
   cursor: pointer;
 
@@ -49,16 +49,16 @@ const toMain = () => navigateTo('/');
   }
 
   &__subtitle {
-    @include font-xsm;
-    font-weight: $font-weight-light;
+    font-size: 12px;
+    font-weight: 400;
     text-transform: uppercase;
     letter-spacing: 0.45em;
-    color: #999;
+    color: $color-muted;
   }
 
   &__title {
-    @include font-lg;
-    font-weight: $font-weight-bold;
+    font-size: 25px;
+    font-weight: 700;
     letter-spacing: 0.5em;
     text-transform: uppercase;
     text-align: center;

@@ -36,10 +36,6 @@ import Footer from '~/components/Footer.vue';
     margin: 30px 0;
     height: 23px;
   }
-
-  // @include media-up(md) {
-  //   padding-top: 76px;
-  // }
 }
 
 .content {

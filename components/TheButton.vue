@@ -21,10 +21,11 @@
   </button>
 </template>
 
-<script setup>
-import { ref } from 'vue';
+<script lang="ts" setup>
+const emit = defineEmits<{
+  (e: 'click'): void;
+}>();
 
-const $emit = defineEmits(['click']);
 const clicked = ref(false);
 
 const props = defineProps({
@@ -58,7 +59,7 @@ const props = defineProps({
   },
 });
 
-const onClick = (e) => {
+const onClick = (e: MouseEvent) => {
   if (
     (props.trustedOnly && !e.isTrusted) ||
     (props.trustedOnly && e.clientX === 0 && e.clientY === 0)
@@ -68,7 +69,7 @@ const onClick = (e) => {
   clicked.value = true;
   setTimeout(() => (clicked.value = false), 600);
 
-  $emit('click');
+  emit('click');
 };
 </script>
 
@@ -81,7 +82,7 @@ const onClick = (e) => {
   text-transform: uppercase;
   background-color: transparent;
   border: 1px solid #000;
-  border-radius: $border-radius;
+  border-radius: 6px;
   height: 43px;
   line-height: 1;
   display: flex;

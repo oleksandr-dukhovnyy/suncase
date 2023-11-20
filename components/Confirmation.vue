@@ -7,7 +7,7 @@
       <p :style="{ color }">
         {{ text }}
       </p>
-      <div class="confirm__bttns">
+      <div class="confirm__buttons">
         <button @click="onConfirm">
           <img :src="icon('ok-fat')" alt="yes" />
         </button>
@@ -20,26 +20,28 @@
   </div>
 </template>
 
-<script setup>
-import { ref } from 'vue';
-defineProps({
-  text: {
-    type: String,
-    default: 'Are you sure?',
-  },
-  color: {
-    type: String,
-    default: '#000',
-  },
-});
-const $emit = defineEmits(['confirm']);
+<script lang="ts" setup>
+withDefaults(
+  defineProps<{
+    text: string;
+    color: string;
+  }>(),
+  {
+    text: 'Are you sure?',
+    color: '#000',
+  }
+);
+
+const emit = defineEmits<{
+  (e: 'confirm'): void;
+}>();
 
 const show = ref(false);
-let timerID = null;
+let timerID: ReturnType<typeof setTimeout> | undefined = undefined;
 
 const onConfirm = () => {
   show.value = false;
-  $emit('confirm');
+  emit('confirm');
 };
 
 const onMouseleave = () => {
@@ -48,16 +50,14 @@ const onMouseleave = () => {
   }, 1500);
 };
 
-const onMouseenter = () => {
-  clearTimeout(timerID);
-};
+const onMouseenter = () => clearTimeout(timerID);
 </script>
 
 <style scoped lang="scss">
 .confirm {
   z-index: 10;
 
-  &__bttns {
+  &__buttons {
     border: 1px solid $color-muted-lighter;
     border-radius: 6px;
     display: flex;
@@ -69,7 +69,7 @@ const onMouseenter = () => {
     width: max-content;
     right: 16px;
     top: 10px + padding();
-    border-radius: $border-radius 0 $border-radius $border-radius;
+    border-radius: 6px 0 6px 6px;
     display: flex;
     flex-direction: column;
     position: absolute;
@@ -86,7 +86,7 @@ const onMouseenter = () => {
     }
 
     p {
-      @include font-sm;
+      font-size: 14px;
       text-align: center;
       width: max-content;
     }

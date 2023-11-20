@@ -1,59 +1,12 @@
 @import './adaptive-sass-config.scss';
 
-// sizes
 @mixin container {
-  max-width: $container-max-width;
+  max-width: 1295px;
 }
 
-// font size
-@mixin font-xxsm {
-  font-size: $font-size-xxsm;
-}
-
-@mixin font-xsm {
-  font-size: $font-size-xsm;
-}
-
-@mixin font-sm {
-  font-size: $font-size-sm;
-}
-
-@mixin font-base {
-  font-size: $font-size-base;
-}
-
-@mixin font-md {
-  font-size: $font-size-md;
-}
-
-@mixin font-lg {
-  font-size: $font-size-lg;
-}
-
-@mixin font-xl {
-  font-size: $font-size-xl;
-}
-
-@mixin font-xxl {
-  font-size: $font-size-xxl;
-}
-
-// base styles
-@mixin link($color: $font-color-link) {
-  color: $color;
-  text-decoration: none;
-
-  &:visited {
-    color: $color;
-  }
-}
-
-// animations
 @mixin rotate($speed: 5500ms) {
   animation: rotate $speed infinite linear;
 }
-
-// shadows
 
 @mixin shadow {
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;

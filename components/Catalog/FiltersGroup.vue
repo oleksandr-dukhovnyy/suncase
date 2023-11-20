@@ -17,7 +17,6 @@
 </template>
 
 <script lang="ts" setup>
-// @ts-ignore
 import Checkmark from './Checkmark.vue';
 
 const props = withDefaults(
@@ -35,15 +34,22 @@ const props = withDefaults(
   }
 );
 
-const $emit = defineEmits(['selected']);
+const emit = defineEmits<{
+  (
+    e: 'selected',
+    payload: {
+      value: string;
+      type: string;
+    }
+  ): void;
+}>();
 
-const selected = (name) => {
-  $emit('selected', { value: name, type: props.type });
+const selected = (name: string) => {
+  emit('selected', { value: name, type: props.type });
 };
 </script>
 
 <style lang="scss" scoped>
-// TODO: bring into line with
 .filter-group {
   padding: 0;
   margin: 0;
@@ -81,7 +87,7 @@ const selected = (name) => {
     cursor: pointer;
     padding: 0;
     font-weight: 400;
-    color: #999;
+    color: $color-muted;
 
     span {
       text-transform: uppercase;
@@ -94,7 +100,7 @@ const selected = (name) => {
       }
 
       &.active {
-        color: $font-color-black;
+        color: $color-black;
       }
 
       @include media-screen {
@@ -102,7 +108,7 @@ const selected = (name) => {
 
         &:hover {
           transition: color 150ms;
-          color: $font-color-black;
+          color: $color-black;
         }
       }
     }

@@ -16,21 +16,25 @@ import { useSliderStore } from '~/store/slider';
 
 const cartStore = useCartStore();
 const sliderStore = useSliderStore();
-// const $store = useStore();
 
 cartStore.FETCH_CART();
 
-const listenESC = function (e: KeyboardEvent) {
+onMounted(() => document.addEventListener('keydown', listenESC));
+onUnmounted(() => document.removeEventListener('keydown', listenESC));
+
+/**
+ * Listens for the "Escape" keypress and close popups.
+ */
+function listenESC(e: KeyboardEvent) {
   if (e.key === 'Escape') {
     if (cartStore.SHOW_CART_POPUP && sliderStore.SLIDER_SHOW) {
+      // Only slider, not cart
       sliderStore.HIDE_SLIDER();
     } else {
+      // Close all
       cartStore.HIDE_CART();
       sliderStore.HIDE_SLIDER();
     }
   }
-};
-
-onMounted(() => document.addEventListener('keydown', listenESC));
-onUnmounted(() => document.removeEventListener('keydown', listenESC));
+}
 </script>

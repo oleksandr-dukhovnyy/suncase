@@ -1,9 +1,6 @@
-// @ts-ignore
-import cartStorage from './saveToStorage.js';
-// @ts-ignore
-import bodyScroll from '~/helpers/bodyScroll.js';
-// @ts-ignore
-import openWin from '~/helpers/openPayWindow.js';
+import cartStorage from './saveToStorage';
+import bodyScroll from '~/helpers/bodyScroll';
+import { openWin } from '~/helpers/openPayWindow';
 
 import { useGlassesStore } from '~/store/glasses';
 import { defineStore } from 'pinia';
@@ -17,6 +14,9 @@ interface Store {
 
 export const useCartStore = defineStore('cart', {
   actions: {
+    /**
+     * Fetches the cart from storage and updates the local cart state.
+     */
     async FETCH_CART() {
       const cloudCart = cartStorage.loadCart() || [];
 
@@ -24,6 +24,10 @@ export const useCartStore = defineStore('cart', {
 
       cartStorage.saveCart(this.cart);
     },
+
+    /**
+     * Sets up the cart with the given IDs.
+     */
     SETUP_CART(ids = []) {
       this.cart = ids;
 
@@ -40,6 +44,10 @@ export const useCartStore = defineStore('cart', {
     SHOW_CART() {
       this.SET_SHOW(true);
     },
+
+    /**
+     * Add an item to the cart.
+     */
     ADD_TO_CART({
       id,
       count = 1,
@@ -85,11 +93,20 @@ export const useCartStore = defineStore('cart', {
 
       cartStorage.saveCart(this.cart);
     },
+
+    /**
+     * Executes the BUY_ALL function, which opens a new window with the total price and ID of all items in the cart.
+     * After the window is opened, the cart is cleared and hidden.
+     */
     BUY_ALL() {
-      openWin({ coast: this.CART_TOTAL_PRICE }, this.CART_LENGTH, () => {
-        this.CLEAR_CART();
-        this.HIDE_CART();
-      });
+      openWin(
+        { coast: this.CART_TOTAL_PRICE, id: '%all' },
+        this.CART_LENGTH,
+        () => {
+          this.CLEAR_CART();
+          this.HIDE_CART();
+        }
+      );
     },
   },
   state: (): Store => ({
@@ -97,6 +114,9 @@ export const useCartStore = defineStore('cart', {
     showCartPopup: false,
   }),
   getters: {
+    /**
+     * Filters the list of unfiltered sunglasses based on the items in the cart.
+     */
     CART: (state): CounteredGlassesItem[] => {
       const glassesStore = useGlassesStore();
 
@@ -128,6 +148,9 @@ export const useCartStore = defineStore('cart', {
   },
 });
 
+/**
+ * Change the count of an item in the store's cart.
+ */
 function changeItemCount(this: Store, { id, count, overflow = 'error' }) {
   const item = this.cart.find(({ id: _id }) => _id === id);
 
@@ -137,7 +160,7 @@ function changeItemCount(this: Store, { id, count, overflow = 'error' }) {
       count,
     });
 
-  let sum = item.count + count;
+  const sum = item.count + count;
 
   switch (overflow) {
     case 'error': {
@@ -150,13 +173,14 @@ function changeItemCount(this: Store, { id, count, overflow = 'error' }) {
     }
 
     case 'cut': {
-      console.log('here');
-
       setCounter.call(this, id, sum > 9 ? 9 : sum < 1 ? 1 : sum);
     }
   }
 }
 
+/**
+ * Updates the count of an item in the cart.
+ */
 function setCounter(this: Store, id: Cart.CartItem['id'], count: number) {
   this.cart = this.cart.map((item) => {
     return {
@@ -166,5 +190,8 @@ function setCounter(this: Store, id: Cart.CartItem['id'], count: number) {
   });
 }
 
+/**
+ * Hot reloads the store.
+ */
 if (import.meta.hot)
   import.meta.hot.accept(acceptHMRUpdate(useCartStore, import.meta.hot));

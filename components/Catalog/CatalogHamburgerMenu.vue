@@ -6,7 +6,7 @@
   </SideModal>
 </template>
 
-<script setup>
+<script lang="ts" setup>
 import Filters from './Filters.vue';
 </script>
 

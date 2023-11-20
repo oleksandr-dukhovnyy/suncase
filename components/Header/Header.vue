@@ -11,7 +11,7 @@
         </p>
       </div>
       <div class="left-group animate__animated animate__fadeInRight">
-        <HeaderLagns
+        <HeaderLangs
           @change-current-lang="onChangeCurrentLang"
           :langs="langs"
         />
@@ -23,7 +23,7 @@
 </template>
 
 <script lang="ts" setup>
-import HeaderLagns from './HeaderLagns.vue';
+import HeaderLangs from './HeaderLangs.vue';
 import HeaderCart from './HeaderCart.vue';
 import Cart from './Cart/HCart.vue';
 import { useCartStore } from '~/store/cart';
@@ -40,8 +40,7 @@ const scrollToTop = () => {
   });
 };
 
-// langs
-const langs = ref([
+const langs = ref<Localization.Lang[]>([
   {
     title: 'eng',
     value: 'en-US',
@@ -79,8 +78,7 @@ const setSelectedLang = (langValue) => {
 const latestSelectedLang = localStorage.getItem('lang');
 if (latestSelectedLang) setSelectedLang(latestSelectedLang);
 
-const onChangeCurrentLang = (newLang) => {
-  // $store.dispatch('locale/CHANGE_LANG', newLang);
+const onChangeCurrentLang = (newLang: Localization.Lang) => {
   setSelectedLang(newLang.value);
   localStorage.setItem('lang', newLang.value);
 };
@@ -133,17 +131,17 @@ const onChangeCurrentLang = (newLang) => {
     }
 
     &__phone {
-      @include font-sm;
+      font-size: 14px;
       font-weight: 400;
       letter-spacing: 0.25em;
     }
 
     &__city {
-      font-size: $font-size-xxsm;
-      color: #999;
+      font-size: 11px;
+      color: $color-muted;
       letter-spacing: 0.35em;
       text-transform: uppercase;
-      color: $font-color-muted;
+      color: $color-muted;
       display: block;
       margin-top: 10px;
     }

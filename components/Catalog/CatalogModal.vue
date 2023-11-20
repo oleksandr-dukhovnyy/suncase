@@ -37,10 +37,11 @@
       <div class="catalog-modal__controls">
         <div class="catalog-modal__info">
           <ProductCard
+            v-if="selected.item"
             v-bind="selected.item"
+            :count="count"
             :use-image="false"
             use-counter
-            :count="count"
             @inc-count="count++"
             @dec-count="count--"
           />
@@ -74,29 +75,21 @@
 </template>
 
 <script lang="ts" setup>
-// import ProductCard from '../General/ProductCard.vue';
-// import TheButton from '~/components/General/TheButton.vue';
-// import Modal from '~/components/General/Modal.vue';
 import { useSliderStore } from '~/store/slider';
 import { useCartStore } from '~/store/cart';
 
 const cartStore = useCartStore();
 const sliderStore = useSliderStore();
 
-// vars
 const selected = computed(() => sliderStore.SELECTED_ITEM);
 const show = computed(() => sliderStore.SLIDER_SHOW && selected.value.defined);
 const selectedID = ref(1);
 const showAddToCartAnimation = ref(false);
 const count = ref(1);
 const resetCounter = () => (count.value = 1);
-// /vars
 
-// watchers
 watch(show, () => (selectedID.value = 1));
-// /watchers
 
-// methods
 const moveForward = () => {
   if (!selected.value?.defined || !selected.value.item) return;
 
@@ -142,7 +135,6 @@ const closeSlider = () => {
   sliderStore.HIDE_SLIDER();
 };
 
-// other
 setInterval(moveForward, import.meta.env.MODE === 'development' ? 7000 : 3000);
 </script>
 
@@ -157,7 +149,6 @@ setInterval(moveForward, import.meta.env.MODE === 'development' ? 7000 : 3000);
 
   @include media-up(md) {
     grid-template-columns: 1fr 250px;
-    // grid-template-rows: 440px 1fr;
     grid-template-rows: 1fr;
   }
 
@@ -186,11 +177,11 @@ setInterval(moveForward, import.meta.env.MODE === 'development' ? 7000 : 3000);
   }
 
   &__new-coast {
-    color: $font-color-red;
+    color: $color-red;
   }
 
   &__price {
-    color: $font-color-cta;
+    color: $color-cta;
     display: flex;
     gap: 10px;
     margin-bottom: padding();
@@ -201,7 +192,7 @@ setInterval(moveForward, import.meta.env.MODE === 'development' ? 7000 : 3000);
   }
 
   &__sale {
-    color: $font-color-cta;
+    color: $color-cta;
     text-decoration: line-through;
   }
 
