@@ -14,7 +14,6 @@
   },
   "devDependencies": {
     "@nuxt/devtools": "latest",
-    "cypress": "^13.5.0",
     "nuxt": "^3.8.0",
     "sass": "^1.69.5",
     "typescript": "^5.2.2",
