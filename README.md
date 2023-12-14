@@ -1,6 +1,6 @@
 # Internet shop “Suncase” ![logo](https://github.com/Aleksandr-JS-Developer/suncase/blob/main/public/suncase-logo.png)
 
-(nuxt, vue.js, vue-router, vuex, vite, babel, photoshop, figma)
+(Nuxt, Vue.js, Vuex, TypeScript, Vue-Router, Vite, SCSS, Babel, Figma)
 
 ---
 
