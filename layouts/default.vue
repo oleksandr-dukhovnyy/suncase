@@ -19,6 +19,8 @@ import Footer from '~/components/Footer.vue';
 </script>
 
 <style scoped lang="scss">
+@import '~/assets/scss/imports.scss';
+
 .page {
   @include container;
 
