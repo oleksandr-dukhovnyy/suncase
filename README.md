@@ -4,8 +4,6 @@
 
 ---
 
-### [live-demo](https://aleksandr-js-developer.github.io/suncase/)
-
 ## Setup
 
 Make sure to install the dependencies:
