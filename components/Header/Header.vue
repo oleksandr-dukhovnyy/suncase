@@ -75,11 +75,15 @@ const setSelectedLang = (langValue) => {
   }));
 };
 
-const latestSelectedLang = localStorage.getItem('lang');
-if (latestSelectedLang) setSelectedLang(latestSelectedLang);
+onMounted(() => {
+  const latestSelectedLang = localStorage.getItem('lang');
+
+  if (latestSelectedLang) setSelectedLang(latestSelectedLang);
+});
 
 const onChangeCurrentLang = (newLang: Localization.Lang) => {
   setSelectedLang(newLang.value);
+
   localStorage.setItem('lang', newLang.value);
 };
 </script>

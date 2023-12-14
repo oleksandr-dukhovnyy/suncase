@@ -24,6 +24,7 @@
   "dependencies": {
     "@pinia/nuxt": "^0.5.1",
     "adaptive-scss": "^1.2.1",
+    "animate.css": "^4.1.1",
     "normalize.css": "^8.0.1",
     "nuxt3-vuex-module": "^1.0.13",
     "pinia": "^2.1.7",

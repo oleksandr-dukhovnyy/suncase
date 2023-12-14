@@ -17,9 +17,11 @@ import { useSliderStore } from '~/store/slider';
 const cartStore = useCartStore();
 const sliderStore = useSliderStore();
 
-cartStore.FETCH_CART();
+onMounted(() => {
+  cartStore.FETCH_CART();
+  document.addEventListener('keydown', listenESC);
+});
 
-onMounted(() => document.addEventListener('keydown', listenESC));
 onUnmounted(() => document.removeEventListener('keydown', listenESC));
 
 /**
