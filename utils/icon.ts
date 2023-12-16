@@ -1,1 +1,4 @@
-export default (path: string) => `/img/icons/${path}.svg`;
+export default (path: string) =>
+  `${
+    process.env.NODE_ENV === 'production' ? '/suncase' : ''
+  }/img/icons/${path}.svg`;
