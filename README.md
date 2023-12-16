@@ -2,6 +2,8 @@
 
 (Nuxt, Vue.js, Pinia, TypeScript, Vue-Router, Vite, SCSS, Babel, Figma)
 
+### [Live demo](https://oleksandr-dukhovnyy.github.io/suncase/)
+
 ---
 
 ## Setup
