@@ -1,2 +1,1 @@
-export default (path: string) =>
-  `${process.env.NODE_ENV === 'production' ? '/suncase' : ''}/img/${path}`;
+export default (path: string) => `/suncase/img/${path}`;

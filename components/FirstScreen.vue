@@ -8,7 +8,7 @@
     >
       <div
         v-if="section.type === 'img' && section.url !== undefined"
-        :style="`background-image: url(${image(section.url)})`"
+        :style="`background-image: url(${section.url})`"
         alt="peoples in sunglasses pictures"
         class="f-screen__item-img"
       ></div>
@@ -29,8 +29,10 @@
 
 <script lang="ts" setup>
 import { scrollToGoods } from '~/helpers/scrollToGoods';
+import image from '~/utils/image';
 
-const getPathToImgs = (index: number | string) => `LineSlider/1/${index}.jpg`;
+const getPathToImgs = (index: number | string) =>
+  image(`LineSlider/1/${index}.jpg`);
 
 const sections = [
   { type: 'img', url: getPathToImgs(1) },
