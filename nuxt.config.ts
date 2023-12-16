@@ -23,6 +23,12 @@ export default defineNuxtConfig({
     // @ts-ignore
     extractCSS: true,
   },
+  routeRules: {
+    '/': {
+      prerender: true,
+      swr: 3600,
+    },
+  },
   vite: {
     css: {
       preprocessorOptions: {
@@ -30,6 +36,11 @@ export default defineNuxtConfig({
           additionalData: '@import "@/assets/scss/imports.scss";',
         },
       },
+    },
+  },
+  hooks: {
+    close: (nuxt) => {
+      if (!nuxt.options._prepare) process.exit();
     },
   },
 });
