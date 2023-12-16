@@ -1,7 +1,17 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 
+const PROD = process.env.NODE_ENV === 'production';
+
 export default defineNuxtConfig({
-  devtools: { enabled: true },
+  app: {
+    baseURL: PROD ? '/suncase/' : '/',
+    head: {
+      meta: [
+        { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+      ],
+    },
+  },
+  devtools: { enabled: false },
   css: ['normalize.css', 'animate.css', '~/assets/scss/global.scss'],
   telemetry: false,
   modules: ['@pinia/nuxt'],
