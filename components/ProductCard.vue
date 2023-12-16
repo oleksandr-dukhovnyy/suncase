@@ -3,7 +3,7 @@
     <img
       v-if="useImage"
       :src="image(`${id}/1.jpg`)"
-      alt="sunglasses picture"
+      :alt="`picture of ${model} ${brand}`"
       @click="emit('clicked')"
     />
     <strong @click="emit('clicked')">{{ brand }}</strong>
