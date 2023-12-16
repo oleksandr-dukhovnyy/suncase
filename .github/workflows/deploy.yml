@@ -17,7 +17,8 @@ jobs:
         with:
           node-version: '20'
       - run: npm install
-      - run: npm run build --preset=github_pages
+      # - run: npm run build --preset=github_pages
+      - run: npm run generate --preset=github_pages
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
