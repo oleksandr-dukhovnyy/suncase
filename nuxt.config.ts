@@ -1,10 +1,10 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 
-const PROD = process.env.NODE_ENV === 'production';
+// const PROD = process.env.NODE_ENV === 'production';
 
 export default defineNuxtConfig({
   app: {
-    baseURL: PROD ? '/suncase/' : '/',
+    baseURL: '/suncase/',
     head: {
       meta: [
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
