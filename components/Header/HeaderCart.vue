@@ -1,11 +1,11 @@
 <template>
   <div class="header-cart" data-test="open-cart" @click="emit('open-cart')">
-    <div class="header-cart__total-price">
+    <div class="header-cart__total-price" data-test="cart-total-price">
       ${{ cartStore.CART_TOTAL_PRICE }}
     </div>
     <div class="header-cart__count">
       <img :src="image('cart/cart.svg')" alt="cart" />
-      <p>
+      <p data-test="cart-length">
         {{ cartStore.CART_LENGTH }}
       </p>
     </div>

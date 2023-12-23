@@ -2,6 +2,9 @@
 
 // const PROD = process.env.NODE_ENV === 'production';
 
+const DEV_HOST = process.env.DEV_HOST || '127.0.0.1';
+const DEV_PORT = +(process.env.DEV_PORT || '5437');
+
 export default defineNuxtConfig({
   app: {
     baseURL: '/suncase/',
@@ -16,8 +19,8 @@ export default defineNuxtConfig({
   telemetry: false,
   modules: ['@pinia/nuxt'],
   devServer: {
-    port: 5437,
-    host: 'local.suncase.com',
+    port: DEV_PORT,
+    host: DEV_HOST,
   },
   build: {
     // @ts-ignore

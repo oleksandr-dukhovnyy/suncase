@@ -10,7 +10,9 @@
     "paths": {
       "~/*": ["./*"],
       "@/*": ["./components/*"]
-    }
+    },
+    "types": ["jest"],
+    "target": "ESNext"
   },
   "exclude": ["node_modules"]
 }

@@ -21,7 +21,7 @@
       }"
       @click="more"
     >
-      <img :src="icon('add')" alt="+" />
+      <img data-test="increment-item-counter" :src="icon('add')" alt="+" />
     </div>
   </div>
 </template>
