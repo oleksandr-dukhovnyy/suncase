@@ -46,6 +46,8 @@ const close = () => {
     bodyScroll.add();
   }, 400);
 };
+
+onUnmounted(bodyScroll.add);
 </script>
 
 <style lang="scss" scoped>

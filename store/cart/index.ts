@@ -105,6 +105,7 @@ export const useCartStore = defineStore('cart', {
         () => {
           this.CLEAR_CART();
           this.HIDE_CART();
+          bodyScroll.add();
         }
       );
     },

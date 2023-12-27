@@ -54,7 +54,11 @@ export const useSliderStore = defineStore('slider', {
 
       if (item) {
         openWin(item, 1, () => {
+          // Close slider modal
           this.show = false;
+
+          // ...and add body scroll
+          bodyScroll.add();
         });
       } else {
         console.error(`item (id === ${id}) not found`);
