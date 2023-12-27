@@ -1,4 +1,4 @@
-# “Suncase” ![logo](public/suncase-logo.png)
+# Suncase ![logo](public/suncase-logo.png)
 
 (Nuxt, Vue.js, Pinia, TypeScript, Vue-Router, Vite, SCSS, Babel, Figma)
 

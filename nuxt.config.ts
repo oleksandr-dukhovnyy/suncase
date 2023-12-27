@@ -20,7 +20,7 @@ export default defineNuxtConfig({
   modules: ['@pinia/nuxt'],
   devServer: {
     port: DEV_PORT,
-    host: DEV_HOST,
+    // host: DEV_HOST,
   },
   build: {
     // @ts-ignore

@@ -1,12 +1,12 @@
 {
   "name": "suncase",
-  "version": "3.2.1",
+  "version": "3.2.2",
   "description": "Online sunglasses store",
   "type": "module",
   "author": "Oleksandr Dukhovnyy <script@vip-person.net> (https://github.com/oleksandr-dukhovnyy)",
   "scripts": {
     "build": "nuxt build",
-    "dev": "nuxt dev",
+    "dev": "nuxt dev --host",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
