@@ -18,12 +18,6 @@
         />
       </div>
       <div v-else class="cart__empty">
-        <!-- https://undraw.co/search -> "empty" -->
-        <img
-          class="animate__animated animate__zoomIn"
-          :src="icon('empty-cart')"
-          alt="empty cart"
-        />
         <p>Cart is currently empty</p>
       </div>
     </div>
