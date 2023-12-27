@@ -1,6 +1,6 @@
 <template>
   <Teleport to="body">
-    <div class="layout" @click.self="close" data-test="close-modal">
+    <div class="layout" @click.self="close">
       <div
         class="modal animate__animated"
         :class="{
@@ -8,11 +8,11 @@
           animate__fadeOutDown: closingOn,
         }"
       >
-        <div class="modal__close" @click="close">
+        <div class="modal__close" data-test="close-modal" @click="close">
           <img :src="icon('close-modal')" alt="X" />
         </div>
         <div class="modal__body" @keydown.esc="close">
-          <slot></slot>
+          <slot />
         </div>
       </div>
     </div>

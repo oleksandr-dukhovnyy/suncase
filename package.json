@@ -1,6 +1,6 @@
 {
   "name": "suncase",
-  "version": "3.1.7",
+  "version": "3.2.1",
   "description": "Online sunglasses store",
   "type": "module",
   "author": "Oleksandr Dukhovnyy <script@vip-person.net> (https://github.com/oleksandr-dukhovnyy)",
@@ -10,12 +10,15 @@
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
-    "e2e": "npx cypress open"
+    "test": "npx jest"
   },
   "devDependencies": {
     "@nuxt/devtools": "latest",
+    "@types/jest": "^29.5.11",
     "nuxt": "^3.8.0",
+    "playwright": "^1.40.1",
     "sass": "^1.69.5",
+    "ts-jest": "^29.1.1",
     "typescript": "^5.2.2",
     "vue": "^3.3.7",
     "vue-router": "^4.2.5"
