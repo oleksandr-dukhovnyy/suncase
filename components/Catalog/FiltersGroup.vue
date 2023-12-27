@@ -75,9 +75,12 @@ const selected = (name: string) => {
   }
 
   &__checkmark {
-    position: absolute;
-    right: -20px;
-    // 20px/20px - is a checkmark size
+    @include media-up(md) {
+      position: absolute;
+
+      right: -20px;
+      // 20px/20px - is a checkmark size
+    }
   }
 
   li {
@@ -103,7 +106,7 @@ const selected = (name: string) => {
         color: $color-black;
       }
 
-      @include media-screen {
+      @include media-up(xl) {
         transition: color 700ms;
 
         &:hover {
