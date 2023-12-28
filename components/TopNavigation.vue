@@ -30,13 +30,19 @@ nav {
   flex-direction: column;
   column-gap: padding(4);
 
+  $magic-offset: 28px;
+  margin-top: $magic-offset * -1;
+  padding-bottom: $magic-offset;
+
   @include media-up(md) {
     justify-content: center;
     flex-direction: row;
   }
 
-  @include media-up(xl) {
-    padding: 30px;
+  @include media-up(xlg) {
+    margin-top: 0;
+    padding-bottom: 0;
+    padding: 0 30px 90px;
   }
 
   span {

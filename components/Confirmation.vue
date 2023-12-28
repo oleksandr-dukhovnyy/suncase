@@ -21,14 +21,16 @@
 </template>
 
 <script lang="ts" setup>
-withDefaults(
+const props = withDefaults(
   defineProps<{
     text: string;
     color: string;
+    timeout?: number;
   }>(),
   {
     text: 'Are you sure?',
     color: '#000',
+    timeout: 1500,
   }
 );
 
@@ -47,7 +49,7 @@ const onConfirm = () => {
 const onMouseleave = () => {
   timerID = setTimeout(() => {
     show.value = false;
-  }, 1500);
+  }, props.timeout);
 };
 
 const onMouseenter = () => clearTimeout(timerID);
@@ -61,19 +63,20 @@ const onMouseenter = () => clearTimeout(timerID);
     border: 1px solid $color-muted-lighter;
     border-radius: 6px;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     padding: 0 padding();
+    height: 24px;
   }
 
   &__control {
-    width: max-content;
+    width: calc(100% - 16px);
     right: 16px;
-    top: 10px + padding();
+    bottom: 10px;
     border-radius: 6px 0 6px 6px;
     display: flex;
     flex-direction: column;
     position: absolute;
-    padding: padding();
+    padding: padding(1.5) 45px;
     background-color: #fff;
     gap: padding();
     border: 1px solid red;
@@ -82,13 +85,13 @@ const onMouseenter = () => clearTimeout(timerID);
     &-separator {
       width: 1px;
       background-color: $color-muted-lighter;
-      height: 24px;
+      height: 100%;
     }
 
     p {
       font-size: 14px;
       text-align: center;
-      width: max-content;
+      width: 100%;
     }
 
     img {

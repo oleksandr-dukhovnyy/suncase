@@ -9,12 +9,8 @@
         class="side-modal__inner animate__animated"
         :class="closing ? 'animate__fadeOutLeft' : 'animate__fadeInLeft'"
       >
-        <div class="side-modal__close">
-          <img
-            :src="image('slider/closeBttn.svg')"
-            alt="close"
-            @click="close"
-          />
+        <div class="side-modal__close" @click="close">
+          <img :src="image('slider/closeBttn.svg')" alt="close" />
         </div>
         <div class="side-modal__content">
           <slot></slot>
@@ -80,6 +76,12 @@ onUnmounted(bodyScroll.add);
   &__close {
     display: flex;
     justify-content: flex-end;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    padding: 22px;
+    z-index: 20;
+    // outline: 1px dotted coral;
 
     img {
       cursor: pointer;

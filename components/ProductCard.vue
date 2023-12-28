@@ -13,10 +13,25 @@
         ${{ sale ? oldCoast : coast }}
       </p>
       <p v-if="sale" class="item__new-coast">${{ coast }}</p>
+    </div>
+    <div @click="emit('clicked')" class="item__new" v-if="isNew && useImage">
+      new
+    </div>
+    <div style="display: flex; gap: 10px; position: relative">
+      <Counter
+        v-if="useCounter"
+        class="item__counter"
+        :value="count"
+        :min="1"
+        :max="9"
+        @inc="emit('inc-count')"
+        @dec="emit('dec-count')"
+      />
+
       <Confirmation
         v-if="useRemoveBtn"
         color="red"
-        :text="'Delete?'"
+        text="Delete?"
         class="item__remove"
         @click.stop
         @confirm="emit('remove')"
@@ -26,18 +41,6 @@
         </div>
       </Confirmation>
     </div>
-    <div @click="emit('clicked')" class="item__new" v-if="isNew && useImage">
-      new
-    </div>
-    <Counter
-      v-if="useCounter"
-      class="item__counter"
-      :value="count"
-      :min="1"
-      :max="9"
-      @inc="emit('inc-count')"
-      @dec="emit('dec-count')"
-    />
   </article>
 </template>
 
@@ -114,12 +117,14 @@ const emit = defineEmits<{
   }
 
   &__remove {
-    position: absolute;
     cursor: pointer;
     display: flex;
     justify-content: flex-end;
-    bottom: 20px;
-    right: 20px;
+
+    &-item {
+      padding: 20px;
+      margin-left: 8px;
+    }
 
     img {
       width: 12px;
@@ -167,7 +172,7 @@ const emit = defineEmits<{
   }
 
   &__counter {
-    margin-top: 10px;
+    margin-top: 12px;
   }
 }
 </style>

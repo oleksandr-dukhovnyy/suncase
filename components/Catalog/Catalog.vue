@@ -3,8 +3,13 @@
     <div class="catalog__filters">
       <Filters />
     </div>
-    <div class="catalog__hamburger" @click="showSideModal = true">
-      <img :src="icon('menu')" alt="menu" />
+    <div class="catalog__hamburger">
+      <img
+        :src="image('suncase-logo.png')"
+        alt="sun"
+        @click="scrollToCatalogAndTop"
+      />
+      <img :src="icon('menu')" alt="menu" @click="showSideModal = true" />
     </div>
     <div class="catalog__items">
       <ItemsList />
@@ -46,10 +51,24 @@ const showSideModal = ref(false);
 
     @include media-up(xsm) {
       display: block;
+      // height: max-content;
+      // position: sticky;
+      // top: 120px;
     }
   }
 
   &__hamburger {
+    position: sticky;
+    top: 14px;
+    z-index: 10;
+    margin-left: -10px;
+    display: flex;
+    justify-content: space-between;
+
+    @include media-up(sm) {
+      top: 110px;
+    }
+
     @include media-up(xsm) {
       display: none;
     }
