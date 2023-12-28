@@ -1,17 +1,17 @@
 import { defineStore } from 'pinia';
 import { useGlassesStore } from '~/store/glasses';
+import { useCartStore } from './cart';
 
 import { openWin } from '~/helpers/openPayWindow';
 import bodyScroll from '~/helpers/bodyScroll';
 
 export const useSliderStore = defineStore('slider', {
   actions: {
-    /**
-     * Sets the value of the 'show' property and calls the 'balancedSet' function from the 'bodyScroll' object.
-     */
     SET_SLIDER_SHOW(show: boolean) {
       this.show = show;
-      bodyScroll.balancedSet(show);
+
+      // Enable scroll if cart is closed
+      setScroll();
     },
 
     /**
@@ -58,7 +58,7 @@ export const useSliderStore = defineStore('slider', {
           this.show = false;
 
           // ...and add body scroll
-          bodyScroll.add();
+          setScroll();
         });
       } else {
         console.error(`item (id === ${id}) not found`);
@@ -93,3 +93,9 @@ export const useSliderStore = defineStore('slider', {
     },
   },
 });
+
+function setScroll() {
+  const cartStore = useCartStore();
+
+  bodyScroll.set(cartStore.SHOW_CART_POPUP);
+}

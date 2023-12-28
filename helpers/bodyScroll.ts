@@ -1,30 +1,17 @@
 let locked = false;
-let balance = 0;
 
-export default {
+const API = {
   add: () => toggleScroll(false),
   rem: () => toggleScroll(true),
-  tggl: () => toggleScroll(),
   set: toggleScroll,
 
   /**
    * Updates the balance and toggles scroll based on the given disable value.
    */
-  balancedSet(disable = !locked) {
-    if (disable) {
-      balance += 1;
-    } else {
-      balance -= 1;
-    }
-
-    if (balance > 0) {
-      toggleScroll(true);
-    } else {
-      toggleScroll(false);
-    }
-  },
   lockedNow: () => locked,
 };
+
+export default API;
 
 function toggleScroll(disable = !locked) {
   document.body.style.overflow = disable ? 'hidden' : '';

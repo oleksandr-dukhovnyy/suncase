@@ -30,7 +30,7 @@ const props = withDefaults(
   {
     text: 'Are you sure?',
     color: '#000',
-    timeout: 1500,
+    timeout: 1000,
   }
 );
 

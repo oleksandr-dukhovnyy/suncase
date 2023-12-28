@@ -36,7 +36,7 @@ export const useCartStore = defineStore('cart', {
     SET_SHOW(value: boolean) {
       this.showCartPopup = value;
 
-      bodyScroll.balancedSet(value);
+      bodyScroll.set(value);
     },
     HIDE_CART() {
       this.SET_SHOW(false);

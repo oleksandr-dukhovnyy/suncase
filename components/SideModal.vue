@@ -23,7 +23,9 @@
 <script lang="ts" setup>
 import bodyScroll from '~/helpers/bodyScroll';
 
-if (!bodyScroll.lockedNow()) bodyScroll.rem();
+onMounted(() => {
+  if (!bodyScroll.lockedNow()) bodyScroll.rem();
+});
 
 const emit = defineEmits<{
   (e: 'close'): void;
