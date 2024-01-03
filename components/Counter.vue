@@ -60,18 +60,17 @@ const more = () => {
 
 <style scoped lang="scss">
 .counter {
-  width: 120px;
-  height: 26px;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  border-radius: 20px;
+  width: 120px;
+  height: 26px;
   border: 1px solid $color-muted-lighter;
   border-radius: 6px;
 
   &__separator {
-    height: 26px;
     width: 1px;
+    height: 26px;
     background-color: $color-muted-lighter;
   }
 
@@ -95,8 +94,8 @@ const more = () => {
   }
 
   &__value {
-    font-size: 14px;
     width: 20px;
+    font-size: 14px;
   }
 }
 </style>

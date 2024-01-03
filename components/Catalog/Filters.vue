@@ -32,7 +32,7 @@ const select = ({ type, value }) => {
 .separator {
   width: 50%;
   height: 1px;
-  background-color: $color-muted;
   margin: 40px 0 20px auto;
+  background-color: $color-muted;
 }
 </style>

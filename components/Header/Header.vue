@@ -91,16 +91,16 @@ const onChangeCurrentLang = (newLang: Localization.Lang) => {
 <style lang="scss" scoped>
 .header {
   @include container;
-  max-width: 1300px;
+
+  z-index: 1;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
   gap: padding(2);
-  z-index: 1;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 1300px;
   padding: 30px;
-
   background-color: #fff;
 
   @include media-up(sm) {
@@ -108,29 +108,27 @@ const onChangeCurrentLang = (newLang: Localization.Lang) => {
   }
 
   &__contain {
-    background-color: #fff;
     position: fixed;
-    width: 100vw;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 2;
     top: 0;
     left: 0;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    background-color: #fff;
   }
 
   .contacts {
     display: flex;
     align-items: center;
-    cursor: pointer;
     padding: 0;
+    cursor: pointer;
 
     p {
       display: flex;
       flex-direction: column;
-      justify-items: center;
-      align-items: center;
-
+      place-items: center center;
       height: 36px;
     }
 
@@ -141,25 +139,24 @@ const onChangeCurrentLang = (newLang: Localization.Lang) => {
     }
 
     &__city {
-      font-size: 11px;
-      color: $color-muted;
-      letter-spacing: 0.35em;
-      text-transform: uppercase;
-      color: $color-muted;
       display: block;
       margin-top: 10px;
+      color: $color-muted;
+      font-size: 11px;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
     }
   }
 
   .left-group {
     display: flex;
     gap: 50px;
-    width: 100%;
     justify-content: space-evenly;
+    width: 100%;
 
     @include media-up(sm) {
-      width: max-content;
       justify-content: unset;
+      width: max-content;
     }
   }
 }

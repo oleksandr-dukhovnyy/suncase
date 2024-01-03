@@ -30,20 +30,19 @@ const emit = defineEmits<{
   cursor: pointer;
 
   &__total-price {
-    font-weight: 700;
     color: $color-cta;
-    font-weight: 900;
     font-size: 14px;
+    font-weight: 900;
     letter-spacing: 5.4px;
   }
 
   &__count {
-    font-weight: 600;
-    font-size: 11px;
-    letter-spacing: 0.45em;
     position: relative;
-    color: $color-black;
     margin-top: -5px;
+    color: $color-black;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.45em;
 
     img {
       width: 24px;
@@ -52,7 +51,7 @@ const emit = defineEmits<{
 
     p {
       position: absolute;
-      bottom: 0px;
+      bottom: 0;
       left: 18px;
     }
   }

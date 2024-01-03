@@ -38,57 +38,57 @@ const close = () => {
 
 <style scoped lang="scss">
 .layout {
+  position: fixed;
   top: 0;
   left: 0;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100vw;
   height: 100vh;
   margin: 0;
   padding: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   padding: padding(2);
-  position: fixed;
-  z-index: 10;
   background-color: #fcfcfce6;
 }
 
 .modal {
-  border-radius: 8px;
-  width: 100vw;
-  height: 100vh;
-  vertical-align: middle;
-  max-height: 748px;
-  max-width: 1181px;
-  background-color: #fff;
+  position: relative;
   display: grid;
+  vertical-align: middle;
   grid-template-rows: 1fr;
   grid-template-columns: 1fr;
   gap: padding();
+  width: 100vw;
+  max-width: 1181px;
+  height: 100vh;
+  max-height: 748px;
   padding: 30px;
-  position: relative;
+  border-radius: 8px;
+  background-color: #fff;
 
   --animate-duration: 400ms;
 
   @include shadow-large;
 
   &__body {
-    max-height: 668px;
     position: relative;
+    max-height: 668px;
   }
 
   &__close {
-    text-align: right;
     position: absolute;
-    z-index: 999;
     right: 0;
+    z-index: 999;
     padding: 15px;
+    text-align: right;
     cursor: pointer;
 
     img {
-      margin: 15px;
       width: 18px;
       height: 18px;
+      margin: 15px;
     }
   }
 }

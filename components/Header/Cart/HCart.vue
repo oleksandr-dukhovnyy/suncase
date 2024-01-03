@@ -61,31 +61,31 @@ const buy = () => {
 <style lang="scss" scoped>
 .cart {
   display: grid;
-  gap: padding(2);
   grid-template-columns: 1fr;
-  padding-top: 110px;
+  gap: padding(2);
+  overflow-y: auto;
   height: 100%;
   max-height: 920px;
-  overflow-y: auto;
+  padding-top: 110px;
 
   @include media-up(sm) {
+    max-height: 620px;
     margin-top: 75px;
     padding-top: 0;
-    max-height: 620px;
   }
 
   &__price {
+    position: absolute;
+    top: 0;
+    z-index: 11;
     display: flex;
     flex-direction: column;
     gap: padding(2);
-    align-items: center;
-    z-index: 11;
-    position: absolute;
-    background-color: #fff;
     justify-content: center;
-    padding-bottom: 30px;
-    top: 0;
+    align-items: center;
     width: 100%;
+    padding-bottom: 30px;
+    background-color: #fff;
 
     @include media-up(sm) {
       flex-direction: row;
@@ -93,30 +93,28 @@ const buy = () => {
     }
 
     @include media-down-landscape(lg) {
-      padding-bottom: 16px;
       margin-top: -16px;
+      padding-bottom: 16px;
     }
   }
 
   &__list {
     display: grid;
+    grid-template-columns: repeat(auto-fill, 200px);
     gap: 50px;
     justify-content: center;
-    grid-template-columns: repeat(auto-fill, 200px);
   }
 
   &__empty {
-    font-size: 25px;
-    width: 100%;
-    height: 400px;
-
     display: flex;
     flex-direction: column;
+    gap: padding(6);
     justify-content: center;
     align-items: center;
-    gap: padding(6);
-
+    width: 100%;
+    height: 400px;
     color: $color-muted;
+    font-size: 25px;
 
     img {
       height: 150px;

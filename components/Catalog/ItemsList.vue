@@ -26,9 +26,9 @@ const openSlider = (id: Glasses.Item['id']) => {
 <style scoped lang="scss">
 .items-list {
   display: grid;
+  grid-template-columns: repeat(auto-fill, 200px);
   gap: 50px;
   justify-content: center;
-  grid-template-columns: repeat(auto-fill, 200px);
   padding-right: 0;
 
   @include media-up(xsm) {

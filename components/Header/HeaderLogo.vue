@@ -17,18 +17,19 @@ const toMain = () => navigateTo('/');
 <style scoped lang="scss">
 .logo {
   @include container;
+
+  position: absolute;
+  top: 154px;
+  left: calc(50% - 125.795px);
   display: grid;
   grid-template-columns: 42px 1fr;
   gap: 10px;
   align-items: center;
-  position: absolute;
-  top: 154px;
-  left: calc(50% - 125.795px);
   cursor: pointer;
 
   @include media-up(md) {
-    z-index: 2;
     top: 24px;
+    z-index: 2;
   }
 
   &__contain {
@@ -44,24 +45,24 @@ const toMain = () => navigateTo('/');
     flex-direction: column;
     gap: 10px;
     align-items: center;
-    margin: 0;
     width: max-content;
+    margin: 0;
   }
 
   &__subtitle {
+    color: $color-muted;
     font-size: 12px;
     font-weight: 400;
-    text-transform: uppercase;
     letter-spacing: 0.45em;
-    color: $color-muted;
+    text-transform: uppercase;
   }
 
   &__title {
     font-size: 25px;
     font-weight: 700;
     letter-spacing: 0.5em;
-    text-transform: uppercase;
     text-align: center;
+    text-transform: uppercase;
   }
 }
 </style>

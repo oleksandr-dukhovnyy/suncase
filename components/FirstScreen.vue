@@ -50,11 +50,11 @@ $img-size-2nth: 326px;
 
 .f-screen {
   display: grid;
-  gap: padding(4);
   grid-template-rows: auto;
-  justify-content: center;
-  gap: 30px;
   grid-template-columns: 1fr;
+  gap: padding(4);
+  gap: 30px;
+  justify-content: center;
 
   @include media-up(smx) {
     grid-template-columns: $img-size-2nth;
@@ -73,37 +73,37 @@ $img-size-2nth: 326px;
   }
 
   &__item {
-    height: 530px;
     width: 100%;
+    height: 530px;
 
     &-img {
       height: 530px;
-      background-repeat: no-repeat;
       background-position: 50%;
       background-size: auto 100%;
+      background-repeat: no-repeat;
     }
 
     &-cta-text {
       display: flex;
       flex-direction: column;
-      align-items: flex-start;
+      gap: 30px;
       justify-content: center;
+      align-items: flex-start;
       width: 215px;
       height: 100%;
-      gap: 30px;
       margin: 0 auto;
 
       strong {
-        text-transform: uppercase;
         font-size: 20px;
+        font-weight: 400;
         line-height: 22px;
         letter-spacing: 0.45em;
-        font-weight: 400;
+        text-transform: uppercase;
       }
 
       button {
-        letter-spacing: 0.45em;
         font-weight: 400;
+        letter-spacing: 0.45em;
       }
     }
 

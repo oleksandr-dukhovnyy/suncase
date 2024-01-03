@@ -75,35 +75,34 @@ const onClick = (e: MouseEvent) => {
 
 <style lang="scss" scoped>
 .button {
-  font-size: 14px;
-  cursor: pointer;
-  text-transform: uppercase;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 43px;
   padding: padding() padding(2);
-  text-transform: uppercase;
-  background-color: transparent;
   border: 1px solid #000;
   border-radius: 6px;
-  height: 43px;
+  background-color: transparent;
+  font-size: 14px;
   line-height: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  text-transform: uppercase;
+  cursor: pointer;
 
   &--type {
     &--error {
-      color: $color-red;
       border-color: $color-red;
+      color: $color-red;
     }
 
     &--error-filled {
-      color: #fff;
-      background-color: $color-red;
       border-color: $color-red;
+      background-color: $color-red;
+      color: #fff;
     }
 
     &--info {
-      color: $color-blue;
       border-color: $color-blue;
+      color: $color-blue;
     }
 
     &--cta {
@@ -111,8 +110,8 @@ const onClick = (e: MouseEvent) => {
     }
 
     &--black {
-      color: $color-black;
       border-color: $color-black;
+      color: $color-black;
     }
   }
 

@@ -31,14 +31,14 @@ const showSideModal = ref(false);
 <style lang="scss" scoped>
 .catalog {
   @include container;
+
   display: grid;
-  grid-template-columns: 1fr;
   grid-template-rows: 42px 1fr;
-  column-gap: 110px;
-  margin: 60px 0 0;
+  grid-template-columns: 1fr;
+  gap: 30px 110px;
   justify-content: space-evenly;
   width: 100%;
-  row-gap: 30px;
+  margin: 60px 0 0;
   padding: 0 30px;
 
   @include media-up(xsm) {
@@ -51,6 +51,7 @@ const showSideModal = ref(false);
 
     @include media-up(xsm) {
       display: block;
+
       // height: max-content;
       // position: sticky;
       // top: 120px;
@@ -61,9 +62,9 @@ const showSideModal = ref(false);
     position: sticky;
     top: 14px;
     z-index: 10;
-    margin-left: -10px;
     display: flex;
     justify-content: space-between;
+    margin-left: -10px;
 
     @include media-up(sm) {
       top: 110px;

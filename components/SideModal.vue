@@ -53,21 +53,22 @@ onUnmounted(bodyScroll.add);
   position: fixed;
   top: 0;
   left: 0;
+  z-index: 10;
   width: 100vw;
   height: 100vh;
   background-color: #fcfcfce6;
-  z-index: 10;
 
   --animate-duration: 300ms;
 
   &__inner {
     @include shadow;
+
     display: flex;
     flex-direction: column;
     gap: padding();
-    padding: padding(2);
     width: 70vw;
     height: 100vh;
+    padding: padding(2);
     background-color: #fff;
   }
 
@@ -76,19 +77,20 @@ onUnmounted(bodyScroll.add);
   }
 
   &__close {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 20;
     display: flex;
     justify-content: flex-end;
-    position: absolute;
-    top: 0px;
-    left: 0px;
     padding: 22px;
-    z-index: 20;
+
     // outline: 1px dotted coral;
 
     img {
-      cursor: pointer;
       width: 24px;
       height: 24px;
+      cursor: pointer;
     }
   }
 }

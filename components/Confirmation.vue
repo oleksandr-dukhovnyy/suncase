@@ -60,38 +60,39 @@ const onMouseenter = () => clearTimeout(timerID);
   z-index: 10;
 
   &__buttons {
-    border: 1px solid $color-muted-lighter;
-    border-radius: 6px;
     display: flex;
     justify-content: space-around;
-    padding: 0 padding();
     height: 24px;
+    padding: 0 padding();
+    border: 1px solid $color-muted-lighter;
+    border-radius: 6px;
   }
 
   &__control {
-    width: calc(100% - 16px);
+    position: absolute;
     right: 16px;
     bottom: 10px;
-    border-radius: 6px 0 6px 6px;
     display: flex;
     flex-direction: column;
-    position: absolute;
-    padding: padding(1.5) 45px;
-    background-color: #fff;
     gap: padding();
+    width: calc(100% - 16px);
+    padding: padding(1.5) 45px;
     border: 1px solid red;
+    border-radius: 6px 0 6px 6px;
+    background-color: #fff;
+
     @include shadow;
 
     &-separator {
       width: 1px;
-      background-color: $color-muted-lighter;
       height: 100%;
+      background-color: $color-muted-lighter;
     }
 
     p {
+      width: 100%;
       font-size: 14px;
       text-align: center;
-      width: 100%;
     }
 
     img {
@@ -102,8 +103,8 @@ const onMouseenter = () => clearTimeout(timerID);
       @include button-reset;
 
       display: flex;
-      align-items: center;
       justify-content: center;
+      align-items: center;
 
       &:hover {
         transform: scale(1.1);

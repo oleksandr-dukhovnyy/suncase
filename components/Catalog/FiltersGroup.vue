@@ -51,13 +51,13 @@ const selected = (name: string) => {
 
 <style lang="scss" scoped>
 .filter-group {
-  padding: 0;
-  margin: 0;
   position: relative;
   display: flex;
   flex-direction: column;
-  letter-spacing: 5.4px;
   gap: 18px;
+  margin: 0;
+  padding: 0;
+  letter-spacing: 5.4px;
 
   &--size {
     &-xsm {
@@ -77,26 +77,26 @@ const selected = (name: string) => {
   &__checkmark {
     @include media-up(md) {
       position: absolute;
-
       right: -20px;
+
       // 20px/20px - is a checkmark size
     }
   }
 
   li {
-    list-style: none;
     display: flex;
     align-items: center;
-    cursor: pointer;
     padding: 0;
-    font-weight: 400;
     color: $color-muted;
+    list-style: none;
+    font-weight: 400;
+    cursor: pointer;
 
     span {
-      text-transform: uppercase;
-      text-align: right;
       width: 100%;
       line-height: 1.25;
+      text-align: right;
+      text-transform: uppercase;
 
       &::selection {
         background-color: transparent;
@@ -110,8 +110,8 @@ const selected = (name: string) => {
         transition: color 700ms;
 
         &:hover {
-          transition: color 150ms;
           color: $color-black;
+          transition: color 150ms;
         }
       }
     }

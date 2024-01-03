@@ -8,25 +8,24 @@
 
 <style lang="scss" scoped>
 footer {
-  font-size: 12px;
+  position: absolute;
   display: flex;
   justify-content: center;
-  position: absolute;
-  text-align: center;
   width: 100%;
-  display: flex;
   height: 23px;
+  font-size: 12px;
+  text-align: center;
 
   div {
-    border-top: 1px solid black;
-    padding-top: 10px;
     width: 310px;
+    padding-top: 10px;
+    border-top: 1px solid black;
     color: $color-muted;
   }
 
   a {
-    text-decoration: underline;
     color: $color-muted;
+    text-decoration: underline;
   }
 }
 </style>

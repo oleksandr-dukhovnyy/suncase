@@ -23,26 +23,25 @@ const emit = defineEmits<{
 
 <style scoped lang="scss">
 div {
-  gap: 10px;
   display: flex;
-  align-items: center;
+  gap: 10px;
   justify-content: space-between;
+  align-items: center;
 
   span {
     color: $color-muted;
     font-size: 11px;
-    cursor: pointer;
-    color: $color-muted;
     letter-spacing: 0.35em;
     text-transform: uppercase;
+    cursor: pointer;
 
     &::selection {
       background-color: transparent;
     }
 
     &.selected {
-      font-weight: 700;
       color: #000;
+      font-weight: 700;
     }
   }
 }

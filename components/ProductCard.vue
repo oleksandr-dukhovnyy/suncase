@@ -17,7 +17,7 @@
     <div @click="emit('clicked')" class="item__new" v-if="isNew && useImage">
       new
     </div>
-    <div style="display: flex; gap: 10px; position: relative">
+    <div style="position: relative; display: flex; gap: 10px">
       <Counter
         v-if="useCounter"
         class="item__counter"
@@ -79,12 +79,12 @@ const emit = defineEmits<{
 
 <style lang="scss" scoped>
 .item {
-  width: 200px;
+  position: relative;
   display: flex;
-  justify-content: flex-start;
   flex-direction: column;
   gap: 0;
-  position: relative;
+  justify-content: flex-start;
+  width: 200px;
   cursor: pointer;
 
   img {
@@ -94,12 +94,12 @@ const emit = defineEmits<{
   }
 
   &__price {
+    position: relative;
     display: flex;
     gap: padding();
-    letter-spacing: 5.4px;
-    font-weight: 400;
     font-size: 14px;
-    position: relative;
+    font-weight: 400;
+    letter-spacing: 5.4px;
   }
 
   &__coast {
@@ -117,13 +117,13 @@ const emit = defineEmits<{
   }
 
   &__remove {
-    cursor: pointer;
     display: flex;
     justify-content: flex-end;
+    cursor: pointer;
 
     &-item {
-      padding: 20px;
       margin-left: 8px;
+      padding: 20px;
     }
 
     img {
@@ -133,42 +133,43 @@ const emit = defineEmits<{
   }
 
   &__new {
-    font-size: 11px;
-    @include rotate;
-    text-transform: uppercase;
-    line-height: 1;
-    border: 1px solid red;
     position: absolute;
-    border-radius: 50%;
+    top: 70px;
+    right: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
-    color: $color-red;
-    right: 10px;
-    top: 70px;
     width: 50px;
     height: 50px;
+    border: 1px solid red;
+    border-radius: 50%;
+    color: $color-red;
+    font-size: 11px;
+    line-height: 1;
+    text-transform: uppercase;
     user-select: none;
+
+    @include rotate;
   }
 
   strong {
-    font-size: 15px;
-    letter-spacing: 6.75px;
-    color: $color-cta;
-    font-weight: 400;
     margin: 0;
-    line-height: 22px;
     margin-bottom: 8px;
+    color: $color-cta;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 22px;
+    letter-spacing: 6.75px;
   }
 
   em {
-    font-style: normal;
-    letter-spacing: 5.4px;
-    font-size: 12px;
-    color: $color-muted;
     margin: 0;
-    line-height: 22px;
     margin-bottom: 6px;
+    color: $color-muted;
+    font-size: 12px;
+    font-style: normal;
+    line-height: 22px;
+    letter-spacing: 5.4px;
   }
 
   &__counter {

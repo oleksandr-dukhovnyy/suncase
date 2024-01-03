@@ -26,34 +26,34 @@ const selectCategory = (category: string) => {
 
 <style lang="scss" scoped>
 nav {
+  $magic-offset: 28px;
+
   display: flex;
   flex-direction: column;
-  column-gap: padding(4);
-
-  $magic-offset: 28px;
   margin-top: $magic-offset * -1;
   padding-bottom: $magic-offset;
+  column-gap: padding(4);
 
   @include media-up(md) {
-    justify-content: center;
     flex-direction: row;
+    justify-content: center;
   }
 
   @include media-up(xlg) {
     margin-top: 0;
-    padding-bottom: 0;
     padding: 0 30px 90px;
+    padding-bottom: 0;
   }
 
   span {
-    text-align: center;
-    color: $color-cta;
-    text-transform: uppercase;
     padding: 0 padding(2) padding(3);
+    color: $color-cta;
+    font-size: 15px;
     font-weight: 900;
     letter-spacing: 0.5em;
+    text-align: center;
+    text-transform: uppercase;
     cursor: pointer;
-    font-size: 15px;
 
     @include media-up(md) {
       padding: 30px padding(2);

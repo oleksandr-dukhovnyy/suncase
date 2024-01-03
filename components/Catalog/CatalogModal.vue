@@ -141,15 +141,14 @@ setInterval(moveForward, import.meta.env.MODE === 'development' ? 7000 : 3000);
 <style scoped lang="scss">
 .catalog-modal {
   display: grid;
-  grid-template-columns: 1fr;
   grid-template-rows: 400px 1fr;
-
+  grid-template-columns: 1fr;
   height: calc(100% - 30px);
   padding: 30px 0;
 
   @include media-up(md) {
-    grid-template-columns: 1fr 250px;
     grid-template-rows: 1fr;
+    grid-template-columns: 1fr 250px;
   }
 
   @include media-down-landscape(lg) {
@@ -161,11 +160,11 @@ setInterval(moveForward, import.meta.env.MODE === 'development' ? 7000 : 3000);
   }
 
   &__slider {
-    max-height: 600px;
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
+    align-items: center;
+    max-height: 600px;
 
     @include media-up(md) {
       height: calc(80vh - padding(8));
@@ -181,10 +180,10 @@ setInterval(moveForward, import.meta.env.MODE === 'development' ? 7000 : 3000);
   }
 
   &__price {
-    color: $color-cta;
     display: flex;
     gap: 10px;
     margin-bottom: padding();
+    color: $color-cta;
 
     @include media-up(xl) {
       font-size: 14px;
@@ -199,9 +198,9 @@ setInterval(moveForward, import.meta.env.MODE === 'development' ? 7000 : 3000);
   &__actions {
     display: flex;
     flex-direction: column;
-    margin-top: padding(2);
     gap: padding();
     justify-content: center;
+    margin-top: padding(2);
 
     img {
       width: 11px;
@@ -228,8 +227,8 @@ setInterval(moveForward, import.meta.env.MODE === 'development' ? 7000 : 3000);
   }
 
   &__selected-img {
-    margin: 0 auto;
     width: 100%;
+    margin: 0 auto;
 
     @include media-up(md) {
       width: 75%;
@@ -243,8 +242,8 @@ setInterval(moveForward, import.meta.env.MODE === 'development' ? 7000 : 3000);
   &__slider-img {
     width: 100px;
     border: 1px solid transparent;
-    transition: 300ms;
     cursor: pointer;
+    transition: 300ms;
 
     @include media-up(md) {
       width: 80px;
@@ -263,8 +262,8 @@ setInterval(moveForward, import.meta.env.MODE === 'development' ? 7000 : 3000);
     }
 
     &--selected {
-      transition: 300ms;
       border-color: $color-muted;
+      transition: 300ms;
     }
   }
 
@@ -273,7 +272,6 @@ setInterval(moveForward, import.meta.env.MODE === 'development' ? 7000 : 3000);
 
     width: $size;
     height: $size;
-
     cursor: pointer;
 
     &-contain {
@@ -288,24 +286,24 @@ setInterval(moveForward, import.meta.env.MODE === 'development' ? 7000 : 3000);
 
   &__slider-contain {
     display: grid;
-    gap: padding(2);
-    align-items: center;
-    justify-content: space-between;
     grid-template-columns: 1fr 1fr;
     grid-auto-flow: row;
+    gap: padding(2);
+    justify-content: space-between;
+    align-items: center;
 
     @include media-up(lg) {
-      gap: padding();
       grid-template-rows: 1fr;
       grid-template-columns: none;
       grid-auto-flow: column;
+      gap: padding();
     }
 
     @include media-up(xl) {
-      gap: padding(2);
       grid-template-rows: 1fr;
       grid-template-columns: none;
       grid-auto-flow: column;
+      gap: padding(2);
     }
 
     @include media-down-landscape(lg) {
