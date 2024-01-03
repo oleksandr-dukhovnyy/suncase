@@ -42,7 +42,6 @@ nav {
   @include media-up(xlg) {
     margin-top: 0;
     padding: 0 30px 90px;
-    padding-bottom: 0;
   }
 
   span {
