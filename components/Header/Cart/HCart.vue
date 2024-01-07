@@ -4,7 +4,7 @@
       <div class="cart__price">
         <HeaderCart />
         <TheButton size="lg" type="error-filled" @click="buy">
-          {{ t('cta.buy') }}
+          {{ t('cta.buy-all') }}
         </TheButton>
       </div>
       <div v-if="CART_ITEMS.length > 0" class="cart__list">

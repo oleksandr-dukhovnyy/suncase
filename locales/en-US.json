@@ -1,27 +1,31 @@
 {
   "filters": {
     "genders": {
-      "man": "Man",
-      "woman": "Woman",
-      "kids": "Kids"
+      "man": "men",
+      "woman": "women",
+      "kids": "kids"
     },
     "categories": {
       "new": "new",
       "sale": "sale",
-      "most-popular": "most popular",
-      "price-low-to-hight": "price low to hight",
-      "price-hight-to-low": "price hight to low"
+      "most-popular": "best seller",
+      "price-low-to-hight": "price: low - hight",
+      "price-hight-to-low": "price: hight - low"
     }
   },
+
   "cta": {
     "action-button": "browse",
-    "buy": "buy",
-    "add-to-cart": "to cart",
+    "buy": "Checkout",
+    "buy-all": "Complete order",
+    "add-to-cart": "Add to bag",
     "slogan": ["sunglasses", "for all", "life", "seasons"]
   },
 
   "cart": {
-    "cart-is-empty": "Cart is currently empty",
+    "cart-is-empty": "There are no items in your bag",
     "delete-item": "Delete?"
-  }
+  },
+
+  "location": "kyiv"
 }

@@ -18,6 +18,7 @@ declare namespace Localization {
     cta: {
       'action-button': string;
       buy: string;
+      'buy-all': string;
       'add-to-cart': string;
       slogan: string[];
     };
@@ -26,6 +27,8 @@ declare namespace Localization {
       'cart-is-empty': string;
       'delete-item': string;
     };
+
+    location: string;
   }
 
   export interface Lang {

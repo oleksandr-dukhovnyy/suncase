@@ -7,7 +7,9 @@
       >
         <p>
           <span class="contacts__phone">{{ phone }}</span>
-          <span class="contacts__city"> Kyiv </span>
+          <span class="contacts__city">
+            {{ t('location') }}
+          </span>
         </p>
       </div>
       <div class="left-group animate__animated animate__fadeInRight">
@@ -29,6 +31,7 @@ import Cart from './Cart/HCart.vue';
 import { useCartStore } from '~/store/cart';
 
 const cartStore = useCartStore();
+const { t } = useLocator();
 const show = computed(() => cartStore.SHOW_CART_POPUP);
 
 const scrollToTop = () => {

@@ -219,7 +219,6 @@ setInterval(moveForward, import.meta.env.MODE === 'development' ? 7000 : 3000);
 
     button > span {
       display: block;
-      padding-top: 4px;
     }
   }
 

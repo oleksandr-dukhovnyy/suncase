@@ -80,7 +80,7 @@ export const openWin = (
 						class="cvv clear"
 					>
 				</div>
-				<button class="buy-btn">BUY</button>
+				<button class="buy-btn">PAY & CONFIRM ORDER</button>
 				<div class="or-decoration"> - or - </div>
 				<div class="buttons-contain">
 					<button>
