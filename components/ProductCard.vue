@@ -161,10 +161,11 @@ const { t } = useLocator();
     margin: 0;
     margin-bottom: 8px;
     color: $color-cta;
-    font-size: 15px;
+    font-size: 12px;
     font-weight: 400;
     line-height: 22px;
     letter-spacing: 6.75px;
+    text-transform: uppercase;
   }
 
   em {

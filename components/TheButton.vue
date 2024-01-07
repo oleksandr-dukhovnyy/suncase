@@ -84,7 +84,9 @@ const onClick = (e: MouseEvent) => {
   border-radius: 6px;
   background-color: transparent;
   font-size: 14px;
+  font-weight: 400;
   line-height: 1;
+  letter-spacing: 0.45em;
   text-transform: uppercase;
   cursor: pointer;
 

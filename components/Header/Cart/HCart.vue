@@ -121,8 +121,10 @@ const buy = () => {
 
     p {
       color: #999;
-      font-size: 14px;
+      font-size: 12px;
       line-height: 1;
+      letter-spacing: 5.4px;
+      text-align: center;
       text-transform: uppercase;
     }
 

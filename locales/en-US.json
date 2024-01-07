@@ -16,9 +16,9 @@
 
   "cta": {
     "action-button": "browse",
-    "buy": "Checkout",
-    "buy-all": "Complete order",
-    "add-to-cart": "Add to bag",
+    "buy": "checkout",
+    "buy-all": "checkout",
+    "add-to-cart": "to bag",
     "slogan": ["sunglasses", "for all", "life", "seasons"]
   },
 

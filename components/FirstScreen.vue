@@ -103,10 +103,10 @@ $img-size-2nth: 326px;
         text-transform: uppercase;
       }
 
-      button {
-        font-weight: 400;
-        letter-spacing: 0.45em;
-      }
+      // button {
+      //   font-weight: 400;
+      //   letter-spacing: 0.45em;
+      // }
     }
 
     &--0 {

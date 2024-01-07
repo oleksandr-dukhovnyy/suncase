@@ -65,7 +65,7 @@
           >
             <span
               v-if="!showAddToCartAnimation"
-              style="margin: auto 0 auto 8px"
+              style="margin: auto 0 auto 14px"
             >
               {{ t('cta.add-to-cart') }}
             </span>
