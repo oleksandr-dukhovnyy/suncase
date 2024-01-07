@@ -17,7 +17,10 @@
     <div @click="emit('clicked')" class="item__new" v-if="isNew && useImage">
       new
     </div>
-    <div style="position: relative; display: flex; gap: 10px">
+    <div
+      v-if="useRemoveBtn || useCounter"
+      style="position: relative; display: flex; gap: 10px"
+    >
       <Counter
         v-if="useCounter"
         class="item__counter"
@@ -31,7 +34,7 @@
       <Confirmation
         v-if="useRemoveBtn"
         color="red"
-        text="Delete?"
+        :text="t('cart.delete-item')"
         class="item__remove"
         @click.stop
         @confirm="emit('remove')"
@@ -75,6 +78,8 @@ const emit = defineEmits<{
   (e: 'dec-count'): void;
   (e: 'remove'): void;
 }>();
+
+const { t } = useLocator();
 </script>
 
 <style lang="scss" scoped>

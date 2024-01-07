@@ -5,6 +5,10 @@
 const DEV_HOST = process.env.DEV_HOST || '127.0.0.1';
 const DEV_PORT = +(process.env.DEV_PORT || '5437');
 
+function useInProduction(obj: object) {
+  return process.env.NODE_ENV === 'production' ? obj : {};
+}
+
 export default defineNuxtConfig({
   app: {
     baseURL: '/suncase/',
@@ -29,7 +33,9 @@ export default defineNuxtConfig({
   routeRules: {
     '/': {
       prerender: true,
-      swr: 3600,
+      ...useInProduction({
+        swr: 3600,
+      }),
     },
   },
   vite: {

@@ -68,15 +68,23 @@ for (let i = 0; i < userLangs.length; i++) {
   }
 }
 
-const setSelectedLang = (langValue) => {
-  langs.value = langs.value.map((lng) => ({
-    ...lng,
-    selected: lng.value === langValue,
-  }));
+const locator = useLocator();
+
+const setSelectedLang = async (langValue: Localization.Lang['value']) => {
+  const result = await locator.setLocale(langValue);
+
+  if (result) {
+    langs.value = langs.value.map((lng) => ({
+      ...lng,
+      selected: lng.value === langValue,
+    }));
+  }
 };
 
 onMounted(() => {
-  const latestSelectedLang = localStorage.getItem('lang');
+  const latestSelectedLang = localStorage.getItem(
+    'lang'
+  ) as Localization.Lang['value'];
 
   if (latestSelectedLang) setSelectedLang(latestSelectedLang);
 });

@@ -52,7 +52,9 @@
             'catalog-modal__actions--large-icon': showAddToCartAnimation,
           }"
         >
-          <TheButton size="lg" type="error" @click="buy"> buy </TheButton>
+          <TheButton size="lg" type="error" @click="buy">
+            {{ t('cta.buy') }}
+          </TheButton>
           <TheButton
             size="lg"
             type="black"
@@ -65,7 +67,7 @@
               v-if="!showAddToCartAnimation"
               style="margin: auto 0 auto 8px"
             >
-              to cart
+              {{ t('cta.add-to-cart') }}
             </span>
           </TheButton>
         </div>
@@ -78,6 +80,7 @@
 import { useSliderStore } from '~/store/slider';
 import { useCartStore } from '~/store/cart';
 
+const { t } = useLocator();
 const cartStore = useCartStore();
 const sliderStore = useSliderStore();
 

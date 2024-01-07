@@ -14,13 +14,13 @@
       ></div>
       <div class="f-screen__item-cta-text" v-else>
         <strong>
-          sunglasses <br />
-          for all <br />
-          life <br />
-          seasons
+          {{ t('cta.slogan.0') }} <br />
+          {{ t('cta.slogan.1') }} <br />
+          {{ t('cta.slogan.2') }} <br />
+          {{ t('cta.slogan.3') }}
         </strong>
         <TheButton size="lg" type="cta" @click="scrollToGoods">
-          browse
+          {{ t('cta.action-button') }}
         </TheButton>
       </div>
     </div>
@@ -30,6 +30,8 @@
 <script lang="ts" setup>
 import { scrollToGoods } from '~/helpers/scrollToGoods';
 import image from '~/utils/image';
+
+const { t } = useLocator();
 
 const getPathToImgs = (index: number | string) =>
   image(`LineSlider/1/${index}.jpg`);

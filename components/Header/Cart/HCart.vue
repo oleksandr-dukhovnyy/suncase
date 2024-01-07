@@ -3,7 +3,9 @@
     <div class="cart" data-test="cart">
       <div class="cart__price">
         <HeaderCart />
-        <TheButton size="lg" type="error-filled" @click="buy"> buy </TheButton>
+        <TheButton size="lg" type="error-filled" @click="buy">
+          {{ t('cta.buy') }}
+        </TheButton>
       </div>
       <div v-if="CART_ITEMS.length > 0" class="cart__list">
         <ProductCard
@@ -18,7 +20,9 @@
         />
       </div>
       <div v-else class="cart__empty">
-        <p>Cart is currently empty</p>
+        <p>
+          {{ t('cart.cart-is-empty') }}
+        </p>
       </div>
     </div>
   </Modal>
@@ -30,6 +34,7 @@ import { useCartStore } from '~/store/cart';
 import { useSliderStore } from '~/store/slider';
 import HeaderCart from '~/components/Header/HeaderCart.vue';
 
+const { t } = useLocator();
 const cartStore = useCartStore();
 const sliderStore = useSliderStore();
 

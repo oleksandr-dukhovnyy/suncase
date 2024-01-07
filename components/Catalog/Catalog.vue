@@ -35,7 +35,7 @@ const showSideModal = ref(false);
   display: grid;
   grid-template-rows: 42px 1fr;
   grid-template-columns: 1fr;
-  gap: 30px 110px;
+  gap: 30px 70px;
   justify-content: space-evenly;
   width: 100%;
   margin: 60px 0 0;
@@ -43,7 +43,7 @@ const showSideModal = ref(false);
 
   @include media-up(xsm) {
     grid-template-rows: 1fr;
-    grid-template-columns: 155px 1fr;
+    grid-template-columns: 200px 1fr;
   }
 
   &__filters {

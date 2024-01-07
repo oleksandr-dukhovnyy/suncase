@@ -1,7 +1,7 @@
 <template>
   <ul class="filter-group">
     <li
-      v-for="(item, i) in items"
+      v-for="(item, i) in preparedItems"
       :key="i"
       :class="`filter-group--size-${size}`"
       @click="selected(item.name)"
@@ -47,6 +47,21 @@ const emit = defineEmits<{
 const selected = (name: string) => {
   emit('selected', { value: name, type: props.type });
 };
+
+const { t } = useLocator();
+const preparedItems = computed(() => {
+  return props.items.map((item) => {
+    if (props.type === 'brands') return item;
+
+    // 'price low to hight' -> 'price-low-to-hight'
+    const title = item.title.replace(/\s/g, '-');
+
+    return {
+      ...item,
+      title: t(`filters.${props.type}.${title}`),
+    };
+  });
+});
 </script>
 
 <style lang="scss" scoped>

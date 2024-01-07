@@ -3,8 +3,8 @@
     <span
       v-for="lang in langs"
       :key="lang.value"
-      @click="emit('change-current-lang', lang)"
       :class="lang.selected ? 'selected' : ''"
+      @click="emit('change-current-lang', lang)"
     >
       {{ lang.title }}
     </span>

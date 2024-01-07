@@ -1,7 +1,27 @@
 {
   "filters": {
-    "man": "Man",
-    "woman": "Woman",
-    "kids": "Kids"
+    "genders": {
+      "man": "Man",
+      "woman": "Woman",
+      "kids": "Kids"
+    },
+    "categories": {
+      "new": "new",
+      "sale": "sale",
+      "most-popular": "most popular",
+      "price-low-to-hight": "price low to hight",
+      "price-hight-to-low": "price hight to low"
+    }
+  },
+  "cta": {
+    "action-button": "browse",
+    "buy": "buy",
+    "add-to-cart": "to cart",
+    "slogan": ["sunglasses", "for all", "life", "seasons"]
+  },
+
+  "cart": {
+    "cart-is-empty": "Cart is currently empty",
+    "delete-item": "Delete?"
   }
 }

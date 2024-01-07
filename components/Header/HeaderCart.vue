@@ -15,11 +15,12 @@
 <script lang="ts" setup>
 import { useCartStore } from '~/store/cart';
 
-const cartStore = useCartStore();
-
 const emit = defineEmits<{
   (e: 'open-cart'): void;
 }>();
+
+const { t } = useLocator();
+const cartStore = useCartStore();
 </script>
 
 <style lang="scss" scoped>

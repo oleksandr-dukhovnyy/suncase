@@ -5,7 +5,7 @@
       :key="navItem"
       @click="selectCategory(navItem)"
     >
-      {{ navItem }}
+      {{ t(`filters.genders.${navItem}`) }}
     </span>
   </nav>
 </template>
@@ -14,6 +14,7 @@
 import { scrollToGoods } from '~/helpers/scrollToGoods';
 import { useGlassesStore } from '~/store/glasses';
 
+const { t } = useLocator();
 const glassesStore = useGlassesStore();
 
 const navItems = ['man', 'woman', 'kids'];

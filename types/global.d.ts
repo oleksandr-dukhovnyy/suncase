@@ -1,16 +1,35 @@
 declare namespace Localization {
-  export interface UI {
-    header: {
-      logoDescription: string;
+  export interface Locale {
+    filters: {
+      genders: {
+        man: string;
+        woman: string;
+        kids: string;
+      };
+      categories: {
+        new: string;
+        sale: string;
+        'most-popular': string;
+        'price-low-to-hight': string;
+        'price-hight-to-low': string;
+      };
     };
-    main: {
-      shopFilters: string[][];
+
+    cta: {
+      'action-button': string;
+      buy: string;
+      'add-to-cart': string;
+      slogan: string[];
     };
-    menu: string[];
+
+    cart: {
+      'cart-is-empty': string;
+      'delete-item': string;
+    };
   }
 
   export interface Lang {
-    value: string;
+    value: 'en-US' | 'uk-UA';
     selected: boolean;
     title: string;
     documentLanguagesValue?: string;

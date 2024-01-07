@@ -111,7 +111,7 @@ export const useGlassesStore = defineStore('glasses', {
     ACTIVE_BRANDS: (state) => state.filters.brands,
 
     /**
-     * Generates a list of filters based on the state object.
+     * Generates a list of filters
      */
     FILTERS: (state) => {
       const filters = [] as FiltersList;
