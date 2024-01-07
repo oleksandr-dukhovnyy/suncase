@@ -76,6 +76,8 @@ export const useCartStore = defineStore('cart', {
     },
     DELETE_ITEM(id: Cart.CartItem['id']) {
       this.cart = this.cart.filter(({ id: _id }) => _id !== id);
+
+      cartStorage.saveCart(this.cart);
     },
     DEC_ITEM_COUNT(id: Cart.CartItem['id']) {
       changeItemCount.call(this, {
