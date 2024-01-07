@@ -23,7 +23,7 @@
   },
 
   "cart": {
-    "cart-is-empty": "There are no items in your bag",
+    "cart-is-empty": "There are no accessories in your bag",
     "delete-item": "Delete?"
   },
 

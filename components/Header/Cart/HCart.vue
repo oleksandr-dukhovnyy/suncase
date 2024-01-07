@@ -118,8 +118,13 @@ const buy = () => {
     align-items: center;
     width: 100%;
     height: 400px;
-    color: $color-muted;
-    font-size: 25px;
+
+    p {
+      color: #999;
+      font-size: 14px;
+      line-height: 1;
+      text-transform: uppercase;
+    }
 
     img {
       height: 150px;
