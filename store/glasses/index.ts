@@ -5,15 +5,26 @@ import { applyFilters } from './applyFilters';
 export const useGlassesStore = defineStore('glasses', {
   actions: {
     /**
-     * Fetches sunglasses data asynchronously.
+     * Fetches sunglasses data
      */
-    FETCH_SUNGLASSES() {
+    async FETCH_SUNGLASSES() {
       this.loading = true;
 
-      setTimeout(() => {
-        this.sunglassesList = JSON.parse(JSON.stringify(glassesList));
-        this.loading = false;
-      }, Math.random() * 200);
+      return new Promise<void>((resolve) => {
+        setTimeout(() => {
+          this.sunglassesList = JSON.parse(JSON.stringify(glassesList));
+          this.pagination.totalPages = this.sunglassesList.length;
+
+          resolve();
+        }, Math.random() * 200);
+      }).finally(() => (this.loading = false));
+    },
+
+    /**
+     * Sets the current page.
+     */
+    SET_PAGE(page = 1) {
+      this.pagination.page = page;
     },
 
     /**
@@ -70,6 +81,11 @@ export const useGlassesStore = defineStore('glasses', {
   state: () => ({
     sunglassesList: [] as Glasses.Item[],
     loading: false,
+    pagination: {
+      totalPages: 0,
+      perPage: 8,
+      page: 1,
+    },
     filters: {
       genders: [
         { name: 'man', active: false },
@@ -98,13 +114,34 @@ export const useGlassesStore = defineStore('glasses', {
     } as Glasses.Filters,
   }),
   getters: {
+    SUNGLASSES_PAGINATION: (state) => state.pagination,
     SUNGLASSES_LOADING: (state) => state.loading,
 
     /**
      * Apply filters to the sunglasses list.
      */
-    SUNGLASSES_LIST: (state) =>
-      applyFilters(state.filters, state.sunglassesList),
+    SUNGLASSES_LIST: (state) => {
+      const filteredSunglasses = applyFilters(
+        state.filters,
+        state.sunglassesList
+      );
+
+      const pageIndex = state.pagination.page - 1;
+      const from = pageIndex * state.pagination.perPage;
+      const to = from + state.pagination.perPage;
+
+      console.log({
+        from,
+        to,
+      });
+
+      const paginatedSunglasses = filteredSunglasses.slice(
+        from,
+        to < filteredSunglasses.length ? to : undefined
+      );
+
+      return paginatedSunglasses;
+    },
 
     ACTIVE_GENDERS: (state) => state.filters.genders,
     ACTIVE_CATEGORIES: (state) => state.filters.categories,
