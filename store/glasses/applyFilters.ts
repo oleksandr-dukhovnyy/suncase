@@ -45,10 +45,10 @@ export const applyFilters = (
     .sort((a, b) => {
       switch (true) {
         case priceFilter['price-hight-to-low']:
-          return a.coast - b.coast;
+          return b.coast - a.coast;
 
         case priceFilter['price-low-to-hight']:
-          return b.coast - a.coast;
+          return a.coast - b.coast;
 
         default:
           return 0;

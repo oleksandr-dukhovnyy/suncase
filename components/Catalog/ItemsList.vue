@@ -1,14 +1,14 @@
 <template>
   <div class="items">
     <div class="items__list">
-      <div v-for="(item, i) in glassesStore.SUNGLASSES_LIST" :key="i">
+      <div v-for="(item, i) in glassesStore.SUNGLASSES_LIST.list" :key="i">
         <ProductCard v-bind="item" @clicked="openSlider(item.id)" />
       </div>
     </div>
 
     <Pagination
-      :total="glassesStore.SUNGLASSES_PAGINATION.totalPages"
-      :per-page="glassesStore.SUNGLASSES_PAGINATION.perPage"
+      :total="glassesStore.SUNGLASSES_LIST.pagination.totalItems"
+      :per-page="glassesStore.SUNGLASSES_LIST.pagination.perPage"
     />
   </div>
 </template>
@@ -26,6 +26,18 @@ watch(
   () => route.query.page,
   () => glassesStore.SET_PAGE(+(route.query.page || 1) as number),
   { immediate: true }
+);
+watch(
+  () => glassesStore.SUNGLASSES_LIST.pagination.page,
+  async (page: number) => {
+    const _page = page === 1 ? undefined : page;
+
+    await navigateTo({
+      query: {
+        page: _page,
+      },
+    });
+  }
 );
 
 await glassesStore.FETCH_SUNGLASSES();

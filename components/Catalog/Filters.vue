@@ -23,6 +23,7 @@ const select = ({ type, value }) => {
   const actionName = `TOGGLE_FILTER_${type.toUpperCase()}`;
 
   if (actionName in glassesStore) {
+    glassesStore.SET_PAGE(1);
     glassesStore[actionName](value);
   }
 };

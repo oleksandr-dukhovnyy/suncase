@@ -13,7 +13,7 @@ export const useGlassesStore = defineStore('glasses', {
       return new Promise<void>((resolve) => {
         setTimeout(() => {
           this.sunglassesList = JSON.parse(JSON.stringify(glassesList));
-          this.pagination.totalPages = this.sunglassesList.length;
+          this.pagination.totalItems = this.sunglassesList.length;
 
           resolve();
         }, Math.random() * 200);
@@ -82,7 +82,7 @@ export const useGlassesStore = defineStore('glasses', {
     sunglassesList: [] as Glasses.Item[],
     loading: false,
     pagination: {
-      totalPages: 0,
+      totalItems: 0,
       perPage: 8,
       page: 1,
     },
@@ -114,7 +114,6 @@ export const useGlassesStore = defineStore('glasses', {
     } as Glasses.Filters,
   }),
   getters: {
-    SUNGLASSES_PAGINATION: (state) => state.pagination,
     SUNGLASSES_LOADING: (state) => state.loading,
 
     /**
@@ -130,17 +129,19 @@ export const useGlassesStore = defineStore('glasses', {
       const from = pageIndex * state.pagination.perPage;
       const to = from + state.pagination.perPage;
 
-      console.log({
-        from,
-        to,
-      });
-
       const paginatedSunglasses = filteredSunglasses.slice(
         from,
         to < filteredSunglasses.length ? to : undefined
       );
 
-      return paginatedSunglasses;
+      return {
+        list: paginatedSunglasses,
+        pagination: {
+          totalItems: filteredSunglasses.length,
+          perPage: state.pagination.perPage,
+          page: state.pagination.page,
+        } satisfies typeof state.pagination,
+      };
     },
 
     ACTIVE_GENDERS: (state) => state.filters.genders,
