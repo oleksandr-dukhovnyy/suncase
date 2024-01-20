@@ -45,7 +45,7 @@ const scrollToTop = () => {
 
 const langs = ref<Localization.Lang[]>([
   {
-    title: 'eng',
+    title: 'en',
     value: 'en-US',
     selected: true,
   },

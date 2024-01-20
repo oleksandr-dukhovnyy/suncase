@@ -48,8 +48,9 @@ nav {
   span {
     padding: 0 padding(2) padding(3);
     color: $color-cta;
-    font-size: 15px;
-    font-weight: 900;
+    font-size: 20px;
+
+    // font-weight: 900;
     letter-spacing: 0.5em;
     text-align: center;
     text-transform: uppercase;

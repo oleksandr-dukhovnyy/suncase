@@ -1,21 +1,34 @@
 <template>
-  <div class="items-list">
-    <div class="items-list__item" v-for="(item, i) in ITEMS" :key="i">
-      <ProductCard v-bind="item" @clicked="openSlider(item.id)" />
+  <div class="items">
+    <div class="items__list">
+      <div v-for="(item, i) in glassesStore.SUNGLASSES_LIST" :key="i">
+        <ProductCard v-bind="item" @clicked="openSlider(item.id)" />
+      </div>
     </div>
+
+    <Pagination
+      :total="glassesStore.SUNGLASSES_PAGINATION.totalPages"
+      :per-page="glassesStore.SUNGLASSES_PAGINATION.perPage"
+    />
   </div>
 </template>
 
 <script lang="ts" setup>
 import { useGlassesStore } from '~/store/glasses';
 import { useSliderStore } from '~/store/slider';
+import Pagination from './Pagination.vue';
 
+const route = useRoute();
 const glassesStore = useGlassesStore();
 const sliderStore = useSliderStore();
 
-glassesStore.FETCH_SUNGLASSES();
+watch(
+  () => route.query.page,
+  () => glassesStore.SET_PAGE(+(route.query.page || 1) as number),
+  { immediate: true }
+);
 
-const ITEMS = computed(() => glassesStore.SUNGLASSES_LIST);
+await glassesStore.FETCH_SUNGLASSES();
 
 const openSlider = (id: Glasses.Item['id']) => {
   sliderStore.SET_SELECTED(id);
@@ -24,19 +37,25 @@ const openSlider = (id: Glasses.Item['id']) => {
 </script>
 
 <style scoped lang="scss">
-.items-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, 200px);
+.items {
+  display: flex;
+  flex-direction: column;
   gap: 50px;
-  justify-content: center;
-  padding-right: 0;
 
-  @include media-up(xsm) {
-    padding-right: 80px;
-  }
-
-  @include media_up(xxl) {
+  &__list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 200px);
+    gap: 50px;
+    justify-content: center;
     padding-right: 0;
+
+    @include media-up(xsm) {
+      padding-right: 80px;
+    }
+
+    @include media_up(xxl) {
+      padding-right: 0;
+    }
   }
 }
 </style>
