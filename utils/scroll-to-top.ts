@@ -1,4 +1,4 @@
-export default function scrollToCatalogAndTop() {
+export default function scrollToTop() {
   // If #js-catalog in top of us, scroll to js-catalog, else scroll to top of page
 
   if (globalThis?.window) {

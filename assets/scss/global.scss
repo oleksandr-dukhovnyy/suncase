@@ -8,8 +8,8 @@ html {
 
   *::-webkit-scrollbar-thumb {
     height: 12px;
-    background-color: #dfdfdf;
     border-radius: 5px;
+    background-color: #dfdfdf;
   }
 }
 
@@ -28,9 +28,9 @@ p {
 
 html,
 body {
-  scroll-behavior: smooth;
-  background-color: #fff;
   position: relative;
+  background-color: #fff;
+  scroll-behavior: smooth;
 }
 
 img {
@@ -41,6 +41,7 @@ img {
   &-block {
     display: block !important;
   }
+
   &-none {
     display: none !important;
   }
@@ -50,29 +51,35 @@ img {
       &-block {
         display: block !important;
       }
+
       &-none {
         display: none !important;
       }
     }
   }
+
   &-md {
     @include media-up(md) {
       &-block {
         display: block !important;
       }
+
       &-none {
         display: none !important;
       }
     }
   }
+
   &-xl {
     @include media-up(xl) {
       &-block {
         display: block !important;
       }
+
       &-grid {
         display: grid !important;
       }
+
       &-none {
         display: none !important;
       }

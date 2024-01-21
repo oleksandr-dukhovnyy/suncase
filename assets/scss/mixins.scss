@@ -1,4 +1,4 @@
-@import './adaptive-sass-config.scss';
+@import './adaptive-sass-config';
 
 @mixin container {
   max-width: 1295px;
@@ -9,17 +9,17 @@
 }
 
 @mixin shadow {
-  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   border: 1px solid #dfdfdf;
+  box-shadow: rgba(149, 157, 165, 20%) 0 8px 24px;
 }
 
 @mixin shadow-large {
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  box-shadow: rgba(0, 0, 0, 35%) 0 5px 15px;
 }
 
 @mixin button-reset {
-  cursor: pointer;
   padding: 0;
+  cursor: pointer;
 
   &,
   &:hover,

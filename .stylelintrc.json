@@ -10,10 +10,18 @@
     "at-rule-no-unknown": [
       true,
       {
-        "ignoreAtRules": ["include", "mixin", "media-up", "media-down", "each"]
+        "ignoreAtRules": [
+          "include",
+          "mixin",
+          "media-up",
+          "media-down",
+          "each",
+          "return",
+          "function"
+        ]
       }
     ],
-    "selector-class-pattern": "[a-z]+[a-z-]*[a-z]",
+    "selector-class-pattern": "[a-z]+[a-z-]*[a-z]*$",
     "media-feature-range-notation": "prefix",
     "function-no-unknown": [
       true,

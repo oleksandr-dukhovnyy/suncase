@@ -52,22 +52,23 @@ const pages = computed(() => {
 <style lang="scss" scoped>
 .pagination {
   display: flex;
+  flex-direction: column;
   gap: 48px;
   justify-content: center;
   align-items: center;
-  width: max-content;
+  width: 100%;
   margin: 0 auto;
   padding-top: 12px;
-
-  // border-top: 1px solid $color-muted;
   transition: 1s;
+
+  @include media-up(md) {
+    flex-direction: row;
+  }
 
   &__item {
     display: flex;
     justify-content: center;
     align-items: center;
-
-    // width: 65px;
     width: 170px;
     height: 43px;
     border-radius: 12px;
@@ -87,11 +88,6 @@ const pages = computed(() => {
       &,
       &:hover,
       &:active {
-        // outline: none;
-        // font-size: 16px;
-        // text-decoration: none;
-        // transform: scale(1.05);
-
         display: flex;
         justify-content: center;
         align-items: center;
@@ -101,21 +97,7 @@ const pages = computed(() => {
         border: 1px solid $color-muted;
         border-radius: 6px;
         background-color: transparent;
-
-        // // border: 1px solid $color-black;
-        // border: 1px solid $color-muted;
-
-        // // border: 1px solid $color-cta;
-
-        // // border: 1px solid #ffc12f;
-        // border-radius: 6px;
-
-        // // color: $color-cta;
-        // // color: $color-black;
-
         color: $color-muted;
-
-        // color: $color-cta;
         font-size: 14px;
         font-weight: 400;
         line-height: 1;
@@ -125,10 +107,6 @@ const pages = computed(() => {
       }
 
       &.pagination__item--active {
-        // border: 4px solid #ffc12f;
-        // background-color: rgb(255, 243, 17);
-        // color: $color-black;
-
         border: 1px solid #000;
         color: $color-cta;
       }

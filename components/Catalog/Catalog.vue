@@ -4,17 +4,16 @@
       <Filters />
     </div>
     <div class="catalog__hamburger">
-      <img
-        :src="image('suncase-logo.png')"
-        alt="sun"
-        @click="scrollToCatalogAndTop"
-      />
+      <img :src="image('suncase-logo.png')" alt="sun" @click="scrollToTop" />
       <img :src="icon('menu')" alt="menu" @click="showSideModal = true" />
     </div>
     <div class="catalog__items">
       <ItemsList />
     </div>
   </section>
+  <ClientOnly>
+    <CatalogPagination />
+  </ClientOnly>
   <CatalogHamburgerMenu v-if="showSideModal" @close="showSideModal = false" />
   <CatalogModal />
 </template>
@@ -24,6 +23,7 @@ import CatalogModal from './CatalogModal.vue';
 import Filters from './Filters.vue';
 import ItemsList from './ItemsList.vue';
 import CatalogHamburgerMenu from './CatalogHamburgerMenu.vue';
+import CatalogPagination from './CatalogPagination.vue';
 
 const showSideModal = ref(false);
 </script>
