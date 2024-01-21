@@ -26,7 +26,7 @@ export default function useLocalization() {
   return {
     locale: computed(() => state.locale),
 
-    t(localeKey: string, fallback?: string): string {
+    t(localeKey: string, fallback?: string, logError = true): string {
       if (!state.messages) {
         console.log('missing messages');
 
@@ -35,7 +35,7 @@ export default function useLocalization() {
 
       const text = extractByDottedKey<string>(localeKey, state.messages);
 
-      if (!text)
+      if (!text && logError)
         console.error(
           `Missing translation for ${localeKey} in ${state.locale}`
         );

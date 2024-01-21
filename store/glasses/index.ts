@@ -77,6 +77,15 @@ export const useGlassesStore = defineStore('glasses', {
         item.active = !item.active;
       }
     },
+
+    /**
+     * Resets all filters
+     */
+    RESET_FILTERS() {
+      for (const filter in this.filters) {
+        this.filters[filter].forEach((item) => (item.active = false));
+      }
+    },
   },
   state: () => ({
     sunglassesList: [] as Glasses.Item[],

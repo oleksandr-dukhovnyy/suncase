@@ -53,7 +53,7 @@ const pages = computed(() => {
 .pagination {
   display: flex;
   flex-direction: column;
-  gap: 48px;
+  gap: 24px;
   justify-content: center;
   align-items: center;
   width: 100%;
@@ -63,6 +63,7 @@ const pages = computed(() => {
 
   @include media-up(md) {
     flex-direction: row;
+    gap: 48px;
   }
 
   &__item {

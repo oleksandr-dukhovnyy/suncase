@@ -37,24 +37,12 @@ export default function generatePagination(
   return pagination;
 }
 
-const pagesLabels = [
-  'one',
-  'two',
-  'three',
-  'four',
-  'five',
-  'six',
-  'seven',
-  'eight',
-  'nine',
-  'ten',
-];
-
 export function buildPage(
   page: number | null,
   queryName = 'page'
 ): Page | Offset {
   const route = useRoute();
+  const locator = useLocator();
 
   if (page === null) {
     return {
@@ -65,9 +53,11 @@ export function buildPage(
     };
   }
 
+  const label = locator.t(`pagination-pages.${page - 1}`, '' + page, false);
+
   return {
     type: 'page',
-    label: pagesLabels[page - 1] || page,
+    label,
     active: page === (+route.query[queryName] || 1),
     to: {
       path: route.path,

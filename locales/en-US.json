@@ -16,8 +16,8 @@
 
   "cta": {
     "action-button": "browse",
-    "buy": "checkout",
-    "buy-all": "checkout",
+    "buy": "pay",
+    "buy-all": "pay",
     "add-to-cart": "to bag",
     "slogan": ["sunglasses", "for all", "life", "seasons"]
   },
@@ -27,5 +27,18 @@
     "delete-item": "Delete?"
   },
 
-  "location": "kyiv"
+  "location": "kyiv",
+
+  "pagination-pages": [
+    "one",
+    "two",
+    "three",
+    "four",
+    "five",
+    "six",
+    "seven",
+    "eight",
+    "nine",
+    "ten"
+  ]
 }

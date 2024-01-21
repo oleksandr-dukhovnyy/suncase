@@ -22,20 +22,14 @@ import Footer from '~/components/Footer.vue';
 .page {
   @include container;
 
+  // position: relative;
   display: flex;
-  gap: 50px;
   flex-direction: column;
+  gap: 50px;
   min-height: 100vh;
-  padding-top: $header-height;
-  position: relative;
   margin: 0 auto;
-
+  padding-top: $header-height;
   background-color: #fff;
-
-  &__footer {
-    margin: 30px 0;
-    height: 23px;
-  }
 }
 
 .content {

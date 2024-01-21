@@ -29,6 +29,8 @@ declare namespace Localization {
     };
 
     location: string;
+
+    'pagination-pages': string[];
   }
 
   export interface Lang {
