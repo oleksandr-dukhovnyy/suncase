@@ -15,7 +15,7 @@
   "devDependencies": {
     "@nuxt/devtools": "latest",
     "@types/jest": "^29.5.11",
-    "nuxt": "^3.8.0",
+    "nuxt": "^3.11.1",
     "playwright": "^1.40.1",
     "sass": "^1.69.5",
     "stylelint": "^16.1.0",
