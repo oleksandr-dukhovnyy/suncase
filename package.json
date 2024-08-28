@@ -28,7 +28,7 @@
     "vue-router": "^4.2.5"
   },
   "dependencies": {
-    "@pinia/nuxt": "^0.5.1",
+    "@pinia/nuxt": "^0.5.3",
     "adaptive-scss": "^1.2.1",
     "animate.css": "^4.1.1",
     "normalize.css": "^8.0.1",
