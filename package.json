@@ -33,7 +33,7 @@
     "animate.css": "^4.1.1",
     "normalize.css": "^8.0.1",
     "nuxt3-vuex-module": "^1.1.0",
-    "pinia": "^2.2.0",
+    "pinia": "^2.2.1",
     "vuex": "^4.1.0"
   },
   "engines": {
